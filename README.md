@@ -1,5 +1,9 @@
 # PizzaHust // Hướng dẫn tải code về và push code lên github
 
+Hiểu như sau: github là nơi quản lý project online cho phép mọi người cùng code với nhau
+Trên github sẽ có repository là nơi lưu trữ code, trên máy mình cần tạo một repository để là đàu mối liên kết vs cái trên github kia
+yêu cầu cơ bản nhất là tải code (pull) và up code (push) thì trình bày bên dưới, mói sự thay đổi về code đều đc tự động đánh dấu lại thông qua việc mình gọi hàm add, commit (tất cả các hàm đều dùng shell nếu không cài thêm extendsion, init là hàm khởi tạo repos trên máy, mình gọi hàm đó tại nơi muốn lưu trữ, chỉ cần khởi tạo 1 lần thôi là mình đã có vùng lưu trữ r, add . để add toàn bộ file vào trong cái vùng đó, commit -m "xxx" (xxx là cái mesage mà mình muốn gửi cho mng thấy khi xem code có phần chỉnh sửa của mình), phải sau mấy bước đó thì mình mới có thể push code lên đc vì các thao tác vừa r là mình giúp cái code nó nằm yên vị trong repos trên local
+
 _Tải code về, có 2 cách:_
 
 _**Cách 1:**_

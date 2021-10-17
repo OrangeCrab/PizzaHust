@@ -12,16 +12,16 @@ _**Cách 3**_
 1. git init //khởi tạo repos trên local ại forder muốn lưu các file source
 
 <3>
-2. git remote add origin https://github.com/299792458k/299792458k-AI_Chess.git   //liên kết link đến repos trên github
+2. git remote add origin https://github.com/OrangeCrab/PizzaHust.git   //liên kết link đến repos trên github
 
-3. git pull https://github.com/299792458k/299792458k-AI_Chess.git main    //tải source về cái folder mà mình vừa init ở trên
+3. git pull https://github.com/OrangeCrab/PizzaHust.git main    //tải source về cái folder mà mình vừa init ở trên
 </3>
 4. git add .              // add toàn bộ file có trong folder vào repos trên local
 
 5. git commit -m "son"    // xác nhận thay đổi
 
 _**up code lên repos trên gihub**_
-git remote add origin https://github.com/299792458k/299792458k-AI_Chess.git // nếu chưa liên kết link (mỗi lần mở máy là phải lk lại thì phải)
+git remote add origin https://github.com/OrangeCrab/PizzaHust.git // nếu chưa liên kết link (mỗi lần mở máy là phải lk lại thì phải)
 
 git branch -M main      
 

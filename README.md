@@ -8,14 +8,13 @@ git clone <link repos trên git> // tải một bản sao của project theo đ�
                                 // sau khi tải xong thì đã tự động tạo repos trên máy rồi, mình không cần tạo lại nữa
                                 // cách này chỉ dùng lần đầu tiên tải code vì nó là tải về một bản sao của project, từ lần thứ 2 thi dùng (3)
 
-_**Cách 3**_
+_**Cách 2**_
 1. git init //khởi tạo repos trên local ại forder muốn lưu các file source
 
-<3>
 2. git remote add origin https://github.com/OrangeCrab/PizzaHust.git   //liên kết link đến repos trên github
 
 3. git pull https://github.com/OrangeCrab/PizzaHust.git main    //tải source về cái folder mà mình vừa init ở trên
-</3>
+
 4. git add .              // add toàn bộ file có trong folder vào repos trên local
 
 5. git commit -m "son"    // xác nhận thay đổi

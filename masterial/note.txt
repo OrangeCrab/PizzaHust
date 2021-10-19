@@ -1,0 +1,13 @@
+Ý tưởng: làm chung homepage và thực đơn trong 1 trang, khi click vào phần home thì di chuyển lên đầu tran web, 
+click vào thực đơn thì di chuyển đến phần thực đơn, phần liên hệ thì di chuyển xuống cuối trang web có phần liên hệ (cái này trong html có thẻ link hỗ trợ)
+Giỏ hàng sẽ sang trang khác.
+Thanh lựa chọn sẽ di chuyển theo màn hình, khi đến phần thực đơn thì thanh lựa chọn thực đơn cũng chạy theo luôn
+Các thanh kia để màu đen, sat độ trong suốt 30% (đã trình bày hết trong slide)
+
+font PizzaHust (truy cập vào để lấy) https://fonts.google.com/specimen/Righteous?preview.text=PizzaHust&preview.text_type=custom&preview.size=50
+
+font chữ chung: https://fonts.google.com/specimen/Montserrat?preview.text_type=custom&preview.size=50&preview.text=PizzaHust&query=Mon#standard-styles
+
+Khi click vào sp thì hiệu ứng tham khảo trong link: https://dominos.vn/vn/product-listing/Surf-&-Turf?cateId=1057&currentIndex=1&lang=vn
+Nội dung về sp cũng lấy trong đó
+

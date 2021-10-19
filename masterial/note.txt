@@ -13,3 +13,13 @@ font chữ chung: https://fonts.google.com/specimen/Montserrat?preview.text_type
 Khi click vào sp thì hiệu ứng tham khảo trong link: https://dominos.vn/vn/product-listing/Surf-&-Turf?cateId=1057&currentIndex=1&lang=vn
 Nội dung về sp cũng lấy trong đó
 
+Mã màu sử dụng:
+
+Cam: #F98607
+Đỏ đậm: #A80000
+Xanh đậm: #000066
+layer nền, bar: đen; độ trong suốt 15%, tùy độ đậm tương ứng với 1 hoặc 2 hoặc 3 layer (phần hiện thông tin chi tiết sp)
+màu chủ đạo: xám trắng: #F2F2F2; đen: #404040 (chữ, đường kẻ, viền); 
+trắng: #FFFFFF (nền các mục nhỏ trong admin)
+
+Thiếu đâu thì bảo nhá, hoặc tự xem trong slide

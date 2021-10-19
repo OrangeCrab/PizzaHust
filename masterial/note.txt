@@ -2,7 +2,7 @@
 click vào thực đơn thì di chuyển đến phần thực đơn, phần liên hệ thì di chuyển xuống cuối trang web có phần liên hệ (cái này trong html có thẻ link hỗ trợ)
 Giỏ hàng sẽ sang trang khác.
 Thanh lựa chọn sẽ di chuyển theo màn hình, khi đến phần thực đơn thì thanh lựa chọn thực đơn cũng chạy theo luôn
-Các thanh kia để màu đen, set độ trong suốt 30% (đã trình bày hết trong slide)
+Các thanh kia để màu đen, set độ trong suốt 15% (đã trình bày hết trong slide)
 Cố định background
 tham khảo domino pizza
 

@@ -1,0 +1,112 @@
+@font-face {
+    font-family: mainFont;
+    src: url('./Montserrat-Black.ttf');
+}
+
+@font-face {
+    font-family: buttonFont;
+    src: url('./Montserrat-Medium.ttf');
+}
+
+#body{
+    position: absolute;
+}
+#img{
+    position: absolute;
+    width: 100%;
+    margin-top: -10px;
+    margin-left: -9px;
+}
+#black_rect_top{
+    margin-top: -10px;
+    margin-left: 243px; 
+    width: 81.5%;
+    height: 92px;
+    background-color: black;
+    opacity: 0.6;
+    position: absolute;
+}
+#left_rect_top{
+    position: absolute;
+    background-color: black;
+    opacity: 0.8;
+    margin-top: -15px;
+    margin-left: -7px;
+    width: 250px;
+    height: 96px;
+}
+#logo_name{
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    color: aliceblue;
+    margin-top: 15px;
+    margin-left: -55px;
+}
+#logo_image{
+    position: absolute;
+    color: white;
+    width: 80px;
+    height: 60px;
+    margin-left: 70px;
+    margin-top: 10px;
+}
+
+#left_rect{
+    position: absolute;
+    background-color: rgb(20, 20, 20);
+    opacity: 0.9;
+    margin-top: 80px;
+    margin-left: -7px;
+    width: 250px;
+    height: 535px;
+}
+
+#center{
+    position: absolute;
+    background-color: lightgray;
+    margin-left: 243px;
+    margin-top: 81px;
+    width: 81.5%;
+    height: 535px;
+    z-index: 1;
+}
+
+.main_font{
+    font-family: mainFont;
+    z-index: 2;
+}
+
+.button_font{
+    font-family: buttonFont;
+    z-index: 2;
+}
+
+.main_button{
+    font-family: buttonFont;
+    background-repeat: no-repeat;
+    padding-left: 100px;
+    background-position-x: 20px;
+    background-position-y: 3px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    z-index: 3;
+}
+.main_button:hover{
+    transform: scale(1.1);
+}
+
+th, td{
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+th{
+    text-align: center;
+    background-color: rgb(7, 151, 151); 
+    height: 35px;
+    font-size: 20px;
+}
+td{
+    text-align: center;
+    background-color: rgb(165, 189, 189);
+}

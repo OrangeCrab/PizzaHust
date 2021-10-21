@@ -1,11 +1,11 @@
 @font-face {
     font-family: mainFont;
-    src: url('./Montserrat-Black.ttf');
+    src: url('/masterial/font/Montserrat-Medium.ttf');
 }
 
 @font-face {
     font-family: buttonFont;
-    src: url('./Montserrat-Medium.ttf');
+    src: url('/masterial/font/Montserrat-Medium.ttf');
 }
 
 #body{
@@ -37,19 +37,11 @@
 }
 #logo_name{
     position: absolute;
-    width: 400px;
+    width: 250px;
     height: 50px;
     color: aliceblue;
     margin-top: 15px;
-    margin-left: -55px;
-}
-#logo_image{
-    position: absolute;
-    color: white;
-    width: 80px;
-    height: 60px;
-    margin-left: 70px;
-    margin-top: 10px;
+    margin-left: -1px;
 }
 
 #left_rect{
@@ -80,6 +72,8 @@
 .button_font{
     font-family: buttonFont;
     z-index: 2;
+    box-shadow: inset 0px 2px 5px white;
+    background-color: black;
 }
 
 .main_button{

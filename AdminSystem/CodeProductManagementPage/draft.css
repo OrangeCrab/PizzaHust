@@ -1,0 +1,73 @@
+@font-face {
+    font-family: Monsterrat;
+    src: url("../../masterial/font/Montserrat-Medium.ttf");
+}
+
+body{
+    background-color: #f2f2f2;
+    margin: 0;
+}
+
+#img{
+    width: 1322px;
+    height: 80px;
+    z-index: 1;
+    margin: 0;
+    position: absolute;
+}
+
+#logo_name{
+    width: 230px;
+    height: 60px;
+    position: absolute;
+    margin-top: 16px;
+    margin-left: 5px;
+    z-index: 5;
+}
+
+#top_bar{
+    margin: 0;
+    width: 1322px;
+    height: 80px;
+    background-color: black;
+    opacity: 0.85;
+    position: absolute;
+    z-index: 2;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 18%;
+    background-color: #000000;
+    opacity: 0.85;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    font-family: Monsterrat;
+    z-index: 3;
+}
+  
+    li a {
+        display: block;
+        color: #f2f2f2;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+    li img.logo_name{
+        width: 230px;
+        height: 51px;
+        margin-top: 25px;
+    }
+
+    li a.active {
+        background-color: #04AA6D;
+        color: white;
+      }
+      
+      li a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+      }

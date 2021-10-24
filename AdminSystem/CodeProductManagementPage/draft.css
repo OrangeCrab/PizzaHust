@@ -1,0 +1,133 @@
+@font-face {
+    font-family: Monsterrat;
+    src: url("../../masterial/font/Montserrat-Medium.ttf");
+}
+
+body{
+    background-color: #f2f2f2;
+    margin: 0;
+}
+
+header{
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    height: 80px;
+    width: 100%;
+}
+
+.img{
+    width: 100%;
+    height: 80px;
+    margin: 0;
+    position: absolute;
+}
+
+.logo_name{
+    float: left;
+    width: 230px;
+    height: 60px;
+    position: absolute;
+    margin-top: 16px;
+}
+
+.top_bar{
+    margin: 0;
+    width: 100%;
+    height: 80px;
+    background-color: black;
+    opacity: 0.85;
+    position: absolute;
+}
+
+.logout_btn{
+    float: right;
+    margin-right: 30px;
+    padding: 7px;
+    text-decoration: none;
+    color: #f2f2f2;
+    margin-top: 25px;
+    background: #404040;
+    border-radius: 2px;
+    font-size: 14px;
+    font-family: Monsterrat;
+    font-weight: 900;
+    transition: 0.5s;
+    transition-property: background;
+}
+
+.logout_btn:hover{
+    background: #04AA6D;
+}
+
+.left_bar{
+    background: #000000;
+    opacity: 0.85;
+    margin-top: 80px;
+    position: fixed;
+    left: 0;
+    width: 230px;
+    height: 100%;
+}
+
+.left_bar a{
+    color: #f2f2f2;
+    display: block;
+    width: 100%;
+    line-height: 50px;
+    text-decoration: none;
+    padding-left: 40px;
+    font-family: Monsterrat;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+}
+
+.left_bar a:hover{
+    background:#04AA6D;
+}
+
+.left_bar a.active{
+    background:#04AA6D;
+}
+
+.left_bar i{
+    padding: 10px;
+}
+/* ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 18%;
+    background-color: #000000;
+    opacity: 0.85;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    font-family: Monsterrat;
+    z-index: 3;
+}
+  
+    li a {
+        display: block;
+        color: #f2f2f2;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+    li img.logo_name{
+        width: 230px;
+        height: 51px;
+        margin-top: 25px;
+    }
+
+    li a.active {
+        background-color: #04AA6D;
+        color: white;
+      }
+      
+      li a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+      } */

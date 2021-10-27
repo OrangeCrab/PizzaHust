@@ -59,13 +59,19 @@ header{
         background: #04AA6D;
     }
 
+.work_screen{
+    margin-top: 80px;
+    width: 100%;
+    height: 100% - 80px;
+    display: inline-flex;
+}
 .left_bar{
     background: #000000;
-    opacity: 0.95;
-    margin-top: 80px;
+    opacity: 0.9;
+    margin: 0;
     position: fixed;
     left: 0;
-    width: 230px;
+    width: 18%;
     height: 100%;
 }
 
@@ -93,4 +99,12 @@ header{
 
     .left_bar i{
         padding: 10px;
+    }
+
+    #main_center_panel{
+        position: fixed;
+        width: 82%;
+        height: 100%;
+        left: 18%;
+        background-color: #f2f2f2;
     }

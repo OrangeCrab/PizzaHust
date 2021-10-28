@@ -1,0 +1,132 @@
+body {
+    background-image: url(../masterial/image/bgrhomepage/bgrhomepage.webp);  
+    font-family: Monsterrat;
+}
+
+@font-face {
+    font-family: Monsterrat;
+    src: url('../masterial/font/Montserrat-Medium.ttf');
+}
+
+.header {
+    position: relative;
+}
+.head-img {
+    margin-top: -50px; 
+}
+
+.nav-link {
+    color:#f2f2f2;
+    font-size: large;
+}
+.navbar-collapse {
+    margin-right: 20px;
+}
+.nav-item {
+    margin-right: 50px;
+}
+.popup {
+    position: absolute;
+    background-position: center;
+    display: block;
+    width: fit-content;
+    margin-top: 150px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.hr {
+    color: #F98607;
+}
+.inform {
+    padding-top: 20px;
+}
+
+.content {
+    margin-top: 20px;
+    top: 15px;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.85;
+}
+.butt {
+    padding-bottom: 10px;
+}
+.menu_show {
+    margin-top: 40px;
+    width: 100%;
+}
+.menu {
+    background-color:  rgb(0, 0, 0);
+    opacity: 0.85;
+    display: flex;
+    height: fit-content;
+    padding-top: 15px;
+    margin-bottom: 30px;
+
+}
+.menu-tab {
+    text-align: center;
+}
+.pizza-text {
+    color: #F98607;
+    font-size: x-large;
+}
+.ul-pizza {
+    list-style: none;
+    margin-left: -70px;
+}
+.pizz {
+    margin-bottom: 20px;
+}
+.pizz-box {
+    background-color: #F2F2F2;
+}
+.pizz-box-link {
+   text-decoration: none;
+   color: black;
+}
+.pizz-name {
+    text-align: center;
+}
+.pizz-text {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.pizz-button {
+    display: block;
+    background-color: #F98607;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+.footer {
+    background-image: url(../masterial/image/bgrhomepage/endHomepage.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+.footer-ct {
+    color: white;
+}
+
+/* .menu_list {
+    position: relative;
+}
+
+#beverage, #salad, #spaghetti, #bbq, #combo {
+    position: absolute;
+    display: none;
+} */
+
+
+
+
+   
+
+

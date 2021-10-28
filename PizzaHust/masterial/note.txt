@@ -1,0 +1,25 @@
+Ý tưởng: làm chung homepage và thực đơn trong 1 trang, khi click vào phần home thì di chuyển lên đầu tran web, 
+click vào thực đơn thì di chuyển đến phần thực đơn, phần liên hệ thì di chuyển xuống cuối trang web có phần liên hệ (cái này trong html có thẻ link hỗ trợ)
+Giỏ hàng sẽ sang trang khác.
+Thanh lựa chọn sẽ di chuyển theo màn hình, khi đến phần thực đơn thì thanh lựa chọn thực đơn cũng chạy theo luôn
+Các thanh kia để màu đen, set độ trong suốt 15% (đã trình bày hết trong slide)
+Cố định background
+tham khảo domino pizza
+
+font PizzaHust (truy cập vào để lấy) https://fonts.google.com/specimen/Righteous?preview.text=PizzaHust&preview.text_type=custom&preview.size=50
+
+font chữ chung: https://fonts.google.com/specimen/Montserrat?preview.text_type=custom&preview.size=50&preview.text=PizzaHust&query=Mon#standard-styles
+
+Khi click vào sp thì hiệu ứng tham khảo trong link: https://dominos.vn/vn/product-listing/Surf-&-Turf?cateId=1057&currentIndex=1&lang=vn
+Nội dung về sp cũng lấy trong đó
+
+Mã màu sử dụng:
+
+Cam: #F98607
+Đỏ đậm: #A80000
+Xanh đậm: #000066
+layer nền, bar: đen; độ trong suốt 15%, tùy độ đậm tương ứng với 1 hoặc 2 hoặc 3 layer (phần hiện thông tin chi tiết sp)
+màu chủ đạo: xám trắng: #F2F2F2; đen: #404040 (chữ, đường kẻ, viền); 
+trắng: #FFFFFF (nền các mục nhỏ trong admin)
+
+Thiếu đâu thì bảo nhá, hoặc tự xem trong slide

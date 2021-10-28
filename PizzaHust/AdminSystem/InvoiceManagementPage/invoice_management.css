@@ -1,0 +1,205 @@
+@font-face {
+    font-family: Monsterrat;
+    src: url("../../masterial/font/Montserrat-Medium.ttf");
+}
+
+#main_center_panel{
+        width: 82%;
+        height: 100%;
+        left: 18%;
+        background-color: #f2f2f2;
+}
+/* Tag con main_center_panel */
+
+h1 {
+    margin-left: 2%;
+    height: 20px;
+    font-family: Monsterrat;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.table_wrap {
+    position: relative;
+    margin-left: 2%;
+    background: white;
+    padding: 0px;
+    height: 79%;
+    width: 96%;
+    border-radius: 5px;
+    box-shadow: 0px 10px 8px #404040;
+}
+
+/* Tag con table_wrap */
+
+nav ul {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    height:min-content;
+    width: 95%;
+    padding: 0%;
+    display: flex;
+    list-style-type: none;
+    border-bottom: 1px solid gray;
+}
+    nav ul li {
+        display: inline-block;
+        width: 25%;
+    }
+    nav ul button {
+        width: 100%;
+        height: 100%;
+        padding: 10px 10px 10px 0;
+        border: none;
+        background: white;
+        text-align: left;
+        font-size: 16px;
+        font-family: Monsterrat;
+        font-weight: bolder;
+    }
+    ul button:hover {
+        border-bottom: 3px solid #F98607;
+    }
+    nav ul button:focus {
+        border-bottom: 3px solid #A80000;
+    }
+
+.Search {
+    position: relative;
+    margin-left: 10px;
+    height: 22px;
+    padding: 0;
+    display: inline-block;
+    border: 1px solid #DDD;
+}
+    .Search img {
+        vertical-align: middle;
+        width: 20px;
+    }
+    .Search input {
+        margin: 0;
+        width: calc(100% - 29px);
+        height: 20px;
+        vertical-align: middle;
+        border: none;
+        font-size: 15px;
+        font-family: Monsterrat;
+        font-weight: lighter;
+    }
+    .Search.DKLoc {
+        width: 30%;
+    }
+    .Search.TimKiem {
+        width: 50%;
+    }
+
+table {
+    position: relative;
+    display: block;
+    max-height: 75%;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    overflow: auto;
+    font-size: 15px;
+    font-family: Monsterrat;
+    font-weight: lighter;
+}  
+    tr {
+        height: 50px;
+        word-wrap: break-word;
+    }
+    th {
+        position: sticky; 
+        top: 0;
+        padding: 5px;
+        background: white;
+        text-align: left;
+        z-index: 0;
+    }
+        th:nth-child(1) {
+            width: 20%;
+            text-align: center;
+        }
+        th:nth-child(2) {
+            width: 20%;
+        }
+        th:nth-child(3) {
+            width: 25%;
+        }
+        th:nth-child(4) {
+            width: 15%;
+        }
+        th:nth-child(5) {
+            width: 20%;
+        }
+
+    td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 0.5px solid rgb(200, 200, 200);
+    }
+        td:nth-child(1){
+            width: 20%;
+            text-align: center;
+        }
+        td:nth-child(1) a {
+            color: #A80000;
+        }
+        td:nth-child(2){
+            width: 20%;
+        }
+        td:nth-child(3){
+            width: 25%;
+        }
+        td:nth-child(4){
+            width: 20%;
+        }
+        td:nth-child(5){
+            width: 15%;
+        }
+
+.table-page {
+    position: absolute;
+    right: 20px;
+    bottom: 25px;
+    width: 200px;
+    height: 35px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+    .table-page button {
+        position: sticky;
+        height: 35px;
+        width: 35px;
+        display: inline-block;
+        vertical-align: middle;
+        border: none;
+        background: url("../../masterial/image/iconAdminPage/grayArrow.svg");
+        background-size: 30px 30px;
+    }
+    .table-page button:hover {
+        background-image: url("../../masterial/image/iconAdminPage/redArrow.svg");
+    }
+    #left {
+        transform: scaleX(-1);
+    }
+    .table-page p {
+        position: sticky;
+        width: 60px;
+        height: 35px;
+        padding-top: 10px;
+        display: inline-block;
+        vertical-align: middle;
+        font-family: Monsterrat;
+        font-size: 15px;
+        font-weight: lighter;
+    }
+    .table-page p input {
+        position: sticky;
+        width: 15px;
+        height: 15px;
+        text-align: center; 
+    }

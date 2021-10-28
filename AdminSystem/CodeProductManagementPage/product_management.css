@@ -6,6 +6,7 @@
 body{
     background-color: #f2f2f2;
     margin: 0;
+    height: 100vh;
 }
 
 header{
@@ -59,9 +60,10 @@ header{
     }
 
 .work_screen{
-    margin-top: 80px;
+    position: absolute;
+    top: 80px;
     width: 100%;
-    height: 100% - 80px;
+    height: 87.2%;
     display: inline-flex;
 }
 
@@ -111,32 +113,33 @@ header{
     #sub_top_panel{
         position: absolute;
         width: 100%;
-        height: 9%;
+        height: 60px;
+        top: 0px;
         background-color: #f2f2f2;
     }
         #blockOf_title{
             position: absolute;
-            width: 25%;
-            height: 40px;
-            margin-left: 37.5%;
+            width: 30%;
+            height: 22px;
+            left: 37.5%;
             font-family: Monsterrat;
-            font-size: 25px;
+            font-size: 22px;
             font-weight: bold;
+            top: 19px;
         }
         #blockOf_search_tf{  
             position: absolute; 
             width: 20%; 
             height: 30px; 
-            margin-top: 15px;
             margin-right: 5%;
             margin-left: 75%;
-        }
+            top: 15px;
+        } 
     #table_panel{
         position: absolute;
-        overflow-y: auto;
         width: 100%;
-        height: 75%;
-        top: 9%;
+        height: 68%;
+        top: 9.6%;
     }
         table{
             position: absolute;
@@ -145,6 +148,8 @@ header{
             height: 100%;
             display: block;
             margin-left: 3%;
+            table-layout: fixed;
+            overflow: auto;
         }
             th, td{
                 border: 1px solid white;
@@ -196,12 +201,20 @@ header{
                 td:nth-child(2),th:nth-child(2){
                     width: 10%;
                     min-width: 100px;
-                    max-width: 300px;
+                    max-width: 200px;
                 }
                 td:nth-child(1),th:nth-child(1){
                     width: 5%;
                     min-width: 50px;
                     max-width: 80px;
+                }
+                td:nth-child(2){
+                    height: 100px;
+                    min-height: 100px;
+                    max-height: 200px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
                 }
     #sub_bottom_panel{
         position: fixed;
@@ -216,11 +229,11 @@ header{
             width: 25%;
         }
         #del_button{
-            margin-left: 4%;
+            margin-left: 5.5%;
             width: 20%;
         }
         #add_button{
-            margin-left: 6%;
+            margin-left: 5.5%;
             width: 20%;
         }
 .feature_button{
@@ -245,7 +258,7 @@ header{
 }
 
 .marginOf_feature_button{
-    margin-top: 20px;
+    margin-top: 15px;
     float: left;
     height: 40px;
 }

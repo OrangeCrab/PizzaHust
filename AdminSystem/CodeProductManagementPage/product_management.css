@@ -140,7 +140,7 @@ header{
         border-radius: 5px;
         border-width: 1px;
     }  
-        #create_combo_button{
+        #edit_button{
             margin-left: 24%;
         }
         #del_button{
@@ -242,33 +242,36 @@ header{
             }
             th:nth-child(2), td:nth-child(2) {
                 width: 10%;
+                max-width: 150px;
+                background-position: center;
+                background-size: contain;
             }
             th:nth-child(1), td:nth-child(1) {
                 width: 7%;
                 text-align: center;
             }
-            .addProduct_popup{
-                z-index: 2;    
-                position: fixed;
-                background-color: rgba(0, 0, 0, 0.9);
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                display: flex;
-                justify-self: center;
-                align-items: center;
-                opacity: 0;
-                visibility: hidden;
-                transition: 0.5s;
-            }
+.product_popup{
+    z-index: 2;    
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.9);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
 
-.addProduct_popup.active{
+.product_popup.active{
 opacity: 1;
 visibility: visible;
 }
 
-.addProduct_popup .info_card{
+.product_popup .info_card{
     position: relative;
     width: 700px;
     height: 500px;
@@ -276,7 +279,7 @@ visibility: visible;
     background: #f2f2f2;
     border-radius: 5px;
 }
-.addProduct_popup .info_card .close_btn{
+.product_popup .info_card .close_btn{
     color: #404040;
     z-index: 3;
     position: absolute;
@@ -285,19 +288,19 @@ visibility: visible;
     margin: 20px;
     cursor: pointer;
 }
-.addProduct_popup .info_card .field{
+.product_popup .info_card .field{
     line-height: 40px;
     margin-top: 10px;
     margin-left: 50px;
     font-size: 14px;
 }
-.addProduct_popup .info_card input{
+.product_popup .info_card input{
     float: right;
     margin-right: 100px;
     width: 60%;
     margin-top: 10px;   
 }
-.addProduct_popup .info_card .addcf{
+.product_popup .info_card .addcf{
     background: #404040;
     padding: 5px 20px;
     border-radius: 5px;
@@ -308,6 +311,22 @@ visibility: visible;
     cursor: pointer;
 }
     #add_btn{
+        position: absolute;
+        margin-top: 100px;
+        margin-right: 20%;
+        margin-left: 78%;
+    }
+.product_popup .info_card .save{
+    background: #404040;
+    padding: 5px 20px;
+    border-radius: 5px;
+    color: #f2f2f2;
+    margin-top: 10px;
+    margin-right: 20px;
+    float: right;
+    cursor: pointer;
+}
+    #save_btn{
         position: absolute;
         margin-top: 100px;
         margin-right: 20%;

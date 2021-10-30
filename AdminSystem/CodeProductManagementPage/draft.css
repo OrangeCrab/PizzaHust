@@ -6,9 +6,8 @@
 body{
     background-color: #f2f2f2;
     margin: 0;
+    font-family: Monsterrat;
 }
-
-
 
 header{
     position: fixed;
@@ -62,7 +61,7 @@ header{
 .work_screen{
     margin-top: 80px;
     width: 100%;
-    height: 100% - 80px;
+    height: calc(100% - 80px);
     display: inline-flex;
 }
 .left_bar{
@@ -102,8 +101,10 @@ header{
     }
 
     #main_center_panel{
+        position: fixed;
         width: 82%;
         height: 100%;
         left: 18%;
+        overflow-y: auto;
         background-color: #f2f2f2;
     }

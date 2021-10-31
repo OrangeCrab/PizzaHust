@@ -194,7 +194,7 @@ nav ul {
 table {
     position: relative;
     display: block;
-    max-height: 75%;
+    height: 83%;
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
@@ -256,47 +256,3 @@ table {
         td:nth-child(5){
             width: 10%;
         }
-
-.table-page {
-    position: absolute;
-    right: 20px;
-    bottom: 25px;
-    width: 200px;
-    height: 35px;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-    .table-page button {
-        position: sticky;
-        height: 35px;
-        width: 35px;
-        display: inline-block;
-        vertical-align: middle;
-        border: none;
-        background: url("../../masterial/image/iconAdminPage/grayArrow.svg");
-        background-size: 30px 30px;
-    }
-    .table-page button:hover {
-        background-image: url("../../masterial/image/iconAdminPage/redArrow.svg");
-    }
-    #left {
-        transform: scaleX(-1);
-    }
-    .table-page p {
-        position: sticky;
-        width: 60px;
-        height: 35px;
-        padding-top: 10px;
-        display: inline-block;
-        vertical-align: middle;
-        font-family: Monsterrat;
-        font-size: 15px;
-        font-weight: lighter;
-    }
-    .table-page p input {
-        position: sticky;
-        width: 15px;
-        height: 15px;
-        text-align: center; 
-    }

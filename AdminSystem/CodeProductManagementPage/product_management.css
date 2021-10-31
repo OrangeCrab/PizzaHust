@@ -152,7 +152,7 @@ header{
     #table_panel{
         position: absolute;
         width: 96%;
-        height: 89%;
+        height: 90%;
         top: 9.5%;
         left: 2%;
         background: white;
@@ -181,19 +181,19 @@ header{
                 width: 90%;
                 font-weight: lighter;
             }
-        table {
+         table {
             position: absolute;
-            width: 96%;
+            width: 90%;
             border-collapse: collapse;
-            table-layout: fixed;
+            table-layout: fixed; 
             font-size: 15px;
             font-family: Monsterrat;
             font-weight: lighter;
             height: 90%;
             display: block;
-            left: 3%;
+            left: 2%;
             top: 8%;
-            overflow: auto;
+            overflow: auto; 
         }
         tr {
             height: 50px;
@@ -249,7 +249,7 @@ header{
             th:nth-child(1), td:nth-child(1) {
                 width: 7%;
                 text-align: center;
-            }
+            } 
 .product_popup{
     z-index: 2;    
     position: fixed;

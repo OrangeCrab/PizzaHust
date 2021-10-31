@@ -2,7 +2,7 @@
 require_once('define.php');
 
 // them, sua, xoa 
-function execute ($sql){
+function execute($sql){
     // mo ket noi
     $conn = mysqli_connect(HOST,USERNAME, PASSWORD,DATABASE);
     mysqli_set_charset($conn,'utf8');
@@ -16,7 +16,7 @@ function execute ($sql){
 }
 
 // querry lay du lieu ra
-function executeResult ($sql){
+function executeResult($sql){
     $data = null;
 
     // mo ket noi

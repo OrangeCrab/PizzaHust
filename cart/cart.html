@@ -1,220 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    <link rel="stylesheet" href="cart.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Giỏ hàng</title>
-</head>
-<body>
+<html>
+    <head>
+        <title>PizzaHust</title>
+        <link rel="stylesheet" href="cart.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    </head>
 
-    <!-- Thanh navbar --> 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-            <a href="#store" class="navbar-brand"> <img src="../masterial\image\iconHomePage\PizzaHustLogo.svg" alt="logo" style="width: 150px;"></a>
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" style="background-color: rgb(216, 201, 201);">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                  <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a href="#menu" class="nav-link"><b>TRANG CHỦ</b></a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="#menu" class="nav-link"><b>THỰC ĐƠN</b></a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="#store" class="nav-link"><b>GIỎ HÀNG</b></a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="#contact" class="nav-link"><b>LIÊN HỆ</b></a>
-                    </li>
-                  </ul>
-              </div>
-            </div>
-    </nav> 
-   <!-- Phần trung tâm trang web -->
-    <div class="center">
-
-        <!-- Phần giỏ hàng, hiển thị các sản phẩm đã thêm vào giỏ hàng -->
-        <h5 class = "title"> <u> <i>Giỏ hàng của bạn: </i></u></h5>
-        <div class="don-hang" style="margin-bottom: 20px;">
-            <div class="img">
-                <img class="img-don-hang"src="../masterial\image\thuc_don\5_loai_thit.jpg" alt="">
-            </div>
-            <div class="thong-tin">
-                <div class="ten">
-                    <b>Pizza Thập Cẩm</b> 
-                </div>
-                <div class="size">
-                    <b>Size: </b>
-                    S
-                </div>
-                <div class="loai-de">
-                    <b>Loại đế: </b>
-                    Giòn
-                </div>
-                <div class="topping">
-                    <b>Topping: </b>
-                    Phô mai phủ
-                </div>
-            
-            </div>
-            <div class="gia-tien">
-                </p>
-                <div class="gia-pizza">99000đ</div>
-                </p>
-                <div class="gia-topping" style="margin-top: 30px ;">10000đ</div>
-            </div>
-        </div>
+    <body>
+        <header>
+                <ul class="top_bar">
+                    <li><a href="../../AdminSystem/login.html" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>    
+                    <li><a href="../homepageDraft.html">LIÊN HỆ</a></li>
+                    <li><a href="#" class="active"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                    <li><a href="../homepageDraft.html">THỰC ĐƠN</a></li>
+                    <li><a href="../homepageDraft.html" target="_self">TRANG CHỦ</a></li>
+                </ul>
+        </header>
         
-        <div class="don-hang">
-            <div class="img">
-                <img class="img-don-hang"src="../masterial\image\thuc_don\4_vi.jpg" alt="">
+        <div class="cart">
+            <div class="blank"></div>
+            <h2><u><i>Giỏ hàng của bạn: </i></u></h2>
+            <div class="guess_cart">
+                <div class="product">
+                    <div class="img">
+                        <img src="../../masterial/image/thuc_don/thap_cam.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p class="field">Pizza thập cẩm</p>
+                        <div><span class="field">Size: </span><span class="size">S</span><span class="price">99 000đ</span></div>
+                        <div><span class="field">Loại đế: </span><span>Giòn</span></div>
+                        <div><span class="field">Topping: </span><span class="topping">Phô mai phủ</span><span class="price">10 000đ</span></div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="img">
+                        <img src="../../masterial\image\thuc_don\5_loai_thit.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p class="field">Pizza thịt</p>
+                        <div><span class="field">Size: </span><span class="size">S</span><span class="price">109 000đ</span></div>
+                        <div><span class="field">Loại đế: </span><span>Mềm xốp</span></div>
+                        <div><span class="field">Topping: </span><span class="topping">Phô mai viên</span><span class="price">10 000đ</span></div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="img">
+                        <img src="../../masterial\image\thuc_don\rau_cu.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p class="field">Pizza rau củ</p>
+                        <div><span class="field">Size: </span><span class="size">S</span><span class="price">79 000đ</span></div>
+                        <div><span class="field">Loại đế: </span><span>Giòn</span></div>
+                        <div><span class="field">Topping: </span><span class="topping">Phô mai viên</span><span class="price">10 000đ</span></div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="img">
+                        <img src="../../masterial\image\thuc_don\pizzaminsea.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p class="field">Pizza Minesa</p>
+                        <div><span class="field">Size: </span><span class="size">S</span><span class="price">129 000đ</span></div>
+                        <div><span class="field">Loại đế: </span><span>Giòn</span></div>
+                        <div><span class="field">Topping: </span><span class="topping">Double sốt</span><span class="price">10 000đ</span></div>
+                    </div>
+                </div>
             </div>
-            <div class="thong-tin">
-                <div class="ten">
-                    <b>Pizza Chay</b> 
-                </div>
-                <div class="size">
-                    <b>Size: </b>
-                    M
-                </div>
-                <div class="loai-de">
-                    <b>Loại đế: </b>
-                    Dẻo
-                </div>
-                <div class="topping">
-                    <b>Topping: </b>
-                    Phô mai phủ
-                </div>
-            
-            </div>
-            <div class="gia-tien">
-                </p>
-                <div class="gia-pizza">70000đ</div>
-                </p>
-                <div class="gia-topping" style="margin-top: 30px ;">10000đ</div>
-            </div>
-        </div>
-        <div>
-        
-            <hr class="hr" width="100%" size="0px" color="red" />
-           
-        </div>
 
-        <!-- Phần có thể bạn sẽ thích -->
-        <div class="co-the-ban-se-thich">
-            <div class="content1" style="margin: auto"><h5>Có thể bạn sẽ thích</h5></div>
-            <div class="co-the-ban-se-thich-san-pham">
-                <div class="san-pham">
-                    <a href="..\homepage\homepage.html">
-                        <img class="anh-san-pham" src="..\masterial\image\thuc_don\coca.png" alt="">
-                    </a> 
+            <div class="suggest">
+                <h3 style="font-size: 15px;">Có thể bạn sẽ thích</h3>
+                <div class="suggest-product">
+                   <a href="..\homepage\homepage.html">
+                        <img src="../../masterial/image/thuc_don/coca.png" alt="">
+                    </a>
+                   <a href="..\homepage\homepage.html">
+                        <img src="../../masterial/image/thuc_don/nuoc_cam.png" alt="">
+                    </a>
+                   <a href="..\homepage\homepage.html">
+                        <img src="../../masterial/image/thuc_don/mi_y.jpg" alt="">
+                    </a>
+                   <a href="..\homepage\homepage.html">
+                        <img src="../../masterial/image/thuc_don/khoai_tay_chien.webp" alt="">
+                    </a>
+                   <a href="..\homepage\homepage.html">
+                        <img style ="height: 60px;"src="../../masterial/image/thuc_don/ga_BBQ.jpg" alt="">
+                    </a>
                 </div>
-                <div class="san-pham">
-                    <a href="..\homepage\homepage.html">
-                        <img class="anh-san-pham" src="..\masterial\image\thuc_don\mirinda.png" alt="">
-                    </a> 
+            </div>
+            <div class="info_pay">
+                <div class="guess_info">
+                    <form action="" class="form">
+                        <div class="form__row">
+                            <label class="form__label" for="name"><b>Tên: </b></label>
+                            <input class="form__input" type="text">
+                        </div>
+                        <div class="form__row">
+                            <label class="form__label" for="name"><b>Sđt: </b></label>
+                            <input class="form__input" type="text">
+                        </div>
+                        <div class="form__row">
+                            <label class="form__label" for="name"> <b>Quận/huyện:</b></label>
+                            <select name="quan\huyen" id="">
+                                <option value="1">   Nhận tại quán   </option>
+                                <option value="Quận Ba Đình">Quận Ba Đình</option>
+                                <option value="Quận Bắc Từ Liêm">Quận Bắc Từ Liêm</option>
+                                <option value="Quận Cầu Giấy">Quận Cầu Giấy</option>
+                                <option value="Quận Đống Đa">Quận Đống Đa</option>
+                                <option value="Quận Hà Đông">Quận Hà Đông</option>
+                                <option value="Quận Hai Bà Trưng">Quận Hai Bà Trưng</option>
+                                <option value="Quận Hoàn Kiếm">Quận Hoàn Kiếm</option>
+                                <option value="	Quận Hoàng Mai">Quận Hoàng Mai</option>
+                                <option value="Quận Long Biên">Quận Long Biên</option>
+                                <option value="Quận Nam Từ Liêmy">Quận Nam Từ Liêm</option>
+                                <option value="Quận Tây Hồ">Quận Tây Hồ</option>
+                                <option value="Quận Thanh Xuân">Quận Thanh Xuân</option>
+                                <option value="Thị xã Sơn Tây">Thị xã Sơn Tây</option>
+                                <option value="Huyện Ba Vì">Huyện Ba Vì</option>
+                                <option value="Huyện Chương Mỹ">Huyện Chương Mỹ</option>
+                                <option value="Huyện Đan Phượng">Huyện Đan Phượng</option>
+                                <option value="Huyện Đông Anh">Huyện Đông Anh</option>
+                                <option value="Huyện Gia Lâm">Huyện Gia Lâm</option>
+                                <option value="Huyện Hoài Đức">	Huyện Hoài Đức</option>
+                                <option value="Huyện Mê Linh">Huyện Mê Linh</option>
+                                <option value="Huyện Mỹ Đức">Huyện Mỹ Đức</option>
+                                <option value="Huyện Phú Xuyên">Huyện Phú Xuyên</option>
+                                <option value="Huyện Phúc Thọ">Huyện Phúc Thọ</option>
+                                <option value="Huyện Quốc Oai">Huyện Quốc Oai</option>
+                                <option value="Huyện Sóc Sơn">Huyện Sóc Sơn</option>
+                                <option value="Huyện Thạch Thất">Huyện Thạch Thất</option>
+                                <option value="Huyện Thanh Oai">Huyện Thanh Oai</option>
+                                <option value="Huyện Thanh Trì">Huyện Thanh Trì</option>
+                                <option value="Huyện Thường Tín">Huyện Thường Tín</option>
+                                <option value="Huyện Ứng Hoà">Huyện Ứng Hoà</option>
+                            </select>
+                        </div>
+                        <div class="form__row">
+                            <label class="form__label" for="name"><b>Địa chỉ:</b></label>
+                            <input class="form__input" type="text">
+                        </div>
                 </div>
-                <div class="san-pham">
-                    <a href="..\homepage\homepage.html">
-                        <img class="anh-san-pham" src="..\masterial\image\thuc_don\nuoc_cam.png" alt="">
-                    </a> 
-                </div>
-                <div class="san-pham">
-                    <a href="..\homepage\homepage.html">
-                        <img class="anh-san-pham" src="..\masterial\image\thuc_don\khoai_tay_chien.webp" alt="">
-                    </a> 
+                <div class="pay">
+                    <div class="field"><span>Tổng:</span><span class="price">456 000đ</span></div>
+                    <div class="field"><span>Phí giao hàng:</span><span class="price">22 000đ</span></div>
+                    <hr>
+                    <div class="buy"><a href="#">Đặt hàng: <span>478 000đ</span></a></div>
                 </div>
             </div>
         </div>
-        <div>
-        
-            <hr class="hr" width="100%" size="0px" color="red" />
-           
-        </div>
-
-        <!-- Phần khách hàng điền thông tin và đặt hàng-->
-        <div class="thong-tin-khach-hang">
-            <div class="dien-thong-tin">
-                <form action="" class="form">
-                    <div class="form__row">
-                        <label class="form__label" for="name"><b>Tên: </b></label>
-                        <input class="form__input" type="text" id="ten">
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label" for="name"><b>Sđt:</b></label>
-                        <input class="form__input" type="text" id="sdt">
-                    </div>
-                    <div class="form__row">
-                        <label class="form__label" for="name"> <b>Quận/huyện:</b></label>
-                        <select name="quan\huyen" id="">
-                            <option value="">   Quận\Huyện   </option>
-                            <option value="Quận Ba Đình">Quận Ba Đình</option>
-                            <option value="Quận Bắc Từ Liêm">Quận Bắc Từ Liêm</option>
-                            <option value="Quận Cầu Giấy">Quận Cầu Giấy</option>
-                            <option value="Quận Đống Đa">Quận Đống Đa</option>
-                            <option value="Quận Hà Đông">Quận Hà Đông</option>
-                            <option value="Quận Hai Bà Trưng">Quận Hai Bà Trưng</option>
-                            <option value="Quận Hoàn Kiếm">Quận Hoàn Kiếm</option>
-                            <option value="	Quận Hoàng Mai">Quận Hoàng Mai</option>
-                            <option value="Quận Long Biên">Quận Long Biên</option>
-                            <option value="Quận Nam Từ Liêmy">Quận Nam Từ Liêmy</option>
-                            <option value="Quận Tây Hồ">Quận Tây Hồ</option>
-                            <option value="Quận Thanh Xuân">Quận Thanh Xuân</option>
-                            <option value="Thị xã Sơn Tây">Thị xã Sơn Tây</option>
-                            <option value="Huyện Ba Vì">Huyện Ba Vì</option>
-                            <option value="Huyện Chương Mỹ">Huyện Chương Mỹ</option>
-                            <option value="Huyện Đan Phượng">Huyện Đan Phượng</option>
-                            <option value="Huyện Đông Anh">Huyện Đông Anh</option>
-                            <option value="Huyện Gia Lâm">Huyện Gia Lâm</option>
-                            <option value="Huyện Hoài Đức">	Huyện Hoài Đức</option>
-                            <option value="Huyện Mê Linh">Huyện Mê Linh</option>
-                            <option value="Huyện Mỹ Đức">Huyện Mỹ Đức</option>
-                            <option value="Huyện Phú Xuyên">Huyện Phú Xuyên</option>
-                            <option value="Huyện Phúc Thọ">Huyện Phúc Thọ</option>
-                            <option value="Huyện Quốc Oai">Huyện Quốc Oai</option>
-                            <option value="Huyện Sóc Sơn">Huyện Sóc Sơn</option>
-                            <option value="Huyện Thạch Thất">Huyện Thạch Thất</option>
-                            <option value="Huyện Thanh Oai">Huyện Thanh Oai</option>
-                            <option value="Huyện Thanh Trì">Huyện Thanh Trì</option>
-                            <option value="Huyện Thường Tín">Huyện Thường Tín</option>
-                            <option value="Huyện Ứng Hoà">Huyện Ứng Hoà</option>
-                        </select>
-                    </div>
-                    <!-- <div class="form__row">
-                        <label class="form__label" for="name"><b>Phường/xã:</b>  </label>
-                        <input class="form__input" type="text" id="phuong-xa">
-                    </div> -->
-                    <div class="form__row">
-                        <label class="form__label" for="name"><b>Địa chỉ:</b></label>
-                        <input class="form__input" type="text" id="dia-chi">
-                    </div>
-                    <!-- <button class="lay-hang1"type="button">Nhận hàng tại cửa hàng</button> -->
-
-                </form>
-            </div>
-            <!-- <hr class="hr" width="80%" size="0px" align="left" color="red" /> -->
-            <div class="khach-dat-hang">
-                <div class="tong">
-                    <label class="form" for="name"><b>Tổng: </b></label>
-                    199000đ
-                </div>
-                <div class="phi-giao-hang">
-                    <label class="form" for="name"><b>Phí giao hàng: </b></label>
-                    22000đ
-                </div>
-                <button class="lay-hang1"type="button">Nhận hàng tại cửa hàng</button>
-                <hr class="hr" width="40%" size="0px" align="left" color="red" />
-                <button class="button"type="button">Đặt hàng: 221000đ</button>
-            </div>
-        </div>
-        
-    
-</body>
-</html>
+    </body>
+</html> 

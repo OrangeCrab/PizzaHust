@@ -1,163 +1,187 @@
-/* @font-face {
+@font-face {
     font-family: Montserrat;
-    src: url(../masterial/font/Montserrat-Medium.ttf);
+    src: url('../../masterial/font/Montserrat-Medium.ttf');
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
-
-@font-face {
-    font-family: Monsterrat;
-    src: url("../../masterial/font/Montserrat-Medium.ttf");
-}
 html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    background-image: url('../../masterial/image/bgrhomepage/bgrhomepage.webp');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+header{
+    position: fixed;
+    margin: 0;
+    height: 80px;
+    width: 100%;
+    z-index: 10000;
+}   
+    .top_bar{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #000000;
+        opacity: 0.9;
+    }  
+    .top_bar li {
+        float: right;
+    }    
+    .top_bar li a {
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 25px 30px;
+        text-decoration: none;
+        font-size: 18px;
+        font-family: 'Monsterrat',sans-serif;
+        font-weight: bolder;
+        letter-spacing: 2px;
+        transition: 0.5s;
+        transition-property: background-color;
+    }
+    .top_bar li a:hover:not(.active) {
+        background-color: #404040;
+    }
+    .top_bar li a.active {
+        color: #F98607;
+    }
+
+.cart{
+    width: 64%;
+    margin-left: 18%;
+    background-color: #f2f2f2;
+    position: absolute;
+    display: block;
     font-family: Montserrat;
-} */
+    height: fit-content;
+    box-shadow: 0px 5px 10px #404040;
+}
+    .cart .blank{
+        position: fixed;
+        height: 80px;
+        width: 60%;
+        background-color: #f2f2f2;
+    }
+    .cart h2{
+        margin-top: 80px;
+        font-size: 18px;
+        color: #404040;
+        margin-left: 10px;
+    }
+    .guest_cart{
+        overflow: auto;   
+        width: 100%;
+        height: fit-content;
+    }
+    .cart .product{
+        display: flex;
+        width: 80%;
+        height: 100px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #A80000;
+        margin-bottom: 20px;
+        margin-left: 10%;
+    }
+    .cart .product img{
+        width: 150px;
+        height: 100px;
 
+    }
+    .cart .product .info{
+        display: block;
+        width: 420px;
+        font-size: 14px;
+        line-height: 25px;
+        margin-top: -20px;
+        margin-left: 30px;
+    }
+    .cart .product .info .field{
+        font-weight: bolder;
+    }
+    .cart .product .info .price{
+        float: right;
+    }
+    .cart .suggest{
+        width: 80%;
+        height: 120px;
+        margin-left: 10%;
+        border-bottom: 1px solid #A80000;
+        display: block;
+        margin-bottom: 20px;
+    }
 
-/* CSS Thanh navbar */
-body {
-    background-image: url(../masterial/image/bgrhomepage/bgrhomepage.webp);
-    
-}
+    .cart .suggest h3{
+        font-size: 14px;
+        height: 20px;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        color: #404040;
+    }
 
-.header {
-    position: relative;
-    
-}
-.head-img {
-     margin-top: -50px; 
-}
+    .cart .suggest .suggest-product{
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 10px;
+    }
+    .cart .suggest img{
+        height: 80px;
+        width: 90%;
+        margin-top: 10px;
+    }
+    .info_pay{
+        margin-top: 10px;
+        display: flex;
+        margin-bottom: 20px;
+        width: 100%;
+        font-size: 14px;
+    }
 
-.nav-link {
-    color:antiquewhite;
-    font-size: large;
-    
-}
-.navbar-collapse {
-    margin-right: 20px;
-    
-}
-.nav-item {
-        margin-right: 50px;
+    .info_pay .guess_info{
+        width: 45%;
+        margin-left: 10%;
+        line-height: 30px;
+    }
+
+    .info_pay .guess_info input, select{
+        float: right;
+        width: 60%;
+        height: 20px;
+        margin-top: 4px;
+    }
+
+    .info_pay .pay{
+        width: 25%;
+        margin-left: 10%;
+        line-height: 30px;
+    }
+    .info_pay .field{
+        font-weight: bold;
+    }
+    .info_pay .pay .price{
+        float: right;
+    }
+    .info_pay .pay .buy{
+        margin-top: 12px;
+        width: 100%;
+        background-color: #A80000;
         
-}
-/* css đơn hàng */
-.img-don-hang{
-    width: 200px;
-    height: auto;
-}
-.title{
-    padding-bottom: 30px;
-}
-.center {
-    margin: auto;
-    width: 70%;
-    background-color: #fff;
-    padding: 10px;
-}
-.don-hang{
-    display: flex;
-    margin-left: 50px;
-}
-.img,.thong-tin,.gia-tien{
-    padding: 0px;
-}
-.img,.thong-tin{
-    flex: 1;
-}
-.gia-tien{
-    flex: 2;
-    /* flex-direction: column-reverse ; */
-}
-/* css có thể bạn sẽ thích */
-.co-the-ban-se-thich{
-   
-    width: 70%;
-    margin: auto;
-    margin-top: 5% ;
-    margin-bottom: 5%;
-
-
-}
-.content1{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: 10px;
-}
-.anh-san-pham{
-    width: 100px;
-    height: auto;
-}
-.co-the-ban-se-thich-san-pham{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-}
-/* css thông tin khách hàng */
-.thong-tin-khach-hang{
-    display: flex;
-    margin-top: 30px;
-    justify-content: space-around;
-    margin-bottom: 40px;
-}
-.form-input{
-    flex: 1;
-}
-.dien-thong-tin{
-    flex: 1;
-    margin-left: 70px;
-    justify-content: space-between;
-}
-.khach-dat-hang{
-    flex: 1;
-}
-.form__label{
-    min-width:100px;
-}
-
-.button {
-    background-color:rgb(200, 0, 0);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-.form__row{
-    margin: 8px;
-}
-.form{
-    margin-bottom: 5px;
-    min-width: 110px;
-}
-.lay-hang{
-   background-color:crimson;
-    border: none;
-    color: white;
-    padding: 3px 10px;
-    text-align: center;
-    font-size: 16px;
-}
-/* .lay-hang1{
-    margin-top: 10px;
-    margin-left: 85px;
-    background-color:rgb(200, 0, 0);
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    text-align: center;
-    font-size: 16px;
-} */
-.lay-hang1{
-    margin-left: 10px;
-    border: none;
-    background-color: rgb(200, 0, 0);
-    color: white;
-    padding: 2px ;
-
-}
+        border-radius: 10px;
+        text-align: center;
+        padding: 7px;
+    }
+    .info_pay .pay .buy a{
+        color: #f2f2f2;
+    } 
+    .form__row{
+        margin-bottom: 2px;
+    }

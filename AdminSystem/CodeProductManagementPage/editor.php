@@ -14,16 +14,18 @@
 	
 	$id = getGet('id');
    	if($id != '' && $id > 0) {
-		$sql = "select * from product where id = '$id'";
+		$sql = "select * from product where id = '$id' ";
+		
 		$productItem = executeResult($sql);
 		if($productItem != null) {
-			$title = $productItem['title'];
+			$category_id = $productItem['category_id'];
 			$price = $productItem['price'];
+			$title = $productItem['title'];
 			$weight = $productItem['weight'];
 			$status = $productItem['status'];
 			$description = $productItem['description'];
             $thumbnail = $productItem['thumbnail'];
-            $category_id = $productItem['category_id'];
+            
 		} else {
 			$id = 0;
 		}

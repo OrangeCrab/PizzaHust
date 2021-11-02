@@ -131,7 +131,7 @@ header{
     }
     .feature_button{
         background-color: #404040;
-        cursor: pointer;
+         /* cursor: pointer; */
         font-family: Monsterrat;
         color: #f2f2f2;
         width: 100%;

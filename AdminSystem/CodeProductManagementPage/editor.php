@@ -106,7 +106,7 @@
 					<div class="form-group">
 						  <label for="thumbnail">Hình ảnh sản phẩm:</label>
 						  <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-						  <img id="thumbnail_img" src="<?=fixUrl($thumbnail)?>" style="max-height: 160px; margin-top: 5px; margin-bottom: 15px;">
+						  <img id="thumbnail_img" src="" style="max-height: 160px; margin-top: 5px; margin-bottom: 15px;">
 					</div> -->
 
 				</form>

@@ -49,16 +49,18 @@
             <div id="main_center_panel">
                 <div class="head">
                     <div id="h1">Danh sách sản phẩm</div>
-                   
-                    <a href="editor.php"><div id="add_button" class=" marginOf_feature_button" ><button class="btn btn-success" style="margin-left: 700px;">Thêm sản phẩm</button></div> </a> 
-                </div>
+                    <div class="timkiem">
+                        <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem" id="search_icon">
+                        <input type="text" placeholder="Tìm kiếm" id="search_tf"/>
+                    </div>
+                    <div class="wrap_btn">
+                        <button class="btn btn-success">Thêm sản phẩm</button>
+                    </div>
+                    
+                </div>                 
                 
                 <div id="table_panel">
-                    <div class="search">
-                        <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem">
-                        <input type="text" placeholder="Tìm kiếm"/>
-                    </div>
-               
+                    
                     <table class="table table-bordered table-hover" >
                         <thead>
                             <tr>
@@ -68,7 +70,7 @@
                                 <th>Mô tả</th>
                                 <th>Trạng thái</th>
                                 <th>Giá</th>
-                                <th>Loại sản phẩm</th>
+                                <th>Loại</th>
                                 <th style="width: 30px"></th>
 					            <th style="width: 30px"></th>
                                 
@@ -76,25 +78,245 @@
                         </thead>
                         <tbody>
                             <?php
-	                        $index = 0;
-	                        foreach($data as $item) {
-	                    	echo '<tr>
-					        <td>'.(++$index).'</td>
-					        <td><img src="'.$item['thumbnail'].'" style="height: 100px; width: 100px;"/></td>
-					        <td>'.$item['title'].'</td>
-                            <td>'.$item['description'].'</td>
-                            <td>'.$item['status'].'</td>
-					        <td>'.number_format($item['price']).' VNĐ</td>
-					        <td>'.$item['category_name'].'</td>
-					        <td style="width: 20px">
-						    <a href="editor.php?id='.$item['id'].'"><button class="btn btn-warning">Sửa</button></a>
-					        </td>
-					        <td style="width: 20px">
-						    <button onclick="deleteProduct('.$item['id'].')" class="btn btn-danger">Xoá</button>
-					        </td>
-				            </tr>';
-	}
+                                $index = 0;
+                                foreach($data as $item) {
+                                    echo '<tr>
+                                    <td>'.(++$index).'</td>
+                                    <td><img src="'.$item['thumbnail'].'" style="height: 100px; width: 100px;"/></td>
+                                    <td>'.$item['title'].'</td>
+                                    <td>'.$item['description'].'</td>
+                                    <td>'.$item['status'].'</td>
+                                    <td>'.number_format($item['price']).' VNĐ</td>
+                                    <td>'.$item['category_name'].'</td>
+                                    <td style="width: 20px">
+                                    <a href="editor.php?id='.$item['id'].'"><button class="btn btn-warning">Sửa</button></a>
+                                    </td>
+                                    <td style="width: 20px">
+                                    <button onclick="deleteProduct('.$item['id'].')" class="btn btn-danger">Xoá</button>
+                                    </td>
+                                    </tr>';
+                                }
                             ?>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>1 100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>Pizza</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>img.jpg</td>
+                                <td>pizza</td>
+                                <td>ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon</td>
+                                <td>Còn hàng</td>
+                                <td>100 000đ</td>
+                                <td>5</td>
+                                <td><input type="checkbox"></td>
+                                <td></td>
+                            </tr>
                         </tbody>   
                     </table>
                
@@ -102,18 +324,18 @@
         </div>
     </body>
 </html>
-    <script type="text/javascript">
-        function deleteProduct(id) {
-            option = confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?')
-            if(!option) return;
+        <script type="text/javascript">
+            function deleteProduct(id) {
+                option = confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?')
+                if(!option) return;
 
-            $.post('form_api.php', {
-                'id': id,
-                'action': 'delete'
-            }, function(data) {
-                location.reload()
-            })
+                $.post('form_api.php', {
+                    'id': id,
+                    'action': 'delete'
+                }, function(data) {
+                    location.reload()
+                })
         }
-    </script>
-        
+</script>
+       
  

@@ -13,8 +13,12 @@ $password = $user_name= $msg = '';
         }
         else{
             // dang nhap thanh cong
+<<<<<<< HEAD
             //echo"thành công";
             header('location: Dashboard/DashBoard.html');
+=======
+            header('location: DashBoard/DashBoard.html');
+>>>>>>> 7df2f95c3dff55958f686a93b165c627bbd927c8
             die();
         }   
      }

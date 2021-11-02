@@ -14,7 +14,7 @@ $password = $user_name= $msg = '';
         else{
             // dang nhap thanh cong
             //echo"thành công";
-            header('Location : DashBoard.html');
+            header('location: Dashboard/DashBoard.html');
             die();
         }   
      }

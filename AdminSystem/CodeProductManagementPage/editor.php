@@ -11,11 +11,18 @@
 
 	require_once('../../database/define.php');
 	require_once('../../database/dbhelper.php');
-	
+	// sửa/thêm sản phẩm
+	// khi click vào sửa sản phẩm thì sẽ gửi lên server 1 cái ID
+	// lúc đấy thì mình sẽ sử dụng lệnh getGet(trong file utility.php) để lấy ID đấy về
+	// Nếu có ID được lấy về thì tức là lệnh sửa 
+	// còn nếu không( ID = null) thì đấy là lệnh thêm
 	$id = getGet('id');
    	if($id != '' && $id > 0) {
+		// có nghĩa là lệnh sửa sản phẩm
 		$sql = "select * from product where id = '$id' ";
-		
+		// mình sẽ select * từ sản phẩm có mã ID bằng với mã ID mà mình vừa GET
+		// lưu vào 1 mảng tạm 
+		// gán các biến là các giá trị trong mảng đó
 		$productItem = executeResult($sql);
 		if($productItem != null) {
 			$category_id = $productItem['category_id'];

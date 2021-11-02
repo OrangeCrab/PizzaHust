@@ -1,3 +1,4 @@
+<!-- ket noi toi database -->
 <?php 
 require_once('../database/dbhelper.php');
 require_once('../database/utility.php');

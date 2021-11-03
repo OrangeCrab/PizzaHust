@@ -125,6 +125,10 @@ body{
         width: 100%;
         height: fit-content;
     }
+
+    .menu .container .product {
+        display: flex;
+    }
     
     .menu .container .product .product_card{
         background: #f2f2f2;

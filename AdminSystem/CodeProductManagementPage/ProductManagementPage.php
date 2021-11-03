@@ -74,7 +74,6 @@
                                 <th>Loại</th>
                                 <th style="width: 30px"></th>
 					            <th style="width: 30px"></th>
-                                
                             </tr>
                         </thead>
                         <tbody>

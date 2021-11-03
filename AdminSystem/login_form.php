@@ -16,7 +16,8 @@ require_once ('process_login.php');
         <img class="background_img" src="../masterial/image/bgrAdminPage/bgrLogin.jpg" alt="">
         <div class="screen"></div>
         
-        <img class="logo" src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo">
+        <a href="../homepage/homepageDraft.html"><img class="logo" src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo"></a>
+        
 
 
         <form class="box" action="" method="post">
@@ -31,5 +32,4 @@ require_once ('process_login.php');
 
     </body>
 </html>
-
 

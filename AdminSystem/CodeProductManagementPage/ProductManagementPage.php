@@ -2,8 +2,11 @@
     require_once('../../database/dbhelper.php');
 	$baseUrl = '../';
     // chay cau lenh sql để lấy tên loại sản phẩm sử dụng lệnh join bảng
-	$sql = "select product.*, category.name as category_name from product left join category on product.category_id = category.id ";
+	$sql = "select product.*, category.name as category_name , status.status as status_name from ((product 
+    left join category on product.category_id = category.id )
+    left join status on product.status_id = status.id)";
 	$data = executeResult($sql);
+   
 ?> 
 
 <!DOCTYPE html>
@@ -86,7 +89,7 @@
                                     <td><img src="'.$item['thumbnail'].'" style="height: 100px; width: 100px;"/></td>
                                     <td>'.$item['title'].'</td>
                                     <td>'.$item['description'].'</td>
-                                    <td>'.$item['status'].'</td>
+                                    <td>'.$item['status_name'].'</td>
                                     <td>'.number_format($item['price']).' VNĐ</td>
                                     <td>'.$item['category_name'].'</td>
                                     <td style="width: 20px">

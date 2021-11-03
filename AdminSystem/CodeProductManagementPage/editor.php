@@ -83,8 +83,8 @@
 					</div>
 					
 					<div class="form-group">
-					  <label for="usr">Loại Sản Phẩm:</label>
-					  <select class="form-control" name="category_id" id="category_id" required="true">
+					  <label for="usr">Trạng thái sản phẩm:</label>
+					  <select class="form-control" name="status_id" id="status_id" required="true">
 					  	<option value="">-- Chọn --</option>
 					  	<?php
 					  		foreach($statusList as $status) {

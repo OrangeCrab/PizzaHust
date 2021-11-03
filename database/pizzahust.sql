@@ -15,6 +15,7 @@ CREATE TABLE `user` (
 CREATE TABLE `category` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(100)
+  `status` varchar(11)
 );
 
 CREATE TABLE `product` (
@@ -56,6 +57,10 @@ CREATE TABLE `order_detail` (
   `total_money` int
 );
 
+CREATE TABLE `status` (
+  `status` varchar(11) PRIMARY KEY
+);
+
 ALTER TABLE `product` ADD FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
 
 ALTER TABLE `galery` ADD FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
@@ -65,3 +70,5 @@ ALTER TABLE `order_detail` ADD FOREIGN KEY (`product_id`) REFERENCES `product` (
 ALTER TABLE `order_detail` ADD FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
 
 ALTER TABLE `order` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+ALTER TABLE `product` ADD FOREIGN KEY (`status`) REFERENCES `status` (`status`);

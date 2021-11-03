@@ -43,7 +43,13 @@
 	$sql = "select * from category";
 	//var_dump($sql);
 	$categoryItems = executeResult($sql);
-		?>
+
+	$sql = "select * from product";
+	$productItem = executeResult($sql);
+
+
+?>
+
 <div class="row" style="margin-top: 80px;">
 	<div class="table-responsive" style="margin-left: 250px;">
 		<h3>Thêm/Sửa Sản Phẩm</h3>
@@ -80,9 +86,26 @@
 					</div>
 					
 					<div class="form-group">
-					  <label for="status">Trạng thái:</label>
-					  <input required="true" type="number" class="form-control" id="status" name="status" value="<?=$status?>">
+					  <label for="usr">Trạng Thái:</label>
+					  <select class="form-control" name="status" id="category_id" required="true">
+					  	<option value="">-- Chọn --</option>
+					  	<?php
+					  		foreach($productItem as $product) {
+					  			if($product['id'] == $category_id) {
+					  				echo '<option selected value="'.$product['id'].'">'.$product['status'].'</option>';
+					  			} else {
+					  				echo '<option value="'.$product['id'].'">'.$product['status'].'</option>';
+					  			}
+					  		}
+					  	?>
+					  </select>
 					</div>
+
+					<!-- <div class="form-group">
+					  <label for="status">Trạng thái:</label>
+					  <input required="true" type="" class="form-control" id="status" name="status" value="<?=$status?>">
+					</div> -->
+
 					<div class="form-group">
 					  <label for="price">Giá:</label>
 					  <input required="true" type="number" class="form-control" id="price" name="price" value="<?=$price?>">

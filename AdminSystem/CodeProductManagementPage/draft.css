@@ -56,6 +56,7 @@ header{
 
     .logout_btn:hover{
         background: #04AA6D;
+        text-decoration: none;
     }
 
 .work_screen{

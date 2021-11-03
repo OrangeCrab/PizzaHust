@@ -97,6 +97,12 @@
 					  	?>
 					  </select>
 					</div>
+
+					<!-- <div class="form-group">
+					  <label for="status">Trạng thái:</label>
+					  <input required="true" type="" class="form-control" id="status" name="status" value="<?=$status?>">
+					</div> -->
+
 					<div class="form-group">
 					  <label for="price">Giá:</label>
 					  <input required="true" type="number" class="form-control" id="price" name="price" value="<?=$price?>">
@@ -120,7 +126,7 @@
 					<div class="form-group">
 						  <label for="thumbnail">Hình ảnh sản phẩm:</label>
 						  <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-						  <img id="thumbnail_img" src="<?=fixUrl($thumbnail)?>" style="max-height: 160px; margin-top: 5px; margin-bottom: 15px;">
+						  <img id="thumbnail_img" src="" style="max-height: 160px; margin-top: 5px; margin-bottom: 15px;">
 					</div> -->
 
 				</form>

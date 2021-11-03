@@ -76,7 +76,8 @@
                             <div class="info_view">
                                 <div class="info_card">
                                     <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
-                                    <img src="'.$item['thumbnail'].'" alt="">
+                                    <div class="info_img"><img src="'.$item['thumbnail'].'"></div>
+                                    
                                     
                                     <div class="info">
                                         <div class="part">

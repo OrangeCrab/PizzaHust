@@ -244,10 +244,17 @@ body{
                     margin: 20px;
                     cursor: pointer;
                 }
+            .product .info_card .info_img{
+                position: relative;
+                width: 270px;
+                height: 100%;
+                overflow: hidden;
+            }
             .product .info_card img{
                 z-index: 2;
                 position: relative;
-                width: 270px;
+                width: 900px;
+                margin-left: -200px;
                 height: 100%;
                 border-bottom-left-radius: 5px;
                 border-top-left-radius: 5px;
@@ -302,13 +309,17 @@ body{
                     font-size: 14px;
                     float: right;
                     font-weight: 900;
-                    color: #A80000;
+                    color: #f2f2f2;
+                    background-color: #F98607;
+                    padding: 2px 20px;
+                    text-decoration: none;
+                    border-radius: 5px;
                 }
                 .product .info_card .info .final .price{
                     font-size: 16px;
                     color: #f2f2f2;
                     background-color: #A80000;
-                    padding: 2px 35px;
+                    padding: 2px 30px;
                     margin: 10px;
                     border-radius: 5px;
                 }

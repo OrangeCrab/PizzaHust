@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Monsterrat;
+    src: url("../../masterial/font/Montserrat-Medium.ttf");
+}
+
 body {
     background-image: url(../masterial/image/bgrhomepage/bgrhomepage.webp);
     
@@ -7,8 +12,11 @@ body {
     position: relative;
     
 }
+.navbar {
+    opacity: 0.85;
+}
 .head-img {
-     margin-top: -50px; 
+     margin-top: -120px; 
 }
 
 .nav-link {
@@ -16,10 +24,22 @@ body {
     font-size: large;
 }
 .navbar-collapse {
-    margin-right: 20px;
+   text-align: center;
+
+}
+.content-box {
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
 }
 .nav-item {
-        margin-right: 50px;
+    color: white;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+.nav-text {
+    font-size: 1.5rem;
+    font-family: Monsterrat;
 }
 .popup {
     position: absolute;
@@ -41,10 +61,11 @@ body {
 }
 
 .content {
+    background-color: black;
     margin-top: 20px;
     top: 15px;
     text-align: center;
-    background-color: rgba(10, 10, 10, 0.5)
+
 }
 .butt {
     padding-bottom: 10px;
@@ -94,10 +115,10 @@ body {
     background-color: darkorange;
 }
 
-a:hover {
+/* a:hover {
     text-decoration: none;
     color: white;
-}
+} */
 .footer {
     background-image: url(../masterial/image/bgrhomepage/endHomepage.jpg);
     display: flex;
@@ -117,6 +138,7 @@ a:hover {
     position: absolute;
     display: none;
 } */
+
 
 
 

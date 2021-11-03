@@ -18,3 +18,4 @@ $password = $user_name= $msg = '';
             die();
         }   
      }
+?>

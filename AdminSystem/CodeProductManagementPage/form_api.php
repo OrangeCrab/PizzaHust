@@ -15,7 +15,7 @@ if(!empty($_POST)) {
 
 function deleteProduct() {
 	$id = getPost('id');
-	$updated_at = date("Y-m-d H:i:s");
-	$sql = "update product set deleted = 1, updated_at = '$updated_at' where id = $id";
+	$sql = "delete from product where id = $id ";
+	//$sql = "update product set deleted = 1, updated_at = '$updated_at' where id = $id";
 	execute($sql);
 }

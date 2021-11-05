@@ -1,6 +1,6 @@
 @font-face {
     font-family: Montserrat;
-    src: url('../../masterial/font/Montserrat-Medium.ttf');
+    src: url('../masterial/font/Montserrat-Medium.ttf');
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
@@ -11,7 +11,7 @@ html{
 
 body{
     margin: 0;
-    background-image: url('../../masterial/image/bgrhomepage/bgrhomepage.webp');
+    background-image: url('../masterial/image/bgrhomepage/bgrhomepage.webp');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

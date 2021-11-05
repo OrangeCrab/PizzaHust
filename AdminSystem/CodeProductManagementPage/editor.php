@@ -4,13 +4,14 @@
 
 	require_once('../../masterial/layout/layout.php');
 	$id = $msg = $title = $price = $weight = $status = $category_id = $date = $thumbnail = $description='';
-	require_once('../../database/utility.php');
+
   
 	require_once('form_save.php');
  
 
 	require_once('../../database/define.php');
 	require_once('../../database/dbhelper.php');
+	require_once('../../database/utility.php');
 	// sửa/thêm sản phẩm
 	// khi click vào sửa sản phẩm thì sẽ gửi lên server 1 cái ID
 	// lúc đấy thì mình sẽ sử dụng lệnh getGet(trong file utility.php) để lấy ID đấy về
@@ -29,7 +30,7 @@
 			$price = $productItem['price'];
 			$title = $productItem['title'];
 			$weight = $productItem['weight'];
-			$status = $productItem['status'];
+			$status = $productItem['status_id'];
 			$description = $productItem['description'];
             $thumbnail = $productItem['thumbnail'];
             
@@ -43,6 +44,8 @@
 	$sql = "select * from category";
 	//var_dump($sql);
 	$categoryItems = executeResult($sql);
+	$sql = " select *from status ";
+	$statusList = executeResult($sql);
 		?>
 <div class="row" style="margin-top: 80px;">
 	<div class="table-responsive" style="margin-left: 250px;">
@@ -80,9 +83,26 @@
 					</div>
 					
 					<div class="form-group">
-					  <label for="status">Trạng thái:</label>
-					  <input required="true" type="number" class="form-control" id="status" name="status" value="<?=$status?>">
+					  <label for="usr">Trạng thái sản phẩm:</label>
+					  <select class="form-control" name="status_id" id="status_id" required="true">
+					  	<option value="">-- Chọn --</option>
+					  	<?php
+					  		foreach($statusList as $status) {
+					  			if($status['id'] == $status_id) {
+					  				echo '<option selected value="'.$status['id'].'">'.$status['status'].'</option>';
+					  			} else {
+					  				echo '<option value="'.$status['id'].'">'.$status['status'].'</option>';
+					  			}
+					  		}
+					  	?>
+					  </select>
 					</div>
+
+					<!-- <div class="form-group">
+					  <label for="status">Trạng thái:</label>
+					  <input required="true" type="" class="form-control" id="status" name="status" value="<?=$status?>">
+					</div> -->
+
 					<div class="form-group">
 					  <label for="price">Giá:</label>
 					  <input required="true" type="number" class="form-control" id="price" name="price" value="<?=$price?>">

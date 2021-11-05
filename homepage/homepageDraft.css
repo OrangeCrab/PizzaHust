@@ -15,6 +15,8 @@ html{
     scroll-behavior: smooth;
 }
 
+
+
 body{
     margin: 0;
     background-image: url('../masterial/image/bgrhomepage/bgrhomepage.webp');
@@ -103,10 +105,226 @@ body{
         margin-left: 200px;
     }
 
+    /* -------------css for menu--------------------- */
 .menu{
+    /* z-index: 1; */
     margin-top: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    font-family: Montserrat;
 }
+    
+    .menu .container{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: fit-content;
+    }
 
+    .menu .container .product {
+        display: flex;
+    }
+    
+    .menu .container .product .product_card{
+        background: #f2f2f2;
+        position: relative;
+        width: 270px;
+        height: 400px;
+        margin: 30px;
+        margin-top: 100px;
+        border-radius: 10px;
+
+    }
+    
+    .product .product_card .product_img{
+        /* z-index: 1; */
+        position: absolute;
+        width: 270px;
+        height: 180px;
+        margin-top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    
+    .product .product_card .name{
+        /* z-index: 2; */
+        color: #404040;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 180px;
+        font-size: 20px;
+        font-family: Montserrat;
+    }
+    
+    .product .product_card .info{
+        /* z-index: 2; */
+        color: #404040;
+        position: absolute;
+        width: 90%;
+        margin-left: 5%;
+        text-align: center;
+        bottom: 120px;
+        font-size: 10px;
+        font-family: Montserrat;
+    }
+    
+    .product .product_card .price{
+        /* z-index: 2; */
+        color: #A80000;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 80px;
+        font-size: 20px;
+        font-weight: bolder;
+        font-family: Montserrat;
+    }
+    
+    .product .product_card .choose_btn{
+        /* z-index: 2; */
+        color: #f2f2f2;
+        background: #A80000;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transform: translate(-50%);
+        padding: 10px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-family: Montserrat;
+    }
+    
+    /*--------------- style for popup view ------------------------*/
+    .product .info_view{
+        z-index: 2;    
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.9);
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        visibility: hidden;
+        transition: 0.5s;
+    }
+    .product .info_view.active{
+        opacity: 1;
+        visibility: visible;
+    }
+        hr{
+            width: 368px;
+            border-color: #A80000; 
+        }
+        .product .info_card{
+            position: relative;
+            display: flex;
+            width: 700px;
+            height: 600px;
+            margin: 300px;
+        }
+            .product .info_card .closeViewInfo_btn{
+                    color: #A80000;
+                    z-index: 3;
+                    position: absolute;
+                    right: 0;
+                    font-size: 20px;
+                    margin: 20px;
+                    cursor: pointer;
+                }
+            .product .info_card .info_img{
+                position: relative;
+                width: 270px;
+                height: 100%;
+                overflow: hidden;
+            }
+            .product .info_card img{
+                z-index: 2;
+                position: relative;
+                width: 900px;
+                margin-left: -200px;
+                height: 100%;
+                border-bottom-left-radius: 5px;
+                border-top-left-radius: 5px;
+            }
+            .product .info_card .info{
+                z-index: 2;
+                background: #f2f2f2;
+                display: inline-block;
+                width: 430px;
+                height: 100%;
+                box-sizing: border-box;
+                padding: 30px;
+                border-bottom-right-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+                .product .info_card .info h2{
+                    font-size: 20px;
+                    color: #404040;
+                    padding-bottom: 10px;
+                }
+                .product .info_card .info p{
+                    font-size: 10px;
+                    color: #404040;
+                    padding-bottom: 10px;
+                }
+    
+                .product .info_card .info .part form{
+                    padding-bottom: 10px;
+                }
+                    .product .info_card .info .part form{
+                        /* line-height: 40px; */
+                        padding-left: 50px;
+                        font-size: 14px;
+                    }
+                    .product .info_card .info .part h3{
+                        color: #404040;
+                        font-size: 16px;
+                        text-align: center;
+                    }
+                    .product .info_card .info .part span{
+                        float: right;
+                    }
+    
+    
+            .product .info_card .info .final{
+                padding-top: 20px;
+            }
+                .product .info_card .info .final input{
+                    padding: 2px 2px;
+                }
+                .product .info_card .info .final a{
+                    font-size: 14px;
+                    float: right;
+                    font-weight: 900;
+                    color: #f2f2f2;
+                    background-color: #F98607;
+                    padding: 2px 20px;
+                    text-decoration: none;
+                    border-radius: 5px;
+                }
+                .product .info_card .info .final .price{
+                    font-size: 16px;
+                    color: #f2f2f2;
+                    background-color: #A80000;
+                    padding: 2px 30px;
+                    margin: 10px;
+                    border-radius: 5px;
+                }
+    
+/*------------------------ css for contact---------------------- */
 .contact{
     width: 100%;
     margin: 0;
@@ -177,3 +395,5 @@ header{
     .top_bar li a.active {
         color: #F98607;
     }
+
+

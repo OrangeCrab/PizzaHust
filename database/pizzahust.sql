@@ -44,7 +44,7 @@ CREATE TABLE `order` (
   `address` varchar(100),
   `note` varchar(255),
   `order_date` datetime,
-  `status` int,
+  `status_id` int,
   `total_money` int
 );
 
@@ -58,7 +58,8 @@ CREATE TABLE `order_detail` (
 );
 
 CREATE TABLE `status` (
-  `status` varchar(11) PRIMARY KEY
+  'id' int PRIMARY KEY,
+  `status` varchar(11) 
 );
 
 ALTER TABLE `product` ADD FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
@@ -71,4 +72,4 @@ ALTER TABLE `order_detail` ADD FOREIGN KEY (`order_id`) REFERENCES `order` (`id`
 
 ALTER TABLE `order` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
-ALTER TABLE `product` ADD FOREIGN KEY (`status`) REFERENCES `status` (`status`);
+ALTER TABLE `product` ADD FOREIGN KEY (`status_id`) REFERENCES `status` (`id`);

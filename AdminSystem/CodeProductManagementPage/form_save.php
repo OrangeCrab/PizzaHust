@@ -17,7 +17,7 @@ if(!empty($_POST)) {
 		if($thumbnail != '') {
 			$sql = "update product set thumbnail = '$thumbnail', title = '$title', price = $price, status = $status, description = '$description', date = '$date', weight = '$weight',category_id = '$category_id' where id = $id";
 		} else {
-			$sql = "update product set title = '$title', price = $price, status = $status, description = '$description', status = '$date', weight = '$weight',category_id = '$category_id' where id = $id";
+			$sql = "update product set title = '$title', price = $price, status = $status, description = '$description', status = '$status', weight = '$weight',category_id = '$category_id' where id = $id";
 		}
 		
 		execute($sql);
@@ -29,7 +29,7 @@ if(!empty($_POST)) {
 		$sql = "insert into product(thumbnail, title, price, status, description, weight, category_id) values ('$thumbnail', '$title', '$price', '$status', '$description', '$weight', '$category_id')";
 		execute($sql);
 
-		header('Location: ProductManagementPage.php');
+		header('location: ProductManagementPage.php');
 		die();
 	}
 }

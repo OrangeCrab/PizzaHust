@@ -12,11 +12,8 @@
 
 	$id = $msg = $title = $price  = $status_id = $category_id = $date = $image = $description='';
 
-    require_once('../../database/utility.php');
-    
+    require_once('../../database/utility.php');   
 	require_once('form_save.php');
- 
-
 	require_once('../../database/define.php');
 	require_once('../../database/dbhelper.php');
 
@@ -92,18 +89,32 @@
             <div id="main_center_panel">
                 <div class="head">
                     <div id="h1">Danh sách sản phẩm</div>
+                    <div class="filter_wrap">
+                        <select class="form-control" name="filter" id="filter" required="true" method="post">
+                            <option value="">Tất cả</option>
+                            <?php
+                                foreach($categoryItems as $category) {
+                                    if($category['id'] == $category_id) {
+                                        echo '<option selected value="'.$category['id'].'">'.$category['name'].'</option>';
+                                    } else {
+                                        echo '<option value="'.$category['id'].'">'.$category['name'].'</option>';
+                                    }
+                                }
+                            ?>
+                        </select>
+                        <input type="hidden" name="category_selected" id="category_selected" />
+                    </div>
                     <div class="timkiem">
-                        <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem" id="search_icon">
+                        
                         <input type="text" placeholder="Tìm kiếm" id="search_tf"/>
+                        <button type="submit" class="search_btn"></button>
                     </div>
                     <div class="wrap_btn">
                         <button class="btn btn-success add_button">Thêm sản phẩm</button>
-                    </div>
-                    
+                    </div>  
                 </div>                 
                 
                 <div id="table_panel">
-                    
                     <table class="table table-bordered table-hover" >
                         <thead>
                             <tr>
@@ -142,7 +153,7 @@
                         
                         </tbody>   
                     </table>
-            </div>
+                </div>
         </div>
         <div class="product_popup" id="editProduct_popup">
             <div class="info_card">
@@ -241,4 +252,29 @@
 }
 </script>
        
+<script>
+$(document).ready(function(){
+
+	load_data();
+	function load_data(query='')
+	{
+		$.ajax({
+			url:"filter.php",
+			method:"POST",
+			data:{query:query},
+			success:function(data)
+			{
+				$('tbody').html(data);
+			}
+		})
+	}
+
+	$('#filter').change(function(){
+		$('#category_selected').val($('#filter').val());
+		var query = $('#category_selected').val();
+		load_data(query);
+	});
+	
+});
+</script>
  

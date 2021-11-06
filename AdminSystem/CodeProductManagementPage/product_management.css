@@ -124,20 +124,27 @@ header{
         width: fit-content;
         margin-top: 12px;
     }
-   
+    .filter_wrap{
+        position: fixed;
+        margin-top: 10px;
+        width: 12%;
+        height: 35px;
+        left: 41%;
+    }
+        .filter_wrap select{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            top: 0;
+        }
     .timkiem {
         position: fixed;
-        width: 30%;
+        width: 20%;
         height: 30px;
-        left: 43%;
+        left: 58%;
         margin-top: 12px;
     }
-        .timkiem img {
-            position: absolute;
-            vertical-align: middle;
-            top: 2.5px;
-            width: 25px;
-        }
         .timkiem input {
             position: absolute;
             margin: 0;
@@ -148,14 +155,23 @@ header{
             font-size: 15px;
             font-weight: lighter;
             width: 80%;
-            margin-left: 40px;
             font-family: Monsterrat;
+        }
+        .timkiem button {
+            position: absolute;
+            vertical-align: middle;
+            background-image: url('../../masterial/image/iconAdminPage/searchLogo.svg');
+            background-repeat: no-repeat;
+            background-size: 30px 30px;
+            width: 30px;
+            height: 30px;
+            margin-left: 82%;
         }
     .wrap_btn{
         position: fixed;
         width: 15%;
         height: 35px;
-        left: 80%;
+        left: 82%;
         margin-top: 12px;
     }
         .wrap_btn button{

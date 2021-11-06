@@ -237,7 +237,7 @@
                                 <label for="image">Hình ảnh sản phẩm:</label>
                             </div>
                             <div class="img_card">
-                                <input name="image" id="image" required="true" type="file" accept="image/*" onchange="loadFile(event)">
+                                <input name="image" id="image" type="file" accept="image/*" onchange="loadFile(event)">
                             </div>
                             <div class="img_container">
                                 <?php 
@@ -255,7 +255,7 @@
                             </div>
                         </div>
                         <div class="bottom_div">
-                            <button class="btn btn-success" name="confirm">Xác Nhận</button>
+                            <button class="btn btn-success" name="save_change">Xác Nhận</button>
                         </div>
                     </form>
                 </div>

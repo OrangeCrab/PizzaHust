@@ -32,14 +32,14 @@
             <h1>Danh sách đơn hàng</h1>
 
             <div class="table_wrap">
-                <nav>
+                <!-- <nav>
                     <ul>
                         <li><button>Tất cả đơn hàng</button></li>
                         <li><button>Đơn hàng mới</button></li>
                         <li><button>Đơn chờ thanh toán</button></li>
                         <li><button>Đơn đã thanh toán</button></li>
                     </ul>
-                </nav>
+                </nav> -->
 
                 <div class="Search DieuKienLoc">
                     <img src="../../masterial/image/iconAdminPage/screeningLogo.svg" alt="Loc">
@@ -47,96 +47,67 @@
                 </div>
                 <div class="Search TimKiem">
                     <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem">
-                    <input type="text" placeholder="Tìm kiếm"/>
+                    <select name="orderListHeadOption" id="orderListHeadOption">
+                        <option value="ma">Mã</option>
+                        <option value="ngaytao">Ngày tạo</option>
+                        <option value="khachhang">Khách hàng</option>
+                        <option value="sodienthoai">Số điện thoại</option>
+                        <option value="diachi">Địa chỉ</option>
+                        <option value="danhsachdathang">Danh sách đặt hàng</option>
+                        <option value="trangthai">Trạng thái</option>
+                        <option value="tongtien">Tổng tiền</option>
+                    </select>
+                    <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
                 </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Mã</th>
-                            <th>Ngày tạo</th>
-                            <th>Khách hàng</th>
-                            <th>Trạng thái</th>
-                            <th>Tổng tiền</th>
-                        </tr>
-                    </thead>
+                <table id="OrderList">
+                    <tr class="Orderlist_head">
+                        <th onclick="sortTable('OrderList', 0)">Mã</th>
+                        <th onclick="sortTable('OrderList', 1)">Ngày tạo</th>
+                        <th onclick="sortTable('OrderList', 2)">Khách hàng</button></th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th onclick="sortTable('OrderList', 5)">Danh sách đặt hàng</th>
+                        <th>Trạng thái</th>
+                        <th>Tổng tiền</th>
+                    </tr>
 
                     <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>Tran Hoang</td>
+                        <td><a href="">yyyyyy</a></td>
+                        <td>10/19/2021</td>
+                        <td>Mr.Abc</td>
+                        <td>0123456</td>
+                        <td>So 1 Minh Khai</td>
                         <td>Chờ thanh toán</td>
                         <td>100 000 đ</td>
                     </tr>
 
                     <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>Tran Hoang</td>
-                        <td>Chờ xử lý</td>
+                        <td><a href="">yyyyyy</a></td>
+                        <td>10/19/2021</td>
+                        <td>Long Truong</td>
+                        <td>0654321</td>
+                        <td>So 243 Phuc Dong</td>
+                        <td>Chờ thanh toán</td>
                         <td>100 000 đ</td>
                     </tr>
 
                     <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
+                        <td><a href="">yyyyyy</a></td>
+                        <td>10/19/2021</td>
+                        <td>YO NEY</td>
+                        <td>0654321</td>
+                        <td>SUNNY INNIT</td>
+                        <td>Chờ thanh toán</td>
                         <td>100 000 đ</td>
                     </tr>
 
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
                 </table>
             </div>
         </div>
     </div>
 
+    <script src="invoice_management.js"></script>
 
 </body>
 </html>

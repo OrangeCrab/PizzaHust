@@ -10,36 +10,29 @@
     $title = 'Thêm/Sửa Sản Phẩm';
 	$baseUrl = '../';
 
-	$id = $msg = $title = $price  = $status_id = $category_id = $date = $thumbnail = $description='';
+	$id = $msg = $title = $price  = $status_id = $category_id = $date = $image = $description='';
 
     require_once('../../database/utility.php');
+    
 	require_once('form_save.php');
  
 
 	require_once('../../database/define.php');
 	require_once('../../database/dbhelper.php');
 
-	// sửa/thêm sản phẩm
-	// khi click vào sửa sản phẩm thì sẽ gửi lên server 1 cái ID
-	// lúc đấy thì mình sẽ sử dụng lệnh getGet(trong file utility.php) để lấy ID đấy về
-	// Nếu có ID được lấy về thì tức là lệnh sửa 
-	// còn nếu không( ID = null) thì đấy là lệnh thêm
 	$id = getGet('id');
-    //echo $id;
+    
    	if($id != '' && $id > 0) {
-		// có nghĩa là lệnh sửa sản phẩm
+	
 		$sql = "select * from product where id = '$id' ";
-		// mình sẽ select * từ sản phẩm có mã ID bằng với mã ID mà mình vừa GET
-		// lưu vào 1 mảng tạm 
-		// gán các biến là các giá trị trong mảng đó
-		//executeResult($sql) = executeResult($sql);
+	
 		if(getArrResult($sql) != null) {
 			$category_id = getArrResult($sql)['category_id'];
 			$price = getArrResult($sql)['price'];
 			$title = getArrResult($sql)['title'];
 			$status_id = getArrResult($sql)['status_id'];
 			$description = getArrResult($sql)['description'];
-            $thumbnail = getArrResult($sql)['thumbnail'];
+            $image = getArrResult($sql)['image'];
             
 		} else {
 			$id = 0;
@@ -53,7 +46,7 @@
 	$categoryItems = executeResult($sql);
 	$sql = " select *from status ";
 	$statusList = executeResult($sql);
-   
+
 ?> 
 
 <!DOCTYPE html>
@@ -131,7 +124,7 @@
                                 foreach($data as $item) {
                                     echo '<tr>
                                     <td>'.(++$index).'</td>
-                                    <td><img src="'.$item['thumbnail'].'" style="height: 100px; width: 100px;"/></td>
+                                    <td><img src="../../masterial/image/thuc_don/'.$item['image'].'" style="height: auto; width: 100px;"/></td>
                                     <td>'.$item['title'].'</td>
                                     <td>'.$item['description'].'</td>
                                     <td>'.$item['status_name'].'</td>
@@ -206,14 +199,26 @@
                         </div>
                         <div class="right_div">
                             <div class="title_of_img_card">
-                                <label for="thumbnail">Hình ảnh sản phẩm:</label>
+                                <label for="image">Hình ảnh sản phẩm:</label>
                             </div>
                             <div class="img_card">
-                                <input type="file" name="image" id="product_img">
+                                <input name="image" id="image" required="true" type="file" accept="image/*" onchange="loadFile(event)">
+                            </div>
+                            <div class="img_container">
+                                <img id="output"/>
+                                <script>
+                                    var loadFile = function(event) {
+                                        var output = document.getElementById('output');
+                                        output.src = URL.createObjectURL(event.target.files[0]);
+                                        output.onload = function() {
+                                        URL.revokeObjectURL(output.src) // free memory
+                                        }
+                                    };
+                                </script>
                             </div>
                         </div>
                         <div class="bottom_div">
-                            <button class="btn btn-success">Xác Nhận</button>
+                            <button class="btn btn-success" name="confirm">Xác Nhận</button>
                         </div>
                     </form>
                 </div>
@@ -222,18 +227,18 @@
         <script src="product_management.js"></script>
     </body>
 </html>
-        <script type="text/javascript">
-            function deleteProduct(id) {
-                option = confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?')
-                if(!option) return;
+<script type="text/javascript">
+    function deleteProduct(id) {
+        option = confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?')
+        if(!option) return;
 
-                $.post('form_api.php', {
-                    'id': id,
-                    'action': 'delete'
-                }, function(data) {
-                    location.reload()
-                })
-        }
+        $.post('form_api.php', {
+            'id': id,
+            'action': 'delete'
+        }, function(data) {
+            location.reload()
+        })
+}
 </script>
        
  

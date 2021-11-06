@@ -14,7 +14,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `category` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(100)
+  `name` varchar(100),
   `status` varchar(11)
 );
 
@@ -23,10 +23,9 @@ CREATE TABLE `product` (
   `category_id` int,
   `title` varchar(350),
   `price` int,
-  `weight` int,
-  `status` int,
+  `status_id` int,
   `date` datetime,
-  `thumbnail` varchar(500),
+  `image` varchar(200),
   `description` varchar(255)
 );
 

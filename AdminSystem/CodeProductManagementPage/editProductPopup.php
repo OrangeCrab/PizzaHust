@@ -2,7 +2,7 @@
     $title = 'Sửa Sản Phẩm';
 	$baseUrl = '../';
 
-	$id = $msg = $title = $price =  $status_id = $category_id = $date = $thumbnail = $description='';
+	$id = $msg = $title = $price =  $status_id = $category_id = $date = $image = $description='';
 
     require_once('../../database/utility.php');
     require_once('../../database/define.php');
@@ -18,7 +18,7 @@
     $title = getArrResult($sql)['title'];
     $status_id = getArrResult($sql)['status_id'];
     $description = getArrResult($sql)['description'];
-    $thumbnail = getArrResult($sql)['thumbnail'];
+    $image = getArrResult($sql)['image'];
 
 	$sql = "select * from category";
 	$categoryItems = executeResult($sql);
@@ -129,7 +129,7 @@
                         .right_div{
                             position: absolute;
                             width: 50%;
-                            height: 80%;
+                            height: 70%;
                             top: 10%;
                             left: 50%;
                         }
@@ -143,12 +143,32 @@
                             .img_card{
                                 position: absolute;
                                 width: 80%;
-                                height: 75%;
+                                height: 10%;
                                 top: 10%;
                                 left: 10%;
                                 text-align: center;
                                 border: 1px  solid  #000000;
                             }
+                                .img_card input{
+                                    position: absolute;
+                                    width: 100%;
+                                    height: auto;
+                                    left: 20%;
+                                }
+                            .img_container{
+                                position: absolute;
+                                width: 80%;
+                                height: 70%;
+                                top: 20%;
+                                left: 10%;
+                                text-align: center;
+                                border: 1px  solid  #000000;
+                            }
+                                .img_container img{
+                                    margin: 5px;
+                                    width: 80%;
+                                    max-height: 100%;
+                                }
                         .bottom_div{
                             position: absolute;
                             width: 20%;
@@ -214,14 +234,28 @@
                         </div>
                         <div class="right_div">
                             <div class="title_of_img_card">
-                                <label for="thumbnail">Hình ảnh sản phẩm:</label>
+                                <label for="image">Hình ảnh sản phẩm:</label>
                             </div>
                             <div class="img_card">
-                                <input type="file" name="image" id="product_img">
+                                <input name="image" id="image" required="true" type="file" accept="image/*" onchange="loadFile(event)">
+                            </div>
+                            <div class="img_container">
+                                <?php 
+                                    echo '<img id="output"  src="../../masterial/image/thuc_don/'.$image.'"/>';
+                                ?>
+                                <script>
+                                    var loadFile = function(event) {
+                                        var output = document.getElementById('output');
+                                        output.src = URL.createObjectURL(event.target.files[0]);
+                                        output.onload = function() {
+                                        URL.revokeObjectURL(output.src) // free memory
+                                        }
+                                    };
+                                </script>
                             </div>
                         </div>
                         <div class="bottom_div">
-                            <button class="btn btn-success">Xác Nhận</button>
+                            <button class="btn btn-success" name="confirm">Xác Nhận</button>
                         </div>
                     </form>
                 </div>

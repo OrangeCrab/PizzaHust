@@ -32,7 +32,7 @@ h1 {
 
 /* Tag con table_wrap */
 
-nav ul {
+ul {
     position: relative;
     top: 10px;
     left: 10px;
@@ -43,11 +43,11 @@ nav ul {
     list-style-type: none;
     border-bottom: 1px solid gray;
 }
-    nav ul li {
+    ul li {
         display: inline-block;
         width: 25%;
     }
-    nav ul button {
+    ul button {
         width: 100%;
         height: 100%;
         padding: 10px 10px 10px 0;
@@ -61,7 +61,7 @@ nav ul {
     ul button:hover {
         border-bottom: 3px solid #F98607;
     }
-    nav ul button:focus {
+    ul button:focus {
         border-bottom: 3px solid #A80000;
     }
 
@@ -74,18 +74,24 @@ nav ul {
     border: 1px solid #DDD;
 }
     .Search img {
+        display: inline;
         vertical-align: middle;
         width: 20px;
     }
     .Search input {
+        display: inline;
         margin: 0;
-        width: calc(100% - 29px);
+        width: calc(70% - 29px);
         height: 20px;
         vertical-align: middle;
         border: none;
         font-size: 15px;
         font-family: Monsterrat;
         font-weight: lighter;
+    }
+    .Search select {
+        display: inline;
+        width: 25%;
     }
     .Search.DKLoc {
         width: 30%;
@@ -94,7 +100,7 @@ nav ul {
         width: 50%;
     }
 
-table {
+.OrderList table {
     position: relative;
     display: block;
     height: 83%;
@@ -107,11 +113,11 @@ table {
     font-weight: lighter;
     margin-bottom: 100px;
 }  
-    tr {
+    .OrderList tr {
         height: 50px;
         word-wrap: break-word;
     }
-    th {
+    .OrderList th {
         position: sticky; 
         top: 0;
         padding: 5px;
@@ -119,44 +125,135 @@ table {
         text-align: left;
         z-index: 0;
     }
-        th:nth-child(1) {
-            width: 20%;
-            text-align: center;
-        }
-        th:nth-child(2) {
-            width: 20%;
-        }
-        th:nth-child(3) {
-            width: 25%;
-        }
-        th:nth-child(4) {
-            width: 15%;
-        }
-        th:nth-child(5) {
-            width: 20%;
-        }
-
-    td {
+    .OrderList td {
         padding: 10px;
         text-align: left;
         border-bottom: 0.5px solid rgb(200, 200, 200);
     }
-        td:nth-child(1){
-            width: 20%;
+        .OrderList th:nth-child(1), .OrderList td:nth-child(1) {
+            width: 5%;
             text-align: center;
         }
-        td:nth-child(1) a {
+        .OrderList td:nth-child(1) a {
             color: #A80000;
         }
-        td:nth-child(2){
-            width: 20%;
+         th:nth-child(2).OrderList, td:nth-child(2).OrderList {
+            width: 10%;
         }
-        td:nth-child(3){
-            width: 25%;
-        }
-        td:nth-child(4){
-            width: 20%;
-        }
-        td:nth-child(5){
+        .OrderListth:nth-child(3), .OrderList td:nth-child(3) {
             width: 15%;
         }
+        .OrderList th:nth-child(4), .OrderList td:nth-child(4) {
+            width: 10%;
+        }
+        .OrderList th:nth-child(5), .OrderList td:nth-child(5) {
+            width: 15%;
+        }
+        .OrderList th:nth-child(6), .OrderList td:nth-child(6) {
+            width: 20%;
+        }
+        .OrderList th:nth-child(7), .OrderList td:nth-child(7) {
+            width: 15%;
+        }
+        .OrderList th:nth-child(8), .OrderList td:nth-child(8) {
+            width: 10%;
+        }
+
+/* pop up */
+.popup_background {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    padding-top: 100px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+    /* justify-content: center;
+    align-items: center; */
+}
+.popup_panel {
+    padding: 1%;
+    position: relative;
+    margin: auto;
+    width: 70%;
+    height: fit-content;
+    background-color: white;
+    font-family: Monsterrat;
+    font-weight: 800;
+    /* text-align: center; */
+}
+.popup_close{
+    position: absolute;
+    top:0;
+    right:14px;
+    font-size: 42px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.popup_name {
+    display: inline-block;
+    width: 40%;
+}
+.popup_id {
+    display: inline-block;
+    width: 20%;
+}
+
+.popup_table {
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    overflow: auto;
+    font-size: 15px;
+    font-weight: lighter;
+    
+}  
+    .popup_table tr {
+        height: 50px;
+        word-wrap: break-word;
+    }
+    .popup_table th {
+        color:white;
+        position: relative; 
+        top: 0;
+        padding: 5px;
+        background: black;
+        text-align: left;
+        z-index: 10;
+    }
+    .popup_table td {
+        position: relative;
+        padding: 10px;
+        text-align: left;
+        border-bottom: 0.5px solid rgb(200, 200, 200);
+    }
+        .popup_table th:nth-child(1), .popup_table td:nth-child(1) {
+            width: 15%;
+            text-align: center;
+        }
+        .popup_table th:nth-child(2), .popup_table td:nth-child(2) {
+            width: 20%;
+        }
+        .popup_table th:nth-child(3), .popup_table td:nth-child(3) {
+            width: 10%;
+        }
+        .popup_table th:nth-child(4), .popup_table td:nth-child(4) {
+            width: 15%;
+        }
+        .popup_table th:nth-child(5), .popup_table td:nth-child(5) {
+            width: 20%;
+        }
+        .popup_table th:nth-child(6), .popup_table td:nth-child(6) {
+            width: 20%;
+        }   
+        .popup_table tr:nth-child(even) {
+            background-color: rgb(214, 208, 208);
+        } 
+        .popup_table .sum {
+            font-weight: 600;
+        }
+    

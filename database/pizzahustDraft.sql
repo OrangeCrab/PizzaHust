@@ -54,9 +54,9 @@ CREATE TABLE `orderDetail` (
   `quatity` int
 );
 
-CREATE TABLE 'size'(
-  id int PRIMARY KEY AUTO_INCREMENT,
-  size varchar(10)
+CREATE TABLE `size`(
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `size` varchar(10)
 )
 
 CREATE TABLE `status` (

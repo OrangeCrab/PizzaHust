@@ -53,7 +53,7 @@
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"> -->
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"> -->
         <link rel="stylesheet" href="product_management.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <title>Product Management</title>
@@ -94,9 +94,8 @@
                         <input type="hidden" name="category_selected" id="category_selected" />
                     </div>
                     <div class="timkiem">
-                        
-                        <input type="text" placeholder="Tìm kiếm" id="search_tf"/>
-                        <button type="submit" class="search_btn"></button>
+                        <div class="search_logo"></div>  
+                        <input type="text" placeholder="Tìm kiếm" id="search_tf" name = "search_tf"/>
                     </div>
                     <div class="wrap_btn">
                         <button class="btn btn-success add_button">Thêm sản phẩm</button>
@@ -207,43 +206,4 @@
         <script src="product_management.js"></script>
     </body>
 </html>
-<script type="text/javascript">
-    function deleteProduct(id) {
-        option = confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?')
-        if(!option) return;
-
-        $.post('form_api.php', {
-            'id': id,
-            'action': 'delete'
-        }, function(data) {
-            location.reload()
-        })
-}
-</script>
-       
-<script>
-$(document).ready(function(){
-
-	load_data();
-	function load_data(query='')
-	{
-		$.ajax({
-			url:"filter.php",
-			method:"POST",
-			data:{query:query},
-			success:function(data)
-			{
-				$('tbody').html(data);
-			}
-		})
-	}
-
-	$('#filter').change(function(){
-		$('#category_selected').val($('#filter').val());
-		var query = $('#category_selected').val();
-		load_data(query);
-	});
-	
-});
-</script>
  

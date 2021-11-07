@@ -145,10 +145,18 @@ header{
         left: 58%;
         margin-top: 12px;
     }
+        .search_logo{
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            background-image: url('../../masterial/image/iconAdminPage/searchLogo.svg');
+            background-repeat: no-repeat;
+            background-size: 35px 35px;
+        }
         .timkiem input {
             position: absolute;
-            margin: 0;
-            height: 30px;
+            left: 15%;
+            height: 35px;
             vertical-align: middle;
             border: none;
             border: 1px solid #DDD;
@@ -156,16 +164,6 @@ header{
             font-weight: lighter;
             width: 80%;
             font-family: Monsterrat;
-        }
-        .timkiem button {
-            position: absolute;
-            vertical-align: middle;
-            background-image: url('../../masterial/image/iconAdminPage/searchLogo.svg');
-            background-repeat: no-repeat;
-            background-size: 30px 30px;
-            width: 30px;
-            height: 30px;
-            margin-left: 82%;
         }
     .wrap_btn{
         position: fixed;
@@ -192,7 +190,6 @@ header{
     }
         
         table {
-            /* padding-right: 30px; */
             position: absolute;
             width: 100%;
             border-collapse: collapse;
@@ -202,8 +199,6 @@ header{
             font-weight: lighter;
             height: 100%;
             display: block;
-            /* left: 2%;
-            top: 8%; */
             overflow: auto; 
         }
             tr {

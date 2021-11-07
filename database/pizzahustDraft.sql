@@ -1,25 +1,25 @@
 CREATE TABLE `admin` (
-  `adminID` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(50),
   `username` varchar(50),
   `password` varchar(30)
 );
 
 CREATE TABLE `user` (
-  `userID` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(50),
   `address` varchar(100),
   `phoneNumber` varchar(13)
 );
 
 CREATE TABLE `category` (
-  `categoryID` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(100),
   `status` varchar(11)
 );
 
 CREATE TABLE `product` (
-  `productID` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `categoryID` int,
   `productName` varchar(350),
   `productPrice` int,
@@ -29,13 +29,13 @@ CREATE TABLE `product` (
 );
 
 CREATE TABLE `gallery` (
-  `imgID` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `productID` int,
   `img` varchar(500)
 );
 
 CREATE TABLE `order` (
-  `orderID` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int PRIMARY KEY AUTO_INCREMENT, 
   `userID` int,
   `fullname` varchar(50),
   `userPhoneNumber` varchar(13),
@@ -54,8 +54,13 @@ CREATE TABLE `orderDetail` (
   `quatity` int
 );
 
+CREATE TABLE 'size'(
+  id int PRIMARY KEY AUTO_INCREMENT,
+  size varchar(10)
+)
+
 CREATE TABLE `status` (
-  `statusID` int PRIMARY KEY AUTO_INCREMENT,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `status` varchar(11)
 );
 

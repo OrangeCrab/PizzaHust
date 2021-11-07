@@ -255,7 +255,7 @@
                             </div>
                         </div>
                         <div class="bottom_div">
-                            <button class="btn btn-success" name="save_change">Xác Nhận</button>
+                            <button class="btn btn-success" name="confirm">Xác Nhận</button>
                         </div>
                     </form>
                 </div>

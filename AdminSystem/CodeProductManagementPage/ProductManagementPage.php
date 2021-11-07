@@ -1,21 +1,10 @@
 <?php
-    require_once('../../database/dbhelper.php');
-	$baseUrl = '../';
-    // chay cau lenh sql để lấy tên loại sản phẩm sử dụng lệnh join bảng
-	$sql = "select product.*, category.name as category_name , status.status as status_name from ((product 
-    left join category on product.category_id = category.id )
-    left join status on product.status_id = status.id)";
-	$data = executeResult($sql);
-
-    $title = 'Thêm/Sửa Sản Phẩm';
-	$baseUrl = '../';
-
 	$id = $msg = $title = $price  = $status_id = $category_id = $date = $image = $description='';
 
     require_once('../../database/utility.php');   
-	require_once('form_save.php');
 	require_once('../../database/define.php');
 	require_once('../../database/dbhelper.php');
+	require_once('form_save.php');
 
 	$id = getGet('id');
     
@@ -130,27 +119,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                $index = 0;
-                                foreach($data as $item) {
-                                    echo '<tr>
-                                    <td>'.(++$index).'</td>
-                                    <td><img src="../../masterial/image/thuc_don/'.$item['image'].'" style="height: auto; width: 100px;"/></td>
-                                    <td>'.$item['title'].'</td>
-                                    <td>'.$item['description'].'</td>
-                                    <td>'.$item['status_name'].'</td>
-                                    <td>'.number_format($item['price']).' VNĐ</td>
-                                    <td>'.$item['category_name'].'</td>
-                                    <td style="width: 20px">
-                                    <a href="editProductPopup.php?id='.$item['id'].'"><button class="btn btn-warning">Sửa</button></a>
-                                    </td>
-                                    <td style="width: 20px">
-                                    <button onclick="deleteProduct('.$item['id'].')" class="btn btn-danger">Xoá</button>
-                                    </td>
-                                    </tr>';
-                                }
-                            ?>
-                        
+                            
                         </tbody>   
                     </table>
                 </div>

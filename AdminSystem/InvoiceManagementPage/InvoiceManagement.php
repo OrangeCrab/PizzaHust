@@ -64,7 +64,7 @@
                     <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
                 </div>
 
-                <table id="OrderList">
+                <table id="OrderList" class="OrderList">
                     <tr class="Orderist_head">
                         <th onclick="sortTable('OrderList', 0)">Mã</th>
                         <th onclick="sortTable('OrderList', 1)">Ngày tạo</th>
@@ -80,10 +80,9 @@
                         $sql_Order = "select *  from `order`";
                         $data_Order = executeResult($sql_Order);
 
-                        $total = 0;
                         foreach ($data_Order as $item_Order) {
                             echo '<tr>
-                                <td><a href="">'.$item_Order['id'].'</a></td>
+                                <td><a href="#" onclick="openPopup(this)">'.$item_Order['id'].'</a></td>
                                 <td>'.$item_Order['order_date'].'</td>
                                 <td>'.$item_Order['fullname'].'</td>
                                 <td>'.$item_Order['phone_number'].'</td>
@@ -104,13 +103,17 @@
                                 <td>'.$item_Order['total_money'].'</td>
                             </tr>';
 
-                            $total += $item_Order['total_money'];
                         }
                         
                     ?>
 
                 </table>
             </div>
+        </div>
+    </div>
+
+    <div id="popup_background" class="popup_background">
+        <div class="popup_panel" id="popup_panel">
         </div>
     </div>
 

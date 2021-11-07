@@ -100,7 +100,7 @@ ul {
         width: 50%;
     }
 
-table {
+.OrderList table {
     position: relative;
     display: block;
     height: 83%;
@@ -113,11 +113,11 @@ table {
     font-weight: lighter;
     margin-bottom: 100px;
 }  
-    tr {
+    .OrderList tr {
         height: 50px;
         word-wrap: break-word;
     }
-    th {
+    .OrderList th {
         position: sticky; 
         top: 0;
         padding: 5px;
@@ -125,36 +125,135 @@ table {
         text-align: left;
         z-index: 0;
     }
-    td {
+    .OrderList td {
         padding: 10px;
         text-align: left;
         border-bottom: 0.5px solid rgb(200, 200, 200);
     }
-        th:nth-child(1), td:nth-child(1) {
+        .OrderList th:nth-child(1), .OrderList td:nth-child(1) {
             width: 5%;
             text-align: center;
         }
-        td:nth-child(1) a {
+        .OrderList td:nth-child(1) a {
             color: #A80000;
         }
-        th:nth-child(2), td:nth-child(2) {
+         th:nth-child(2).OrderList, td:nth-child(2).OrderList {
             width: 10%;
         }
-        th:nth-child(3), td:nth-child(3) {
-            width: 10%;
-        }
-        th:nth-child(4), td:nth-child(4) {
-            width: 5%;
-        }
-        th:nth-child(5), td:nth-child(5) {
+        .OrderListth:nth-child(3), .OrderList td:nth-child(3) {
             width: 15%;
         }
-        th:nth-child(6), td:nth-child(6) {
-            width: 40%;
-        }
-        th:nth-child(7), td:nth-child(7) {
-            width: 5%;
-        }
-        th:nth-child(8), td:nth-child(8) {
+        .OrderList th:nth-child(4), .OrderList td:nth-child(4) {
             width: 10%;
         }
+        .OrderList th:nth-child(5), .OrderList td:nth-child(5) {
+            width: 15%;
+        }
+        .OrderList th:nth-child(6), .OrderList td:nth-child(6) {
+            width: 20%;
+        }
+        .OrderList th:nth-child(7), .OrderList td:nth-child(7) {
+            width: 15%;
+        }
+        .OrderList th:nth-child(8), .OrderList td:nth-child(8) {
+            width: 10%;
+        }
+
+/* pop up */
+.popup_background {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    padding-top: 100px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+    /* justify-content: center;
+    align-items: center; */
+}
+.popup_panel {
+    padding: 1%;
+    position: relative;
+    margin: auto;
+    width: 70%;
+    height: fit-content;
+    background-color: white;
+    font-family: Monsterrat;
+    font-weight: 800;
+    /* text-align: center; */
+}
+.popup_close{
+    position: absolute;
+    top:0;
+    right:14px;
+    font-size: 42px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.popup_name {
+    display: inline-block;
+    width: 40%;
+}
+.popup_id {
+    display: inline-block;
+    width: 20%;
+}
+
+.popup_table {
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    overflow: auto;
+    font-size: 15px;
+    font-weight: lighter;
+    
+}  
+    .popup_table tr {
+        height: 50px;
+        word-wrap: break-word;
+    }
+    .popup_table th {
+        color:white;
+        position: relative; 
+        top: 0;
+        padding: 5px;
+        background: black;
+        text-align: left;
+        z-index: 10;
+    }
+    .popup_table td {
+        position: relative;
+        padding: 10px;
+        text-align: left;
+        border-bottom: 0.5px solid rgb(200, 200, 200);
+    }
+        .popup_table th:nth-child(1), .popup_table td:nth-child(1) {
+            width: 15%;
+            text-align: center;
+        }
+        .popup_table th:nth-child(2), .popup_table td:nth-child(2) {
+            width: 20%;
+        }
+        .popup_table th:nth-child(3), .popup_table td:nth-child(3) {
+            width: 10%;
+        }
+        .popup_table th:nth-child(4), .popup_table td:nth-child(4) {
+            width: 15%;
+        }
+        .popup_table th:nth-child(5), .popup_table td:nth-child(5) {
+            width: 20%;
+        }
+        .popup_table th:nth-child(6), .popup_table td:nth-child(6) {
+            width: 20%;
+        }   
+        .popup_table tr:nth-child(even) {
+            background-color: rgb(214, 208, 208);
+        } 
+        .popup_table .sum {
+            font-weight: 600;
+        }
+    

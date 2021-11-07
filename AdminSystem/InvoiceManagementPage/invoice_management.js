@@ -1,4 +1,33 @@
-//SORT
+//OPEN POP UP
+function openPopup(obj){
+    //Khi ấn vào một mã đơn hàng thì sẽ lấy nội dung mã đó
+    var str = obj.innerText || obj.textContent;
+    if (str == ""){
+        return;
+    }
+
+    //Tạo request lên CSDL lấy thông tin chi tiết theo mã đơn hàng
+    //và in chi tiết ra một file php bên ngoài "DetailPopUp.php"
+    //"nhúng" nội dung file trên vào phần pop up
+    document.getElementById("popup_background").style.display = "block";
+    var detailRequest = new XMLHttpRequest();
+
+    detailRequest.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            document.getElementById("popup_panel").innerHTML = detailRequest.responseText;
+        }
+    }
+
+    detailRequest.open("GET", "DetailPopUp.php?orderid="+str, true);
+    detailRequest.send();
+}
+
+function closePopup(){
+    document.getElementById("popup_background").style.display = "none";
+}
+
+
+//SORT TABLE
 function sortTable(id, n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById(id);
@@ -36,7 +65,7 @@ function sortTable(id, n) {
     }
 }
 
-//SEARCH
+//SEARCH TABLE
 function searchTable() {
     var searchOption, input, filter, table, tr, td, i, txtValue;
     searchOption = document.getElementById("searchOption").selectedIndex;
@@ -59,7 +88,8 @@ function searchTable() {
     }
 }
 
-//FILTER
+//FILTER TABLE
+// Chưa hoàn thành
 $(document).ready(function () {
     $(".Orderlist_head th").click(showFilterOption(this));
 });

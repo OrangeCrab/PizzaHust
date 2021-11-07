@@ -60,7 +60,7 @@
                     <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
                 </div>
 
-                <table id="OrderList">
+                <table id="OrderList" class="OrderList">
                     <tr class="Orderlist_head">
                         <th onclick="sortTable('OrderList', 0)">Mã</th>
                         <th onclick="sortTable('OrderList', 1)">Ngày tạo</th>
@@ -70,69 +70,21 @@
                         <th onclick="sortTable('OrderList', 5)">Danh sách đặt hàng</th>
                         <th>Trạng thái</th>
                         <th>Tổng tiền</th>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Mã</th>
-                            <th>Ngày tạo</th>
-                            <th>Khách hàng</th>
-                            <th>Trạng thái</th>
-                            <th>Tổng tiền</th>
-                        </tr>
-                    </thead>
-
-                    <tr>
-                        <td><a href="#" id="popup">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>Tran Hoang</td>
-                        <td>Chờ thanh toán</td>
-                        <td>100 000 đ</td>
                     </tr>
-
+                    
                     <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>Tran Hoang</td>
-                        <td>Chờ xử lý</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">yyyyyy</a></td>
+                        <td><a href="#" onclick="openPopup()">yyyyyy</a></td>
                         <td>10/19/2021</td>
                         <td>Mr.Abc</td>
                         <td>0123456</td>
                         <td>So 1 Minh Khai</td>
+                        <td>Pizza, 3</td>
                         <td>Chờ thanh toán</td>
                         <td>100 000 đ</td>
                     </tr>
 
                     <tr>
-                        <td><a href="">yyyyyy</a></td>
+                        <td><a href="#" onclick="openPopup()">yyyyyy</a></td>
                         <td>10/19/2021</td>
                         <td>Long Truong</td>
                         <td>0654321</td>
@@ -142,7 +94,7 @@
                     </tr>
 
                     <tr>
-                        <td><a href="">yyyyyy</a></td>
+                        <td><a onclick="openPopup()">yyyyyy</a></td>
                         <td>10/19/2021</td>
                         <td>YO NEY</td>
                         <td>0654321</td>
@@ -153,6 +105,55 @@
 
                 </table>
             </div>
+        </div>
+    </div>
+
+    <div id="popup_background" class="popup_background">
+        <div class="popup_panel">
+                <div class="popup_close" onclick="closePopup()">&times;</div>      
+
+                <div class="popup_name">
+                        <p>Họ và tên:</p>
+                        <p>Địa chỉ:</p>         
+                </div>
+                <div class="popup_id">
+                    <p>Mã đơn hàng:</p>
+                    <p>Ngày mua:</p>
+                </div>
+                
+                <table class="popup_table">
+                    <tr>
+                        <th>Mã</th>
+                        <th>Tên món ăn</th>
+                        <th>Số lượng</th>
+                        <th>Giá tiền</th>
+                        <th>Đặc tả</th>
+                        <th>Tổng giá</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>xxxxxx</td>
+                        <td>pizza</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Không</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>xxxxxx</td>
+                        <td>pizza</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Không</td>
+                        <td>1</td>
+                    </tr>
+                    <tr class="sum">
+                        <td colspan="5">Tổng cộng</td>
+                        <td>2</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="popup_confirmation"></div>
         </div>
     </div>
 

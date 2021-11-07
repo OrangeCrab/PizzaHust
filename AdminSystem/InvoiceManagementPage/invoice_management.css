@@ -195,11 +195,15 @@ ul {
 }
 .popup_name {
     display: inline-block;
+    vertical-align:top;
+    word-wrap: break-word;
     width: 40%;
 }
 .popup_id {
     display: inline-block;
-    width: 20%;
+    vertical-align:top;
+    word-wrap: break-word;
+    width: 40%;
 }
 
 .popup_table {

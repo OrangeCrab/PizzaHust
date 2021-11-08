@@ -38,3 +38,22 @@ function executeResult($sql){
 
 
 }
+
+function getArrResult($sql){
+    // $data = null;
+
+    // mo ket noi
+    $conn = mysqli_connect(HOST,USERNAME, PASSWORD, DATABASE);
+    mysqli_set_charset($conn,'utf8');
+
+    //querry
+    $resultset = mysqli_query($conn,$sql);
+    // while(($row = mysqli_fetch_array($resultset)) != null){
+    //     $data[] = $row;
+        
+    // }
+    $row = mysqli_fetch_array($resultset,1);
+    //dong ket noi
+    mysqli_close($conn);
+    return $row;
+}

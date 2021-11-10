@@ -40,7 +40,7 @@ $(document).ready(function(){
 			data:{query:query},
 			success:function(data)
 			{
-				$('tbody').html(data);
+				$('#main_table > tbody').html(data);
 			}
 		})
 	}
@@ -65,7 +65,7 @@ $(document).ready(function(){
             data:{query:query},
             success:function(data)
             {
-                $('tbody').html(data);
+                $('#main_table > tbody').html(data);
             }
         });
     }
@@ -80,4 +80,4 @@ $(document).ready(function(){
             load_data();
         }
         });
-    });
+});  

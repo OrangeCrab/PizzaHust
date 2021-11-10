@@ -43,7 +43,9 @@ CREATE TABLE `order` (
   `userNote` varchar(255),
   `orderTime` datetime,
   `status` int,
-  `payment` int
+  `payment` int,
+  `size_id` int,
+  `plinth_id` int,
 );
 
 CREATE TABLE `orderDetail` (
@@ -56,12 +58,18 @@ CREATE TABLE `orderDetail` (
 
 CREATE TABLE `size`(
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `size` varchar(10)
-)
+  `name` varchar(20)
+);
 
 CREATE TABLE `status` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `status` varchar(11)
+);
+
+CREATE TABLE `plinth`(
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(20),
+  `price` int
 );
 
 ALTER TABLE `product` ADD FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`);
@@ -75,3 +83,5 @@ ALTER TABLE `orderDetail` ADD FOREIGN KEY (`orderID`) REFERENCES `order` (`order
 ALTER TABLE `order` ADD FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 
 ALTER TABLE `product` ADD FOREIGN KEY (`statusID`) REFERENCES `status` (`statusID`);
+
+ALTER TABLE `product` ADD FOREIGN KEY (`size_id`) REFERENCES `size` (`id`);

@@ -160,7 +160,7 @@
                                     foreach ($sizeList as $size ) {
                                         echo'
                                             <div class="size_div">
-                                                <label style="width:20%">'.$size['name'].': </label>
+                                                <label style="width:20%">'.$size['name'].'</label>
                                                 <input type="checkbox" name="size[]" value="'.$size['name'].'" id="'.$size['id'].'">
                                                 <label style="margin-left:8%;"> Giá: </label>
                                                 <input type="number" style="width:40%;"  name="'.$size['name'].'">

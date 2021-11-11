@@ -7,7 +7,7 @@ if(!empty($_POST)) {
 	$price = getPost('price');
 	$description = getPost('description');
 	$category_id = getPost('category_id');
-
+	
 	if($id > 0) {
 		
 		$status_id = getPost('status_id');
@@ -29,12 +29,11 @@ if(!empty($_POST)) {
 	} else {
 		foreach ($_POST['size'] as $key => $value) 
 		{
-			if ($_POST['size'][$key] == 'Free-size') {
-				$title=getPost('title');
-			}
-			else $title=getPost('title').'_'.$_POST['size'][$key];
 			$price= $_POST[$_POST['size'][$key]];
-			$sql = "insert into product(image, title, price, status_id, description, category_id) values ('$image', '$title', '$price', '1', '$description', '$category_id')";
+			$get_id = $_POST['size'][$key];
+			$query = "select id from size where name='$get_id'";
+			$size_id = getArrResult($query)['id'];
+			$sql = "insert into product(image, title, price, status_id, description, category_id, size_id) values ('$image', '$title', '$price', '1', '$description', '$category_id', '$size_id')";
 			execute($sql);
 		}
 		header('location: ProductManagementPage.php');

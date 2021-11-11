@@ -168,7 +168,7 @@
                                 <tr>
                                     <th >ID</th>
                                     <th >Tên</th>
-                                    <th >Giá</th>
+                                    <th >Giá (VNĐ)</th>
                                     <th style="z-index: 5;">Sửa/Xóa</th>
                                 </tr>
                             </thead>

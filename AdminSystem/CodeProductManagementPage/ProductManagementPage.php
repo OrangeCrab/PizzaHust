@@ -1,5 +1,5 @@
 <?php
-	$id = $msg = $title = $price  = $status_id = $category_id = $date = $image = $description=$name='';
+	$id = $msg = $title = $price  = $category_id = $date = $image = $description=$name='';
 
     require_once('../../database/utility.php');   
 	require_once('../../database/define.php');
@@ -16,7 +16,6 @@
 			$category_id = getArrResult($sql)['category_id'];
 			$price = getArrResult($sql)['price'];
 			$title = getArrResult($sql)['title'];
-			$status_id = getArrResult($sql)['status_id'];
 			$description = getArrResult($sql)['description'];
             $image = getArrResult($sql)['image'];
             
@@ -28,10 +27,10 @@
 	}
 
 	$sql = "select * from category";
-	//var_dump($sql);
 	$categoryItems = executeResult($sql);
-	$sql = " select *from status ";
-	$statusList = executeResult($sql);
+
+    $sql = "select * from size";
+    $sizeList = executeResult($sql);
 
 ?> 
 
@@ -137,12 +136,12 @@
                         <div class="left_div">
                             <div class="form_group" style="top: 5%">
                                 <label for="usr">Tên sản phẩm:</label>
-                                <input required="true" type="text" class="form-control" id="usr" name="title" value="<?=$title?>">
+                                <input required="true" type="text" id="usr" name="title" value="<?=$title?>">
                                 <input type="text" name="id" value="<?=$id?>" hidden="true">
                             </div>
                             
                             <div class="form_group" style="top: 20%">
-                                <label for="usr">Loại Sản Phẩm:</label>
+                                <label for="usr">Loại sản phẩm:</label>
                                 <select class="form-control" name="category_id" id="category_id" required="true">
                                     <option value="">-- Chọn --</option>
                                     <?php
@@ -156,11 +155,20 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="form_group" style="top: 35%">
-                                <label for="description">Mô tả sản phẩm:</label>
-                                <input required="true" type="text" class="form-control" id="description" name="description" value="<?=$description?>">
+                            <div class="size_div_wrap">
+                                <?php
+                                    foreach ($sizeList as $size ) {
+                                        echo'
+                                            <div class="size_div">
+                                                <label style="width:20%">'.$size['name'].': </label>
+                                                <input type="checkbox" name="size[]" value="'.$size['name'].'" id="'.$size['id'].'">
+                                                <label style="margin-left:8%;"> Giá: </label>
+                                                <input type="number" style="width:40%;"  name="'.$size['name'].'">
+                                            </div>
+                                        ';
+                                    }
+                                ?>
                             </div>
-                            
                             
                         </div>
                         <div class="right_div">
@@ -181,6 +189,10 @@
                                         }
                                     };
                                 </script>
+                            </div>
+                            <div class="description_div">
+                                <label for="description" style="position:absolute; width:20%">Mô tả:</label>
+                                <input style="position:absolute; width:70%; left:20%" required="true" type="text" id="description" name="description" value="<?=$description?>">
                             </div>
                         </div>
                         <div class="bottom_div">

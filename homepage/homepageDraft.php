@@ -182,7 +182,7 @@
 
         <header>
                 <ul class="top_bar">
-                    <li><a href="../AdminSystem/login_form.php" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>    
+                    <li><a href="login_user.php" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>    
                     <li><a href="#contact">LIÊN HỆ</a></li>
                     <li><a href="../cart/cart.html"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                     <li><a href="#menu">THỰC ĐƠN</a></li>

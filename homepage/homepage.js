@@ -1,7 +1,7 @@
 function cancel_inform(){
     document.getElementById('popup').style.display = 'none';
 }
-setTimeout(cancel_inform,3000);
+setTimeout(cancel_inform,15000);
 
 
 // menu

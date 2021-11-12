@@ -2,14 +2,14 @@
 <?php 
 require_once('../database/dbhelper.php');
 require_once('../database/utility.php');
-require_once ('process_login.php');
+require_once ('process_user_login.php');
 
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Login</title>
-        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="login_user.css">
     </head>
 
     <body>
@@ -27,7 +27,11 @@ require_once ('process_login.php');
             <!-- <img type = "submit" src="../../masterial/image/iconAdminPage/login.svg" alt=""> -->
             <input type="submit" name="" value="Login">
             <!-- <a href="../AdminSystem/DashBoard/DashBoard.html" type="submit" class="button btn btn-primary active">LOGIN</a> -->
-            <a href="#">Quên mật khẩu</a>
+            <div class="link container">
+                <a href="forget.php">Quên mật khẩu</a>
+                <a href="register.php">Đăng ký tài khoản</a>
+
+            </div>
             
         </form>
       

@@ -31,3 +31,4 @@ function deleteCategory() {
 	$sql = "delete from Category where id = $id";
 	execute($sql);
 }
+?>

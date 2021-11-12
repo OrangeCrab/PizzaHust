@@ -1,38 +1,58 @@
-body {
-    background-image: url(../masterial/image/bgrhomepage/bgrhomepage.webp);
-    
+@font-face {
+    font-family: Monsterrat;
+    src: url("../../masterial/font/Montserrat-Medium.ttf");
 }
 
-.header {
-    position: relative;
-    
+body {
+    background-image: url(../masterial/image/bgrhomepage/bgrhomepage.webp);
+    background-repeat:no-repeat ;
+    background-attachment: fixed;
+   
+}
+
+.navbar {
+    opacity: 0.85;
 }
 .head-img {
-     margin-top: -50px; 
+     margin-top: -120px; 
 }
 
 .nav-link {
     color:antiquewhite;
     font-size: large;
 }
-.navbar-collapse {
-    margin-right: 20px;
+/* .navbar-collapse {
+
+} */
+.content-box {
+    list-style: none;
+ 
 }
 .nav-item {
-        margin-right: 50px;
+    color: white;
+    
 }
+.nav-text {
+    font-size: 1.5rem;
+    font-family: Monsterrat;
+}
+
+/* pop-up */
 .popup {
     position: absolute;
-    background-position: center;
-    display: block;
-    width: fit-content;
-    margin-top: 150px;
+    position: fixed;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 0px;
     right: 0px;
     bottom: 0px;
-    left: 0px;
-    
+    left: 0px;    
 }
+
 .hr {
     color: rgb(218, 218, 110);
 }
@@ -41,10 +61,10 @@ body {
 }
 
 .content {
-    margin-top: 20px;
-    top: 15px;
-    text-align: center;
-    background-color: rgba(10, 10, 10, 0.5)
+    
+    background-color: rgba(10, 10, 10, 0.85);
+    max-width: 450px;
+
 }
 .butt {
     padding-bottom: 10px;
@@ -94,10 +114,10 @@ body {
     background-color: darkorange;
 }
 
-a:hover {
+/* a:hover {
     text-decoration: none;
     color: white;
-}
+} */
 .footer {
     background-image: url(../masterial/image/bgrhomepage/endHomepage.jpg);
     display: flex;
@@ -117,6 +137,7 @@ a:hover {
     position: absolute;
     display: none;
 } */
+
 
 
 

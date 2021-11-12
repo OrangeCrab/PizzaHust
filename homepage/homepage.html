@@ -11,61 +11,76 @@
     <title>Document</title>
 </head>
 <body>
-
-    <!-- navigation -->
-     
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-            <a href="#" class="navbar-brand"> <img src="../masterial/image/iconHomePage/PizzaHustLogo.png" alt="logo" style="width: 150px;"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" style="background-color: rgb(216, 201, 201);">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                  <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link"><b>TRANG CHỦ</b></a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="#menu" class="nav-link"><b>THỰC ĐƠN</b></a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="#store" class="nav-link"><b>GIỎ HÀNG</b></a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="#contact" class="nav-link"><b>LIÊN HỆ</b></a>
-                    </li>
-                  </ul>
-              </div>
-            </div>
-    </nav> 
-    
-
     <div class="header">
+
+        <!-- navigation -->
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+            <div class="container-fluid">
+                <a href="#" class="navbar-brand"> <img src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo" style="width: 150px;"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" style="background-color: rgb(216, 201, 201);">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                      <!-- <div class="navbar-nav"> -->
+                        <ul class="content-box navbar-nav">
+                            <li class="nav-item active">
+                                <a href="#" class="nav-link"><b class="nav-text">TRANG CHỦ</b></a>
+                            </li> 
+                            <li class="nav-item ">
+                                <a href="#menu" class="nav-link">
+                                    <b class="nav-text">THỰC ĐƠN</b>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="#store" class="nav-link">
+                                    <b class="nav-text">GIỎ HÀNG</b>
+                                    <span><i class="fa fa-shopping-cart"></i></span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="#contact" class="nav-link">
+                                    <b class="nav-text">LIÊN HỆ</b>
+                                    <span>
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </a>
+                            </li>
+                          </ul>
+
+                      <!-- </div> -->
+                  </div>
+                </div>
+        </nav> 
         <!-- nếu còn thời gian nên để phần này chạy 3,4 cái ảnh -->
         <img src="../masterial/image/bgrhomepage/headHomePage.jpg" alt="" style="width: 100%;" class="head-img"> 
 
         <!-- pop-up -->
-        <div class="container text-center popup" id="popup">
-            <div class="content text-center container">
-             <h2 class="inform text text-warning">
-                 PIZZA HUST XIN THÔNG BÁO
-             </h2>
-             <hr class="hr">
-             <p class="inform_content" style="color: lightgoldenrodyellow;">
-                 HIỆN TẠI <strong>PIZZA HUST</strong> CHỈ NHẬN CÁC ĐƠN ĐẶT HÀNG TRONG KHU VỰC NỘI THÀNH HÀ NỘI .
-                 <p style="color: lightgoldenrodyellow;">
-                     XIN CHÂN THÀNH CẢM ƠN QUÝ KHÁCH !!!
-                 </p>
+       
+    </div>
+
+
+<!-- popup -->
+    <div class="text-center popup" id="popup">
+        <div class="content text-center container">
+         <h2 class="inform text text-warning">
+             PIZZA HUST XIN THÔNG BÁO
+         </h2>
+         <hr class="hr">
+         <p class="inform_content" style="color: lightgoldenrodyellow;">
+             HIỆN TẠI <strong>PIZZA HUST</strong> CHỈ NHẬN CÁC ĐƠN ĐẶT HÀNG TRONG KHU VỰC NỘI THÀNH HÀ NỘI .
+             <p style="color: lightgoldenrodyellow;">
+                 XIN CHÂN THÀNH CẢM ƠN QUÝ KHÁCH !!!
              </p>
-             <div class="butt">
-                 <button onclick="cancel_inform()" class=" button btn btn-warning"> 
-                     ẨN
-                 </button>
-             </div>
-     
-            </div>
-     
+         </p>
+         <div class="butt">
+             <button onclick="cancel_inform()" class=" button btn btn-warning"> 
+                 ẨN
+             </button>
          </div>
+ 
+        </div>
+ 
     </div>
 
     <!-- body -->

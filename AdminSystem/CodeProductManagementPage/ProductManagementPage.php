@@ -158,9 +158,12 @@
                             <div class="size_div_wrap">
                                 <?php
                                     foreach ($sizeList as $size ) {
+                                        if ($size['name'] != 'null') {
+                                            $size_name = $size['name'];
+                                        }else $size_name = '';
                                         echo'
                                             <div class="size_div">
-                                                <label style="width:20%">'.$size['name'].'</label>
+                                                <label style="width:20%">'.$size_name.'</label>
                                                 <input type="checkbox" name="size[]" value="'.$size['name'].'" id="'.$size['id'].'">
                                                 <label style="margin-left:8%;"> Giá: </label>
                                                 <input type="number" style="width:40%;"  name="'.$size['name'].'">

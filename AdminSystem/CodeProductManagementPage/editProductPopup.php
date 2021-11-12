@@ -248,7 +248,7 @@
                             </div>
                             <div class="img_container">
                                 <?php 
-                                    echo '<img id="output"  src="../../masterial/image/thuc_don/'.$image.'"/>';
+                                    echo '<img id="output"  src="../../masterial/image/product_image/'.$image.'"/>';
                                 ?>
                                 <script>
                                     var loadFile = function(event) {

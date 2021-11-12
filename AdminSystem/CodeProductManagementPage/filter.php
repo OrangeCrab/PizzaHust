@@ -17,7 +17,7 @@
         echo '
         <tr>
             <td>'.(++$index).'</td>
-            <td><img src="../../masterial/image/thuc_don/'.$row['image'].'" style="height: auto; width: 100px;"/></td>
+            <td><img src="../../masterial/image/product_image/'.$row['image'].'" style="height: auto; width: 100px;"/></td>
             <td>'.$row['title'].'</td>
             <td>'.$row['description'].'</td>
             <td>'.getStatusName($row['status_id']).'</td>
@@ -47,7 +47,7 @@
     {
         $sql = "select name from size where id='$size_id'";
         $result = getArrResult($sql)['name'];
-        if ($result != '') {
+        if ($result != 'null') {
             return '_'.$result;
         }
         else return '';

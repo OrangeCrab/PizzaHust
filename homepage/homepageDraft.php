@@ -55,25 +55,94 @@
 
 
             <div class="menu" id="menu"> 
-                <div class="container">                            
-                            <?php
-                                $index = 0;
-                                foreach($data as $item) {
-                                    echo'<div class="item">
-                                        '.(++$index).'
-                                        <h2 class="name">'.$item['title'].'</h2>
-                                        <p class="info">'.$item['description'].'</p>
-                                        <span class="price">'.number_format($item['price']).' đ</span>
-                                        <img class="product_img" src="'.$item['thumbnail'].'"/>
-                                    </div>';
-                                }
-                            ?>     
+                <br><br><br><br>
+                <div class="container">
 
-                                            
-                     
+                    <div class="product">
+<!-- ---------------------------------------------- -->
 
-                       
-                    
+                        <?php
+                        // $index = 0;
+                        foreach($data as $item) {
+                            echo 
+                            '<div class="product_card">
+                                <h2 class="name">'.$item['title'].'</h2>
+                                <p class="info">'.$item['description'].'</p>
+                                <span class="price">'.number_format($item['price']).' đ</span>
+                                <a class="choose_btn">Chọn</a>
+                                <img class="product_img" src="'.$item['thumbnail'].'"/>
+                            </div>
+                            
+                            <div class="info_view">
+                                <div class="info_card">
+                                    <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
+                                    <div class="info_img"><img src="'.$item['thumbnail'].'"></div>
+                                    
+                                    
+                                    <div class="info">
+                                        <div class="part">
+                                            <h2>'.$item['title'].'</h2>
+                                            <p>'.$item['description'].'</p>
+                                            <hr>
+                                        </div>
+                                        
+                                        <div class="part">
+                                            <h3>Size</h3>
+                                            <form>
+                                                <input type="radio" id="S" name="size" value="S">
+                                                <label for="S">S</label>
+                                                <span>99 000đ</span>
+                                                <br>
+                                                <input type="radio" id="M" name="size" value="M">
+                                                <label for="M">M</label>
+                                                <span>109 000đ</span>
+                                                <br>
+                                                <input type="radio" id="L" name="size" value="L">
+                                                <label for="L">L</label>
+                                                <span>119 000đ</span>
+                                            </form>
+                                            <hr>
+                                        </div>
+
+                                        <div class="part">
+                                            <h3>Loại đế</h3>
+                                            <form>
+                                                <input type="radio" id="gion" name="de" value="Gion">
+                                                <label for="gion">Giòn</label><br>
+                                                <input type="radio" id="men" name="de" value="mem">
+                                                <label for="mem">Mềm truyền thống</label><br>
+                                            </form>
+                                            <hr>
+                                        </div>
+                                        <div class="part">
+                                            <h3>Size</h3>
+                                            <form>
+                                                <input type="checkbox" id="1" name="topping" value="1">
+                                                <label for="1">Phô mai phủ</label>
+                                                <span>9 000đ</span>
+                                                <br>
+                                                <input type="checkbox" id="2" name="topping" value="2">
+                                                <label for="2">Phô mai viền</label>
+                                                <span>9 000đ</span>
+                                                <br>
+                                                <input type="checkbox" id="3" name="topping" value="3">
+                                                <label for="3">Double sốt</label>
+                                                <span>9 000đ</span>
+                                            </form>
+                                            <hr>
+                                        </div>
+                                        <div class="final">
+                                            <span>SL:</span>
+                                            <input type="number" id="quantity" name="quantity" min="1" max="5">
+                                            <span class="price">'.number_format($item['price']).'</span>
+                                            <a href="#" class="add-card-btn">Thêm vào giỏ</a> 
+                                        </div>                          
+                                    </div>
+                                </div>
+                            </div> ';
+                        }
+                        ?>                   
+                    </div>
                 </div>
         
                 <script text="text/javascript">
@@ -113,7 +182,7 @@
 
         <header>
                 <ul class="top_bar">
-                    <li><a href="../AdminSystem/login_form.php" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>    
+                    <li><a href="login_user.php" class="login"><i class="fa fa-user" aria-hidden="true"></i></a></li>    
                     <li><a href="#contact">LIÊN HỆ</a></li>
                     <li><a href="../cart/cart.html"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                     <li><a href="#menu">THỰC ĐƠN</a></li>

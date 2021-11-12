@@ -23,7 +23,7 @@
             <td>'.$row['description'].'</td>
             <td>'.getStatusName($row['status_id']).'</td>
             <td>'.number_format($row['price']).' VNĐ</td>
-            <td>'.getCategoryName($row['category_id']).'</td>
+            <td>'.getCategoryName($row['category_id']).''.getSizeName($row['size_id']).'</td>
             <td style="width: 20px">
             <a href="editProductPopup.php?id='.$row['id'].'"><button class="btn btn-warning">Sửa</button></a>
             </td>
@@ -45,5 +45,14 @@
         $sql = "select name from category where id='$category_id'";
         
         return getArrResult($sql)['name'];
+    }
+    function getSizeName($size_id)
+    {
+        $sql = "select name from size where id='$size_id'";
+        $result = getArrResult($sql)['name'];   
+        if ($result != '') {
+            return '_'.$result;
+        }
+        else return '';
     }
 ?>

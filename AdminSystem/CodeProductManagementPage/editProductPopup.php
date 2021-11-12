@@ -49,6 +49,13 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <title>Sửa sản Phẩm</title>
         <style>
+            @font-face {
+                font-family: Monsterrat;
+                src: url("../../masterial/font/Montserrat-Medium.ttf");
+            }
+            body{
+                font-family: Monsterrat;
+            }
             .product_popup{
                 width: 100%;
                 height: 100%;

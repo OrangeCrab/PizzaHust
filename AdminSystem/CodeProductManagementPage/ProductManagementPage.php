@@ -1,5 +1,5 @@
 <?php
-	$id = $msg = $title = $price  = $status_id = $category_id = $date = $image = $description='';
+	$id = $msg = $title = $price  = $category_id = $date = $image = $description=$name='';
 
     require_once('../../database/utility.php');   
 	require_once('../../database/define.php');
@@ -16,7 +16,6 @@
 			$category_id = getArrResult($sql)['category_id'];
 			$price = getArrResult($sql)['price'];
 			$title = getArrResult($sql)['title'];
-			$status_id = getArrResult($sql)['status_id'];
 			$description = getArrResult($sql)['description'];
             $image = getArrResult($sql)['image'];
             
@@ -28,10 +27,10 @@
 	}
 
 	$sql = "select * from category";
-	//var_dump($sql);
 	$categoryItems = executeResult($sql);
-	$sql = " select *from status ";
-	$statusList = executeResult($sql);
+
+    $sql = "select * from size";
+    $sizeList = executeResult($sql);
 
 ?> 
 
@@ -56,6 +55,8 @@
         <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"> -->
         <link rel="stylesheet" href="product_management.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+
+        <script src="jquery.tabledit.min.js"></script>            
         <title>Product Management</title>
     </head>
     <body>
@@ -99,11 +100,14 @@
                     </div>
                     <div class="wrap_btn">
                         <button class="btn btn-success add_button">Thêm sản phẩm</button>
-                    </div>  
+                    </div> 
+                    <div class="wrap_plinth">
+                        <a href="plinth.php"><button class="btn" style="color:white">Đế Pizza</button></a>
+                    </div>
                 </div>                 
                 
                 <div id="table_panel">
-                    <table class="table table-bordered table-hover" >
+                    <table class="table table-bordered table-hover" id="main_table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -132,12 +136,12 @@
                         <div class="left_div">
                             <div class="form_group" style="top: 5%">
                                 <label for="usr">Tên sản phẩm:</label>
-                                <input required="true" type="text" class="form-control" id="usr" name="title" value="<?=$title?>">
+                                <input required="true" type="text" id="usr" name="title" value="<?=$title?>">
                                 <input type="text" name="id" value="<?=$id?>" hidden="true">
                             </div>
                             
                             <div class="form_group" style="top: 20%">
-                                <label for="usr">Loại Sản Phẩm:</label>
+                                <label for="usr">Loại sản phẩm:</label>
                                 <select class="form-control" name="category_id" id="category_id" required="true">
                                     <option value="">-- Chọn --</option>
                                     <?php
@@ -151,30 +155,21 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="form_group" style="top: 35%">
-                                <label for="description">Mô tả sản phẩm:</label>
-                                <input required="true" type="text" class="form-control" id="description" name="description" value="<?=$description?>">
+                            <div class="size_div_wrap">
+                                <?php
+                                    foreach ($sizeList as $size ) {
+                                        echo'
+                                            <div class="size_div">
+                                                <label style="width:20%">'.$size['name'].'</label>
+                                                <input type="checkbox" name="size[]" value="'.$size['name'].'" id="'.$size['id'].'">
+                                                <label style="margin-left:8%;"> Giá: </label>
+                                                <input type="number" style="width:40%;"  name="'.$size['name'].'">
+                                            </div>
+                                        ';
+                                    }
+                                ?>
                             </div>
                             
-                            <div class="form_group"style="top: 50%">
-                                <label for="status">Trạng thái:</label>
-                                <select class="form-control" name="status_id" id="status_id" required="true">
-                                    <option value="">-- Chọn --</option>
-                                    <?php
-                                        foreach($statusList as $status) {
-                                            if($status['id'] == $status_id) {
-                                                echo '<option selected value="'.$status['id'].'">'.$status['status'].'</option>';
-                                            } else {
-                                                echo '<option value="'.$status['id'].'">'.$status['status'].'</option>';
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="form_group" style="top: 65%">
-                                <label for="price">Giá:</label>
-                                <input required="true" type="number" class="form-control" id="price" name="price" value="<?=$price?>">
-                            </div>
                         </div>
                         <div class="right_div">
                             <div class="title_of_img_card">
@@ -195,6 +190,10 @@
                                     };
                                 </script>
                             </div>
+                            <div class="description_div">
+                                <label for="description" style="position:absolute; width:20%">Mô tả:</label>
+                                <input style="position:absolute; width:70%; left:20%" required="true" type="text" id="description" name="description" value="<?=$description?>">
+                            </div>
                         </div>
                         <div class="bottom_div">
                             <button class="btn btn-success" name="confirm">Xác Nhận</button>
@@ -203,6 +202,7 @@
                 </div>
             </div>
         </div>
+        
         <script src="product_management.js"></script>
     </body>
 </html>

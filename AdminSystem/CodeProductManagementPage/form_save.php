@@ -12,14 +12,16 @@ if(!empty($_POST)) {
 	if($id > 0) {
 		
 		$status_id = getPost('status_id');
+		$getImage = "select image from product where id=$id";
+		$result = getArrResult($getImage);
+		$getImage = $result['image'];
 		if($image != '') {
+			$dir = "../../masterial/image/product_image";
+			unlink($dir.'/'.$getImage);
 			$sql = "update product set image = '$image', title = '$title', price = $price, 
 			status_id= '$status_id', description = '$description',category_id = '$category_id' 
 			where id = $id";
 		} else {
-			$getImage = "select image from product where id=$id";
-			$result = getArrResult($getImage);
-			$getImage = $result['image'];
 			$sql = "update product set image = '$getImage', title = '$title', price = $price, status_id = $status_id, 
 			description = '$description',category_id = '$category_id' where id = $id";
 		}

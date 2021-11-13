@@ -16,6 +16,12 @@ if(!empty($_POST)) {
 function deleteProduct() {
 	$id = getPost('id');
 	$sql = "delete from product where id = $id ";
-	//$sql = "update product set deleted = 1, updated_at = '$updated_at' where id = $id";
+
+	$query = "SELECT * FROM product WHERE id = $id";
+	$get_title = getArrResult($query)['title'];
+	$get_image = getArrResult($query)['image'];
+	$dir = "../../masterial/image/product_image";
+	unlink($dir.'/'.$get_image);
+	
 	execute($sql);
 }

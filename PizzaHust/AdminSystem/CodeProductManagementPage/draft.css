@@ -56,6 +56,7 @@ header{
 
     .logout_btn:hover{
         background: #04AA6D;
+        text-decoration: none;
     }
 
 .work_screen{
@@ -105,5 +106,6 @@ header{
         width: 82%;
         height: 100%;
         left: 18%;
+        overflow-y: auto;
         background-color: #f2f2f2;
     }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="invoice_management.css">
     <link rel="stylesheet" href="../CodeProductManagementPage/draft.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
@@ -21,24 +22,23 @@
 
     <div class="work_screen">
         <div class="left_bar">
-            <a href="../CodeProductManagementPage/draft.html" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
-            <a href="../CodeProductManagementPage/ProductManagementPage.html" target="_self"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
+            <a href="../DashBoard/DashBoard.html" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
+            <a href="../CodeProductManagementPage/ProductManagementPage.php" target="_self"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
             <a href="#" class="active"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
-            <!-- <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span>Báo Cáo</span></a> -->
         </div>
 
         <div id="main_center_panel">
             <h1>Danh sách đơn hàng</h1>
 
             <div class="table_wrap">
-                <nav>
+                <!-- <nav>
                     <ul>
                         <li><button>Tất cả đơn hàng</button></li>
                         <li><button>Đơn hàng mới</button></li>
                         <li><button>Đơn chờ thanh toán</button></li>
                         <li><button>Đơn đã thanh toán</button></li>
                     </ul>
-                </nav>
+                </nav> -->
 
                 <div class="Search DieuKienLoc">
                     <img src="../../masterial/image/iconAdminPage/screeningLogo.svg" alt="Loc">
@@ -46,102 +46,117 @@
                 </div>
                 <div class="Search TimKiem">
                     <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem">
-                    <input type="text" placeholder="Tìm kiếm"/>
+                    <select name="orderListHeadOption" id="orderListHeadOption">
+                        <option value="ma">Mã</option>
+                        <option value="ngaytao">Ngày tạo</option>
+                        <option value="khachhang">Khách hàng</option>
+                        <option value="sodienthoai">Số điện thoại</option>
+                        <option value="diachi">Địa chỉ</option>
+                        <option value="danhsachdathang">Danh sách đặt hàng</option>
+                        <option value="trangthai">Trạng thái</option>
+                        <option value="tongtien">Tổng tiền</option>
+                    </select>
+                    <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
                 </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Mã</th>
-                            <th>Ngày tạo</th>
-                            <th>Khách hàng</th>
-                            <th>Trạng thái</th>
-                            <th>Tổng tiền</th>
-                        </tr>
-                    </thead>
-
+                <table id="OrderList" class="OrderList">
+                    <tr class="Orderlist_head">
+                        <th onclick="sortTable('OrderList', 0)">Mã</th>
+                        <th onclick="sortTable('OrderList', 1)">Ngày tạo</th>
+                        <th onclick="sortTable('OrderList', 2)">Khách hàng</button></th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th onclick="sortTable('OrderList', 5)">Danh sách đặt hàng</th>
+                        <th>Trạng thái</th>
+                        <th>Tổng tiền</th>
+                    </tr>
+                    
                     <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>Tran Hoang</td>
+                        <td><a href="#" onclick="openPopup()">yyyyyy</a></td>
+                        <td>10/19/2021</td>
+                        <td>Mr.Abc</td>
+                        <td>0123456</td>
+                        <td>So 1 Minh Khai</td>
+                        <td>Pizza, 3</td>
                         <td>Chờ thanh toán</td>
                         <td>100 000 đ</td>
                     </tr>
 
                     <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>Tran Hoang</td>
-                        <td>Chờ xử lý</td>
+                        <td><a href="#" onclick="openPopup()">yyyyyy</a></td>
+                        <td>10/19/2021</td>
+                        <td>Long Truong</td>
+                        <td>0654321</td>
+                        <td>So 243 Phuc Dong</td>
+                        <td>Chờ thanh toán</td>
                         <td>100 000 đ</td>
                     </tr>
 
                     <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
-                        <td>100 000 đ</td>
-                    </tr>
-
-                    <tr>
-                        <td><a href="">xxxxxx</a></td>
-                        <td>10/19/2021 23:09CH</td>
-                        <td>uvuvwevwevwe onyetenyevwe ugwemuhwem osas</td>
-                        <td>Đã thanh toán</td>
+                        <td><a onclick="openPopup()">yyyyyy</a></td>
+                        <td>10/19/2021</td>
+                        <td>YO NEY</td>
+                        <td>0654321</td>
+                        <td>SUNNY INNIT</td>
+                        <td>Chờ thanh toán</td>
                         <td>100 000 đ</td>
                     </tr>
 
                 </table>
-
-                <div class="table-page">
-                    <button id="left"></button>
-                    <p><input type="text"> / 6</p>
-                    <button></button>
-                </div>
             </div>
         </div>
     </div>
-    
+
+    <div id="popup_background" class="popup_background">
+        <div class="popup_panel">
+                <div class="popup_close" onclick="closePopup()">&times;</div>      
+
+                <div class="popup_name">
+                        <p>Họ và tên:</p>
+                        <p>Địa chỉ:</p>         
+                </div>
+                <div class="popup_id">
+                    <p>Mã đơn hàng:</p>
+                    <p>Ngày mua:</p>
+                </div>
+                
+                <table class="popup_table">
+                    <tr>
+                        <th>Mã</th>
+                        <th>Tên món ăn</th>
+                        <th>Số lượng</th>
+                        <th>Giá tiền</th>
+                        <th>Đặc tả</th>
+                        <th>Tổng giá</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>xxxxxx</td>
+                        <td>pizza</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Không</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>xxxxxx</td>
+                        <td>pizza</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Không</td>
+                        <td>1</td>
+                    </tr>
+                    <tr class="sum">
+                        <td colspan="5">Tổng cộng</td>
+                        <td>2</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="popup_confirmation"></div>
+        </div>
+    </div>
+
+    <script src="invoice_management.js"></script>
+
 </body>
 </html>

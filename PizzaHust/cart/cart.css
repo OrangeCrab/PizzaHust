@@ -1,0 +1,187 @@
+@font-face {
+    font-family: Montserrat;
+    src: url('../masterial/font/Montserrat-Medium.ttf');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    background-image: url('../masterial/image/bgrhomepage/bgrhomepage.webp');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+header{
+    position: fixed;
+    margin: 0;
+    height: 80px;
+    width: 100%;
+    z-index: 10000;
+}   
+    .top_bar{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #000000;
+        opacity: 0.9;
+    }  
+    .top_bar li {
+        float: right;
+    }    
+    .top_bar li a {
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 25px 30px;
+        text-decoration: none;
+        font-size: 18px;
+        font-family: 'Monsterrat',sans-serif;
+        font-weight: bolder;
+        letter-spacing: 2px;
+        transition: 0.5s;
+        transition-property: background-color;
+    }
+    .top_bar li a:hover:not(.active) {
+        background-color: #404040;
+    }
+    .top_bar li a.active {
+        color: #F98607;
+    }
+
+.cart{
+    width: 64%;
+    margin-left: 18%;
+    background-color: #f2f2f2;
+    position: absolute;
+    display: block;
+    font-family: Montserrat;
+    height: fit-content;
+    box-shadow: 0px 5px 10px #404040;
+}
+    .cart .blank{
+        position: fixed;
+        height: 80px;
+        width: 60%;
+        background-color: #f2f2f2;
+    }
+    .cart h2{
+        margin-top: 80px;
+        font-size: 18px;
+        color: #404040;
+        margin-left: 10px;
+    }
+    .guest_cart{
+        overflow: auto;   
+        width: 100%;
+        height: fit-content;
+    }
+    .cart .product{
+        display: flex;
+        width: 80%;
+        height: 100px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #A80000;
+        margin-bottom: 20px;
+        margin-left: 10%;
+    }
+    .cart .product img{
+        width: 150px;
+        height: 100px;
+
+    }
+    .cart .product .info{
+        display: block;
+        width: 420px;
+        font-size: 14px;
+        line-height: 25px;
+        margin-top: -20px;
+        margin-left: 30px;
+    }
+    .cart .product .info .field{
+        font-weight: bolder;
+    }
+    .cart .product .info .price{
+        float: right;
+    }
+    .cart .suggest{
+        width: 80%;
+        height: 120px;
+        margin-left: 10%;
+        border-bottom: 1px solid #A80000;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .cart .suggest h3{
+        font-size: 14px;
+        height: 20px;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        color: #404040;
+    }
+
+    .cart .suggest .suggest-product{
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 10px;
+    }
+    .cart .suggest img{
+        height: 80px;
+        width: 90%;
+        margin-top: 10px;
+    }
+    .info_pay{
+        margin-top: 10px;
+        display: flex;
+        margin-bottom: 20px;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .info_pay .guess_info{
+        width: 45%;
+        margin-left: 10%;
+        line-height: 30px;
+    }
+
+    .info_pay .guess_info input, select{
+        float: right;
+        width: 60%;
+        height: 20px;
+        margin-top: 4px;
+    }
+
+    .info_pay .pay{
+        width: 25%;
+        margin-left: 10%;
+        line-height: 30px;
+    }
+    .info_pay .field{
+        font-weight: bold;
+    }
+    .info_pay .pay .price{
+        float: right;
+    }
+    .info_pay .pay .buy{
+        margin-top: 12px;
+        width: 100%;
+        background-color: #A80000;
+        
+        border-radius: 10px;
+        text-align: center;
+        padding: 7px;
+    }
+    .info_pay .pay .buy a{
+        color: #f2f2f2;
+    } 
+    .form__row{
+        margin-bottom: 2px;
+    }

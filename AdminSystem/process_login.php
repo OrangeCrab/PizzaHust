@@ -22,7 +22,7 @@ $password = $user_name= $msg = '';
         else{
             // dang nhap thanh cong
             //echo"thành công";
-            header('location: Dashboard/DashBoard.html');
+            header('location: Dashboard/DashBoard.php');
             die();
         }   
      }

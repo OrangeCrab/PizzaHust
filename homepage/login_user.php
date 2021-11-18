@@ -22,8 +22,8 @@ require_once ('process_user_login.php');
 
         <form class="box" action="" method="post">
             <h2>LOGIN</h2>
-            <input type="text" name="username" id ="username" placeholder="Username">       
-            <input type="password" name="password" id ="password" placeholder="Password">
+            <input type="text" name="username" id ="username" placeholder="Username" required="true">       
+            <input type="password" name="password" id ="password" placeholder="Password" required="true">
             <!-- <img type = "submit" src="../../masterial/image/iconAdminPage/login.svg" alt=""> -->
             <input type="submit" name="" value="Login">
             <!-- <a href="../AdminSystem/DashBoard/DashBoard.html" type="submit" class="button btn btn-primary active">LOGIN</a> -->

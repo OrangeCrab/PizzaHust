@@ -3,7 +3,6 @@
 require_once('../database/dbhelper.php');
 require_once('../database/utility.php');
 require_once ('process_login.php');
-
 ?>
 <!DOCTYPE html>
 <html>

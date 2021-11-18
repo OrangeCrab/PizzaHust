@@ -20,45 +20,62 @@ require_once ('process_register.php');
         
 
 
-        <form class="box" action="" method="post" style="height: fit-content;" onsubmit="register()" >
-            <h2>LOGIN</h2>
+        <form class="box" action="" method="post" style="height: fit-content;" >
+            <h2>REGISTER</h2>
             <input type="text" name="username-register" id ="username" placeholder="Username" required = "true">       
             <input type="password" name="password-register" id ="password" placeholder="Password" required = "true">
-            <input type="password" name="password-confirm" id ="password-confirm" placeholder="Confirm_password" required = "true" onblur="mouseover()">
-            <input type="text" name="gmail" id ="gmail" placeholder="Gmail" required = "true" onblur="gmail()">
-            <p id="gmail-inform" style="color: red;"></p>
+            <input type="password" name="password-confirm" id ="password-confirm" placeholder="Confirm_password" required = "true" onblur="mouseover()" >
+            <p id="pass-inform" style="color: red; font-size: small;"></p>
+            <input type="text" name="gmail" id ="gmail" placeholder="Gmail" required = "true" onblur="gmail_check()">
+            <p id="gmail-inform" style="color: red; font-size: small;"></p>
             <!-- <img type = "submit" src="../../masterial/image/iconAdminPage/login.svg" alt=""> -->
-            <input type="submit" name="" value="Register" style="width: fit-content;">
+            <input type="submit" id="submit" name="" value="Register" style="width: fit-content;" >
             <!-- <a href="../AdminSystem/DashBoard/DashBoard.html" type="submit" class="button btn btn-primary active">LOGIN</a> -->
             
             
         </form>
-       
-        
-        <!-- <script>
+
+        <script>
             function mouseover(){
                 var password = document.getElementById("password").value;
-                var password_confirm = document.getElementById("password-confirm");
-                var gmail = document.getElementById("gmail").value;
-                if(password !== password_confirm){
-                    alert("Mật khẩu nhập không khớp !!!");
-                    password_confirm.textContent = null;
+                var password_confirm = document.getElementById("password-confirm").value;
+                var password_inform = document.getElementById("pass-inform");
+                var submit = document.getElementById("submit");
+               if(password !== password_confirm){
+                    password_inform.textContent = "Mật khẩu không khớp !";
+                    submit.disabled = true;
                 }
+                else{
+                    submit.disabled = false;
+                    password_inform.textContent = "";
+                }
+                
             }
-            function gmail(){
-                var gmail = document.getElementById("gmail").value;
-                var gmail_inform = document.getElementById("gmail-inform");
-                const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
-                var check = regex.test(gmail);
 
+            function gmail_check(){
+                var gmail_text = document.getElementById("gmail").value;
+                var gmail_inform = document.getElementById("gmail-inform");
+                var submit = document.getElementById("submit");
+                const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/ ;
+                var check = regex.test(gmail_text);
                 if(!check){
                     gmail_inform.textContent = "Trường này phải là gmail !";
+                    submit.disabled = true;
+                    
                 }
+               else{
+                submit.disabled = false;
+                 gmail_inform.textContent = "";
+               }
             }
-        </script> -->
+
+        </script>
+        <!-- <script src="register.js"></script> -->
+        
     </body>
 
 </html>
+
 
 
 

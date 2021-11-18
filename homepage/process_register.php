@@ -8,8 +8,6 @@ $gmail_check = false;
     if(!empty($_POST)){
         //Neu co
         $user_name_register = getPost('username-register');
-        $password_register = getPost('password-register');
-        $password_confirm = getPost("password-confirm");
         $gmail = getPost('gmail');
         
         // chay cau lenh sql de lay ra gia tri trong database co gia tri bang gia tri nguoi dung nhap vao
@@ -18,35 +16,16 @@ $gmail_check = false;
 
 
         // neu khong co nguoi dung nao
-        if(empty($userExist)){
-            if($password_register == $password_confirm){
-                $email = test_input($gmail);
-                // check if e-mail address is well-formed
-                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $sql = "insert into user_account (user_name, password,gmail) values ('$user_name_register','$password_register','$gmail')";
-                    execute($sql);
+        if(empty($userExist)){           
+            $sql = "insert into user_account (user_name, password,gmail) values ('$user_name_register','$password_register','$gmail')";
+            execute($sql);
 
-                    header("location: homepageDraft.php");
-                    die();
-                }
-                else{
-                    echo "sai roi";
-                }
-
-            }
-            else{
-                echo '
-                   <script>
-                        alert("Passwords are not same !");
-                   </script>
-              
-            ';
-            }
-            
+            header("location: homepageDraft.php");
+            die();           
         }
         else{
             echo '
-                <script>
+                <script type="text/javascript">
                     alert("This user name did exist");
                 </script>
               

@@ -16,7 +16,8 @@ $password = $user_name= $msg = '';
 
         // neu khong co nguoi dung nao
         if($userExist == null){
-            $msg = "Đăng nhập không thành công, vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu";
+            header('location: forget.php');
+            die();
            // dang nhap khong thanh cong 
         }
         else{
@@ -24,22 +25,8 @@ $password = $user_name= $msg = '';
             //echo"thành công";
             header('location: homepageDraft.php');
             die();
-        }   
-
-        $sql = "select * from user_account where user_name = '$user_name' and password = '$password'";
-        $userExist1 = executeResult($sql);
-
-
-        // neu khong co nguoi dung nao
-        if($userExist1 == null){
-            $msg = "Đăng nhập không thành công, vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu";
-           // dang nhap khong thanh cong 
         }
-        else{
-            // dang nhap thanh cong
-            //echo"thành công";
-            header('location: homepageDraft.php');
-            die();
-        }   
+
+       
      }
 ?>

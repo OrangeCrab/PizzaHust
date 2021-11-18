@@ -18,7 +18,7 @@
         echo '
         <tr>
             <td>'.(++$index).'</td>
-            <td><img src="../../masterial/image/product_image/'.$row['image'].'" style="height: auto; width: 100px;"/></td>
+            <td><img src="../../masterial/image/thuc_don/'.$row['image'].'" style="height: auto; width: 100px;"/></td>
             <td>'.$row['title'].'</td>
             <td>'.$row['description'].'</td>
             <td>'.getStatusName($row['status_id']).'</td>

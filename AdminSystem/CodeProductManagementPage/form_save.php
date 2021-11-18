@@ -16,7 +16,7 @@ if(!empty($_POST)) {
 		$result = getArrResult($getImage);
 		$getImage = $result['image'];
 		if($image != '') {
-			$dir = "../../masterial/image/product_image";
+			$dir = "../../masterial/image/thuc_don";
 			unlink($dir.'/'.$getImage);
 			$sql = "update product set image = '$image', title = '$title', price = $price, 
 			status_id= '$status_id', description = '$description',category_id = '$category_id' 
@@ -27,7 +27,7 @@ if(!empty($_POST)) {
 		}
 		
 		execute($sql);
-		move_uploaded_file($image_tmp_name, "../../masterial/image/product_image/$image");
+		move_uploaded_file($image_tmp_name, "../../masterial/image/thuc_don/$image");
 		header('location: ProductManagementPage.php');
 		die();
 	} else {
@@ -40,7 +40,7 @@ if(!empty($_POST)) {
 			$sql = "insert into product(image, title, price, status_id, description, category_id, size_id) values ('$image', '$title', '$price', '1', '$description', '$category_id', '$size_id')";
 			execute($sql);
 		}
-		move_uploaded_file($image_tmp_name, "../../masterial/image/product_image/$image");
+		move_uploaded_file($image_tmp_name, "../../masterial/image/thuc_don/$image");
 		header('location: ProductManagementPage.php');
 		die();
 	}

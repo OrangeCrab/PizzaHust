@@ -80,26 +80,29 @@
                         <div class="category" id="pizza">
                             <hr>
                             <div class="list">
+                                <!-- ---------------------------------------------- -->
                                 <div class="product">
-                                    <!-- ---------------------------------------------- -->
-
                                     <?php
-                                    // $index = 0;
                                     foreach($data as $item) {
-                                        echo 
+                                        echo                                 
                                         '<div class="product_card">
                                             <img class="product_img" src="'.$item['productImg'].'"/>
                                             <h2 class="name">'.$item['productName'].'</h2>
                                             <p class="info">'.$item['description'].'</p>
                                             <span class="price">'.number_format($item['productPrice']).' đ</span>
                                             <a class="choose_btn">Chọn</a>
-                                        </div>
-                                        
-                                        <div class="info_view">
+                                        </div>';
+                                    }
+                                    ?>
+                                </div> 
+                                 
+                                <?php
+                                    foreach($data as $item) {
+                                        echo                                 
+                                        '<div class="info_view">
                                             <div class="info_card">
                                                 <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
                                                 <div class="info_img"><img src="'.$item['productImg'].'"></div>
-                                                
                                                 
                                                 <div class="info">
                                                     <div class="part">
@@ -161,10 +164,9 @@
                                                     </div>                          
                                                 </div>
                                             </div>
-                                        </div> ';
+                                        </div>';
                                     }
-                                    ?>                   
-                                </div>
+                                    ?>                     
                             </div>
 
                         </div>

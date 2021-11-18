@@ -25,7 +25,8 @@ CREATE TABLE `product` (
   `productPrice` int,
   `statusID` int,
   `productImg` varchar(500),
-  `description` varchar(255)
+  `description` varchar(255),
+  `sizeID` int
 );
 
 CREATE TABLE `gallery` (
@@ -45,7 +46,7 @@ CREATE TABLE `order` (
   `status` int,
   `payment` int,
   `size_id` int,
-  `plinth_id` int,
+  `plinth_id` int
 );
 
 CREATE TABLE `orderDetail` (
@@ -72,16 +73,34 @@ CREATE TABLE `plinth`(
   `price` int
 );
 
-ALTER TABLE `product` ADD FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`);
+CREATE TABLE `voucher`(
+  `code` varchar(20) PRIMARY KEY,
+  `picture` varchar(100),
+  `infomation` varchar(250),
+  `discount` int
+);
 
-ALTER TABLE `gallery` ADD FOREIGN KEY (`productID`) REFERENCES `product` (`productID`);
+CREATE TABLE `pizzabase`(
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(20),
+  `price` int
+);
 
-ALTER TABLE `orderDetail` ADD FOREIGN KEY (`productID`) REFERENCES `product` (`productID`);
+ALTER TABLE `product` ADD FOREIGN KEY (`categoryID`) REFERENCES `category` (`id`);
 
-ALTER TABLE `orderDetail` ADD FOREIGN KEY (`orderID`) REFERENCES `order` (`orderID`);
+ALTER TABLE `gallery` ADD FOREIGN KEY (`productID`) REFERENCES `product` (`id`);
 
-ALTER TABLE `order` ADD FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
+ALTER TABLE `orderDetail` ADD FOREIGN KEY (`productID`) REFERENCES `product` (`id`);
 
-ALTER TABLE `product` ADD FOREIGN KEY (`statusID`) REFERENCES `status` (`statusID`);
+ALTER TABLE `orderDetail` ADD FOREIGN KEY (`orderID`) REFERENCES `order` (`id`);
 
-ALTER TABLE `product` ADD FOREIGN KEY (`size_id`) REFERENCES `size` (`id`);
+ALTER TABLE `order` ADD FOREIGN KEY (`userID`) REFERENCES `user` (`id`);
+
+ALTER TABLE `product` ADD FOREIGN KEY (`statusID`) REFERENCES `status` (`id`);
+
+ALTER TABLE `product` ADD FOREIGN KEY (`sizeID`) REFERENCES `size` (`id`);
+
+
+
+
+-- ../masterial/image/thuc_don/5_loai_thit.jpg

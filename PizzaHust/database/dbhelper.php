@@ -29,7 +29,6 @@ function executeResult($sql){
     $data = [];
     while(($row = mysqli_fetch_array($resultset,1)) != null){
         $data[] = $row;
-        
     }
 
     //dong ket noi

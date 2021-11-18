@@ -16,7 +16,7 @@ require_once ('process_login.php');
         <img class="background_img" src="../masterial/image/bgrAdminPage/bgrLogin.jpg" alt="">
         <div class="screen"></div>
         
-        <a href="../homepage/homepageDraft.php"><img class="logo" src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo"></a>
+        <a href="../homepage/homepage.php"><img class="logo" src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo"></a>
         
 
 

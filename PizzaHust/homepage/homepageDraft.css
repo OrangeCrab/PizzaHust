@@ -11,7 +11,6 @@ html{
 }
 
 
-
 body{
     margin: 0;
     background-image: url('../masterial/image/bgrhomepage/bgrhomepage.webp');
@@ -209,14 +208,18 @@ header{
     }
     .menulist .container .category .list{
         position: relative;
-        display: flex;
+        /* display: flex; */
         /* justify-content: center; */
         /* align-items: center; */
         width: 100%;
         height: fit-content;
+
     }
     .menulist .container .category .product {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        justify-content: center;
     }
     .menulist .container .category .product .product_card{
         background: #f2f2f2;
@@ -278,7 +281,7 @@ header{
     }
     
     /*--------------- style for popup view ------------------------*/
-    .product .info_view{
+    .info_view{
         z-index: 2;    
         position: fixed;
         background-color: rgba(0, 0, 0, 0.9);
@@ -292,22 +295,22 @@ header{
         visibility: hidden;
         transition: 0.5s;
     }
-    .product .info_view.active{
+    .info_view.active{
         opacity: 1;
         visibility: visible;
     }
-    .product .info_view hr{
+    .info_view hr{
             width: 368px;
             border-color: #A80000; 
         }
-        .product .info_card{
+        .info_card{
             position: relative;
             display: flex;
             width: 700px;
             height: 600px;
             margin: 300px;
         }
-            .product .info_card .closeViewInfo_btn{
+            .info_card .closeViewInfo_btn{
                     color: #A80000;
                     z-index: 3;
                     position: absolute;
@@ -316,7 +319,7 @@ header{
                     margin: 20px;
                     cursor: pointer;
                 }
-            .product .info_card .info_img{
+            .info_card .info_img{
                 position: relative;
                 width: 270px;
                 height: 100%;
@@ -324,14 +327,14 @@ header{
                 border-bottom-left-radius: 5px;
                 border-top-left-radius: 5px;
             }
-            .product .info_card img{
+            .info_card img{
                 z-index: 2;
                 position: relative;
                 width: calc(height/2*3);
                 margin-left: -70%;
                 height: 100%;
             }
-            .product .info_card .info{
+            .info_card .info{
                 z-index: 2;
                 background: #f2f2f2;
                 display: inline-block;
@@ -342,42 +345,42 @@ header{
                 border-bottom-right-radius: 5px;
                 border-top-right-radius: 5px;
             }
-                .product .info_card .info h2{
+                .info_card .info h2{
                     font-size: 20px;
                     color: #404040;
                     padding-bottom: 10px;
                 }
-                .product .info_card .info p{
+                .info_card .info p{
                     font-size: 10px;
                     color: #404040;
                     padding-bottom: 10px;
                 }
     
-                .product .info_card .info .part form{
+                .info_card .info .part form{
                     padding-bottom: 10px;
                 }
-                    .product .info_card .info .part form{
+                    .info_card .info .part form{
                         /* line-height: 40px; */
                         padding-left: 50px;
                         font-size: 14px;
                     }
-                    .product .info_card .info .part h3{
+                    .info_card .info .part h3{
                         color: #404040;
                         font-size: 16px;
                         text-align: center;
                     }
-                    .product .info_card .info .part span{
+                    .info_card .info .part span{
                         float: right;
                     }
     
     
-            .product .info_card .info .final{
+            .info_card .info .final{
                 padding-top: 20px;
             }
-                .product .info_card .info .final input{
+                .info_card .info .final input{
                     padding: 2px 2px;
                 }
-                .product .info_card .info .final a{
+                .info_card .info .final a{
                     font-size: 14px;
                     float: right;
                     font-weight: 900;
@@ -387,7 +390,7 @@ header{
                     text-decoration: none;
                     border-radius: 5px;
                 }
-                .product .info_card .info .final .price{
+                .info_card .info .final .price{
                     font-size: 16px;
                     color: #f2f2f2;
                     background-color: #A80000;

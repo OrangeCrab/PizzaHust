@@ -1,5 +1,5 @@
 <?php
 define('HOST', 'localhost');
-define('DATABASE', 'quan_ly_cua_hang_pizza_hust');
+define('DATABASE', 'demo');
 define('USERNAME', 'root');
 define('PASSWORD', '');

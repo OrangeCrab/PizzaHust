@@ -66,5 +66,15 @@ foreach ($data as $row){
     </table>
 </div>
 <div class="popup_confirmation">
-    <p>{Xác nhận đơn hàng ở đây}</p>
+<input style= "background-color: #4CAF50; color: white; 
+ padding: 10px 20px; border: none; border-radius: 10px; "
+ onclick="change()" type="button" value="Xác nhận" id="button"></input>
+    <script> 
+    function change() 
+    {
+        var elem = document.getElementById("button");
+        if (elem.value=="Đã xác nhận") elem.value = "Xác nhận";
+        else elem.value = "Đã xác nhận";
+    }
+</script>
 </div>

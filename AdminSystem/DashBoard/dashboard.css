@@ -152,6 +152,7 @@ h1 {
 
 .details .recentCustomers{
     position: relative;
+    /* display: grid; */
     background: #fff;
     padding: 20px;
     min-height: 440px;

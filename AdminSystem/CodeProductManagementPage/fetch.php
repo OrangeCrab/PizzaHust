@@ -5,7 +5,7 @@
     if(isset($_POST["query"]))
     {
         $search = mysqli_real_escape_string($connect, $_POST["query"]);
-        $query = "SELECT * FROM product WHERE title LIKE '%".$search."%'";
+        $query = "SELECT * FROM product WHERE name LIKE '%".$search."%'";
     }
     else
     {
@@ -19,9 +19,9 @@
         <tr>
             <td>'.(++$index).'</td>
             <td><img src="../../masterial/image/thuc_don/'.$row['image'].'" style="height: auto; width: 100px;"/></td>
-            <td>'.$row['title'].'</td>
+            <td>'.$row['name'].'</td>
             <td>'.$row['description'].'</td>
-            <td>'.getStatusName($row['status_id']).'</td>
+            <td>'.getStatusName($row['status_product_id']).'</td>
             <td>'.number_format($row['price']).' VNĐ</td>
             <td>'.getCategoryName($row['category_id']).''.getSizeName($row['size_id']).'</td>
             <td style="width: 20px">
@@ -33,9 +33,9 @@
         </tr>
         ';
     }
-    function getStatusName($status_id)
+    function getStatusName($status_product_id)
     {
-        $sql = "select status from status where id='$status_id'";
+        $sql = "select status from status where id='$status_product_id'";
         
         return getArrResult($sql)['status'];
     }

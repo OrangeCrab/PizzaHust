@@ -18,7 +18,7 @@ function deleteProduct() {
 	$sql = "delete from product where id = $id ";
 
 	$query = "SELECT * FROM product WHERE id = $id";
-	$get_title = getArrResult($query)['title'];
+	//$get_title = getArrResult($query)['title'];
 	$get_image = getArrResult($query)['image'];
 	$dir = "../../masterial/image/thuc_don";
 	unlink($dir.'/'.$get_image);

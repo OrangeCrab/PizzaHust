@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="invoice_management.css">
-    <link rel="stylesheet" href="../CodeProductManagementPage/draft.css">
+    <link rel="stylesheet" href="../ProductManagementPage/draft.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PizzaHust Admin</title>
@@ -67,7 +67,7 @@
                 <table id="OrderList" class="OrderList">
                     <tr class="Orderist_head">
                         <th onclick="sortTable('OrderList', 0)">Mã</th>
-                        <th onclick="sortTable('OrderList', 1)">Ngày tạo</th>
+                        <th onclick="sortTable('OrderList', 1)">Thời gian tạo</th>
                         <th onclick="sortTable('OrderList', 2)">Khách hàng</th>
                         <th onclick="sortTable('OrderList', 3)">Số điện thoại</th>
                         <th onclick="sortTable('OrderList', 4)">Địa chỉ</th>
@@ -77,30 +77,34 @@
                     </tr>
 
                     <?php
-                        $sql_Order = "select *  from `order`";
+                        $sql_Order = "SELECT `order`.`id` AS id, `order`.`order_time` AS oTime, `order`.`fullname` AS oName, `order`.`phoneNumber` AS oPhone, 
+                            `order`.`address` AS oAddress, `status_order`.`status` AS oStatus, `order`.`payment` AS oMoney 
+                            FROM `order`, `status_order` 
+                            WHERE`order`.`status_order_id` = `status_order`.`id`;";
                         $data_Order = executeResult($sql_Order);
 
                         foreach ($data_Order as $item_Order) {
                             echo '<tr>
                                 <td><a href="#" onclick="openPopup(this)">'.$item_Order['id'].'</a></td>
-                                <td>'.$item_Order['order_date'].'</td>
-                                <td>'.$item_Order['fullname'].'</td>
-                                <td>'.$item_Order['phone_number'].'</td>
-                                <td>'.$item_Order['address'].'</td>';
+                                <td>'.$item_Order['oTime'].'</td>
+                                <td>'.$item_Order['oName'].'</td>
+                                <td>'.$item_Order['oPhone'].'</td>
+                                <td>'.$item_Order['oAddress'].'</td>';
                                 
                                 // In danh sach dat hang cua khach hang nay
-                                $sql_Detail = "select `order_detail`.`num` as num, `product`.`title` as title
-                                from (`order_detail` inner join `product` on `product`.`id` = `order_detail`.`product_id`) 
-                                where `order_id` = ".$item_Order['id'];
+                                $sql_Detail = "SELECT `product`.`name` AS pName, `order_detail`.`quatity` AS odQuantity 
+                                    FROM `order_detail`, `product` 
+                                    WHERE `product`.`id` = `order_detail`.`product_id` 
+                                    AND `order_id` = ".$item_Order['id'];
                                 $data_Detail = executeResult($sql_Detail);
                                 echo '<td>';
                                 foreach ($data_Detail as $item_Detail){
-                                    echo $item_Detail['title'].', '.$item_Detail['num'].'<br>';
+                                    echo $item_Detail['pName'].', '.$item_Detail['odQuantity'].'<br>';
                                 }
                                 echo '</td>';
 
-                                echo '<td>'.$item_Order['status'].'</td>
-                                <td>'.$item_Order['total_money'].'</td>
+                                echo '<td>'.$item_Order['oStatus'].'</td>
+                                <td>'.$item_Order['oMoney'].'</td>
                             </tr>';
 
                         }

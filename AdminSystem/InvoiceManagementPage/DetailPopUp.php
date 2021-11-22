@@ -7,18 +7,20 @@ require_once('../../database/dbhelper.php');
 $baseUrl = '../';
 $orderid = $_GET["orderid"];
 
-$sql = "select * from `order` where `order`.`id` = ".$orderid; 
+$sql = "SELECT *
+    FROM `order`
+    WHERE `order`.`id` = ".$orderid; 
 $data = executeResult($sql);
 
 foreach ($data as $row){
     echo '<div class="popup_name">
         <p>Tên khách hàng: '.$row['fullname'].'</p>
-        <p>Số điện thoại: '.$row['phone_number'].'</p>
+        <p>Số điện thoại: '.$row['phonenumber'].'</p>
         <p>Địa chỉ: '.$row['address'].'</p>
     </div>
     <div class="popup_id">
         <p>Mã đơn hàng: '.$row['id'].'</p>
-        <p>Ngày mua: '.$row['order_date'].'</p>
+        <p>Ngày mua: '.$row['order_time'].'</p>
     </div>';
 }
 ?>
@@ -28,33 +30,37 @@ foreach ($data as $row){
     <tr>
         <th>Mã</th>
         <th>Tên món ăn</th>
-        <th>Số lượng</th>
-        <th>Giá tiền</th>
         <th>Đặc tả</th>
+        <th>Giá tiền</th>
+        <th>Số lượng</th>
         <th>Tổng giá</th>
     </tr>
 
     <?php 
-        $sql = "select `product`.`id` as productid, `product`.`title` as title, `product`.`description` as productdesc,
-        `order_detail`.`price` as price, `order_detail`.`num` as num, `order_detail`.`total_money` as total
-        from (`order_detail` inner join `product` on `product`.`id` = `order_detail`.`product_id`) 
-        where `order_id` = ".$orderid;
+        $sql = "SELECT `product`.`id` AS pID, `product`.`name` AS pName, `size`.`name` AS size, `plinth`.`name` AS plinth, 
+            `order_detail`.`price` AS price, `order_detail`.`quatity` AS quantity 
+            FROM `order_detail`, `order`, `product`, `size`, `plinth` 
+            WHERE `order_detail`.`order_id` = `order`.`id` 
+            AND `product`.`id` = `order_detail`.`product_id` 
+            AND `order`.`size_id` = `size`.`id` 
+            AND `order`.`plinth_id` = `plinth`.`id` 
+            AND `order`.`id` = ".$orderid;
 
-        $data = executeResult($sql);
+        $dataOrder = executeResult($sql);
 
         $total_money = 0;
 
-        foreach ($data as $item){
+        foreach ($dataOrder as $item){
             echo '<tr>
-                <td>'.$item['productid'].'</td>
-                <td>'.$item['title'].'</td>
-                <td>'.$item['num'].'</td>
+                <td>'.$item['pID'].'</td>
+                <td>'.$item['pName'].'</td>
+                <td>Size: '.$item['size'].'<br>Đế: '.$item['plinth'].'</td>
                 <td>'.$item['price'].'</td>
-                <td>'.$item['productdesc'].'</td>
-                <td>'.$item['total'].'</td>
+                <td>'.$item['quantity'].'</td>
+                <td>'.($item['price'] * $item['quantity']).'</td>
             </tr>';
 
-            $total_money += $item['total'];
+            $total_money += ($item['price'] * $item['quantity']);
         }
 
         echo '<tr class="sum">
@@ -66,15 +72,9 @@ foreach ($data as $row){
     </table>
 </div>
 <div class="popup_confirmation">
-<input style= "background-color: #4CAF50; color: white; 
- padding: 10px 20px; border: none; border-radius: 10px; "
- onclick="change()" type="button" value="Xác nhận" id="button"></input>
-    <script> 
-    function change() 
-    {
-        var elem = document.getElementById("button");
-        if (elem.value=="Đã xác nhận") elem.value = "Xác nhận";
-        else elem.value = "Đã xác nhận";
-    }
-</script>
+    <input style= "background-color: #4CAF50; color: white; 
+    padding: 10px 20px; border: none; border-radius: 10px; "
+    onclick="confirmButtonChange()" type="button" value="Xác nhận" id="button"></input>
 </div>
+
+<!-- <script src="invoice_management.js"></script> -->

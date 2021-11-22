@@ -26,6 +26,12 @@ function closePopup(){
     document.getElementById("popup_background").style.display = "none";
 }
 
+function confirmButtonChange() {
+    var elem = document.getElementById("button");
+    if (elem.value=="Đã xác nhận") elem.value = "Xác nhận";
+    else elem.value = "Đã xác nhận";
+}   
+
 
 //SORT TABLE
 function sortTable(id, n) {

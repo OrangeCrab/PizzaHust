@@ -3,7 +3,7 @@
 if(!empty($_POST)) {
 	$image = setImgAndGetImg_id();
 	$id = getPost('id');
-	$title = getPost('title');
+	$name = getPost('name');
 	$price = getPost('price');
 	$description = getPost('description');
 	$category_id = getPost('category_id');
@@ -11,18 +11,18 @@ if(!empty($_POST)) {
 
 	if($id > 0) {
 		
-		$status_id = getPost('status_id');
+		$status_product_id = getPost('status_product_id');
 		$getImage = "select image from product where id=$id";
 		$result = getArrResult($getImage);
 		$getImage = $result['image'];
 		if($image != '') {
 			$dir = "../../masterial/image/thuc_don";
 			unlink($dir.'/'.$getImage);
-			$sql = "update product set image = '$image', title = '$title', price = $price, 
-			status_id= '$status_id', description = '$description',category_id = '$category_id' 
+			$sql = "update product set image = '$image', name = '$name', price = $price, 
+			status_product_id= '$status_product_id', description = '$description',category_id = '$category_id' 
 			where id = $id";
 		} else {
-			$sql = "update product set image = '$getImage', title = '$title', price = $price, status_id = $status_id, 
+			$sql = "update product set image = '$getImage', name = '$name', price = $price, status_product_id = $status_product_id, 
 			description = '$description',category_id = '$category_id' where id = $id";
 		}
 		
@@ -37,7 +37,7 @@ if(!empty($_POST)) {
 			$price= $_POST[$get_id];
 			$query = "select id from size where name='$get_id'";
 			$size_id = getArrResult($query)['id'];
-			$sql = "insert into product(image, title, price, status_id, description, category_id, size_id) values ('$image', '$title', '$price', '1', '$description', '$category_id', '$size_id')";
+			$sql = "insert into product(image, name, price, status_product_id, description, category_id, size_id) values ('$image', '$name', '$price', '1', '$description', '$category_id', '$size_id')";
 			execute($sql);
 		}
 		move_uploaded_file($image_tmp_name, "../../masterial/image/thuc_don/$image");

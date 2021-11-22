@@ -85,9 +85,9 @@
                             <?php
                                 foreach($categoryItems as $category) {
                                     if($category['id'] == $category_id) {
-                                        echo '<option selected value="'.$category['id'].'">'.$category['name'].'</option>';
+                                        echo '<option selected value="'.$category['id'].'">'.$category['title'].'</option>';
                                     } else {
-                                        echo '<option value="'.$category['id'].'">'.$category['name'].'</option>';
+                                        echo '<option value="'.$category['id'].'">'.$category['title'].'</option>';
                                     }
                                 }
                             ?>

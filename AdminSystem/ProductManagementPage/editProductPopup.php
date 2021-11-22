@@ -2,7 +2,7 @@
     $title = 'Sửa Sản Phẩm';
 	$baseUrl = '../';
 
-	$id = $msg = $title = $price =  $status_id = $category_id = $date = $image = $description='';
+	$id = $msg = $name = $price =  $status_product_id = $category_id  = $image = $description ='';
 
     require_once('../../database/utility.php');
     require_once('../../database/define.php');
@@ -15,8 +15,8 @@
 
     $category_id = getArrResult($sql)['category_id'];
     $price = getArrResult($sql)['price'];
-    $title = getArrResult($sql)['title'];
-    $status_id = getArrResult($sql)['status_id'];
+    $name = getArrResult($sql)['name'];
+    $status_product_id = getArrResult($sql)['status_product_id'];
     $description = getArrResult($sql)['description'];
     $image = getArrResult($sql)['image'];
 
@@ -195,7 +195,7 @@
                         <div class="left_div">
                             <div class="form_group" style="top: 5%">
                                 <label for="usr">Tên sản phẩm:</label>
-                                <input required="true" type="text" class="form-control" id="usr" name="title" value="<?=$title?>">
+                                <input required="true" type="text" class="form-control" id="usr" name="name" value="<?=$name?>">
                                 <input type="text" name="id" value="<?=$id?>" hidden="true">
                             </div>
                             
@@ -221,11 +221,11 @@
                             
                             <div class="form_group"style="top: 50%">
                                 <label for="status">Trạng thái:</label>
-                                <select class="form-control" name="status_id" id="status_id" required="true">
+                                <select class="form-control" name="status_product_id" id="status_product_id" required="true">
                                     <option value="">-- Chọn --</option>
                                     <?php
                                         foreach($statusList as $status) {
-                                            if($status['id'] == $status_id) {
+                                            if($status['id'] == $status_product_id) {
                                                 echo '<option selected value="'.$status['id'].'">'.$status['status'].'</option>';
                                             } else {
                                                 echo '<option value="'.$status['id'].'">'.$status['status'].'</option>';

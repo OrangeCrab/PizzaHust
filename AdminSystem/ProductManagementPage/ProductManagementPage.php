@@ -1,5 +1,5 @@
 <?php
-	$id = $msg = $title = $price  = $category_id = $date = $image = $description=$name='';
+	$id = $msg = $name = $price  = $category_id = $date = $image = $description=$name='';
 
     require_once('../../database/utility.php');   
 	require_once('../../database/define.php');
@@ -15,7 +15,7 @@
 		if(getArrResult($sql) != null) {
 			$category_id = getArrResult($sql)['category_id'];
 			$price = getArrResult($sql)['price'];
-			$title = getArrResult($sql)['title'];
+			$name = getArrResult($sql)['name'];
 			$description = getArrResult($sql)['description'];
             $image = getArrResult($sql)['image'];
             
@@ -136,7 +136,7 @@
                         <div class="left_div">
                             <div class="form_group" style="top: 5%">
                                 <label for="usr">Tên sản phẩm:</label>
-                                <input required="true" type="text" id="usr" name="title" value="<?=$title?>">
+                                <input required="true" type="text" id="usr" name="name" value="<?=$name?>">
                                 <input type="text" name="id" value="<?=$id?>" hidden="true">
                             </div>
                             

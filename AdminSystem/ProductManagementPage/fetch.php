@@ -1,16 +1,17 @@
 <?php
+//fetch.php
     require_once('../../database/dbhelper.php');
-    if($_POST["query"] != '')
+    $connect = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+    if(isset($_POST["query"]))
     {
-        $search_array = explode(",", $_POST["query"]);
-        $search_text = implode("', '", $search_array);
-        $query = "SELECT * FROM product WHERE category_id = '$search_text'";
+        $search = mysqli_real_escape_string($connect, $_POST["query"]);
+        $query = "SELECT * FROM product WHERE name LIKE '%".$search."%'";
     }
     else
     {
         $query = "SELECT * FROM product";
     }
-    $result = executeResult($query);
+    $result = mysqli_query($connect, $query);
     $index = 0;
     foreach($result as $row)
     {
@@ -18,9 +19,9 @@
         <tr>
             <td>'.(++$index).'</td>
             <td><img src="../../masterial/image/thuc_don/'.$row['image'].'" style="height: auto; width: 100px;"/></td>
-            <td>'.$row['title'].'</td>
+            <td>'.$row['name'].'</td>
             <td>'.$row['description'].'</td>
-            <td>'.getStatusName($row['status_id']).'</td>
+            <td>'.getStatusName($row['status_product_id']).'</td>
             <td>'.number_format($row['price']).' VNĐ</td>
             <td>'.getCategoryName($row['category_id']).''.getSizeName($row['size_id']).'</td>
             <td style="width: 20px">
@@ -32,21 +33,23 @@
         </tr>
         ';
     }
-    function getStatusName($status_id)
+    function getStatusName($status_product_id)
     {
-        $sql = "select status from status where id='$status_id'";       
+        $sql = "select status from status where id='$status_product_id'";
+        
         return getArrResult($sql)['status'];
     }
 
     function getCategoryName($category_id)
     {
-        $sql = "select name from category where id='$category_id'";      
+        $sql = "select name from category where id='$category_id'";
+        
         return getArrResult($sql)['name'];
     }
     function getSizeName($size_id)
     {
         $sql = "select name from size where id='$size_id'";
-        $result = getArrResult($sql)['name'];
+        $result = getArrResult($sql)['name'];   
         if ($result != 'null') {
             return '_'.$result;
         }

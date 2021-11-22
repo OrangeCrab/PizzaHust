@@ -1,9 +1,9 @@
 <?php
-require 'view.php';
-$order = get_overview();
-$top = get_order_top();
+ require_once('../route_map.php');
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -40,7 +40,7 @@ $top = get_order_top();
                     <div class="card">                                       
                         <div>   
                             <div class="card-name">Tổng sản phẩm</div>
-                            <div class="numbers"><?php echo number_products(); ?></div>
+                            <div class="numbers">1241</div>
                         </div>     
                         <div class="iconbox">
                             <i class="fas fa-scroll"  aria-hidden="true"></i>
@@ -50,7 +50,7 @@ $top = get_order_top();
                     <div class="card"> 
                         <div>
                             <div class="card-name">Tổng đơn hàng</div> 
-                            <div class="numbers"><?php echo number_orders(); ?></div> 
+                            <div class="numbers">1294</div> 
                         </div>     
                         <div class="iconbox">
                             <i class="fas fa-shopping-cart"  aria-hidden="true"></i>
@@ -60,7 +60,7 @@ $top = get_order_top();
                     <div class="card">  
                         <div>                                             
                             <div class="card-name">Khách hàng </div>
-                            <div class="numbers"><?php echo number_users(); ?> </div> 
+                            <div class="numbers">56 </div> 
                         </div>                                                      
                         <div class="iconbox">
                             <i class="fas fa-users"  aria-hidden="true"></i>                 
@@ -73,45 +73,78 @@ $top = get_order_top();
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <h2>Recent Orders</h2>
-                            <a href="../InvoiceManagementPage/InvoiceManagement.php" class="btn">Chi Tiết</a>
+                            <a href="#" class="btn">View All</a>
                         </div>
                         <table>
                             <thead> 
                                 <tr>
-                                   <td>Đơn hàng</td>
-                                   <td>Tiền</td>
-                                   <td>Số Điện Thoại</td>
-                                   <td>Địa điểm</td>
-                                   <td>Trạng thái</td>
+                                   <td>Don hang</td>
+                                   <td>Tien</td>
+                                   <td>So dt</td>
+                                   <td>Dia diem</td>
+                                   <td>Trang Thai</td>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($order as $item){ ?>
-                                    <tr>
-                                        <td><?php echo $item['id']; ?></td>
-                                        <td><?php echo $item['payment'].''; ?></td>
-                                        <td><?php echo $item['userPhoneNumber']; ?></td>
-                                        <td><?php echo $item['userAddress']; ?></td> 
-                                        <td><span class="status <?php status_css($item['status']) ?>" > <?php status_css($item['status']) ?></span></td>                     
-                                    </tr>
-                                <?php } ?>
+                                <tr>
+                                    <td>Star</td>
+                                    <td>120312100</td>
+                                    <td>0924214213</td>
+                                    <td>Hoof Hoanf Kieesm</td>
+                                    <td><span class="status return">Huy</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Star Haizz</td>
+                                    <td>0924214213</td>
+                                    <td>0924214213</td>
+                                    <td> Hoanf Kieesm</td>
+                                    <td><span class="status delivered">Xac Nhan</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Star All</td>
+                                    <td>0924214213</td>
+                                    <td>0924214213</td>
+                                    <td>Hoof Guong</td>
+                                    <td><span class="status pending">Dang giao</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Ten Ten</td>
+                                    <td>0924214213</td>
+                                    <td>0924214213</td>
+                                    <td>DH Guong</td>
+                                    <td><span class="status inprogress">Da giao</span></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                     
                     <dib class="recentCustomers">
                         <div class="cardHeader">
-                            <h2>Nổi bật</h2>
+                            <h2>Dat nhieu</h2>
                             <!-- <a href="#" class="btn">View All</a> -->
                         </div>
                         <table>
                             <tbody>
-                                <?php foreach ($top as $top_item){ ?>
-                                    <tr>
-                                        <td width="60px"><div class="imgBx"><img src="" alt=""></div></td>
-                                        <td><h4><?php echo $top_item['productName']; ?> <br><span>  <?php echo $top_item['SUM(quatity)']; ?></span> </h4></td>    
-                                    </tr>
-                                <?php } ?>
+                                <tr>
+                                    <td width="60px"><div class="imgBx"><img src="../../masterial/image/thuc_don/4_vi.jpg" alt=""></div></td>
+                                    <td><h4>Vip1 <br><span>pizza</span> </h4></td>
+                                </tr>
+                                <tr>
+                                    <td width="60px"><div class="imgBx"><img src="../../masterial/image/thuc_don/5_loai_thit.jpg" alt=""></div></td>
+                                    <td><h4>Vip2 <br><span>pizza thit</span> </h4></td>
+                                </tr>
+                                <tr>
+                                    <td width="60px"><div class="imgBx"><img src="../../masterial/image/thuc_don/bo_tom.jpg" alt=""></div></td>
+                                    <td><h4>Vip3 <br><span>pizza tom</span> </h4></td>
+                                </tr>
+                                <tr>
+                                    <td width="60px"><div class="imgBx"><img src="../../masterial/image/thuc_don/ga_BBQ.jpg" alt=""></div></td>
+                                    <td><h4>Vip4 <br><span>pizza ga_BBQ</span> </h4></td>
+                                </tr>
+                                <tr>
+                                    <td width="60px"><div class="imgBx"><img src="../../masterial/image/thuc_don/mi_y2.jpg" alt=""></div></td>
+                                    <td><h4>Vip5 <br><span>Mi y 2</span> </h4></td>
+                                </tr>
                             </tbody>
                         </table>
                     </dib>

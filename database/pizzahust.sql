@@ -1,3 +1,32 @@
+-- add bảng coupon và cp_user vào database (update 22/11)
+CREATE TABLE `coupon`(
+ `id_cp` int AUTO_INCREMENT PRIMARY KEY,
+ `name_cp` varchar(20),  
+ `code_cp` varchar(10) ,                 
+ `type_cp` varchar(20),                  
+ `value_cp` int,                           
+ `description` varchar(250),
+ `active_date` datetime,                  
+ `expire_date` datetime,                  
+ `min_order_value` int DEFAULT 0,         
+ `max__order_amount` int DEFAULT 0       
+);
+
+CREATE TABLE `cp_user`(
+  `cp_id` int,
+  `user_id` int , 
+  `used` int                               
+);
+
+ALTER TABLE `cp_user` ADD FOREIGN KEY (`user_id`) REFERENCES `user_acount` (`id`);
+
+ALTER TABLE `cp_user` ADD FOREIGN KEY (`cp_id`) REFERENCES `coupon` (`id_cp`);
+-------------------------------------------------------------------------------------------
+
+
+
+
+
 CREATE TABLE `admin` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(50),

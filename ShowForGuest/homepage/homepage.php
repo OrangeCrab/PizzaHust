@@ -1,6 +1,6 @@
 <?php
-    require_once('../database/dbhelper.php');
-	$baseUrl = '../';
+    require_once('../../database/dbhelper.php');
+	$baseUrl = '../../';
     // chay cau lenh sql để lấy tên loại sản phẩm sử dụng lệnh join bảng
 	$sql = "select product.*, category.title as category_name from product left join category on product.category_id = category.id";
 	$data = executeResult($sql);
@@ -24,17 +24,17 @@
 <body>
     <header>
         <div class="top-bar">
-            <img src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
+            <img src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
             <a href="#launcher">Trang chủ</a>
             <a href="#menu">Thực đơn</a>
-            <a href="../cart/cart.html"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <a href="../../cart/cart.html"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
             <a href="#contact">Liên hệ</a>
-            <a href="../AdminSystem/login_form.php"><i class="fa fa-user" aria-hidden="true"></i></a>
+            <a href="../../AdminSystem/login_form.php"><i class="fa fa-user" aria-hidden="true"></i></a>
         </div>
     </header>
 
     <div class="header-page">
-        <img id="launcher" src="../masterial/image/bgrhomepage/headHomePage.jpg" alt="">
+        <img id="launcher" src="../../masterial/image/bgrhomepage/headHomePage.jpg" alt="">
     </div>
     <br id="menu">
 
@@ -181,7 +181,7 @@
             <?php
                 foreach($voucher as $item) {
                 echo'  
-                    <a href="../AdminSystem/login_form.php"><img src="'.$item['picture'].'" alt=""></a>';
+                    <a href="../../AdminSystem/login_form.php"><img src="'.$item['picture'].'" alt=""></a>';
                 }// '.$item['code'].'
             ?>
         </div>
@@ -190,9 +190,9 @@
 
     <br><br><br><br><br><br><br>
     <div id="contact" class="foot-page">
-            <img class="bgr" src="../masterial/image/bgrhomepage/endHomepage.jpg" alt="">
+            <img class="bgr" src="../../masterial/image/bgrhomepage/endHomepage.jpg" alt="">
             <div class="contact"></div>
-            <img class="logo" src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
+            <img class="logo" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
             <p><i class="fa fa-phone" aria-hidden="true"></i><span> CONTACT: 0123 456 789</span>
             <br><br>
             <i class="fa fa-envelope" aria-hidden="true"></i><span> EMAIL: ABC@GMAIL.COM</span></p>
@@ -201,7 +201,7 @@
     <!-- notice popup -->
     <div class="popup_screen">
             <div class="popup_box">
-                <img src="../masterial/image/bgrhomepage/popup.svg" alt="">
+                <img src="../../masterial/image/bgrhomepage/popup.svg" alt="">
                 <div>
                     <i class="fa fa-times close_btn" aria-hidden="true"></i>
                     <h2>PizzaHust xin chào</h2>

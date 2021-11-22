@@ -18,15 +18,6 @@ CREATE TABLE `cp_user`(
   `used` int                               
 );
 
-ALTER TABLE `cp_user` ADD FOREIGN KEY (`user_id`) REFERENCES `user_acount` (`id`);
-
-ALTER TABLE `cp_user` ADD FOREIGN KEY (`cp_id`) REFERENCES `coupon` (`id_cp`);
--------------------------------------------------------------------------------------------
-
-
-
-
-
 CREATE TABLE `admin` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(50),
@@ -107,6 +98,13 @@ CREATE TABLE `plinth`(
   `price` int
 );
 
+CREATE TABLE `voucher`(
+  `code` varchar(20) PRIMARY KEY,
+  `picture` varchar(100),
+  `information` varchar(250),
+  `discount` int
+)
+
 ALTER TABLE `product` ADD FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
 
 ALTER TABLE `gallery` ADD FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
@@ -123,6 +121,9 @@ ALTER TABLE `order` ADD FOREIGN KEY (`plinth_id`) REFERENCES `plinth` (`id`);
 
 ALTER TABLE `product` ADD FOREIGN KEY (`size_id`) REFERENCES `size` (`id`);
 
+ALTER TABLE `cp_user` ADD FOREIGN KEY (`user_id`) REFERENCES `user_acount` (`id`);
+
+ALTER TABLE `cp_user` ADD FOREIGN KEY (`cp_id`) REFERENCES `coupon` (`id_cp`);
 
 INSERT INTO `category` (`id`, `title`) VALUES (NULL, 'Pizza'), (NULL, 'Gà BBQ');
 INSERT INTO `size` (`id`, `name`) VALUES (NULL, 'S'), (NULL, 'M');

@@ -34,14 +34,14 @@
     }
     function getStatusName($status_product_id)
     {
-        $sql = "select status from status where id='$status_product_id'";       
+        $sql = "select status from status_product where id='$status_product_id'";       
         return getArrResult($sql)['status'];
     }
 
     function getCategoryName($category_id)
     {
-        $sql = "select name from category where id='$category_id'";      
-        return getArrResult($sql)['name'];
+        $sql = "select title from category where id='$category_id'";      
+        return getArrResult($sql)['title'];
     }
     function getSizeName($size_id)
     {

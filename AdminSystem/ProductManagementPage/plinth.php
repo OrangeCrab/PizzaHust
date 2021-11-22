@@ -178,11 +178,11 @@
                                     <td><?php echo ++$index; ?></td>
                                     <td>
                                         <span class="editSpan name_span"><?php echo $row['name']; ?></span>
-                                        <input class="editInput name_input form-control input-sm" type="text" name="name" value="<?php echo $row['name']; ?>" style="display: none; font-size: 20px">
+                                        <input class="editInput name_input form-control input-sm" type="text" name="name" value="<?php echo $row['name']; ?>" style="display: none;">
                                     </td>
                                     <td>
                                         <span class="editSpan price_span"><?php echo $row['price']; ?></span>
-                                        <input class="editInput price_input form-control input-sm" type="text" name="price" value="<?php echo $row['price']; ?>" style="display: none; font-size: 20px">
+                                        <input class="editInput price_input form-control input-sm" type="text" name="price" value="<?php echo $row['price']; ?>" style="display: none;">
                                     </td>
                                     <td style="z-index: 4;">
                                         <div class="btn-group btn-group-sm">
@@ -204,11 +204,11 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="name_div">
                                 <label for="name" style="font-family: Monsterrat;">Tên sản phẩm:</label>
-                                <input required="true" type="text" class="form-control" id="name" name="name" style="font-size: 20px">
+                                <input required="true" type="text" class="form-control" id="name" name="name" style="font-size: 15px">
                             </div>
                             <div class="price_div" style="margin-top: 5%">
                                 <label for="price" style="font-family: Monsterrat;">Giá:</label>
-                                <input required="true" type="text" class="form-control" id="price" name="price"style="font-family: Monsterrat;font-size: 20px">
+                                <input required="true" type="text" class="form-control" id="price" name="price"style="font-family: Monsterrat;font-size: 15px">
                             </div>
                             <div class="button_add_plinth">
                                 <button class="btn btn-success" name="add_btn" style="font-family: Monsterrat;">Thêm</button>

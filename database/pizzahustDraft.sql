@@ -12,11 +12,7 @@ CREATE TABLE `user` (
   `phoneNumber` varchar(13)
 );
 
-CREATE TABLE `category` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `title` varchar(100),
-  `status` varchar(11)
-);
+
 
 CREATE TABLE `product` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
@@ -26,6 +22,12 @@ CREATE TABLE `product` (
   `statusID` int,
   `productImg` varchar(500),
   `description` varchar(255)
+);
+
+CREATE TABLE `category` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `title` varchar(100),
+  `status` varchar(11)
 );
 
 CREATE TABLE `gallery` (

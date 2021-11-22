@@ -1,4 +1,4 @@
--- add bảng coupon và cp_user vào database (update 22/11)
+-- add bảng coupon và cp_user vào database của hoàng (update 22/11)
 CREATE TABLE `coupon`(
  `id_cp` int AUTO_INCREMENT PRIMARY KEY,
  `name_cp` varchar(20),  

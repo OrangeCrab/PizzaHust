@@ -219,7 +219,7 @@
 
             window.addEventListener("load", ()=>{
                 setTimeout(() => {
-                    // popupScreen.classList.add("active");
+                    popupScreen.classList.add("active");
                 }, 1000);   //Popup the screen in 01 seconds after the page loaded
             })
 

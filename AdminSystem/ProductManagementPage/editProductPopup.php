@@ -22,7 +22,7 @@
 
 	$sql = "select * from category";
 	$categoryItems = executeResult($sql);
-	$sql = " select *from status ";
+	$sql = " select *from status_product ";
 	$statusList = executeResult($sql);
 ?>
 
@@ -206,9 +206,9 @@
                                     <?php
                                         foreach($categoryItems as $category) {
                                             if($category['id'] == $category_id) {
-                                                echo '<option selected value="'.$category['id'].'">'.$category['name'].'</option>';
+                                                echo '<option selected value="'.$category['id'].'">'.$category['title'].'</option>';
                                             } else {
-                                                echo '<option value="'.$category['id'].'">'.$category['name'].'</option>';
+                                                echo '<option value="'.$category['id'].'">'.$category['title'].'</option>';
                                             }
                                         }
                                     ?>

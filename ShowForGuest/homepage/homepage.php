@@ -122,7 +122,7 @@
                                                         <hr>
                                                     </div>
                                                     <div class="part">
-                                                        <h3>Size</h3>
+                                                        <h3>Topping</h3>
                                                         <form>
                                                             <input type="checkbox" id="1" name="topping" value="1">
                                                             <label for="1">Phô mai phủ</label>

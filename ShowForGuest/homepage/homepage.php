@@ -63,7 +63,7 @@
                         if ($item['category_id'] == $id)
                         echo                                 
                             '<div class="product">
-                                <img class="product_img" src="'.$item['image'].'"/>
+                                <img class="product_img" src="../../masterial/image/thuc_don/'.$item['image'].'"/>
                                 <h2 class="name">'.$item['name'].'</h2>
                                 <p class="description">'.$item['description'].'</p>
                                 <span class="price">'.number_format($item['price']).' đ</span>
@@ -80,11 +80,11 @@
                         $product = executeResult($sql);   
                             foreach($product as $item) {
                                 if ($item['category_id'] == $id)
-                                        echo                                 
+                                        echo                            
                                         '<div class="info_view">
                                             <div class="info_card">
                                                 <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
-                                                <div class="info_img"><img src="'.$item['image'].'"></div>
+                                                <div class="info_img"><img src="../../masterial/image/thuc_don/'.$item['image'].'"></div>
                                                 
                                                 <div class="info">
                                                     <div class="part">

@@ -147,11 +147,13 @@ header{
     }
         .search_logo{
             position: absolute;
-            width: 35px;
-            height: 35px;
+            width: 25px;
+            height: 25px;
             background-image: url('../../masterial/image/iconAdminPage/searchLogo.svg');
             background-repeat: no-repeat;
-            background-size: 35px 35px;
+            background-size: 25px 25px;
+            top: 5px;
+            left: 5px;
         }
         .timkiem input {
             position: absolute;

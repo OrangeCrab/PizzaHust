@@ -160,7 +160,7 @@
                                     foreach ($sizeList as $size ) {
                                         if ($size['name'] != 'null') {
                                             $size_name = $size['name'];
-                                        }else $size_name = '';
+                                        }else $size_name = 'Free size';
                                         echo'
                                             <div class="size_div">
                                                 <label style="width:20%">'.$size_name.'</label>

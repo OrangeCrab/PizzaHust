@@ -1,11 +1,5 @@
 //OPEN POP UP
-function openPopup(obj){
-    //Khi ấn vào một mã đơn hàng thì sẽ lấy nội dung mã đó
-    var str = obj.innerText || obj.textContent;
-    if (str == ""){
-        return;
-    }
-
+function openPopup(str){
     //Tạo request lên CSDL lấy thông tin chi tiết theo mã đơn hàng
     //và in chi tiết ra một file php bên ngoài "DetailPopUp.php"
     //"nhúng" nội dung file trên vào phần pop up
@@ -22,16 +16,51 @@ function openPopup(obj){
     detailRequest.send();
 }
 
-function closePopup(){
-    document.getElementById("popup_background").style.display = "none";
+function openPopupFromElement(elem){
+    //Khi ấn vào một mã đơn hàng thì sẽ lấy nội dung mã đó
+    var str = elem.innerText || elem.textContent;
+    if (str == ""){
+        return;
+    }
+
+    openPopup(str);
 }
 
-function confirmButtonChange() {
-    var elem = document.getElementById("button");
-    if (elem.value=="Đã xác nhận") elem.value = "Xác nhận";
-    else elem.value = "Đã xác nhận";
-}   
+var isChange = false;
 
+function closePopup(){
+    document.getElementById("popup_background").style.display = "none";
+    if (isChange) {
+        isChange = false;
+        location.reload();
+    }
+}
+
+function orderConfirmButtonChange(id) {
+    var option = confirm("Bạn có chắc chắn muốn xác nhận đơn hàng này không?");
+    if (!option) return;
+
+    $.post('popup_api.php', {
+        'id': id,
+        'action': 'confirm'
+    }, function(data){
+        isChange = true;
+        openPopup(id);
+    });
+}
+
+function orderRejectButtonChange(id) {
+    var option = confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
+    if (!option) return;
+
+    $.post('popup_api.php', {
+        'id': id,
+        'action': 'reject'
+    }, function(data){
+        isChange = true;
+        openPopup(id);
+    });
+}
 
 //SORT TABLE
 function sortTable(id, n) {
@@ -86,6 +115,47 @@ function searchTable() {
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+// NAVI TABLE
+function filterStatus(filter){
+    buttonAll = document.getElementById("filterButtonAll");
+    buttonWaiting = document.getElementById("filterButtonWaiting");
+    buttonConfirmed = document.getElementById("filterButtonConfirmed");
+    buttonRejected = document.getElementById("filterButtonRejected");
+
+    buttonAll.style.border = "none";
+    buttonWaiting.style.border = "none";
+    buttonConfirmed.style.border = "none";
+    buttonRejected.style.border = "none";
+
+    if (filter == ''){
+        buttonAll.style.borderBottom = "3px solid #A80000";
+        filterText = "";
+    } else if (filter == '1'){
+        buttonWaiting.style.borderBottom = "3px solid #A80000";
+        filterText = "chờ xác nhận";
+    } else if (filter == '2'){
+        buttonConfirmed.style.borderBottom = "3px solid #A80000";
+        filterText = "đã xác nhận";
+    } else if (filter == '3'){
+        buttonRejected.style.borderBottom = "3px solid #A80000";
+        filterText = "đã bị hủy";
+    }
+
+    table = document.getElementById("OrderList");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++){
+        td = tr[i].getElementsByTagName("td")[6];
+        if (td){
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toLowerCase().indexOf(filterText) > -1) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";

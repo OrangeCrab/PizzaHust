@@ -43,7 +43,7 @@
             <!-- <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span>Báo Cáo</span></a> -->
         </div>
 
-        <div id="main_center_panel">
+        <div class="main_center_panel">
             <h1>Danh sách đơn hàng</h1>
 
             <div class="table_wrap">
@@ -143,6 +143,7 @@
     </div>
 
     <div id="popup_background" class="popup_background">
+        <div class="popup_blur_background" onclick="closePopup()"></div>
         <div class="popup_panel" id="popup_panel">
         </div>
     </div>

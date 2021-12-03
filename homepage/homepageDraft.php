@@ -13,7 +13,7 @@
     $sql = "select * from category";
     $category = executeResult($sql);
 
-    $_SESSION['user_id'] = 1;
+    $_SESSION['user_id'] = 1; // để test chức năng nhận voucher cho khách đã đăng nhập
 
 
     # Mỗi lần them sản phẩm vào giỏ hàng,  $_SESSION['giohang'] sẽ thêm một mảng các thuộc

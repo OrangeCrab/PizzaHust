@@ -127,3 +127,17 @@ ALTER TABLE cp_user ADD FOREIGN KEY (cp_id) REFERENCES coupon (id_cp);
 ALTER TABLE menu_detail ADD FOREIGN KEY (product_id) REFERENCES product (id);
 
 ALTER TABLE menu_detail ADD FOREIGN KEY (menu_id) REFERENCES menu (id);
+
+INSERT INTO `status_product` (`id`, `status`) VALUES (NULL, `Còn hàng`), (NULL, `Hết hàng`);
+INSERT INTO `product` (`id`, `category_id`, `name`, `status_product_id`, `image`, `description`, `price_free_size`, `price_s`, `price_m`, `price_l`) 
+     VALUES (NULL, '1', 'Pizza Thập Cẩm', '1', 'thap_cam.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', NULL, '90000', '100000', '110000'),
+            (NULL, '1', 'Pizzaminsea', '1', 'pizzaminsea.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', NULL, '90000', '100000', '110000'),
+            (NULL, '1', 'Pizza Rau Củ', '1', 'rau_cu.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', NULL, '90000', '100000', '110000'),
+            (NULL, '1', 'Pizza 4 Vị', '1', '4_vi.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', NULL, '90000', '100000', '110000'),
+            (NULL, '1', 'Pizza Thịt Ngập Mõm', '1', '5_loai_thit.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', NULL, '90000', '100000', '110000'),
+            (NULL, '1', 'Đùi Gà Con', '2', 'ga_BBQ.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', NULL, '90000', '100000', '110000'),
+            (NULL, '1', 'Pizza Bò Tôm', '1', 'bo_tom.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', NULL, '90000', '100000', '110000'),
+            (NULL, '8', 'Double sốt', '1', NULL, NULL, NULL, '10000', NULL, NULL), 
+            (NULL, '8', 'Phô mai viền', '1', NULL, NULL, NULL, '8000', NULL, NULL), 
+            (NULL, '8', 'Phô mai phủ', '1', NULL, NULL, NULL, '15000', NULL, NULL);
+INSERT INTO `category` (`id`, `title`)  VALUES (1, `Pizza`),(2, `Gà BBQ`), (3, `Đồ ăn kèm`), (4, `Đồ uống`), (5, `Mỳ ý`), (6, `Combo`), (7, `Menu`),(8, `Topping`)

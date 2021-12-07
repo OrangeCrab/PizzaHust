@@ -4,10 +4,30 @@ if(!empty($_POST)) {
 	$image = setImgAndGetImg_id();
 	$id = getPost('id');
 	$name = getPost('name');
-	$price = getPost('price');
 	$description = getPost('description');
 	$category_id = getPost('category_id');
+
+	$price_free_size = getPost('price_free_size');
+	$price_s = getPost('price_s');
+	$price_m = getPost('price_m');
+	$price_l = getPost('price_l');
+
 	$image_tmp_name = getTempName();
+
+	$price = 0;
+	if ($price_free_size > 0) {
+		$price = $price_free_size;
+	}else {
+		if ($price_s > 0) {
+			$price = $price_s;
+		}else {
+			if ($price_m > 0) {
+				$price = $price_m;
+			}else {
+				$price = $price_l;
+			}
+		}
+	}
 
 	if($id > 0) {
 		
@@ -19,28 +39,68 @@ if(!empty($_POST)) {
 			$dir = "../../masterial/image/thuc_don";
 			unlink($dir.'/'.$getImage);
 			$sql = "update product set image = '$image', name = '$name', price = $price, 
-			status_product_id= '$status_product_id', description = '$description',category_id = '$category_id' 
+			status_product_id= '$status_product_id', description = '$description',category_id = '$category_id' ,
+			price_free_size = '$price_free_size', price_s = '$price_s', price_m = '$price_m', price_l = '$price_l'
 			where id = $id";
 		} else {
-			$sql = "update product set image = '$getImage', name = '$name', price = $price, status_product_id = $status_product_id, 
-			description = '$description',category_id = '$category_id' where id = $id";
+			$sql = "update product set image = '$getImage', name = '$name', price = $price, status_product_id = $status_product_id, description = '$description',category_id = '$category_id', price_free_size = '$price_free_size', price_s = '$price_s', price_m = '$price_m', price_l = '$price_l' where id = $id";
 		}
 		
 		execute($sql);
+
+		$sql = "delete from meal_detail where product_id = "."'".$id."'";
+		execute($sql);
+		$sql = "delete from menu_detail where product_id = "."'".$id."'";
+		execute($sql);
+
+		$meals = (isset($_POST['meal'])) ? $_POST['meal'] : array();
+
+		if (count($meals) > 0) {
+			foreach ($meals as $meal) { 
+				$sql = "insert into meal_detail(meal_id,product_id) values ('$meal','$id')";
+				execute($sql);
+			} 
+		}
+
+		$menus = (isset($_POST['menu'])) ? $_POST['menu'] : array();
+
+		if (count($menus) > 0) {
+			foreach ($menus as $menu) { 
+				$sql = "insert into menu_detail(menu_id,product_id) values ('$menu','$id')";
+				execute($sql);
+			} 
+		}
 		move_uploaded_file($image_tmp_name, "../../masterial/image/thuc_don/$image");
 		header('location: ProductManagementPage.php');
 		die();
 	} else {
-		foreach ($_POST['size'] as $key => $value) 
-		{
-			$get_id = $_POST['size'][$key];
-			$price= $_POST[$get_id];
-			$query = "select id from size where name='$get_id'";
-			$size_id = getArrResult($query)['id'];
-			$sql = "insert into product(image, name, price, status_product_id, description, category_id, size_id) values ('$image', '$name', '$price', '1', '$description', '$category_id', '$size_id')";
-			execute($sql);
-		}
+
+		$sql = "insert into product(image, name, price, status_product_id, description, category_id, price_free_size, price_s, price_m, price_l) 
+				values ('$image', '$name', '$price', '1', '$description', '$category_id', '$price_free_size', '$price_s', '$price_m', '$price_l')";
+		execute($sql);
 		move_uploaded_file($image_tmp_name, "../../masterial/image/thuc_don/$image");
+
+		$sql = "select * from product ORDER BY id DESC LIMIT 1";
+		$id = getArrResult($sql)['id'];
+
+		$meals = (isset($_POST['meal'])) ? $_POST['meal'] : array();
+
+		if (count($meals) > 0) {
+			foreach ($meals as $meal) { 
+				$sql = "insert into meal_detail(meal_id,product_id) values ('$meal','$id')";
+				execute($sql);
+			} 
+		}
+
+		$menus = (isset($_POST['menu'])) ? $_POST['menu'] : array();
+
+		if (count($menus) > 0) {
+			foreach ($menus as $menu) { 
+				$sql = "insert into menu_detail(menu_id,product_id) values ('$menu','$id')";
+				execute($sql);
+			} 
+		}
+
 		header('location: ProductManagementPage.php');
 		die();
 	}

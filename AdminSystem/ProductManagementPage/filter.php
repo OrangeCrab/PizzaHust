@@ -22,7 +22,7 @@
             <td>'.$row['description'].'</td>
             <td>'.getStatusName($row['status_product_id']).'</td>
             <td>'.number_format($row['price']).' VNĐ</td>
-            <td>'.getCategoryName($row['category_id']).''.getSizeName($row['size_id']).'</td>
+            <td>'.getCategoryName($row['category_id']).'</td>
             <td style="width: 20px">
             <a href="editProductPopup.php?id='.$row['id'].'"><button class="btn btn-warning">Sửa</button></a>
             </td>

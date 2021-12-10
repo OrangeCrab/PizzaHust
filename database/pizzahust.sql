@@ -1,3 +1,13 @@
+-- update user_id (10/12)
+ALTER TABLE `order` ADD COLUMN `user_id` int;
+
+ALTER TABLE `order` ADD FOREIGN KEY (`user_id`) REFERENCES `user_account`(id);
+
+--
+
+
+
+
 CREATE TABLE `coupon`(
  id_cp int AUTO_INCREMENT PRIMARY KEY,
  name_cp varchar(20),  

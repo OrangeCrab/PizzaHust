@@ -7,6 +7,16 @@
 <html>
 <head>
     <meta charset="UTF-8">
+
+     <!-- jQuery library -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="invoice_management.css">
     <link rel="stylesheet" href="../ProductManagementPage/draft.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
@@ -27,23 +37,22 @@
 
     <div class="work_screen">
         <div class="left_bar">
-            <a href="../DashBoard/DashBoard.html" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
-            <a href="../CodeProductManagementPage/ProductManagementPage.php" target="_self"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
+            <a href="../DashBoard/DashBoard.php" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
+            <a href="../ProductManagementPage/ProductManagementPage.php" target="_self"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
             <a href="#" class="active"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
             <!-- <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span>Báo Cáo</span></a> -->
         </div>
 
-        <div id="main_center_panel">
+        <div class="main_center_panel">
             <h1>Danh sách đơn hàng</h1>
 
             <div class="table_wrap">
                 <ul>
-                    <li><button>Tất cả đơn hàng</button></li>
-                    <li><button>Đơn hàng mới</button></li>
-                    <li><button>Đơn chờ thanh toán</button></li>
-                    <li><button>Đơn đã thanh toán</button></li>
+                    <li><button id="filterButtonAll" style="border-bottom: 3px solid #A80000;" onclick="filterStatus('')">Tất cả đơn hàng</button></li>
+                    <li><button id="filterButtonWaiting" onclick="filterStatus('1')">Đơn hàng chờ xác nhận</button></li>
+                    <li><button id="filterButtonConfirmed" onclick="filterStatus('2')">Đơn hàng đã xác nhận</button></li>
+                    <li><button id="filterButtonRejected" onclick="filterStatus('3')">Đơn hàng bị hủy</button></li>
                 </ul>
-
 
                 <!-- <div class="Search DieuKienLoc">
                     <img src="../../masterial/image/iconAdminPage/screeningLogo.svg" alt="Loc">
@@ -78,33 +87,50 @@
 
                     <?php
                         $sql_Order = "SELECT `order`.`id` AS id, `order`.`order_time` AS oTime, `order`.`fullname` AS oName, `order`.`phoneNumber` AS oPhone, 
-                            `order`.`address` AS oAddress, `status_order`.`status` AS oStatus, `order`.`payment` AS oMoney 
-                            FROM `order`, `status_order` 
-                            WHERE`order`.`status_order_id` = `status_order`.`id`;";
+                            `order`.`address` AS oAddress, `order`.`status` AS oStatus, `order`.`payment` AS oMoney 
+                            FROM `order`
+                            ORDER BY oTime DESC";
                         $data_Order = executeResult($sql_Order);
 
                         foreach ($data_Order as $item_Order) {
                             echo '<tr>
-                                <td><a href="#" onclick="openPopup(this)">'.$item_Order['id'].'</a></td>
+                                <td><a href="#" onclick="openPopupFromElement(this)">'.$item_Order['id'].'</a></td>
                                 <td>'.$item_Order['oTime'].'</td>
-                                <td>'.$item_Order['oName'].'</td>
+                                <td><b>'.$item_Order['oName'].'</b></td>
                                 <td>'.$item_Order['oPhone'].'</td>
                                 <td>'.$item_Order['oAddress'].'</td>';
                                 
                                 // In danh sach dat hang cua khach hang nay
-                                $sql_Detail = "SELECT `product`.`name` AS pName, `order_detail`.`quatity` AS odQuantity 
+                                $sql_Detail = "SELECT `product`.`name` AS pName, `order_detail`.`quatity` AS odQuantity, 
+                                    `order_detail`.`size` AS odSize, `order_detail`.`plinth` AS odPlinth
                                     FROM `order_detail`, `product` 
                                     WHERE `product`.`id` = `order_detail`.`product_id` 
                                     AND `order_id` = ".$item_Order['id'];
                                 $data_Detail = executeResult($sql_Detail);
                                 echo '<td>';
                                 foreach ($data_Detail as $item_Detail){
-                                    echo $item_Detail['pName'].', '.$item_Detail['odQuantity'].'<br>';
+                                    echo '<b>'.$item_Detail['pName'].'</b>';
+                                    if ($item_Detail['odSize'] != NULL){
+                                        echo ', Size: <b>'.$item_Detail['odSize'].'</b>';
+                                    }
+                                    if ($item_Detail['odPlinth'] != NULL){
+                                        echo ', Đế: <b>'.$item_Detail['odPlinth'].'</b>';
+                                    }
+                                    echo ', SL: <b>'.$item_Detail['odQuantity'].'</b><br>';
                                 }
                                 echo '</td>';
 
-                                echo '<td>'.$item_Order['oStatus'].'</td>
-                                <td>'.$item_Order['oMoney'].'</td>
+                                if ($item_Order['oStatus'] == '1'){
+                                    echo "<td style='color:#F98607;'>Chờ xác nhận";
+                                } elseif ($item_Order['oStatus'] == '2') {
+                                    echo "<td style='color:#4CAF50;'>Đã xác nhận";
+                                } elseif ($item_Order['oStatus'] == '3'){
+                                    echo "<td style='color:#A80000;'>Đã bị hủy";
+                                } else {
+                                    echo $item_Order['oStatus'];
+                                }
+                                echo '</td>
+                                <td><b>'.$item_Order['oMoney'].'</b></td>
                             </tr>';
 
                         }
@@ -117,6 +143,7 @@
     </div>
 
     <div id="popup_background" class="popup_background">
+        <div class="popup_blur_background" onclick="closePopup()"></div>
         <div class="popup_panel" id="popup_panel">
         </div>
     </div>

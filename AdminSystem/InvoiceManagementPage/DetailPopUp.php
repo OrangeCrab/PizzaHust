@@ -3,26 +3,28 @@
 
 <!-- Thông tin khách hàng và đơn hàng -->
 <?php
-require_once('../../database/dbhelper.php');
-$baseUrl = '../';
-$orderid = $_GET["orderid"];
+    require_once('../../database/dbhelper.php');
+    $baseUrl = '../';
+    $orderid = $_GET["orderid"];
 
-$sql = "SELECT *
-    FROM `order`
-    WHERE `order`.`id` = ".$orderid; 
-$data = executeResult($sql);
+    $sql = "SELECT *
+        FROM `order`
+        WHERE `order`.`id` = ".$orderid; 
+    $data = executeResult($sql);
 
-foreach ($data as $row){
+    $row = $data[0];
     echo '<div class="popup_name">
         <p>Tên khách hàng: '.$row['fullname'].'</p>
         <p>Số điện thoại: '.$row['phonenumber'].'</p>
         <p>Địa chỉ: '.$row['address'].'</p>
-    </div>
-    <div class="popup_id">
+    </div>';
+    echo '<div class="popup_id">
         <p>Mã đơn hàng: '.$row['id'].'</p>
         <p>Ngày mua: '.$row['order_time'].'</p>
     </div>';
-}
+    echo '<div class="popup_note">
+        <p>Ghi chú: '.$row['note'].'</p>
+    </div>';
 ?>
 
 <!-- Chi tiết danh sách món trong đơn hàng -->
@@ -37,14 +39,10 @@ foreach ($data as $row){
     </tr>
 
     <?php 
-        $sql = "SELECT `product`.`id` AS pID, `product`.`name` AS pName, `size`.`name` AS size, `plinth`.`name` AS plinth, 
-            `order_detail`.`price` AS price, `order_detail`.`quatity` AS quantity 
-            FROM `order_detail`, `order`, `product`, `size`, `plinth` 
-            WHERE `order_detail`.`order_id` = `order`.`id` 
-            AND `product`.`id` = `order_detail`.`product_id` 
-            AND `order`.`size_id` = `size`.`id` 
-            AND `order`.`plinth_id` = `plinth`.`id` 
-            AND `order`.`id` = ".$orderid;
+        $sql = "SELECT `product`.`id` AS pID, `product`.`name` AS pName, `order_detail`.`size` AS size, 
+            `order_detail`.`plinth` AS plinth, `order_detail`.`price` AS price, `order_detail`.`quatity` AS quantity
+        FROM `order_detail`, `order`, `product`
+        WHERE `order_detail`.`order_id` = `order`.`id` AND `product`.`id` = `order_detail`.`product_id` AND `order`.`id` = ".$orderid;
 
         $dataOrder = executeResult($sql);
 
@@ -53,9 +51,18 @@ foreach ($data as $row){
         foreach ($dataOrder as $item){
             echo '<tr>
                 <td>'.$item['pID'].'</td>
-                <td>'.$item['pName'].'</td>
-                <td>Size: '.$item['size'].'<br>Đế: '.$item['plinth'].'</td>
-                <td>'.$item['price'].'</td>
+                <td>'.$item['pName'].'</td>';
+                echo '<td>';
+                if ($item['size'] != NULL){
+                    echo 'Size: '.$item['size'];
+                    if ($item['plinth'] != NULL){
+                        echo '<br>Đế: '.$item['plinth'];
+                    }
+                } elseif ($item['plinth'] != NULL){
+                    echo 'Đế: '.$item['plinth'];
+                }
+                echo'</td>';
+                echo '<td>'.$item['price'].'</td>
                 <td>'.$item['quantity'].'</td>
                 <td>'.($item['price'] * $item['quantity']).'</td>
             </tr>';
@@ -71,10 +78,20 @@ foreach ($data as $row){
 
     </table>
 </div>
+
 <div class="popup_confirmation">
-    <input style= "background-color: #4CAF50; color: white; 
-    padding: 10px 20px; border: none; border-radius: 10px; "
-    onclick="confirmButtonChange()" type="button" value="Xác nhận" id="button"></input>
+    <?php
+        if ($row['status'] == 1){
+            echo '<p style="color:#F98607;">Đơn hàng đang chờ xác nhận</p>';
+            echo '<button class="confirmButton" onclick="orderConfirmButtonChange('.$orderid.')">Xác nhận đơn hàng</button>
+            <button class="rejectButton" onclick="orderRejectButtonChange('.$orderid.')">Hủy đơn hàng</button>';
+        } elseif ($row['status'] == 2){
+            echo '<p style="color:#4CAF50; witdh:100%; text-align: center;">Đơn hàng đã được xác nhận</p>';
+        } elseif ($row['status'] == 3){
+            echo '<p style="color:#A80000; witdh:100%; text-align: center;">Đơn hàng đã bị hủy</p>';
+        }
+    ?>
 </div>
 
-<!-- <script src="invoice_management.js"></script> -->
+<script type="text/javascript">
+    </script>

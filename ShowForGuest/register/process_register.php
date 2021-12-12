@@ -14,13 +14,13 @@ $gmail_check = false;
         $address = getPost('address-register');
         
         // chay cau lenh sql de lay ra gia tri trong database co gia tri bang gia tri nguoi dung nhap vao
-        $sql = "select username from user_acount where username = '$user_name_register'";
+        $sql = "select username from user_account where username = '$user_name_register'";
         $userExist = executeResult($sql);
 
 
         // neu khong co nguoi dung nao
         if(empty($userExist)){           
-            $sql = "insert into user_acount (username, password,email,phonenumber,address) values ('$user_name_register','$password_register','$email','$phonenumber','$address')";
+            $sql = "insert into user_account (username, password,email,phonenumber,address) values ('$user_name_register','$password_register','$email','$phonenumber','$address')";
             execute($sql);
 
             header("location: ../homepage/homepage.php");

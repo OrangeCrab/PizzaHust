@@ -9,15 +9,15 @@
 
     if(!empty($_POST)){
         $username = getPost('username');
-       $sql = "select username from user_acount where username = '$username'";
+       $sql = "select username from user_account where username = '$username'";
        $check_username = executeResult($sql);
        if(!empty($check_username)){
            $email = getPost('email');
-           $sql_email = "select email from user_acount where email = '$email' and username = '$username'";
+           $sql_email = "select email from user_account where email = '$email' and username = '$username'";
            $check_email = executeResult($sql_email);
            if(!empty($check_email)){
               // check password
-              $sql_pass = "select password from user_acount where email = '$email'";
+              $sql_pass = "select password from user_account where email = '$email'";
               $password = array(executeResult($sql_pass));
               $pass = $password[0][0]['password'];
             

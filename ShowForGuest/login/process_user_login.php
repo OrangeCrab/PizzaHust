@@ -10,7 +10,7 @@ $password = $user_name= $msg = '';
         $password = getPost('password');
         
         // chay cau lenh sql de lay ra gia tri trong database co gia tri bang gia tri nguoi dung nhap vao
-        $sql = "select * from user_acount where username = '$user_name' and password = '$password'";
+        $sql = "select * from user_account where username = '$user_name' and password = '$password'";
         $userExist = executeResult($sql);
 
 

@@ -13,10 +13,10 @@
     $sql = "select * from category";
     $category = executeResult($sql);
 
-    // $_SESSION['user_id'] = 1;
+    $_SESSION['user_id'] = 1;
     if(isset($_SESSION['user_id'])) echo' 
     <script>
-    alert("session is ok");
+    alert("ĐĂNG NHẬP THÀNH CÔNG !");
     </script>
     ';
 
@@ -346,6 +346,8 @@
                 popupScreen.classList.remove("active"); //Close the popup screen on click the x button
             });
         </script>
+      
+   
 
 </body>
 </html>

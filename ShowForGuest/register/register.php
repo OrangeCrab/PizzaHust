@@ -13,8 +13,8 @@ require_once ('process_register.php');
     </head>
 
     <body>
-        <img class="background_img" src="../../masterial/image/bgrAdminPage/bgrLogin.jpg" alt="">
-        <div class="screen"></div>
+        <img class="background_img" src="../../masterial/image/bgrAdminPage/bgrLogin.jpg" alt="" style="position: fixed;">
+        <div class="screen" style="position: fixed;"></div>
         
         <a href="../homepage/homepage.php"><img class="logo" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo" style="margin-top: 60px;"></a>
         

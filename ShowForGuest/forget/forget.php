@@ -26,8 +26,8 @@
 
 
         <form class="box" action="" method="post">
-            <h2 class="container h2">MẬT KHẨU SẼ ĐƯỢC GỬI VÀO GMAIL BẠN ĐÃ ĐĂNG KÝ TRƯỚC ĐÂY</h2>
-            <p>Vui lòng nhập gmail bạn đã đăng ký trước đây để lấy lại mật khẩu.</p>
+            <h2 class="container h2" style="color: orange ;">MẬT KHẨU SẼ ĐƯỢC GỬI VÀO GMAIL BẠN ĐÃ ĐĂNG KÝ TRƯỚC ĐÂY</h2>
+            <p style="color: blue;">Vui lòng nhập gmail bạn đã đăng ký trước đây để lấy lại mật khẩu.</p>
             <label for="username1">User name</label>
             <input type="text" name="username" id ="username1" placeholder="pizzahust" required = "true" autofocus>       
             <p id="username-inform" ></p>

@@ -44,7 +44,7 @@
                     ';
                 }
                 else{
-                    header("location: ../homepage/homepage.php");
+                    header("location: ../login/login_user.php");
                     die();
                 }
                 $mail->smtpClose();                        
@@ -52,7 +52,7 @@
             else{
                echo '
                    <script>
-                        alert("email did not exist or email is not owned by this account !");
+                        alert("Email không đúng !");
                    </script>
                 ';
             }
@@ -61,7 +61,7 @@
        else {
            echo '
            <script type="text/javascript">
-               alert("This user name did not exist"); 
+               alert("Tên người dùng không tồn tại !"); 
             </script>
                
            ';

@@ -1,3 +1,12 @@
+
+
+-- update topping + status_order (13/12)
+ALTER TABLE `order_detail` ADD COLUMN `topping` varchar(30);
+
+ALTER TABLE `order` DROP COLUMN `status`;
+
+ALTER TABLE `order` ADD COLUMN `status` varchar(30);
+
 -- update user_id (10/12)
 ALTER TABLE `order` ADD COLUMN `user_id` int;
 

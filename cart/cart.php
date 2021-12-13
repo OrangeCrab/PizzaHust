@@ -2,7 +2,10 @@
 session_start();
 #Kết nối csdl
 include("config.php");
+require_once('../database/dbhelper.php');
+$baseUrl = '../';
 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+
 
 #Xoá sản phẩm trong giỏ hàng( Pizza)
 if (isset($_GET['delid']) && ($_GET['delid'] >= 0)) {
@@ -196,10 +199,12 @@ function showgiohang()
             ';
     }
 }
+
 $thanhtoan = 0;
 function tinhtien()
 {
-    
+    $code_voucher = "Mã voucher";
+
     $giamgia = 0;
     if (isset($_SESSION['giohang']) && (is_array($_SESSION['giohang'])) && sizeof($_SESSION['giohang']) > 0) {
         $total = 0;
@@ -219,28 +224,78 @@ function tinhtien()
             if ($_SESSION['giohang'][$i][6] == 1) {
                 $total += $_SESSION['giohang'][$i][3] * ($giatien + $gia_topping);
             } else   $total += $_SESSION['giohang'][$i][3] *  $giatien;
-
-            $giamgia = (int)($total * 0.05);
-            $thanhtoan = $total + 22 - $giamgia;
+            $thanhtoan = $total + 22;
+        }
+        $type = 2;
+        $phan_tram = 0;
+        $toi_da = 0;
+        if (isset($_POST['apdung'])) {
+            if(isset($_POST['apvoucher'])){
+                $code_voucher = $_POST['apvoucher'];
+    
+                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+                $get_price = mysqli_query($con, "SELECT * from coupon where code_cp = '$code_voucher'");
+                $res = mysqli_fetch_array($get_price);
+                
+                if((int)$res["type_cp"] ==1 ){
+                    $giamgia = (int)$res["max__order_amount"]/1000;
+                    $type = 1;
+                }
+                if((int)$res["type_cp"] ==0 ){
+                    if($thanhtoan * (int)$res["value_cp"] /100 > (int)$res["max__order_amount"]/1000){
+                        $giamgia =(int)$res["max__order_amount"]/1000;
+                    }
+                    else $giamgia = (int)($thanhtoan * $res["value_cp"] /100);
+                    $phan_tram = (int)$res["value_cp"];
+                    $type = 0;
+                    $toi_da = (int)$res["max__order_amount"]/1000;
+                }
+                
+            }
+            $thanhtoan -= $giamgia;
+    
         }
         echo '
             <div class="pay">
                 <div class="field"><span>Tổng:</span><span class="price">' . $total . ' 000đ</span></div>
                 <div class="field"><span>Phí giao hàng:</span><span class="price">22 000đ</span></div>
-                <div class="field"><span>Giảm giá 5%:</span><span class="price">-' . $giamgia . ' 000đ</span></div>
+                ';
+                // if($type ==2){}
+                // echo'
+                // <div class="field"><span>Giảm giá :</span><span class="price">-' . $giamgia . ' 000đ</span></div>
+                // ';
+                if($type ==2){
+                    echo'
+                    <div class="field"><span>Giảm giá :</span><span class="price">0đ</span></div>
+                    ';
+                }
+                if($type ==1){
+                    echo'
+                    <div class="field"><span>Giảm giá :</span><span class="price">-' . $giamgia . ' 000đ</span></div>
+                    ';
+                }
+                if($type ==0){
+                    echo'
+                    <div class="field"><span>Giảm giá '.$phan_tram.'% (Tối đa '.$toi_da.'k):</span><span class="price"> -' . $giamgia . ' 000đ</span></div>
+                    ';
+                }
+                echo'
                 <div class="form__row">
                 <form class="" action="cart.php" method="post">
                     <label class="form__label" for="name"> <b>Voucher:</b></label>
-                    <select name="quanhuyen" id="">
-                        <option value="Mã Voucher">   Mã Voucher   </option>
-                        <option value="5fd66d5v">5fd66d5v</option>
-                        <option value="f65d56b5f">f65d56b5f</option>
-                        <option value="2gge85f2n1n">2gge85f2n1n</option>
-                        <option value="121f1vffb">121f1vffb</option>
-                        <option value="5fd66d5v">5fd66d5v</option>
-                        <option value="f65d56b5f">f65d56b5f</option>
-                        <option value="2gge85f2n1n">2gge85f2n1n</option>
-                        <option value="121f1vffb">121f1vffb</option>
+                    <select name="apvoucher" id="">
+                        <option value="'.$code_voucher.'">   '.$code_voucher.'   </option>
+                    ';
+                    $sql = "SELECT coupon.* from coupon,cp_user where coupon.id_cp = cp_user.cp_id and cp_user.user_id = 1";
+                    $voucher = executeResult($sql);
+                    foreach($voucher as $item){
+                        if($total*1000 >= (int)$item['min_order_value'] && $item['code_cp'] != $code_voucher){
+                            echo'
+                                <option value="'.$item['code_cp'].'">'.$item['code_cp'].'</option>
+                            ';
+                        }
+                    }
+                echo'
                     </select>
                     <div class="apdung"><input type="submit"  value="Áp dụng" name="apdung"></div>
                 </form>

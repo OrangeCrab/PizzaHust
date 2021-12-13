@@ -1,6 +1,7 @@
 <?php
     session_start();
     
+
     if(!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
     require_once('../../database/dbhelper.php');
 	$baseUrl = '../../';
@@ -12,35 +13,26 @@
     $sql = "select * from category";
     $category = executeResult($sql);
 
-    $_SESSION['user_id'] = 1;
+    // $_SESSION['user_id'] = 1;
+    if(isset($_SESSION['user_id'])) echo' 
+    <script>
+    alert("session is ok");
+    </script>
+    ';
 
 
     # Mỗi lần them sản phẩm vào giỏ hàng,  $_SESSION['giohang'] sẽ thêm một mảng các thuộc
-    # tính của sản phẩm mình đang chọn vào biến đó 
-   
+    # tính của sản phẩm mình đang chọn vào biến đó (bảng product chưa hoàn thiện về giá nên cho giá mặc định nên không có biến $price)
+    # sẽ thêm biến $price khi người dùng chọn s m l khác (lúc này lại phải truy cập sql để biết được giá)
     if(isset($_POST['addcart']) &&($_POST['addcart'])){
-        $size=(string)$_POST['size']; //$_SESSION['giohang'][$i][0]
-        $de=$_POST['de'];   //$_SESSION['giohang'][$i][1]
-        //$_SESSION['giohang'][$i][2]
-       if(isset($_POST['topping'])){
+        $size=(string)$_POST['size'];
+        $de=$_POST['de'];
         $topping=$_POST['topping'];
-       }else $topping =null;
-        $quantity=$_POST['quantity'];//$_SESSION['giohang'][$i][3]
-        $name=$_POST['name'];//$_SESSION['giohang'][$i][4]
-        $image=$_POST['image'];//$_SESSION['giohang'][$i][5]
-        $loai = $_POST['category'];//$_SESSION['giohang'][$i][6]
-        $price= 0;//$_SESSION['giohang'][$i][7]
-        $gia_s = $_POST['gia_s'];//$_SESSION['giohang'][$i][8]
-        $gia_m = $_POST['gia_m'];//$_SESSION['giohang'][$i][9]
-        $gia_l = $_POST['gia_l'];//$_SESSION['giohang'][$i][10]
-        if($size == "S"){
-            $price = $gia_s/1000;
-        }elseif($size == "M"){
-            $price = $gia_m/1000;
-        }elseif($size == "L"){
-            $price = $gia_l/1000;
-        };
-        $price_topping = 0;
+        $quantity=$_POST['quantity'];
+        $name=$_POST['name'];
+        $image=$_POST['image'];
+        $loai = $_POST['category'];
+        $price= $_POST['gia'] /1000;
 
         #Kiểm tra sản phẩm vừa đặt có trong giỏ hàng không
         $check = 0;
@@ -51,7 +43,7 @@
                 break;
             }
         }
-        $sp=[$size,$de,$topping,$quantity,$name,$image,$loai,$price,$gia_s,$gia_m,$gia_l];
+        $sp=[$size,$de,$topping,$quantity,$name,$image,$loai,$price_S];
         if($check == 0) {
             $_SESSION['giohang'][]=$sp;
         }
@@ -72,7 +64,7 @@
                 break;
             }
         }
-        $sp=[null,null,null,$quantity,$name,$image,$loai,$price];
+        $sp=[null,null,null,$quantity,$name,$image,$loai,$price_S];
         if($check == 0) {
             $_SESSION['giohang'][]=$sp;
         }
@@ -153,16 +145,14 @@
                                 <span class="price">'.number_format($item['price_s']).' đ</span>
                                 <a class="choose_btn">Chọn</a>
                             </div>
-                            <form class="info_view" action="..\homepage\homepage.php#1" method="post">
+                            <form class="info_view" action="..\homepage\draft.php" method="post">
                                 <div class="info_card">
                                     <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
                                     <div class="info_img"><img src="../../masterial/image/thuc_don/'.$item['image'].'"></div>
                                     
                                     <input type="text" style="display: none;" name="image" value="'.$item['image'].'">
                                     <input type="text" style="display: none;" name="category" value="'.$item['category_id'].'">
-                                    <input type="text" style="display: none;" name="gia_s" value="'.$item['price_s'].'">
-                                    <input type="text" style="display: none;" name="gia_m" value="'.$item['price_m'].'">
-                                    <input type="text" style="display: none;" name="gia_l" value="'.$item['price_l'].'">
+                                    <input type="text" style="display: none;" name="gia" value="'.$item['price_s'].'">
                                                     
                                     <div class="info">
                                         <div class="part">
@@ -175,17 +165,17 @@
                                         <div class="part">
                                                 <h3>Size</h3>
                                                 <div class = "form">
-                                                    <input type="radio" checked = "checked" id="S" name="size" value="S">
+                                                    <input type="radio" id="S" name="size" value="S">
                                                     <label for="S">S</label>
                                                     <span>'.number_format($item['price_s']).'đ</span>
                                                     <br>
                                                     <input type="radio" id="M" name="size" value="M">
                                                     <label for="M">M</label>
-                                                    <span>'.number_format($item['price_m']).'đ</span>
+                                                    <span>'.number_format($item['price_m'] + 10000).'đ</span>
                                                     <br>
                                                     <input type="radio" id="L" name="size" value="L">
                                                     <label for="L">L</label>
-                                                    <span>'.number_format($item['price_l']).'đ</span>
+                                                    <span>'.number_format($item['price_l'] + 20000).'đ</span>
                                                 </div>
                                             <hr>
                                         </div>
@@ -193,7 +183,7 @@
                                         <div class="part">
                                             <h3>Loại đế</h3>
                                             <div class = "form">
-                                                <input type="radio" id="gion" checked = "checked" name="de" value="Giòn">
+                                                <input type="radio" id="gion" name="de" value="Giòn">
                                                 <label for="gion">Giòn</label><br>
                                                 <input type="radio" id="men" name="de" value="Mềm truyền thống">
                                                 <label for="mem">Mềm truyền thống</label><br>
@@ -208,9 +198,8 @@
                                             foreach($product as $topping)
                                             if ($topping['category_id'] == 8)
                                             echo'
-                                                <input type="checkbox" id="1" name="topping[]" value="'.$topping['name'].'">
+                                                <input type="checkbox" id="1" name="topping" value="1">
                                                 <label for="1">'.$topping['name'].'</label>
-                                                <!-- <span class="cost">'.number_format(10000).'đ</span> -->
                                                 <span class="cost">'.$topping['price_free_size'].'đ</span>
                                                 <br>';
                                             echo'
@@ -235,7 +224,7 @@
                                 <a class="choose_btn">Chọn</a>
                             </div>
 
-                            <form class="info_view" action="..\homepage\homepage.php#2" method="post">
+                            <form class="info_view" action="..\homepage\draft.php" method="post">
                                 <div class="info_card">
                                     <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
                                     <div class="info_img"><img src="../../masterial/image/thuc_don/'.$item['image'].'"></div>

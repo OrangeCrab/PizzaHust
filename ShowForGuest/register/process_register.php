@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 $password_register = $user_name_register= $gmail =$msg  = $phonenumber = $address ='';
 $gmail_check = false;
     // kiem tra xem nguoi dung co nhap du lieu khong
@@ -22,6 +22,7 @@ $gmail_check = false;
         if(empty($userExist)){           
             $sql = "insert into user_account (username, password,email,phonenumber,address) values ('$user_name_register','$password_register','$email','$phonenumber','$address')";
             execute($sql);
+            $_SESSION['user_id'] = $user_name_register;
 
             header("location: ../homepage/homepage.php");
             die();           

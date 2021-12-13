@@ -13,7 +13,12 @@
     $sql = "select * from category";
     $category = executeResult($sql);
 
-    $_SESSION['user_id'] = 1;
+    // $_SESSION['user_id'] = 1;
+    if(isset($_SESSION['user_id'])) echo' 
+    <script>
+    alert("session is ok");
+    </script>
+    ';
 
 
     # Mỗi lần them sản phẩm vào giỏ hàng,  $_SESSION['giohang'] sẽ thêm một mảng các thuộc
@@ -86,7 +91,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="draft.css">
+    <link rel="stylesheet" href="homepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 </head>
 
@@ -98,7 +103,7 @@
             <a href="#menu">Thực đơn</a>
             <a href="../../cart/cart.php"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
             <a href="#contact">Liên hệ</a>
-            <a href="../../AdminSystem/login_form.php"><i class="fa fa-user" aria-hidden="true"></i></a>
+            <a href="../login/login_user.php"><i class="fa fa-user" aria-hidden="true"></i></a>
         </div>
     </header>
 

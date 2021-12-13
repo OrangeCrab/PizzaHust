@@ -12,10 +12,15 @@
     <?php
     $i = 0;
     session_start();
+    require_once('../database/dbhelper.php');
+	$baseUrl = '../';
+    // chay cau lenh sql để lấy tên loại sản phẩm sử dụng lệnh join bảng
+	$sql = "select product.*, category.title as category_name from product left join category on product.category_id = category.id";
+	$data = executeResult($sql);
     if(isset($_GET['fixid']) && ($_GET['fixid'] >= 0)){
         $i =$_GET['fixid'];
     }
-    if($_SESSION['giohang'][$i][6] == 1)
+    if($_SESSION['giohang'][$i][6] == 1){
     echo'
     <form class="info_view" action="cart.php" method="post">
         <div class="info_card">
@@ -33,19 +38,19 @@
                     <div class = "form">
                         <input type="radio" checked="checked" id="S" name="size" value="S">
                         <label for="S">S</label>
-                        <span>'.number_format($_SESSION['giohang'][$i][7]*1000).'đ</span>
+                        <span>'.number_format($_SESSION['giohang'][$i][8]).'đ</span>
                         <br>
                         <input type="radio" id="M" name="size" value="M">
                         <label for="M">M</label>
-                        <span>'.number_format($_SESSION['giohang'][$i][7]*1000 + 10000).'đ</span>
+                        <span>'.number_format($_SESSION['giohang'][$i][9]).'đ</span>
                         <br>
                         <input type="radio" id="L" name="size" value="L">
                         <label for="L">L</label>
-                        <span>'.number_format($_SESSION['giohang'][$i][7]*1000 + 20000).'đ</span>
+                        <span>'.number_format($_SESSION['giohang'][$i][10]).'đ</span>
                     </div>
                     <hr>
                 </div>
-
+    
                 <div class="part">
                     <h3>Loại đế</h3>
                     <div class = "form">
@@ -58,34 +63,35 @@
                     </div>
                     <hr>
                 </div>
+
                 <div class="part">
                     <h3>Topping</h3>
-                    <div class = "form">
-                        <input type="radio" checked="checked" id="1" name="topping" value="Phô Mai Phủ">
-                        <label for="1">Phô mai phủ</label>
-                        <span class="cost">10 000đ</span>
-                        <br>
-                        <input type="radio" id="1" name="topping" value="Xúc xích">
-                        <label for="1">Xúc xích</label>
-                        <span class="cost">10 000đ</span>
-                        <br>
-                        <input type="radio" id="2" name="topping" value="Phô mai viền">
-                        <label for="2">Phô mai viền</label>
-                        <span class="cost">10 000đ</span>
-                        <br>
-                        <input type="radio" id="3" name="topping" value="Double sốt">
-                        <label for="3">Double sốt</label>
-                        <span class="cost">10 000đ</span>
+                    <div class = "form">';
+                    $sql = "select product.* from product";
+                    $product = executeResult($sql);
+                    foreach($product as $topping){
+                        if ($topping['category_id'] == 8)
+                        echo'
+                            <input type="checkbox" id="1" name="topping[]" value="'.$topping['name'].'">
+                            <label for="1">'.$topping['name'].'</label>
+                            <!-- <span class="cost">'.number_format(10000).'đ</span> -->
+                            <span class="cost">'.$topping['price_free_size'].'đ</span>
+                            <br>';
+                        }
+                    echo'
                     </div>
                     <hr>
                 </div>
-                    <div class="final">
-                        <span>SL:</span>
-                        <input type="number" value = "'.$_SESSION['giohang'][$i][3].'" id="quantity" name="quantity" min="1" max="5">
-                        <input type="submit" class="add-card-bt" name="confirm" value="Xác nhận">
-                    </div>                          
-                </div>
-        </form>';
+
+                
+                
+                <div class="final">
+                    <span>SL:</span>
+                    <input type="number" value = "'.$_SESSION['giohang'][$i][3].'" id="quantity" name="quantity" min="1" max="5">
+                    <input type="submit" class="add-card-bt" name="confirm" value="Xác nhận">
+                </div>                          
+            </div>
+            </form>';}
         else
          echo'
     <form class="info_view" action="cart.php" method="post">
@@ -101,10 +107,8 @@
                     </div>
                     
                     <div class="part">
-                        <h3>Size</h3>
+    
                         <div class = "form">
-                            <input checked="checked" type="radio" id="S" name="size" value="S">
-                            <label for="S">S</label>
                             <span>'.number_format($_SESSION['giohang'][$i][7]*1000).'đ</span>
                            
                         </div>

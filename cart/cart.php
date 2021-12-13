@@ -19,13 +19,31 @@ if (isset($_POST['confirm_orther_product']) && ($_POST['confirm_orther_product']
     $temp = $_POST['stt'];
     $_SESSION['giohang'][$temp][0] = $_POST['size'];
     $_SESSION['giohang'][$temp][1] = $_POST['de'];
-    $_SESSION['giohang'][$temp][2] = $_POST['topping'];
+    if($_POST['size'] =="S"){
+        $_SESSION['giohang'][$temp][7]=$_SESSION['giohang'][$temp][8]/1000;
+    } elseif($_POST['size'] =="M"){
+        $_SESSION['giohang'][$temp][7]=$_SESSION['giohang'][$temp][9]/1000;
+    } elseif ($_POST['size'] =="L"){
+        $_SESSION['giohang'][$temp][7]=$_SESSION['giohang'][$temp][10]/1000;
+    }
+    if(isset($_POST['topping'])){
+        $_SESSION['giohang'][$temp][2] = $_POST['topping'];
+    } else $_SESSION['giohang'][$temp][2] = null;
     $_SESSION['giohang'][$temp][3] = $_POST['quantity'];
 }
 
 
 # Tiến hành thanh toán, lưu đơn hàng vào bảng Order , order_detail
 if (isset($_POST['thanhtoan'])) {
+    $name = $_POST['name'];
+    $sdt = $_POST['sdt'];
+    $quanhuyen = $_POST['quanhuyen'];
+    $diachi = $_POST['diachi'];
+    $ghichu = $_POST['ghichu'];
+    $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận')");
+    $get_order = mysqli_query($con, "select max(id) from `order`");
+    $res = mysqli_fetch_array($get_order);
+    $get_order_id = (int)$res["max(id)"];
     $thanhtoan = 0;
     $giamgia = 0;
     if (isset($_SESSION['giohang']) && (is_array($_SESSION['giohang']))) {
@@ -33,11 +51,23 @@ if (isset($_POST['thanhtoan'])) {
         for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
             $gia_topping = 0;
             $price = 0;
-            if ($_SESSION['giohang'][$i][2] != null) $gia_topping = 1; //nếu đặt thêm topping $gia_topping = 1
+            $fulltopping = "";
+            if($_SESSION['giohang'][$i][2] == null) {
+                $fulltopping = "Không có";
+                $gia_topping = 0;
+            }else
+            for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
+                $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
+                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+                $get_price = mysqli_query($con, "select price from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
+                $res = mysqli_fetch_array($get_price);
+                $get_topping_price = (int)$res["price"];
+                $gia_topping+= $get_topping_price/1000;
+            };
             $giatien = $_SESSION['giohang'][$i][7];
             if ($_SESSION['giohang'][$i][6] == 1) {
-                $total += $_SESSION['giohang'][$i][3] * ($giatien + 10 * $gia_topping);
-                $price = ($giatien + 10 * $gia_topping) * 1000;
+                $total += $_SESSION['giohang'][$i][3] * ($giatien + $gia_topping);
+                $price = ($giatien + $gia_topping) * 1000;
             } else {
                 $total += $_SESSION['giohang'][$i][3] *  $giatien;
                 $price =  $giatien * 1000;
@@ -45,21 +75,15 @@ if (isset($_POST['thanhtoan'])) {
             $giamgia = (int)($total * 0.05);
             $thanhtoan = ($total + 22 - $giamgia) * 1000;
             $num = (int)$_SESSION['giohang'][$i][3];
+            $get_id = mysqli_query($con, "select id from `product` where name = N'{$_SESSION['giohang'][$i][4]}' ");
+            $res = mysqli_fetch_array($get_id);
+            $get_product_id = (int)$res["id"];
 
-
-            $get_order = mysqli_query($con, "select max(id) from `order`");
-            $res = mysqli_fetch_array($get_order);
-            $get_order_id = (int)$res["max(id)"] + 1;
-            $sql_donhang = mysqli_query($con, "insert into `order_detail1`(order_id, price, quatity,size,product,plinth, topping) values($get_order_id,$price,$num,'{$_SESSION['giohang'][$i][0]}','{$_SESSION['giohang'][$i][4]}','{$_SESSION['giohang'][$i][1]}','{$_SESSION['giohang'][$i][2]}')");
+           
+            $sql_donhang = mysqli_query($con, "insert into `order_detail`(order_id, price, quatity,size,plinth, topping, product_id) values($get_order_id,$price,$num,'{$_SESSION['giohang'][$i][0]}','{$_SESSION['giohang'][$i][1]}','$fulltopping',$get_product_id)");
         }
     }
-    $name = $_POST['name'];
-    $sdt = $_POST['sdt'];
-    $quanhuyen = $_POST['quanhuyen'];
-    $diachi = $_POST['diachi'];
-    $ghichu = $_POST['ghichu'];
-
-    $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,payment,note,order_time,status) values('$name','$sdt','$diachi $quanhuyen','$thanhtoan','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận')");
+    $sql_giohang = mysqli_query($con, "update `order` set payment = $thanhtoan where id = $get_order_id");
     // $get_order_id = mysqli_query($con,"SELECT `id` FROM `order` where `fullname` ='$name' and `payment`");
 
 }
@@ -75,12 +99,22 @@ function showgiohang()
             ';
         for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
             $total = 0;
+            $full_topping =0;
             $alert = "'Bạn chắc chắn muốn xoá mặt hàng này?'";
             $price = (int)$_SESSION['giohang'][$i][7];
-            if ($_SESSION['giohang'][$i][6] == 1) {
-                $total = ($price + 10) * $_SESSION['giohang'][$i][3];
-            } else  $total = $price * $_SESSION['giohang'][$i][3];
-
+            $fulltopping = "";
+            if($_SESSION['giohang'][$i][2] == null) {
+                $fulltopping = "Không có";
+            }else
+            for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
+                $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
+                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+                $get_price = mysqli_query($con, "select price from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
+                $res = mysqli_fetch_array($get_price);
+                $get_topping_price = (int)$res["price"];
+                $full_topping+= $get_topping_price/1000;
+            };
+            $total = ($price + $full_topping) * $_SESSION['giohang'][$i][3];
             if ($_SESSION['giohang'][$i][6] == 1)
                 echo '
                     <div class="product">
@@ -91,7 +125,7 @@ function showgiohang()
                         <p class="field">' . $_SESSION['giohang'][$i][4] . '</p>
                         <div><span class="field">Size: </span><span class="size">' . $_SESSION['giohang'][$i][0] . '</span><span class="price">' . $_SESSION['giohang'][$i][7] . ' 000đ</span></div>
                         <div><span class="field">Loại đế: </span><span>' . $_SESSION['giohang'][$i][1] . '</span></div>
-                        <div><span class="field">Topping: </span><span class="topping">' . $_SESSION['giohang'][$i][2] . '</span><span class="price">10 000đ</span></div>
+                        <div><span class="field">Topping: </span><span class="topping">'.$fulltopping.'</span><span class="price">'.$full_topping.' 000đ</span></div>
                     </div>
                     <div class="quantity">
                         <div class="">
@@ -171,10 +205,19 @@ function tinhtien()
         $total = 0;
         for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
             $gia_topping = 0;
-            if ($_SESSION['giohang'][$i][2] != null) $gia_topping = 1; //nếu đặt thêm topping $gia_topping = 1
+            if($_SESSION['giohang'][$i][2] == null) {
+                $gia_topping = 0;
+            }else
+            for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
+                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+                $get_price = mysqli_query($con, "select price from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
+                $res = mysqli_fetch_array($get_price);
+                $get_topping_price = (int)$res["price"];
+                $gia_topping += $get_topping_price/1000;
+            };
             $giatien =  $_SESSION['giohang'][$i][7];
             if ($_SESSION['giohang'][$i][6] == 1) {
-                $total += $_SESSION['giohang'][$i][3] * ($giatien + 10 * $gia_topping);
+                $total += $_SESSION['giohang'][$i][3] * ($giatien + $gia_topping);
             } else   $total += $_SESSION['giohang'][$i][3] *  $giatien;
 
             $giamgia = (int)($total * 0.05);
@@ -267,17 +310,17 @@ function tinhtien()
         <div class="suggest">
             <h3 style="font-size: 15px;">Có thể bạn sẽ thích</h3>
             <div class="suggest-product">
-                <a href="../ShowForGuest/homepage/homepage.php#3">
+                <a href="../ShowForGuest/homepage/homepage.php#4">
                     <img src="../masterial/image/thuc_don/coca.png" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#3">
+                <a href="../ShowForGuest/homepage/homepage.php#4">
                     <img src="../masterial/image/thuc_don/nuoc_cam.png" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#4">
+                <a href="../ShowForGuest/homepage/homepage.php#5">
                     <img src="../masterial/image/thuc_don/mi_y.jpg" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#4">
-                    <img src="../masterial/image/thuc_don/khoai_tay_chien.webp" alt="">
+                <a href="../ShowForGuest/homepage/homepage.php#2">
+                    <img src="../masterial/image/thuc_don/bbq.jpg" alt="">
                 </a>
                 <a href="../ShowForGuest/homepage/homepage.php#2">
                     <img style="height: 60px;" src="../masterial/image/thuc_don/ga_BBQ.jpg" alt="">

@@ -7,21 +7,21 @@ function send(){
     var thanhtoan = document.getElementById('thanhtoan').value;
     console.log(thanhtoan);
     if(thanhtoan == 0){
-        alert("Bạn chưa có sản phẩm nào trong giỏ hàng!");
+        confirm("Bạn chưa có sản phẩm nào trong giỏ hàng!");
         return;
     } 
     if(name == "" || sdt ==""||quan_huyen ==""||diachi ==""){
-        alert("Vui lòng điền đầy đủ thông tin của bạn");
+        confirm("Vui lòng điền đầy đủ thông tin của bạn");
         return;
     }
     if(sdt.length != 10 || isNaN(sdt)){
-        alert("Vui lòng Nhập đúng số điện thoại");
+        confirm("Vui lòng Nhập đúng số điện thoại");
         return;
     }
     if(quan_huyen == "" && sonha == " "){
-        alert("Vui lòng điền đầy đủ địa của bạn");
+        confirm("Vui lòng điền đầy đủ địa của bạn");
         return;
     }
-    confirm('Thông tin khách hàng: \nTên:'+name +'\nSđt: '+sdt+'\nĐịa chỉ: '+diachi+'\nNếu có sai sót thì mời bạn nhập lại! \nKhi bạn đặt hàng, cửa hàng sẽ gọi lại cho bạn để xác nhận\nCảm ơn quý khách đã mua hàng ở PizzaHust!');
+    confirm('Thông tin khách hàng: \nTên:'+name +'\nSđt: '+sdt+'\nĐịa chỉ: '+diachi+'\nNếu có sai sót thì mời bạn nhập lại! \nSau khi bạn đặt hàng, cửa hàng sẽ gọi lại cho bạn để xác nhận\nCảm ơn quý khách đã mua hàng ở PizzaHust!');
 
 }

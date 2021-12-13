@@ -21,7 +21,7 @@ function confirmInvoice() {
 	$id = getPost('id');
 
 	$confirmSQL = "UPDATE `order`
-    SET `status` = 2
+    SET `status` = 'Đã xác nhận'
     WHERE `id` = $id";
 
     execute($confirmSQL);
@@ -31,7 +31,7 @@ function rejectInvoice(){
     $id = getPost('id');
 
 	$rejectSQL = "UPDATE `order`
-    SET `status` = 3
+    SET `status` = 'Đã bị hủy'
     WHERE `id` = $id";
 
     execute($rejectSQL);

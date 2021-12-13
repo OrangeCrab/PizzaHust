@@ -39,7 +39,7 @@
     </tr>
 
     <?php 
-        $sql = "SELECT `product`.`id` AS pID, `product`.`name` AS pName, `order_detail`.`size` AS size, 
+        $sql = "SELECT `product`.`id` AS pID, `product`.`name` AS pName, `order_detail`.`size` AS size, `order_detail`.`topping` AS topping,
             `order_detail`.`plinth` AS plinth, `order_detail`.`price` AS price, `order_detail`.`quatity` AS quantity
         FROM `order_detail`, `order`, `product`
         WHERE `order_detail`.`order_id` = `order`.`id` AND `product`.`id` = `order_detail`.`product_id` AND `order`.`id` = ".$orderid;
@@ -54,12 +54,13 @@
                 <td>'.$item['pName'].'</td>';
                 echo '<td>';
                 if ($item['size'] != NULL){
-                    echo 'Size: '.$item['size'];
-                    if ($item['plinth'] != NULL){
-                        echo '<br>Đế: '.$item['plinth'];
-                    }
-                } elseif ($item['plinth'] != NULL){
-                    echo 'Đế: '.$item['plinth'];
+                    echo 'Size: '.$item['size'].'<br>';
+                } 
+                if ($item['plinth'] != NULL){
+                    echo 'Đế: '.$item['plinth'].'<br>';
+                }
+                if ($item['topping'] != NULL){
+                    echo 'Topping: '.$item['topping'].'<br>';
                 }
                 echo'</td>';
                 echo '<td>'.$item['price'].'</td>
@@ -81,13 +82,13 @@
 
 <div class="popup_confirmation">
     <?php
-        if ($row['status'] == 1){
+        if ($row['status'] == 'Chờ xác nhận'){
             echo '<p style="color:#F98607;">Đơn hàng đang chờ xác nhận</p>';
             echo '<button class="confirmButton" onclick="orderConfirmButtonChange('.$orderid.')">Xác nhận đơn hàng</button>
             <button class="rejectButton" onclick="orderRejectButtonChange('.$orderid.')">Hủy đơn hàng</button>';
-        } elseif ($row['status'] == 2){
+        } elseif ($row['status'] == 'Đã xác nhận'){
             echo '<p style="color:#4CAF50; witdh:100%; text-align: center;">Đơn hàng đã được xác nhận</p>';
-        } elseif ($row['status'] == 3){
+        } elseif ($row['status'] == 'Đã bị hủy'){
             echo '<p style="color:#A80000; witdh:100%; text-align: center;">Đơn hàng đã bị hủy</p>';
         }
     ?>

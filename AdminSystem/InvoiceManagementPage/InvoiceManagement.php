@@ -102,33 +102,36 @@
                                 
                                 // In danh sach dat hang cua khach hang nay
                                 $sql_Detail = "SELECT `product`.`name` AS pName, `order_detail`.`quatity` AS odQuantity, 
-                                    `order_detail`.`size` AS odSize, `order_detail`.`plinth` AS odPlinth
+                                    `order_detail`.`size` AS odSize, `order_detail`.`plinth` AS odPlinth, `order_detail`.`topping` AS odTopping
                                     FROM `order_detail`, `product` 
                                     WHERE `product`.`id` = `order_detail`.`product_id` 
                                     AND `order_id` = ".$item_Order['id'];
                                 $data_Detail = executeResult($sql_Detail);
                                 echo '<td>';
                                 foreach ($data_Detail as $item_Detail){
-                                    echo '<b>'.$item_Detail['pName'].'</b>';
+                                    echo '<b>&#9654 '.$item_Detail['pName'].'</b><small>';
                                     if ($item_Detail['odSize'] != NULL){
                                         echo ', Size: <b>'.$item_Detail['odSize'].'</b>';
                                     }
                                     if ($item_Detail['odPlinth'] != NULL){
                                         echo ', Đế: <b>'.$item_Detail['odPlinth'].'</b>';
                                     }
-                                    echo ', SL: <b>'.$item_Detail['odQuantity'].'</b><br>';
+                                    if ($item_Detail['odTopping'] != NULL){
+                                        echo ', Topping: <b>'.$item_Detail['odTopping'].'</b>';
+                                    }
+                                    echo ', SL: <b>'.$item_Detail['odQuantity'].'</b></small><br>';
                                 }
                                 echo '</td>';
 
-                                if ($item_Order['oStatus'] == '1'){
-                                    echo "<td style='color:#F98607;'>Chờ xác nhận";
-                                } elseif ($item_Order['oStatus'] == '2') {
-                                    echo "<td style='color:#4CAF50;'>Đã xác nhận";
-                                } elseif ($item_Order['oStatus'] == '3'){
-                                    echo "<td style='color:#A80000;'>Đã bị hủy";
-                                } else {
-                                    echo $item_Order['oStatus'];
+                                if ($item_Order['oStatus'] == 'Chờ xác nhận'){
+                                    echo "<td style='color:#F98607;'>";
+                                } elseif ($item_Order['oStatus'] == 'Đã xác nhận') {
+                                    echo "<td style='color:#4CAF50;'>";
+                                } elseif ($item_Order['oStatus'] == 'Đã bị hủy'){
+                                    echo "<td style='color:#A80000;'>";
                                 }
+                                echo $item_Order['oStatus'];
+                            
                                 echo '</td>
                                 <td><b>'.$item_Order['oMoney'].'</b></td>
                             </tr>';

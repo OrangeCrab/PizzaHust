@@ -35,8 +35,6 @@ header{
     text-align: center;
     background-color: black;
     opacity: 0.9;
-    /* display: inline-block; */
-    /* overflow: hidden; */
 }
 
 .top-bar img{
@@ -87,7 +85,7 @@ header{
     z-index: 1;
 }
 
-.top-bar .dropdown-content a {
+.top-bar .dropdown-content a, .out {
     color: #f2f2f2;
     padding: 12px 16px;
     font-size: 10px;
@@ -96,8 +94,14 @@ header{
     text-align: left;
 }
 
-.dropdown-content a:hover {
-    background-color: #404040;
+.dropdown-content a:hover, .out:hover {
+    color: #F98607;
+}
+
+.dropdown-content .out{
+    border: none;
+    background-color: black;
+    cursor: pointer;
 }
 
 .dropdown:hover .dropdown-content {
@@ -148,6 +152,7 @@ header{
     border-radius: 15px;
     /* border-style: none; */
     background: #f2f2f2;
+    cursor: pointer;
 }
 
 .voucher-collection{
@@ -165,6 +170,7 @@ header{
     margin-top: 10px;
     display: inline-flex;
     text-decoration: none;
+    /* cursor: pointer; */
 }
 
 .history-order{

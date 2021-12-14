@@ -33,20 +33,28 @@
         <header>
                 <ul class="top-bar">
                     <img src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" style="float: left;" alt="">
-                    <li><a href="draft.php">Trang chủ</a></li>
-                    <li><a href="#menu">Thực đơn</a></li>
-                    <li><a href="#contact">Liên hệ</a></li>
+                    <li><a href="homepage.php">Trang chủ</a></li>
+                    <li><a href="homepage.php">Thực đơn</a></li>
+                    <li><a href="homepage.php">Liên hệ</a></li>
                     <li><a href="../../cart/cart.php"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                     <li class="dropdown">
                         <a href="../../AdminSystem/login_form.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
-                        <div class="dropdown-content">
-                            <?php 
-                            echo '<a href="#">'.$customer['username'].'</a>';
-                            ?>
-                            <a href="draft.php?logout=true"><span>LOGOUT </span><i class="fas fa-sign-out-alt"></i></a>
-                        </div>
+                        <form class="dropdown-content" action="" method="POST">
+                            <?php
+                            echo '<a href="ctm.php">'.$customer['username'].'</a>'; ?>
+                            <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                            <button class="out" type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> 
+                        </form>
                     </li>
                 </ul> 
+
+                <?php 
+                    if (isset($_POST['logout'])){
+                        $_SESSION['user_id'] = 0;
+                        header('location: homepage.php');
+                        die();
+                    }
+                ?>
         </header>
 
         <div class="body-page">
@@ -90,12 +98,27 @@
                 <h1>Đơn hàng của bạn:</h1>
 
                 <div class="sidenav">
-                    <button class="dropdown-btn">Mã đơn: AXB1 | Thời điểm đặt: 2021-12-09 15:32:00 | Thanh toán: 200000đ 
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-container">
-                        <a href="#">Link 1</a>
-                    </div>
+                    <?php 
+                        $sql = "select * from order where user_id = '$_SESSION[user_id]'";
+                        $order = executeResult($sql);
+                        echo $order['id'];
+                        foreach ($order as $or){
+                            echo '
+                            <button class="dropdown-btn">Mã đơn: '.$or['id'].' | Thời điểm đặt: '.$or['order_time'].' | Thanh toán: '.$or['payment'].'đ 
+                                <i class="fa fa-caret-down"></i>
+                            </button>';
+
+                            $sql = "select * from order_detail where order_id = '$or[id]'";
+                            $detail = executeResult($sql);
+                            foreach($detail as $item){
+                                echo '
+                                <div class="dropdown-container">
+                                    p>                        </p>
+                                </div>';
+                            }
+                        }
+                    ?>
+                    
                 </div>
 
             </div>

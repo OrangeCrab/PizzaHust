@@ -1,9 +1,9 @@
 <?php
     require_once('../../database/dbhelper.php');
     $baseUrl = '../../';
-    $_SESSION['user_id'] = 1;
+    // $_SESSION['user_id'] = 0;
     if (!(isset($_SESSION['user_id']) && $_SESSION['user_id'])){
-        header('location: ../../AdminSystem/login_form.php');
+        header('location: ../login/login_user.php');
         die();
     }
     $info = executeResult("select * from user_account");
@@ -38,7 +38,7 @@
                     <li><a href="homepage.php">Liên hệ</a></li>
                     <li><a href="../../cart/cart.php"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                     <li class="dropdown">
-                        <a href="../../AdminSystem/login_form.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <a href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
                         <form class="dropdown-content" action="" method="POST">
                             <?php
                             echo '<a href="ctm.php">'.$customer['username'].'</a>'; ?>
@@ -95,32 +95,37 @@
             </div>
 
             <div class="history-order">
-                <h1>Đơn hàng của bạn:</h1>
+                <h1>Lịch sử đơn hàng:</h1>
 
                 <div class="sidenav">
                     <?php 
-                        $sql = "select * from order where user_id = '$_SESSION[user_id]'";
+                        $sql = "SELECT * FROM `order` where `order`.user_id = '$customer[id]'";
                         $order = executeResult($sql);
-                        echo $order['id'];
                         foreach ($order as $or){
                             echo '
                             <button class="dropdown-btn">Mã đơn: '.$or['id'].' | Thời điểm đặt: '.$or['order_time'].' | Thanh toán: '.$or['payment'].'đ 
                                 <i class="fa fa-caret-down"></i>
                             </button>';
-
-                            $sql = "select * from order_detail where order_id = '$or[id]'";
+                            $sql = "SELECT * FROM `order_detail` WHERE order_id = '$or[id]'";
                             $detail = executeResult($sql);
+                            echo '<div class="dropdown-container">';
                             foreach($detail as $item){
-                                echo '
-                                <div class="dropdown-container">
-                                    p>                        </p>
-                                </div>';
+                                $product_name = $item['product_name'];
+                                $price = $item['price'];
+                                $quantity = $item['quantity'];
+                                $size = '';
+                                $plinth = '';
+                                $topping_ = '';
+                                if ($item['size'] != null) $size = $item['size'];
+                                if ($item['plinth'] != null) $plinth = $item['plinth'];
+                                if ($item['topping'] != null) $topping_ = $item['topping'];
+                                echo '<span>- '.$product_name.' | Giá: '.$price.'đ | Số lượng: '.$quantity.'| Size: '.$size.' | Loại đế: '.$plinth.' | Topping: '.$topping_.'</span><br>';
                             }
+                            echo '</div>';
                         }
                     ?>
-                    
                 </div>
-
+                <br><br><br><br><br><br><br>
             </div>
             <div class="blank"></div>
         </div>
@@ -305,5 +310,6 @@
                 });
             }
         </script>
+
     </body>
 </html> 

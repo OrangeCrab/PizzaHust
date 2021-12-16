@@ -9,7 +9,7 @@ html{
 body{
     margin: 0px;
     padding: 0px;
-    background-image: url('../../masterial/image/bgrhomepage/bgrhomepage.webp');
+    background-image: url('../../masterial/image/bgrhomepage/bgrhomepage.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -64,7 +64,7 @@ header{
     color: #F98607;
 }
 
-.top-bar li:hover, .dropdown:hover .dropbtn {
+.top-bar li:hover, .dropdown:hover{
     background: #404040;
 }
 
@@ -131,7 +131,7 @@ header{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
 }
 .personal-information h2{
-    color: #404040;
+    color: black;
 }
 
 .personal-information span{
@@ -150,16 +150,20 @@ header{
     padding: 5px 10px;
     border: 1px solid #A80000;
     border-radius: 15px;
-    /* border-style: none; */
     background: #f2f2f2;
     cursor: pointer;
+    transition: 0.5s;
+    transition-property: background-color;
 }
-
+.customer-info button:hover{
+    color: #f2f2f2;
+    background-color: #A80000;
+}
 .voucher-collection{
     width: 100%;
 }
 .voucher-collection h3{
-    color: #404040;
+    color: black;
 }
 
 .voucher-collection a{
@@ -218,9 +222,13 @@ header{
   
     .dropdown-container {
         display: none;
-        padding-left: 8px;
+        padding-left: 10px;
     }
-  
+    .dropdown-container span{
+        font-size: 11px;
+        
+    }
+
   /* Optional: Style the caret down icon */
   .fa-caret-down {
     float: right;
@@ -254,7 +262,6 @@ header{
 .popup_box{
     position: relative;
     background: #f2f2f2;
-    opacity: 0.9;
     max-width: 700px;
     display: flex;
     justify-content: center;

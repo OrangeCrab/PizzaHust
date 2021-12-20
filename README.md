@@ -1,2 +1,2 @@
 # PizzaHust
-Phần này để nộp Milestone2
+Phần này để nộp Milestone

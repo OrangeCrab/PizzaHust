@@ -141,7 +141,7 @@ ul {
             width: 10%;
         }
         .OrderListth:nth-child(3), .OrderList td:nth-child(3) {
-            width: 15%;
+            width: 12%;
         }
         .OrderList th:nth-child(4), .OrderList td:nth-child(4) {
             width: 10%;
@@ -150,10 +150,10 @@ ul {
             width: 15%;
         }
         .OrderList th:nth-child(6), .OrderList td:nth-child(6) {
-            width: 20%;
+            width: 25%;
         }
         .OrderList th:nth-child(7), .OrderList td:nth-child(7) {
-            width: 15%;
+            width: 13%;
         }
         .OrderList th:nth-child(8), .OrderList td:nth-child(8) {
             width: 10%;
@@ -238,32 +238,43 @@ ul {
         border-bottom: 0.5px solid rgb(200, 200, 200);
     }
         .popup_table th:nth-child(1), .popup_table td:nth-child(1) {
-            width: 15%;
+            width: 5%;
             text-align: center;
         }
         .popup_table th:nth-child(2), .popup_table td:nth-child(2) {
             width: 20%;
         }
         .popup_table th:nth-child(3), .popup_table td:nth-child(3) {
-            width: 25%;
+            width: 35%;
         }
         .popup_table th:nth-child(4), .popup_table td:nth-child(4) {
             width: 15%;
+            text-align: right;
         }
         .popup_table th:nth-child(5), .popup_table td:nth-child(5) {
             width: 10%;
+            text-align: center;
         }
         .popup_table th:nth-child(6), .popup_table td:nth-child(6) {
             width: 15%;
-        }   
+            padding-right: 20px;
+            text-align: right;
+        }    
         .popup_table tr:nth-child(even) {
             background-color: rgb(214, 208, 208);
         } 
         .popup_table .sum td {
             background: #F98607;
-            color: #ffffff;
+            color: #000000;
             font-size: larger;
-            font-weight: 600;
+            font-size: 20px;
+            text-align: right;
+            padding-right: 20px;
+            border-bottom: none;
+        }
+        .popup_table .sum span{
+            color:#095c01;
+            font-size: 25px;
         }
 .popup_confirmation{
     padding: 3% 0%;

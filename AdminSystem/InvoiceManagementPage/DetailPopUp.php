@@ -72,8 +72,18 @@
         }
 
         echo '<tr class="sum">
-            <td colspan="5">Tổng cộng</td>
+            <td colspan="5">Giá trị sản phẩm:</td>
             <td>'.$total_money.'</td>
+        </tr>';
+        if (FALSE){ // if có voucher
+            echo '<tr class="sum">
+                <td colspan="5">Giảm giá (chưa có thông tin trong CSDL):</td>
+                <td>0</td>
+            </tr>';
+        }
+        echo '<tr class="sum">
+            <td colspan="5"><span>Tổng giá trị đơn hàng:</span></td>
+            <td><span>'.$row['payment'].'</span></td>
         </tr>';
     ?>
 
@@ -87,9 +97,9 @@
             echo '<button class="confirmButton" onclick="orderConfirmButtonChange('.$orderid.')">Xác nhận đơn hàng</button>
             <button class="rejectButton" onclick="orderRejectButtonChange('.$orderid.')">Hủy đơn hàng</button>';
         } elseif ($row['status'] == 'Đã xác nhận'){
-            echo '<p style="color:#4CAF50; witdh:100%; text-align: center;">Đơn hàng đã được xác nhận</p>';
+            echo '<p style="color:#4CAF50; witdh:100%; text-align: center;">Đơn hàng đã được xác nhận!</p>';
         } elseif ($row['status'] == 'Đã bị hủy'){
-            echo '<p style="color:#A80000; witdh:100%; text-align: center;">Đơn hàng đã bị hủy</p>';
+            echo '<p style="color:#A80000; witdh:100%; text-align: center;">Đơn hàng đã bị hủy!</p>';
         }
     ?>
 </div>

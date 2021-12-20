@@ -111,7 +111,7 @@ li.dropdown {
 
 .header-page img{
     width: 100%;
-    height: calc(width/19*6);
+    height: calc(width/8*3);
     box-shadow: 0px 15px 30px black;
 }
 
@@ -128,8 +128,10 @@ li.dropdown {
     cursor: pointer;
     padding: 14px 16px;
     font-size: 17px;
-    width: 50%;
-    text-align: left;
+    width: 100%;
+    text-align: center;
+    /* width: 50%; */
+    /* text-align: left; */
     letter-spacing: 5px;
     transition: 0.5s;
     transition-property: background-color;
@@ -179,7 +181,8 @@ li.dropdown {
 }
 .left-bar a{
     color: #f2f2f2;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     width: 100%;
     line-height: 70px;
     text-decoration: none;
@@ -434,7 +437,7 @@ li.dropdown {
         }
         .voucher .body-ticket{
             background-color: #f2f2f2;
-            width: 300px;
+            width: 250px;
             height: 120px;
             overflow-y: scroll;
             border-bottom-left-radius: 5px;

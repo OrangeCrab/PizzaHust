@@ -83,6 +83,9 @@
         </div>
         ';
     };
+
+
+    $numCate = 7;
 ?> 
 
 <!DOCTYPE html>
@@ -132,20 +135,15 @@
             echo'
             </ul>
             ';
-            // logout
             if (isset($_POST['logout'])){
                 $_SESSION['user_id'] = 0;
-                echo("<meta http-equiv='refresh' content='1'>");
-                // echo"
-                // <script>
-                //     alert('$_SESSION[user_id]');
-                // </script>";   
+                echo("<meta http-equiv='refresh' content='0'>");
             }
         ?>   
     </header>
 
     <div class="header-page">
-        <img id="launcher" src="../../masterial/image/bgrhomepage/headHomePage.jpg" alt="">
+        <img id="launcher" src="../../masterial/image/bgrhomepage/head0.jpg" alt="">
     </div>
 
     <!-- nhận voucher cho khách hàng có tài khoản -->
@@ -193,9 +191,9 @@
 
     <!-- <br id="menu"><br><br><br><br> -->
     <div class="tab-btn">
-        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen">Món ăn</button>
+        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen"></button>
         
-        <button class="tablink" onclick="openPage('MenuProvide', this)">Menu</button>
+        <!-- <button class="tablink" onclick="openPage('MenuProvide', this)">Combo</button> -->
     </div>
 
     <br>
@@ -207,7 +205,7 @@
             <div class="left-bar">
                 <?php
                     foreach($category as $cate)
-                        if ($cate['id'] < 7)
+                        if ($cate['id'] < $numCate)
                         echo'<a href="#'.$cate['id'].'" ><i class="fas fa-pizza-slice"></i><span>'.$cate['title'].'</span></a>';
                 ?>
             </div>  
@@ -215,7 +213,7 @@
             <div class="product-list">
                     <?php
                     foreach($category as $cate)
-                        if ($cate['id'] < 7){
+                        if ($cate['id'] < $numCate){
                         echo '<div class="title" id="'.$cate['id'].'">
                                 <h2>'.$cate['title'].'</h2>    
                             </div>';

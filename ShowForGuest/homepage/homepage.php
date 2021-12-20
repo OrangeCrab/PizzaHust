@@ -16,7 +16,7 @@
     $user_info = executeResult($sql);
     $customer = '';  // Ten khach hang
     foreach ($user_info as $user){
-        if ($user['id'] == $_SESSION['user_id'])
+        if ($user['username'] == $_SESSION['user_id'])
         $customer = $user['username'];
     }
     # Mỗi lần them sản phẩm vào giỏ hàng,  $_SESSION['giohang'] sẽ thêm một mảng các thuộc
@@ -112,7 +112,7 @@
                 <li><a href="../../cart/cart.php"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                 ';
 
-                if ($_SESSION['user_id']){
+                if ($_SESSION['user_id'] != 0){
                 echo '
                 
                 <li class="dropdown">
@@ -185,6 +185,10 @@
                             document.getElementById("get'.$cp_id.'").value = "Đã Nhận";
                             document.getElementById("get'.$cp_id.'").name = "done";
                         </script> '; 
+                }
+                if (isset($_POST['addcp']) && $_SESSION['user_id'] == 0){
+                    header('location: ../login/login_user.php');
+        die();
                 }
             ?>
     </div>

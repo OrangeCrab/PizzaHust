@@ -23,14 +23,28 @@
     # tính của sản phẩm mình đang chọn vào biến đó (bảng product chưa hoàn thiện về giá nên cho giá mặc định nên không có biến $price)
     # sẽ thêm biến $price khi người dùng chọn s m l khác (lúc này lại phải truy cập sql để biết được giá)
     if(isset($_POST['addcart']) &&($_POST['addcart'])){
-        $size=(string)$_POST['size'];
-        $de=$_POST['de'];
+        $size=(string)$_POST['size']; //$_SESSION['giohang'][$i][0]
+        $de=$_POST['de'];   //$_SESSION['giohang'][$i][1]
+        //$_SESSION['giohang'][$i][2]
+       if(isset($_POST['topping'])){
         $topping=$_POST['topping'];
-        $quantity=$_POST['quantity'];
-        $name=$_POST['name'];
-        $image=$_POST['image'];
-        $loai = $_POST['category'];
-        $price= $_POST['gia'] /1000;
+       }else $topping =null;
+        $quantity=$_POST['quantity'];//$_SESSION['giohang'][$i][3]
+        $name=$_POST['name'];//$_SESSION['giohang'][$i][4]
+        $image=$_POST['image'];//$_SESSION['giohang'][$i][5]
+        $loai = $_POST['category'];//$_SESSION['giohang'][$i][6]
+        $price= 0;//$_SESSION['giohang'][$i][7]
+        $gia_s = $_POST['gia_s'];//$_SESSION['giohang'][$i][8]
+        $gia_m = $_POST['gia_m'];//$_SESSION['giohang'][$i][9]
+        $gia_l = $_POST['gia_l'];//$_SESSION['giohang'][$i][10]
+        if($size == "S"){
+            $price = $gia_s/1000;
+        }elseif($size == "M"){
+            $price = $gia_m/1000;
+        }elseif($size == "L"){
+            $price = $gia_l/1000;
+        };
+        $price_topping = 0;
 
         #Kiểm tra sản phẩm vừa đặt có trong giỏ hàng không
         $check = 0;
@@ -41,7 +55,7 @@
                 break;
             }
         }
-        $sp=[$size,$de,$topping,$quantity,$name,$image,$loai,$price];
+        $sp=[$size,$de,$topping,$quantity,$name,$image,$loai,$price,$gia_s,$gia_m,$gia_l];
         if($check == 0) {
             $_SESSION['giohang'][]=$sp;
         }
@@ -62,7 +76,7 @@
                 break;
             }
         }
-        $sp=[null,null,null,$quantity,$name,$image,$loai,$price_S];
+        $sp=[null,null,null,$quantity,$name,$image,$loai,$price];
         if($check == 0) {
             $_SESSION['giohang'][]=$sp;
         }
@@ -145,63 +159,51 @@
     <div class="header-page">
         <img id="launcher" src="../../masterial/image/bgrhomepage/head0.jpg" alt="">
     </div>
+
     <!-- nhận voucher cho khách hàng có tài khoản -->
     <br>
     <div class="voucher" id="menu"> 
             <?php
-
                 foreach($coupon as $item) {
-                    if ($_SESSION['user_id'] > 0){
-                        $sql = "select cp_id, user_id from cp_user where cp_id = '$item[id_cp]' and user_id = '$_SESSION[user_id]'";
-                        $cpExist = executeResult($sql);
+                    $sql = "select cp_id, user_id from cp_user where cp_id = '$item[id_cp]' and user_id = '$_SESSION[user_id]'";
+                    $cpExist = executeResult($sql);
 
-                        echo '
-                        <div class="ticket">
-                            <div class="body-ticket">
-                                <span class="cp-description">'.$item['description'].'</span>
-                            </div>';
+                    echo '
+                    <div class="ticket">
+                        <div class="body-ticket">
+                            <span class="cp-description">'.$item['description'].'</span>
+                        </div>';
 
-                            if ($cpExist != null)
-                                echo'
-                            <div class="stubs">
-                                <input type="submit" name="gotten" id="" value="Đã Nhận">
-                            </div>';
-                            else echo'
-                            <div class="stubs"> 
-                                <form action="" method="POST">
-                                    <input type="text" style="display: none;" name="cp_id" value="'.$item['id_cp'].'">
-                                    <input type="submit" name="addcp" id="get'.$item['id_cp'].'" value="'.$item['code_cp'].'">
-                                </form>
-                            </div>';
-                        echo'
+                        if ($cpExist != null)
+                            echo'
+                        <div class="stubs">
+                            <input type="submit" name="gotten" id="" value="Đã Nhận">
                         </div>';
-                    }
-                    else{
-                        echo'
-                        <div class="ticket">
-                            <div class="body-ticket">
-                                <span class="cp-description">'.$item['description'].'</span>
-                            </div>
-                            <div class="stubs">
-                                <a href="../login/login_user.php" class="get">Nhận</a>
-                            </div>
+                        else echo'
+                        <div class="stubs"> 
+                            <form action="" method="POST">
+                                <input type="text" style="display: none;" name="cp_id" value="'.$item['id_cp'].'">
+                                <input type="submit" name="addcp" id="get'.$item['id_cp'].'" value="'.$item['code_cp'].'">
+                            </form>
                         </div>';
-                    }
-                    
+                    echo'
+                    </div>';
                 }            
                 
-                if (isset($_POST['addcp']))
-                    if ($_SESSION['user_id']){
+                if (isset($_POST['addcp']) && $_SESSION['user_id']){
                         $cp_id = $_POST['cp_id'];
                         $user_id = $_SESSION['user_id'];
-                        execute("insert into cp_user(cp_id, user_id, used) values('$cp_id','$user_id','0')");   
-                        echo '
+                        execute("insert into cp_user(cp_id, user_id, used) values('$cp_id','$user_id','0')");
+                     echo '
                         <script type="text/javascript">
                             document.getElementById("get'.$cp_id.'").value = "Đã Nhận";
                             document.getElementById("get'.$cp_id.'").name = "done";
                         </script> '; 
-                    }
-                
+                }
+                if (isset($_POST['addcp']) && $_SESSION['user_id'] == 0){
+                    header('location: ../login/login_user.php');
+        die();
+                }
             ?>
     </div>
 
@@ -249,14 +251,16 @@
                                     <span class="price">'.number_format($item['price_s']).' đ</span>
                                     <a class="choose_btn">Chọn</a>
                                 </div>
-                                <form class="info_view" action="..\homepage\homepage.php" method="post">
+                                <form class="info_view" action="..\homepage\homepage.php#1" method="post">
                                     <div class="info_card">
                                         <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
                                         <div class="info_img"><img src="../../masterial/image/thuc_don/'.$item['image'].'"></div>
                                         
                                         <input type="text" style="display: none;" name="image" value="'.$item['image'].'">
                                         <input type="text" style="display: none;" name="category" value="'.$item['category_id'].'">
-                                        <input type="text" style="display: none;" name="gia" value="'.$item['price_s'].'">
+                                        <input type="text" style="display: none;" name="gia_s" value="'.$item['price_s'].'">
+                                        <input type="text" style="display: none;" name="gia_m" value="'.$item['price_m'].'">
+                                        <input type="text" style="display: none;" name="gia_l" value="'.$item['price_l'].'">
                                                         
                                         <div class="info">
                                             <div class="part">
@@ -269,17 +273,17 @@
                                             <div class="part">
                                                     <h3>Size</h3>
                                                     <div class = "form">
-                                                        <input type="radio" id="S" name="size" value="S">
+                                                        <input type="radio" checked = "checked" id="S" name="size" value="S">
                                                         <label for="S">S</label>
                                                         <span>'.number_format($item['price_s']).'đ</span>
                                                         <br>
                                                         <input type="radio" id="M" name="size" value="M">
                                                         <label for="M">M</label>
-                                                        <span>'.number_format($item['price_m'] + 10000).'đ</span>
+                                                        <span>'.number_format($item['price_m']).'đ</span>
                                                         <br>
                                                         <input type="radio" id="L" name="size" value="L">
                                                         <label for="L">L</label>
-                                                        <span>'.number_format($item['price_l'] + 20000).'đ</span>
+                                                        <span>'.number_format($item['price_l']).'đ</span>
                                                     </div>
                                                 <hr>
                                             </div>
@@ -287,7 +291,7 @@
                                             <div class="part">
                                                 <h3>Loại đế</h3>
                                                 <div class = "form">
-                                                    <input type="radio" id="gion" name="de" value="Giòn">
+                                                    <input type="radio" id="gion" checked = "checked" name="de" value="Giòn">
                                                     <label for="gion">Giòn</label><br>
                                                     <input type="radio" id="men" name="de" value="Mềm truyền thống">
                                                     <label for="mem">Mềm truyền thống</label><br>
@@ -302,8 +306,9 @@
                                                 foreach($product as $topping)
                                                 if ($topping['category_id'] == 8)
                                                 echo'
-                                                    <input type="checkbox" id="1" name="topping" value="1">
+                                                    <input type="checkbox" id="1" name="topping[]" value="'.$topping['name'].'">
                                                     <label for="1">'.$topping['name'].'</label>
+                                                    <!-- <span class="cost">'.number_format(10000).'đ</span> -->
                                                     <span class="cost">'.$topping['price_free_size'].'đ</span>
                                                     <br>';
                                                 echo'
@@ -312,7 +317,7 @@
                                             </div>
                                             <div class="final">
                                                 <span>SL:</span>
-                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
+                                                <input type="number" id="quantity" value = "1"name="quantity" min="1" max="5">
                                                 <input type="submit" class="add-card-bt" name="addcart" value="Thêm vào giỏ">
                                             </div>                          
                                         </div>

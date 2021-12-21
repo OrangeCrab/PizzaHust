@@ -21,6 +21,10 @@
 	$coupon = executeResult($sql);
     $sql = "select * from category";
     $category = executeResult($sql);
+    $sql = "select * from plinth";
+    $plinth = executeResult($sql);
+    $sql = "select * from menu";
+    $menu = executeResult($sql);
 
     $sql = "select * from user_account";
     $user_info = executeResult($sql);
@@ -111,7 +115,9 @@
         </div>
         ';
     };
-    $numCate = 7;
+    $numCate = 6;
+    $sql = "select product.* from product";
+    $product = executeResult($sql);
 ?> 
 
 <!DOCTYPE html>
@@ -167,7 +173,7 @@
         ?>   
     </header>
 
-    <div class="slider">
+    <div class="slider" id="launcher">
             <div class="slides">
                 <!--radio buttons start-->
                 <input type="radio" name="radio-btn" id="radio1">
@@ -200,7 +206,7 @@
             </div>
             <!--manual navigation end-->
         </div>  
-	<?php     popup(); ?>
+        <?php popup()?>
     <!-- nhận voucher cho khách hàng có tài khoản -->
     <br>
     <div class="voucher" id="menu"> 
@@ -225,7 +231,7 @@
                             <div class="stubs"> 
                                 <form action="" method="POST">
                                     <input type="text" style="display: none;" name="cp_id" value="'.$item['id_cp'].'">
-                                    <input type="submit" name="addcp" id="get'.$item['id_cp'].'" value="'.$item['code_cp'].'">
+                                    <input type="submit" name="addcp" id="get'.$item['id_cp'].'" value="Nhận">
                                 </form>
                             </div>';
                         echo'
@@ -238,7 +244,7 @@
                                 <span class="cp-description">'.$item['description'].'</span>
                             </div>
                             <div class="stubs">
-                                <a href="../login/login_user.php" class="get">'.$item['code_cp'].'</a>
+                                <a href="../login/login_user.php" class="get">Nhận</a>
                             </div>
                         </div>';
                     } 
@@ -259,15 +265,26 @@
     </div>
 
     <div class="tab-btn">
-        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen">Chúc quý khách ngon miệng! - PizzaHust</button> 
-        <!-- <button class="tablink" onclick="openPage('MenuProvide', this)">Combo</button> -->
+        
+        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen">Món ăn</button> 
+        <button class="tablink" onclick="openPage('MenuProvide', this)">COMBO KHUYẾN MÃI</button>
     </div>
-
+        
     <br>
-    <!-- <div class="quote">"Chúc quý khách ngon miệng!" - PizzaHust</div> -->
+    <span class="quote">Chúc quý khách ngon miệng! - PizzaHust</span>
+        <?php 
+            $dem = 0;
+            foreach($product as $item){
+                if ($item['category_id'] == $numCate)
+                    $dem ++;
+            }
+            if ($dem > 0) 
+            echo'<span><img class="click-me" src="../../masterial/image/iconHomePage/click.svg" alt=""></span>';
+        ?>    
     <br><br><br><br><br>
 
     <div id="Eating" class="tabcontent">
+
         <div class="body-page">
             <div class="left-bar">
                 <?php
@@ -285,8 +302,6 @@
                                 <h2>'.$cate['title'].'</h2>    
                             </div>';
                         $id = $cate['id'];
-                        $sql = "select product.* from product";
-                        $product = executeResult($sql);
                         echo 
                             '<div class="category">';
                             foreach($product as $item) {
@@ -339,13 +354,12 @@
 
                                             <div class="part">
                                                 <h3>Loại đế</h3>
-                                                <div class = "form">
-                                                    <input type="radio" id="gion" checked = "checked" name="de" value="Giòn">
-                                                    <label for="gion">Giòn</label><br>
-                                                    <input type="radio" id="men" name="de" value="Mềm truyền thống">
-                                                    <label for="mem">Mềm truyền thống</label><br>
-                                                    <input type="radio" id="men" name="de" value="Oregano">
-                                                    <label for="mem">Oregano</label><br>
+                                                <div class = "form">';
+                                                    foreach ($plinth as $base)
+                                                    echo'
+                                                    <input type="radio" id="de'.$base['id'].'" checked = "checked" name="de" value="'.$base['name'].'">
+                                                    <label for="de'.$base['id'].'">'.$base['name'].'</label><br>';
+                                                    echo'
                                                 </div>
                                                 <hr>
                                             </div>
@@ -421,13 +435,60 @@
                         echo '</div>';
                     }?>
                 
-            </div>
-
-            
+            </div>   
         </div>
     </div>
     <div id="MenuProvide" class="tabcontent">
-        empty
+        <?php 
+            echo '<div class="category">';
+            
+            foreach($product as $item) {
+                if ($item['category_id'] == $numCate){
+                    echo                                 
+                            '<div class="product">
+                                <img class="product_img" src="../../masterial/image/thuc_don/'.$item['image'].'"/>
+                                <h2 class="name">'.$item['name'].'</h2>
+                                <p class="description">'.$item['description'].'</p>
+                                <span class="price">'.number_format($item['price_free_size']).' đ</span>
+                                <a class="choose_btn">Chọn</a>
+                            </div>
+
+                            <form class="info_view" action="..\homepage\homepage.php" method="post">
+                                <div class="info_card">
+                                    <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
+                                    <div class="info_img"><img src="../../masterial/image/thuc_don/'.$item['image'].'"></div>
+
+                                    <input type="text" style="display: none;" name="image" value="'.$item['image'].'">
+                                    <input type="text" style="display: none;" name="category" value="'.$item['category_id'].'">
+                                    <input type="text" style="display: none;" name="gia" value="'.$item['price_free_size'].'">
+                                    
+                                    <div class="info">
+                                        <div class="part">
+                                            <h2>'.$item['name'].'</h2>
+                                            <input type="text" style="display: none;" name="name" value="'.$item['name'].'">
+                                            <p>'.$item['description']. '</p>
+                                            <hr>
+                                        </div>
+                                        
+                                        <div class="part">
+                                            <div class = "form">
+                                                <label>Giá:</label>
+                                                <span>'.number_format($item['price_free_size']).'đ</span>
+                                                <br>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        <div class="final">
+                                            <span>SL:</span>
+                                            <input type="number" id="quantity" name="quantity" min="1" max="10">
+                                            <input type="submit" class="add-card-bt" name="addcart1" value="Thêm vào giỏ">
+                                        </div>                          
+                                    </div>
+                                </div>
+                            </form>';               
+                }
+            }
+        ?>
     </div>
 
 

@@ -1,6 +1,15 @@
 <?php
     if (session_id() === '') session_start();
-    // $_SESSION['user_id'] = 1;
+    if(isset( $_SESSION['counter'] )){
+        // Đếm mỗi lần truy cập
+        $_SESSION['counter'] += 1;
+    }
+    else{
+        // Lần đầu truy cập
+        $_SESSION['counter'] = 1;
+    }
+
+
     if(!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
     require_once('../../database/dbhelper.php');
 	$baseUrl = '../../';
@@ -83,7 +92,7 @@
         }
     }
     function popup(){
-        if($_SESSION['giohang'] == null)
+        if($_SESSION['counter'] == 1)
         echo'
         <div class="popup_screen">
             <div class="popup_box">
@@ -99,6 +108,7 @@
         ';
     };
     $numCate = 7;
+    popup();
 ?> 
 
 <!DOCTYPE html>

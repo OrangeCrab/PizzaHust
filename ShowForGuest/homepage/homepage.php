@@ -139,7 +139,7 @@
                 echo '
                 
                 <li class="dropdown">
-                    <a href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <a style="color: #F98607;" href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
                     <form class="dropdown-content" action="" method="POST">
                         <a href="ctm.php">'.$customer.'</a>
                         <input type="text" name="logout" id="logout" value="logout" style="display: none;">

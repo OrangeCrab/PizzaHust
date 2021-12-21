@@ -8,6 +8,7 @@ require_once ('process_register.php');
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Register</title>
         <link rel="stylesheet" href="../register/register.css"> 
     </head>

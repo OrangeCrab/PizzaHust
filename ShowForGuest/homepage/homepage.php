@@ -1,6 +1,17 @@
 <?php
     if (session_id() === '') session_start();
-    // $_SESSION['user_id'] = 1;
+    
+    if(isset( $_SESSION['counter'] )){
+        // Đếm mỗi lần truy cập
+        $_SESSION['counter'] += 1;
+    }
+    else{
+        // Lần đầu truy cập
+        $_SESSION['counter'] = 1;
+    }
+
+
+
     if(!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
     require_once('../../database/dbhelper.php');
 	$baseUrl = '../../';
@@ -15,10 +26,13 @@
     $sql = "select * from user_account";
     $user_info = executeResult($sql);
     $customer = '';  // Ten khach hang
-    foreach ($user_info as $user){
-        if ($user['id'] == $_SESSION['user_id'])
-        $customer = $user['username'];
-    }
+
+    if (isset($_SESSION['user_id']))
+        foreach ($user_info as $user){
+            if ($user['id'] == $_SESSION['user_id'])
+            $customer = $user['username'];
+        }
+
     # Mỗi lần them sản phẩm vào giỏ hàng,  $_SESSION['giohang'] sẽ thêm một mảng các thuộc
     # tính của sản phẩm mình đang chọn vào biến đó (bảng product chưa hoàn thiện về giá nên cho giá mặc định nên không có biến $price)
     # sẽ thêm biến $price khi người dùng chọn s m l khác (lúc này lại phải truy cập sql để biết được giá)
@@ -81,8 +95,9 @@
             $_SESSION['giohang'][]=$sp;
         }
     }
+
     function popup(){
-        if($_SESSION['giohang'] == null)
+        if($_SESSION['counter'] == 1)
         echo'
         <div class="popup_screen">
             <div class="popup_box">
@@ -97,9 +112,8 @@
         </div>
         ';
     };
-
-
     $numCate = 7;
+    popup();
 ?> 
 
 <!DOCTYPE html>
@@ -113,8 +127,7 @@
 </head>
 
 <body>
-<header>
-    
+    <header>
         <?php
             echo'
             <ul class="top-bar">
@@ -130,7 +143,7 @@
                 echo '
                 
                 <li class="dropdown">
-                    <a href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <a style="color: #F98607;" href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
                     <form class="dropdown-content" action="" method="POST">
                         <a href="ctm.php">'.$customer.'</a>
                         <input type="text" name="logout" id="logout" value="logout" style="display: none;">
@@ -159,10 +172,9 @@
     <div class="header-page">
         <img id="launcher" src="../../masterial/image/bgrhomepage/head0.jpg" alt="">
     </div>
-
     <!-- nhận voucher cho khách hàng có tài khoản -->
     <br>
-        <div class="voucher" id="menu"> 
+    <div class="voucher" id="menu"> 
             <?php
 
                 foreach($coupon as $item) {
@@ -219,10 +231,8 @@
             ?>
     </div>
 
-    <!-- <br id="menu"><br><br><br><br> -->
     <div class="tab-btn">
-        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen"></button>
-        
+        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen"></button> 
         <!-- <button class="tablink" onclick="openPage('MenuProvide', this)">Combo</button> -->
     </div>
 

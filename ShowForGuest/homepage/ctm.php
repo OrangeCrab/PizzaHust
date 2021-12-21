@@ -10,7 +10,7 @@
     $info = executeResult("select * from user_account");
     $customer = '';
     foreach($info as $ctminfo){
-        if ($ctminfo['username'] == $_SESSION['user_id']){
+        if ($ctminfo['id'] == $_SESSION['user_id']){
             $customer = $ctminfo;
             break;
         }

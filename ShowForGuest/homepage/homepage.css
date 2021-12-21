@@ -459,6 +459,20 @@ li.dropdown {
             align-items: center;
             justify-content: center;
         }
+        .stubs .get{
+            font-weight: bolder;
+            text-align: center;
+            font-size: 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: 2px solid #A80000;
+            background-color: #A80000;
+            padding: 7px 10px;
+            outline: none;
+            color: #f2f2f2;
+            border-radius: 20px;
+            cursor: pointer;
+        }
 
 
 

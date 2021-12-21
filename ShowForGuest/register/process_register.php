@@ -22,7 +22,10 @@ $gmail_check = false;
         if(empty($userExist)){           
             $sql = "insert into user_account (username, password,email,phonenumber,address) values ('$user_name_register','$password_register','$email','$phonenumber','$address')";
             execute($sql);
-            $_SESSION['user_id'] = $user_name_register;
+            
+            $sql_id = "select id from user_account where email = '$email'";
+            $user_id = executeResult($sql_id);
+            $_SESSION['user_id'] = $user_id;
 
             header("location: ../homepage/homepage.php");
             die();           

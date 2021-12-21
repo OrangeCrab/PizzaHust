@@ -43,7 +43,7 @@ if (isset($_POST['thanhtoan'])) {
     $quanhuyen = $_POST['quanhuyen'];
     $diachi = $_POST['diachi'];
     $ghichu = $_POST['ghichu'];
-    $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận')");
+    $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status, user_id) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận','{$_SESSION['user_id']}')");
     $get_order = mysqli_query($con, "select max(id) from `order`");
     $res = mysqli_fetch_array($get_order);
     $get_order_id = (int)$res["max(id)"];
@@ -75,7 +75,6 @@ if (isset($_POST['thanhtoan'])) {
                 $total += $_SESSION['giohang'][$i][3] *  $giatien;
                 $price =  $giatien * 1000;
             }
-            $giamgia = (int)($total * 0.05);
             $thanhtoan = ($total + 22 - $giamgia) * 1000;
             $num = (int)$_SESSION['giohang'][$i][3];
             $get_id = mysqli_query($con, "select id from `product` where name = N'{$_SESSION['giohang'][$i][4]}' ");
@@ -87,6 +86,8 @@ if (isset($_POST['thanhtoan'])) {
         }
     }
     $sql_giohang = mysqli_query($con, "update `order` set payment = $thanhtoan where id = $get_order_id");
+    unset($_SESSION['giohang']);
+    header('location: ../ShowForGuest/homepage/homepage.php');
     // $get_order_id = mysqli_query($con,"SELECT `id` FROM `order` where `fullname` ='$name' and `payment`");
 
 }
@@ -255,6 +256,7 @@ function tinhtien()
             $thanhtoan -= $giamgia;
     
         }
+        // var_dump($thanhtoan);
         echo '
             <div class="pay">
                 <div class="field"><span>Tổng:</span><span class="price">' . $total . ' 000đ</span></div>
@@ -286,7 +288,7 @@ function tinhtien()
                     <select name="apvoucher" id="">
                         <option value="'.$code_voucher.'">   '.$code_voucher.'   </option>
                     ';
-                    $sql = "SELECT coupon.* from coupon,cp_user where coupon.id_cp = cp_user.cp_id and cp_user.user_id = 1";
+                    $sql = "SELECT coupon.* from coupon,cp_user where coupon.id_cp = cp_user.cp_id and cp_user.user_id = '{$_SESSION['user_id']}'";
                     $voucher = executeResult($sql);
                     foreach($voucher as $item){
                         if($total*1000 >= (int)$item['min_order_value'] && $item['code_cp'] != $code_voucher){
@@ -306,7 +308,7 @@ function tinhtien()
                 <!-- <div class="buy"><a href="#">Đặt hàng: <span>478 000đ</span></a></div> -->
                 <div >
                     <div class="field"><span>Thanh toán:</span><span class="price">' . $thanhtoan . ' 000đ</span></div>
-                    <input type="submit" onclick="send()" class="buy" value="Đặt hàng" name="thanhtoan">
+                    <input type="submit" onclick=" return send()" class="buy" value="Đặt hàng" name="thanhtoan">
                 </div>
         
             </div>
@@ -321,7 +323,7 @@ function tinhtien()
                 <hr>
                 <div >
                     <div class="field"><span>Thanh toán:</span><span class="price">0đ</span></div>
-                    <input onclick="send()" type="subdmit" class="buy" value="Đặt hàng" name="thanhtoan">
+                    <input onclick="send()" class="buy" value="Đặt hàng" name="thanhtoan">
                 </div>
         
             </div>

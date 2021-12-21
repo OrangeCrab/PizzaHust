@@ -1,6 +1,6 @@
 <?php
-    if (session_id() === '') session_start();
-    // $_SESSION['user_id'] = 1;
+    session_start();
+
     if(!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
     require_once('../../database/dbhelper.php');
 	$baseUrl = '../../';
@@ -12,39 +12,38 @@
     $sql = "select * from category";
     $category = executeResult($sql);
 
-    $sql = "select * from user_account";
-    $user_info = executeResult($sql);
-    $customer = '';  // Ten khach hang
-    foreach ($user_info as $user){
-        if ($user['id'] == $_SESSION['user_id'])
-        $customer = $user['username'];
-    }
+   if(isset($_SESSION['password-changed']) and $_SESSION['count_for_changepassword'] == 0){
+       echo '
+            <script>    
+                window.alert("Bạn nên vào trang cá nhân để thay đổi mật khẩu !");
+            </script>
+       ';
+       $_SESSION['count_for_changepassword'] = 1 ;
+
+   }
+   else{
+        if(isset($_SESSION['user_id']) and  $_SESSION['count_for_login'] == 0)
+          echo' 
+                <script>
+                    window.alert("ĐĂNG NHẬP THÀNH CÔNG !");
+                </script>
+           ';
+           $_SESSION['count_for_login'] = 1;
+   }
+
+
     # Mỗi lần them sản phẩm vào giỏ hàng,  $_SESSION['giohang'] sẽ thêm một mảng các thuộc
     # tính của sản phẩm mình đang chọn vào biến đó (bảng product chưa hoàn thiện về giá nên cho giá mặc định nên không có biến $price)
     # sẽ thêm biến $price khi người dùng chọn s m l khác (lúc này lại phải truy cập sql để biết được giá)
     if(isset($_POST['addcart']) &&($_POST['addcart'])){
-        $size=(string)$_POST['size']; //$_SESSION['giohang'][$i][0]
-        $de=$_POST['de'];   //$_SESSION['giohang'][$i][1]
-        //$_SESSION['giohang'][$i][2]
-       if(isset($_POST['topping'])){
+        $size=(string)$_POST['size'];
+        $de=$_POST['de'];
         $topping=$_POST['topping'];
-       }else $topping =null;
-        $quantity=$_POST['quantity'];//$_SESSION['giohang'][$i][3]
-        $name=$_POST['name'];//$_SESSION['giohang'][$i][4]
-        $image=$_POST['image'];//$_SESSION['giohang'][$i][5]
-        $loai = $_POST['category'];//$_SESSION['giohang'][$i][6]
-        $price= 0;//$_SESSION['giohang'][$i][7]
-        $gia_s = $_POST['gia_s'];//$_SESSION['giohang'][$i][8]
-        $gia_m = $_POST['gia_m'];//$_SESSION['giohang'][$i][9]
-        $gia_l = $_POST['gia_l'];//$_SESSION['giohang'][$i][10]
-        if($size == "S"){
-            $price = $gia_s/1000;
-        }elseif($size == "M"){
-            $price = $gia_m/1000;
-        }elseif($size == "L"){
-            $price = $gia_l/1000;
-        };
-        $price_topping = 0;
+        $quantity=$_POST['quantity'];
+        $name=$_POST['name'];
+        $image=$_POST['image'];
+        $loai = $_POST['category'];
+        $price= $_POST['gia'] /1000;
 
         #Kiểm tra sản phẩm vừa đặt có trong giỏ hàng không
         $check = 0;
@@ -55,7 +54,7 @@
                 break;
             }
         }
-        $sp=[$size,$de,$topping,$quantity,$name,$image,$loai,$price,$gia_s,$gia_m,$gia_l];
+        $sp=[$size,$de,$topping,$quantity,$name,$image,$loai,$price_S];
         if($check == 0) {
             $_SESSION['giohang'][]=$sp;
         }
@@ -76,7 +75,7 @@
                 break;
             }
         }
-        $sp=[null,null,null,$quantity,$name,$image,$loai,$price];
+        $sp=[null,null,null,$quantity,$name,$image,$loai,$price_S];
         if($check == 0) {
             $_SESSION['giohang'][]=$sp;
         }
@@ -97,9 +96,6 @@
         </div>
         ';
     };
-
-
-    $numCate = 7;
 ?> 
 
 <!DOCTYPE html>
@@ -107,89 +103,217 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="homepage.css">
-    <link rel="shortcut icon" href="../../masterial/image/iconHomePage/pieceOfPizzaLogo.svg">
-    <title>PizzaHust</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 </head>
 
 <body>
-<header>
-    
-        <?php
-            echo'
-            <ul class="top-bar">
-                <img src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" style="float: left;" alt="">
-                <!-- <li></li> -->
-                <li><a href="#launcher">Trang chủ</a></li>
-                <li><a href="#menu">Thực đơn</a></li>
-                <li><a href="#contact">Liên hệ</a></li>
-                <li><a href="../../cart/cart.php"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                ';
-
-                if ($_SESSION['user_id'] != 0){
-                echo '
-                
-                <li class="dropdown">
-                    <a href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
-                    <form class="dropdown-content" action="" method="POST">
-                        <a href="ctm.php">'.$customer.'</a>
-                        <input type="text" name="logout" id="logout" value="logout" style="display: none;">
-                        <button type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> 
-                    </form>
-                </li>
-                ';
-                }
-                else
-                echo '
-                    <li class="dropdown">
-                        <a href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
-                    </li>
-                </ul>
-                ';
-            echo'
-            </ul>
-            ';
-            if (isset($_POST['logout'])){
-                $_SESSION['user_id'] = 0;
-                echo("<meta http-equiv='refresh' content='0'>");
-            }
-        ?>   
+    <header>
+        <div class="top-bar">
+            <img src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
+            <a href="#launcher">Trang chủ</a>
+            <a href="#menu">Thực đơn</a>
+            <a href="../../cart/cart.php"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <a href="#contact">Liên hệ</a>
+            <a href="../login/login_user.php"><i class="fa fa-user" aria-hidden="true"></i></a>
+        </div>
     </header>
 
     <div class="header-page">
-        <img id="launcher" src="../../masterial/image/bgrhomepage/head0.jpg" alt="">
+        <img id="launcher" src="../../masterial/image/bgrhomepage/headHomePage.jpg" alt="">
     </div>
+    <br id="menu">
 
-    <!-- nhận voucher cho khách hàng có tài khoản -->
-    <br>
-    <div class="voucher" id="menu"> 
+    <div class="body-page">
+        <div class="left-bar">
+            <?php
+                foreach($category as $cate)
+                    if ($cate['id'] < 8)
+                    echo'<a href="#'.$cate['id'].'" ><i class="fas fa-pizza-slice"></i><span>'.$cate['title'].'</span></a>';
+            ?>
+        </div>  
+        
+        <div class="product-list">
+            
+                <?php
+                foreach($category as $cate)
+                    if ($cate['id'] < 8){
+                    echo '<div class = "title" id="'.$cate['id'].'">
+                            <br><br><br><br><h2>'.$cate['title'].'</h2>    
+                        </div>';
+                    $id = $cate['id'];
+                    $sql = "select product.* from product";
+                    $product = executeResult($sql);
+                    echo 
+                        '<div class="category">';
+                        foreach($product as $item) {
+                        if ($item['category_id'] == $id){
+                            if($id == 1){
+                            echo                                 
+                            '<div class="product">
+                                <img class="product_img" src="../../masterial/image/thuc_don/'.$item['image'].'"/>
+                                <h2 class="name">'.$item['name'].'</h2>
+                                <p class="description">'.$item['description'].'</p>
+                                <span class="price">'.number_format($item['price_s']).' đ</span>
+                                <a class="choose_btn">Chọn</a>
+                            </div>
+                            <form class="info_view" action="..\homepage\draft.php" method="post">
+                                <div class="info_card">
+                                    <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
+                                    <div class="info_img"><img src="../../masterial/image/thuc_don/'.$item['image'].'"></div>
+                                    
+                                    <input type="text" style="display: none;" name="image" value="'.$item['image'].'">
+                                    <input type="text" style="display: none;" name="category" value="'.$item['category_id'].'">
+                                    <input type="text" style="display: none;" name="gia" value="'.$item['price_s'].'">
+                                                    
+                                    <div class="info">
+                                        <div class="part">
+                                            <h2>'.$item['name'].'</h2>
+                                            <input type="text" style="display: none;" name="name" value="'.$item['name'].'">
+                                            <p>'.$item['description']. '</p>
+                                            <hr>
+                                        </div>
+                                                        
+                                        <div class="part">
+                                                <h3>Size</h3>
+                                                <div class = "form">
+                                                    <input type="radio" id="S" name="size" value="S">
+                                                    <label for="S">S</label>
+                                                    <span>'.number_format($item['price_s']).'đ</span>
+                                                    <br>
+                                                    <input type="radio" id="M" name="size" value="M">
+                                                    <label for="M">M</label>
+                                                    <span>'.number_format($item['price_m'] + 10000).'đ</span>
+                                                    <br>
+                                                    <input type="radio" id="L" name="size" value="L">
+                                                    <label for="L">L</label>
+                                                    <span>'.number_format($item['price_l'] + 20000).'đ</span>
+                                                </div>
+                                            <hr>
+                                        </div>
+
+                                        <div class="part">
+                                            <h3>Loại đế</h3>
+                                            <div class = "form">
+                                                <input type="radio" id="gion" name="de" value="Giòn">
+                                                <label for="gion">Giòn</label><br>
+                                                <input type="radio" id="men" name="de" value="Mềm truyền thống">
+                                                <label for="mem">Mềm truyền thống</label><br>
+                                                <input type="radio" id="men" name="de" value="Oregano">
+                                                <label for="mem">Oregano</label><br>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        <div class="part">
+                                            <h3>Topping</h3>
+                                            <div class = "form">';
+                                            foreach($product as $topping)
+                                            if ($topping['category_id'] == 8)
+                                            echo'
+                                                <input type="checkbox" id="1" name="topping" value="1">
+                                                <label for="1">'.$topping['name'].'</label>
+                                                <span class="cost">'.$topping['price_free_size'].'đ</span>
+                                                <br>';
+                                            echo'
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        <div class="final">
+                                            <span>SL:</span>
+                                            <input type="number" id="quantity" name="quantity" min="1" max="5">
+                                            <input type="submit" class="add-card-bt" name="addcart" value="Thêm vào giỏ">
+                                        </div>                          
+                                    </div>
+                                </div>
+                            </form>';}
+                        else{
+                            echo                                 
+                            '<div class="product">
+                                <img class="product_img" src="../../masterial/image/thuc_don/'.$item['image'].'"/>
+                                <h2 class="name">'.$item['name'].'</h2>
+                                <p class="description">'.$item['description'].'</p>
+                                <span class="price">'.number_format($item['price_free_size']).' đ</span>
+                                <a class="choose_btn">Chọn</a>
+                            </div>
+
+                            <form class="info_view" action="..\homepage\draft.php" method="post">
+                                <div class="info_card">
+                                    <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
+                                    <div class="info_img"><img src="../../masterial/image/thuc_don/'.$item['image'].'"></div>
+
+                                    <input type="text" style="display: none;" name="image" value="'.$item['image'].'">
+                                    <input type="text" style="display: none;" name="category" value="'.$item['category_id'].'">
+                                    <input type="text" style="display: none;" name="gia" value="'.$item['price_free_size'].'">
+                                    
+                                    <div class="info">
+                                        <div class="part">
+                                            <h2>'.$item['name'].'</h2>
+                                            <input type="text" style="display: none;" name="name" value="'.$item['name'].'">
+                                            <p>'.$item['description']. '</p>
+                                            <hr>
+                                        </div>
+                                        
+                                        <div class="part">
+                                            <div class = "form">
+                                                <span>'.number_format($item['price_free_size']).'đ</span>
+                                                <br>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        <div class="final">
+                                            <span>SL:</span>
+                                            <input type="number" id="quantity" name="quantity" min="1" max="10">
+                                            <input type="submit" class="add-card-bt" name="addcart1" value="Thêm vào giỏ">
+                                        </div>                          
+                                    </div>
+                                </div>
+                            </form>';
+                        }                
+                        }
+                    }
+                    echo '</div>';
+                }?>
+            
+                <!-- pop up hiện thông tin chi tiết sp -->
+                <script text="text/javascript">
+                        var infoView = document.querySelectorAll('.info_view');
+                        var chooseBtn = document.querySelectorAll('.choose_btn');
+                        var closeViewInfoBtn = document.querySelectorAll('.closeViewInfo_btn');
+            
+                        var popup = function(viewClick){
+                            infoView[viewClick].classList.add('active');
+                        }
+            
+                        chooseBtn.forEach((chooseBtn,i) => {
+                            chooseBtn.addEventListener("click" ,()=>{
+                                popup(i);
+                            });
+                        });
+            
+                        closeViewInfoBtn.forEach((closeViewInfoBtn) =>{
+                            closeViewInfoBtn.addEventListener("click", () =>{
+                                infoView.forEach((infoView) =>{
+                                    infoView.classList.remove('active');
+                                });
+                            });
+                        });
+                </script>
+        </div>
+                        
+                        <!-- nhận voucher cho khách hàng có tài khoản -->
+        <div class="voucher"> 
             <?php
                 foreach($coupon as $item) {
                     $sql = "select cp_id, user_id from cp_user where cp_id = '$item[id_cp]' and user_id = '$_SESSION[user_id]'";
                     $cpExist = executeResult($sql);
-
-                    echo '
-                    <div class="ticket">
-                        <div class="body-ticket">
-                            <span class="cp-description">'.$item['description'].'</span>
-                        </div>';
-
-                        if ($cpExist != null)
-                            echo'
-                        <div class="stubs">
-                            <input type="submit" name="gotten" id="" value="Đã Nhận">
-                        </div>';
-                        else echo'
-                        <div class="stubs"> 
-                            <form action="" method="POST">
-                                <input type="text" style="display: none;" name="cp_id" value="'.$item['id_cp'].'">
-                                <input type="submit" name="addcp" id="get'.$item['id_cp'].'" value="'.$item['code_cp'].'">
-                            </form>
-                        </div>';
-                    echo'
-                    </div>';
-                }            
-                
+                    
+                    if ($cpExist != null)
+                        echo'<input type="submit" name="gotten" id="" value="Đã Nhận">';
+                    else echo'
+                        <form action="" method="POST">
+                            <input type="text" style="display: none;" name="cp_id" value="'.$item['id_cp'].'">
+                            <input type="submit" name="addcp" id="get'.$item['id_cp'].'" value="'.$item['code_cp'].'">
+                        </form>';   
+                }                
                 if (isset($_POST['addcp']) && $_SESSION['user_id']){
                         $cp_id = $_POST['cp_id'];
                         $user_id = $_SESSION['user_id'];
@@ -200,187 +324,11 @@
                             document.getElementById("get'.$cp_id.'").name = "done";
                         </script> '; 
                 }
-                if (isset($_POST['addcp']) && $_SESSION['user_id'] == 0){
-                    header('location: ../login/login_user.php');
-        die();
-                }
             ?>
-    </div>
-
-    <!-- <br id="menu"><br><br><br><br> -->
-    <div class="tab-btn">
-        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen"></button>
-        
-        <!-- <button class="tablink" onclick="openPage('MenuProvide', this)">Combo</button> -->
-    </div>
-
-    <br>
-    <div class="quote">"Chúc quý khách ngon miệng!" - PizzaHust</div>
-    <br><br><br><br><br>
-
-    <div id="Eating" class="tabcontent">
-        <div class="body-page">
-            <div class="left-bar">
-                <?php
-                    foreach($category as $cate)
-                        if ($cate['id'] < $numCate)
-                        echo'<a href="#'.$cate['id'].'" ><i class="fas fa-pizza-slice"></i><span>'.$cate['title'].'</span></a>';
-                ?>
-            </div>  
-            
-            <div class="product-list">
-                    <?php
-                    foreach($category as $cate)
-                        if ($cate['id'] < $numCate){
-                        echo '<div class="title" id="'.$cate['id'].'">
-                                <h2>'.$cate['title'].'</h2>    
-                            </div>';
-                        $id = $cate['id'];
-                        $sql = "select product.* from product";
-                        $product = executeResult($sql);
-                        echo 
-                            '<div class="category">';
-                            foreach($product as $item) {
-                            if ($item['category_id'] == $id){
-                                if($id == 1){
-                                echo                                 
-                                '<div class="product">
-                                    <img class="product_img" src="../../masterial/image/thuc_don/'.$item['image'].'"/>
-                                    <h2 class="name">'.$item['name'].'</h2>
-                                    <p class="description">'.$item['description'].'</p>
-                                    <span class="price">'.number_format($item['price_s']).' đ</span>
-                                    <a class="choose_btn">Chọn</a>
-                                </div>
-                                <form class="info_view" action="..\homepage\homepage.php#1" method="post">
-                                    <div class="info_card">
-                                        <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
-                                        <div class="info_img"><img src="../../masterial/image/thuc_don/'.$item['image'].'"></div>
-                                        
-                                        <input type="text" style="display: none;" name="image" value="'.$item['image'].'">
-                                        <input type="text" style="display: none;" name="category" value="'.$item['category_id'].'">
-                                        <input type="text" style="display: none;" name="gia_s" value="'.$item['price_s'].'">
-                                        <input type="text" style="display: none;" name="gia_m" value="'.$item['price_m'].'">
-                                        <input type="text" style="display: none;" name="gia_l" value="'.$item['price_l'].'">
-                                                        
-                                        <div class="info">
-                                            <div class="part">
-                                                <h2>'.$item['name'].'</h2>
-                                                <input type="text" style="display: none;" name="name" value="'.$item['name'].'">
-                                                <p>'.$item['description']. '</p>
-                                                <hr>
-                                            </div>
-                                                            
-                                            <div class="part">
-                                                    <h3>Size</h3>
-                                                    <div class = "form">
-                                                        <input type="radio" checked = "checked" id="S" name="size" value="S">
-                                                        <label for="S">S</label>
-                                                        <span>'.number_format($item['price_s']).'đ</span>
-                                                        <br>
-                                                        <input type="radio" id="M" name="size" value="M">
-                                                        <label for="M">M</label>
-                                                        <span>'.number_format($item['price_m']).'đ</span>
-                                                        <br>
-                                                        <input type="radio" id="L" name="size" value="L">
-                                                        <label for="L">L</label>
-                                                        <span>'.number_format($item['price_l']).'đ</span>
-                                                    </div>
-                                                <hr>
-                                            </div>
-
-                                            <div class="part">
-                                                <h3>Loại đế</h3>
-                                                <div class = "form">
-                                                    <input type="radio" id="gion" checked = "checked" name="de" value="Giòn">
-                                                    <label for="gion">Giòn</label><br>
-                                                    <input type="radio" id="men" name="de" value="Mềm truyền thống">
-                                                    <label for="mem">Mềm truyền thống</label><br>
-                                                    <input type="radio" id="men" name="de" value="Oregano">
-                                                    <label for="mem">Oregano</label><br>
-                                                </div>
-                                                <hr>
-                                            </div>
-                                            <div class="part">
-                                                <h3>Topping</h3>
-                                                <div class = "form">';
-                                                foreach($product as $topping)
-                                                if ($topping['category_id'] == 8)
-                                                echo'
-                                                    <input type="checkbox" id="1" name="topping[]" value="'.$topping['name'].'">
-                                                    <label for="1">'.$topping['name'].'</label>
-                                                    <!-- <span class="cost">'.number_format(10000).'đ</span> -->
-                                                    <span class="cost">'.$topping['price_free_size'].'đ</span>
-                                                    <br>';
-                                                echo'
-                                                </div>
-                                                <hr>
-                                            </div>
-                                            <div class="final">
-                                                <span>SL:</span>
-                                                <input type="number" id="quantity" value = "1"name="quantity" min="1" max="5">
-                                                <input type="submit" class="add-card-bt" name="addcart" value="Thêm vào giỏ">
-                                            </div>                          
-                                        </div>
-                                    </div>
-                                </form>';}
-                            else{
-                                echo                                 
-                                '<div class="product">
-                                    <img class="product_img" src="../../masterial/image/thuc_don/'.$item['image'].'"/>
-                                    <h2 class="name">'.$item['name'].'</h2>
-                                    <p class="description">'.$item['description'].'</p>
-                                    <span class="price">'.number_format($item['price_free_size']).' đ</span>
-                                    <a class="choose_btn">Chọn</a>
-                                </div>
-
-                                <form class="info_view" action="..\homepage\homepage.php" method="post">
-                                    <div class="info_card">
-                                        <a><i class="fa fa-times closeViewInfo_btn" aria-hidden="true"></i></a>
-                                        <div class="info_img"><img src="../../masterial/image/thuc_don/'.$item['image'].'"></div>
-
-                                        <input type="text" style="display: none;" name="image" value="'.$item['image'].'">
-                                        <input type="text" style="display: none;" name="category" value="'.$item['category_id'].'">
-                                        <input type="text" style="display: none;" name="gia" value="'.$item['price_free_size'].'">
-                                        
-                                        <div class="info">
-                                            <div class="part">
-                                                <h2>'.$item['name'].'</h2>
-                                                <input type="text" style="display: none;" name="name" value="'.$item['name'].'">
-                                                <p>'.$item['description']. '</p>
-                                                <hr>
-                                            </div>
-                                            
-                                            <div class="part">
-                                                <div class = "form">
-                                                    <label>Giá:</label>
-                                                    <span>'.number_format($item['price_free_size']).'đ</span>
-                                                    <br>
-                                                </div>
-                                                <hr>
-                                            </div>
-                                            <div class="final">
-                                                <span>SL:</span>
-                                                <input type="number" id="quantity" name="quantity" min="1" max="10">
-                                                <input type="submit" class="add-card-bt" name="addcart1" value="Thêm vào giỏ">
-                                            </div>                          
-                                        </div>
-                                    </div>
-                                </form>';
-                            }                
-                            }
-                        }
-                        echo '</div>';
-                    }?>
-                
-            </div>
-
-            
         </div>
-    </div>
-    <div id="MenuProvide" class="tabcontent">
-        empty
-    </div>
 
+        
+    </div>
 
     <br><br><br><br><br><br><br>
     <div id="contact" class="foot-page">
@@ -394,51 +342,7 @@
 
     <!-- notice popup -->
     <!-- <?php popup(); ?> -->
-        <script>
-
-            var infoView = document.querySelectorAll('.info_view');
-            var chooseBtn = document.querySelectorAll('.choose_btn');
-            var closeViewInfoBtn = document.querySelectorAll('.closeViewInfo_btn');
-                
-            var popup = function(viewClick){
-                infoView[viewClick].classList.add('active');
-            }
-                
-            chooseBtn.forEach((chooseBtn,i) => {
-                chooseBtn.addEventListener("click" ,()=>{
-                popup(i);
-                });
-            });
-                
-            closeViewInfoBtn.forEach((closeViewInfoBtn) =>{
-                closeViewInfoBtn.addEventListener("click", () =>{
-                    infoView.forEach((infoView) =>{
-                        infoView.classList.remove('active');
-                    });
-                });
-            });
-            // tab
-            function openPage(pageName,elmnt) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].style.backgroundColor = "";
-                tablinks[i].style.color = "";
-            }
-            document.getElementById(pageName).style.display = "block";
-            elmnt.style.backgroundColor = "#F98607";
-            elmnt.style.color = "#A80000";
-
-            }
-
-            // Get the element with id="defaultOpen" and click on it
-            document.getElementById("defaultOpen").click();
-
-            // hien popup thong bao
+        <script type="text/javascript">
             const popupScreen = document.querySelector(".popup_screen");
             const popupBox = document.querySelector(".popup_box");
             const closeBtn = document.querySelector(".close_btn");
@@ -453,6 +357,8 @@
                 popupScreen.classList.remove("active"); //Close the popup screen on click the x button
             });
         </script>
+      
+   
 
 </body>
 </html>

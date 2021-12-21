@@ -1,13 +1,12 @@
 @font-face {
     font-family: Monsterrat;
-    src: url(../masterial/font/Montserrat-Medium.ttf);
+    src: url('../../masterial/font/Montserrat-Medium.ttf');
 }
 
 body{
     margin: 0;
     font-family: Monsterrat;
 }
-
 .background_img{
     margin: 0;
     width: 100%;
@@ -49,6 +48,7 @@ body{
     letter-spacing: 2px;
     font-size: 18px;
     font-weight: 900;
+    font-family: Monsterrat;
 }
 
 .box input[type = "text"], .box input[type = "password"]{
@@ -63,6 +63,7 @@ body{
     color: #404040;
     border-radius: 24px;
     margin-bottom: 30px;
+    font-family: Monsterrat;
 }
 
 .box input[type = "submit"]{
@@ -80,6 +81,7 @@ body{
     border-radius: 20px;
     transition: 0.25s;
     transition-property: background;
+    font-family: Monsterrat;
 }
 
 .box input[type = "submit"]:hover{

@@ -23,7 +23,10 @@ require_once ('process_user_login.php');
 
         <form class="box" action="" method="post">
             <h2>LOGIN</h2>
-            <input type="text" name="username" id ="username" placeholder="Username" required="true" autofocus>       
+            <label for="username" style="font-size: 14px;">Tên đăng nhập</label>
+            <input type="text" name="username" id ="username" placeholder="Username" required="true" autofocus>   
+            
+            <label for="password" style="font-size: 14px;">Mật khẩu</label>
             <input type="password" name="password" id ="password" placeholder="Password" required="true">
             <!-- <img type = "submit" src="../../masterial/image/iconAdminPage/login.svg" alt=""> -->
             <input type="submit" name="" value="Login">

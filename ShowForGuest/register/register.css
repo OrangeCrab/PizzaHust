@@ -1,6 +1,6 @@
 @font-face {
     font-family: Monsterrat;
-    src: url(../masterial/font/Montserrat-Medium.ttf);
+    src: url('../../masterial/font/Montserrat-Medium.ttf');
 }
 
 body{

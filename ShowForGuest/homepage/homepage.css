@@ -2,7 +2,6 @@
     font-family: Montserrat;
     src: url('../../masterial/font/Montserrat-Medium.ttf');
 }
-@import url('https://fonts.googleapis.com/css2?family=Corinthia&display=swap');
 
 html{
     scroll-behavior: smooth;
@@ -10,7 +9,7 @@ html{
 body{
     margin: 0px;
     padding: 0px;
-    background-image: url('../../masterial/image/bgrhomepage/bgrhomepage.jpg');
+    background-image: url('../../masterial/image/bgrhomepage/bgrhomepage.webp');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -24,86 +23,39 @@ header{
     position: fixed;
     z-index: 10;
 }
-/* ----------------------------------------------------------------- */
 
-ul{
+.top-bar{
     margin: 0;
     padding: 0;
-    list-style-type: none;
-    width: 100%;
     display: grid;
-    grid-template-columns: 30% 15% 15% 15% 15% 10%;
+    grid-template-columns: 35% 15% 15% 15% 15% 5%;
     text-align: center;
     background-color: black;
     opacity: 0.9;
 }
 
-ul img{
+.top-bar img{
     margin: 0;
     height: 80px;
     width: 300px;
 }
 
-li a, .dropbtn {
-    display: inline-block;
-    padding: 30px 30px;
+.top-bar a{
     color: #f2f2f2;
-    text-decoration: none;
-    text-align: center;
     font-weight: bold;
     font-size: 20px;
+    text-align: center;
+    padding: 25px;
+    text-decoration: none;
     text-transform: uppercase;
-}
-li{
     transition: 0.5s;
-    transition-property: background-color;
+    transition-property: background;
 }
-li:hover, .dropdown:hover{
+
+.top-bar a:hover{
+    color: #F98607;
     background-color: #404040;
 }
-li a:hover{
-    color: #F98607;
-}
-
-li.dropdown {
-    display: inline-block;
-}
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: black;
-    opacity: 0.9;
-    width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a, button[type="submit"] {
-    color: #f2f2f2;
-    padding: 12px 16px;
-    font-size: 10px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover, button[type = "submit"]:hover {
-    color: #F98607;
-    /* background: #404040; */
-}
-
-.dropdown-content button[type="submit"]{
-    border: none;
-    background-color: black;
-    cursor: pointer;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-    /* background: #404040; */
-}
-
-/* ------------------------------------ */
 .header-page{
     width: 100%;
     height: 60%;
@@ -111,64 +63,18 @@ li.dropdown {
 
 .header-page img{
     width: 100%;
-    height: calc(width/8*3);
-    box-shadow: 0px 15px 30px black;
+    height: calc(width/19*6);
+    box-shadow: 0px 10px 15px #404040;
 }
-
-/* Style tab btn */
-.tab-btn{
-    display: inline-block;
-}
-.tablink {
-    background-color: #A80000;
-    color: #F98607;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 100%;
-    text-align: center;
-    /* width: 50%; */
-    /* text-align: left; */
-    letter-spacing: 5px;
-    transition: 0.5s;
-    transition-property: background-color;
-  }
-  
-  .tablink:hover {
-    background-color: #F98607;
-    color: #A80000;
-  }
-  #defaultOpen{
-      text-align: right;
-  }
-  /* Style the tab content (and add height:100% for full page content) */
-  .tabcontent {
-    color: #A80000;
-    display: none;
-    height: 100%;
-  }
-
 /* body page------------------------------------- */
 .body-page{
     display: grid;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 1fr 6fr 1fr;
     grid-column-gap: 20px;
 }
 
-.quote{
-    font-size: 25px;
-    text-align: center;
-    font-weight: lighter;
-    font-style: italic;
-    color: black;
-    font-family: 'Corinthia';
-    color: #A80000;
-}
 .left-bar{
-    top: 15%;
+    top: 20%;
     position: sticky;
     display: grid;
     grid-template-columns: 1fr;
@@ -181,13 +87,12 @@ li.dropdown {
 }
 .left-bar a{
     color: #f2f2f2;
-    letter-spacing: 2px;
-    text-transform: uppercase;
     width: 100%;
-    line-height: 70px;
+    line-height: 60px;
     text-decoration: none;
+    text-transform: uppercase;
     padding-left: 20px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bolder;
     transition: 0.5s;
     transition-property: background;
@@ -203,29 +108,26 @@ li.dropdown {
 }
 /* product list */
 .product-list{
-    /* padding-bottom: 1000px; */
+    padding-bottom: 1000px;
     display: grid;
     grid-template-columns: 1fr;
     grid-row-gap: 30px;
 }
 
 .title{
+    display: grid;
+    grid-template-columns: 1fr;
     text-align: center;
-    background-color: #F98607;
-    width: 100%;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
-    /* border-radius: 5px; */
-}
-#title{
-    border: 2px solid #A80000;
-    height: fit-content;
 }
 .title h2{
+    border-top: 2px solid #F98607;
     color: #A80000;
-    font-size: 14px;
+    padding-top: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
     font-family: Montserrat;
-    letter-spacing: 5px;
+    /* display: flex;
+    justify-content: center; */
 }
 .category{
     display: grid;
@@ -236,7 +138,7 @@ li.dropdown {
 .category .product {
     background: #f2f2f2;
     position: relative;
-    width: 315px;
+    width: 80%;
     height: 420px;
     border-radius: 10px;
     overflow: hidden;
@@ -244,15 +146,14 @@ li.dropdown {
 }
 
 .product .product_img{
-    width: 315px;
-    height: 210px;
+    width: 100%;
+    height: calc(2/3*width);
     display: block;
 }
 
 .product .name{
     color: #404040;
     width: 100%;
-    height: 20px;
     text-align: center;
     font-size: 18px;
     display: block;
@@ -262,8 +163,6 @@ li.dropdown {
 .product .description{
     color: #404040;
     width: 90%;
-    overflow-y: auto;
-    height: 50px;
     margin-left: 5%;
     text-align: center;
     font-size: 10px;
@@ -276,7 +175,7 @@ li.dropdown {
     width: 100%;
     text-align: center;
     font-size: 20px;
-    bottom: 50px;
+    padding-bottom: 20px;
     font-weight: bolder;
     display: block;
 }
@@ -286,6 +185,7 @@ li.dropdown {
     color: #f2f2f2;
     background: #A80000;
     position: absolute;
+    bottom: 10px;
     left: 50%;
     bottom: 10px;
     font-size: 14px;
@@ -401,80 +301,24 @@ li.dropdown {
                 }
                 .info_card .info .part span{
                     float: right;
-                    color: black;
                 }
 
 
         .info_card .info .final{
             display: grid;
-            /* width: 100%; */
             grid-template-columns: 1fr 3fr 9fr;
-            column-gap: 10px;
-            position: absolute;
-            bottom: 10px;
+            bottom: 20px;
         }
 
         .final span{
             margin-top: 10%;
-            color: black;
         }
-
 
 .voucher{
-    display: flex;
-    background-color: #A80000;
-    align-items: center;
-    height: 150px;
-    width: 100%;
-    border-bottom:2px solid #F98607;
-    overflow-x: scroll;
+    position: sticky;
+    top: 20%;
+    height: fit-content;
 }
-    .voucher .ticket{
-            top: 20%;
-            display: inline-flex;
-            margin-left: 30px;
-            margin-right: 30px;
-        }
-        .voucher .body-ticket{
-            background-color: #f2f2f2;
-            width: 250px;
-            height: 120px;
-            overflow-y: scroll;
-            border-bottom-left-radius: 5px;
-            border-top-left-radius: 5px;
-            padding-left: 10px;
-        }
-        .voucher .ticket .cp-description{
-            color: black;
-            font-size: 12px;
-        }
-        .voucher .ticket .stubs{
-            background-color: #F98607;
-            height: 120px;
-            width: 100px;
-            border-bottom-right-radius: 5px;
-            border-top-right-radius: 5px;
-            border-left: 2px dashed #f2f2f2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .stubs .get{
-            font-weight: bolder;
-            text-align: center;
-            font-size: 14px;
-            text-decoration: none;
-            text-transform: uppercase;
-            border: 2px solid #A80000;
-            background-color: #A80000;
-            padding: 7px 10px;
-            outline: none;
-            color: #f2f2f2;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-
 
 /* foot page---------------------------- */
 .foot-page{

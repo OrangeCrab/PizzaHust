@@ -27,11 +27,11 @@
 
         <form class="box" action="" method="post">
             <h2 class="container h2" style="color: orange ;">MẬT KHẨU SẼ ĐƯỢC GỬI VÀO GMAIL BẠN ĐÃ ĐĂNG KÝ TRƯỚC ĐÂY</h2>
-            <p style="color: blue;">Vui lòng nhập gmail bạn đã đăng ký trước đây để lấy lại mật khẩu.</p>
-            <label for="username1">User name</label>
+            <p style="color: blue;font-family: Monsterrat;">Vui lòng nhập gmail bạn đã đăng ký trước đây để lấy lại mật khẩu.</p>
+            <label for="username1" style="font-size: 14px;">Tên đăng nhập</label>
             <input type="text" name="username" id ="username1" placeholder="pizzahust" required = "true" autofocus>       
             <p id="username-inform" ></p>
-            <label for="username">Gmail</label>
+            <label for="username" style="font-size: 14px;">Email</label>
             <input type="text" name="email" id ="email" placeholder="abc123@gmail.com" required = "true" onblur="gmail()">       
             <p id="gmail-inform" ></p>
             <input type="submit" name="" id="submit" value="GỬI" >

@@ -23,20 +23,26 @@ require_once ('process_register.php');
 
         <form class="box" action="" method="post" style="height: fit-content; margin-top: 150px;" >
             <h2>REGISTER</h2>
+            <label for="username" style="font-size: 14px;">Tên đăng nhập</label>
             <input type="text" name="username-register" id ="username" placeholder="Username" required = "true" autofocus> 
 
+            <label for="password" style="font-size: 14px;">Mật khẩu</label>
             <input type="password" name="password-register" id ="password" placeholder="Password" required = "true" onblur="password_check()">
             <p id="password_check" style="color: red; font-size: small;"></p>
 
+            <label for="password-confirm" style="font-size: 14px;">Xác nhận mật khẩu</label>
             <input type="password" name="password-confirm" id ="password-confirm" placeholder="Confirm_password" required = "true" onblur="mouseover()" >
             <p id="pass-inform" style="color: red; font-size: small;"></p>
 
+            <label for="gmail" style="font-size: 14px;">Email</label>
             <input type="text" name="gmail" id ="gmail" placeholder="Gmail" required = "true" onblur="gmail_check()">
             <p id="gmail-inform" style="color: red; font-size: small;"></p>
 
-            <input type="text" name="address-register" id ="username" placeholder="Address" required = "true">
+            <label for="address" style="font-size: 14px;">Địa chỉ</label>
+            <input type="text" name="address-register" id ="address" placeholder="Address" required = "true">
             <p id="address-confirm" style="color: red; font-size: small;"></p>
 
+            <label for="phonenumber" style="font-size: 14px;">Số điện thoại</label>
             <input type="text" name="phonenumber-register" id ="phonenumber" placeholder="Phone number" required = "true" onblur="phone_check()">
             <p id="phonenumber-inform" style="color: red; font-size: small;"></p>
 

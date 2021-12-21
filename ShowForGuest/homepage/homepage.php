@@ -145,51 +145,63 @@
     <div class="header-page">
         <img id="launcher" src="../../masterial/image/bgrhomepage/head0.jpg" alt="">
     </div>
-
     <!-- nhận voucher cho khách hàng có tài khoản -->
     <br>
     <div class="voucher" id="menu"> 
             <?php
+
                 foreach($coupon as $item) {
-                    $sql = "select cp_id, user_id from cp_user where cp_id = '$item[id_cp]' and user_id = '$_SESSION[user_id]'";
-                    $cpExist = executeResult($sql);
+                    if ($_SESSION['user_id'] > 0){
+                        $sql = "select cp_id, user_id from cp_user where cp_id = '$item[id_cp]' and user_id = '$_SESSION[user_id]'";
+                        $cpExist = executeResult($sql);
 
-                    echo '
-                    <div class="ticket">
-                        <div class="body-ticket">
-                            <span class="cp-description">'.$item['description'].'</span>
-                        </div>';
+                        echo '
+                        <div class="ticket">
+                            <div class="body-ticket">
+                                <span class="cp-description">'.$item['description'].'</span>
+                            </div>';
 
-                        if ($cpExist != null)
-                            echo'
-                        <div class="stubs">
-                            <input type="submit" name="gotten" id="" value="Đã Nhận">
+                            if ($cpExist != null)
+                                echo'
+                            <div class="stubs">
+                                <input type="submit" name="gotten" id="" value="Đã Nhận">
+                            </div>';
+                            else echo'
+                            <div class="stubs"> 
+                                <form action="" method="POST">
+                                    <input type="text" style="display: none;" name="cp_id" value="'.$item['id_cp'].'">
+                                    <input type="submit" name="addcp" id="get'.$item['id_cp'].'" value="'.$item['code_cp'].'">
+                                </form>
+                            </div>';
+                        echo'
                         </div>';
-                        else echo'
-                        <div class="stubs"> 
-                            <form action="" method="POST">
-                                <input type="text" style="display: none;" name="cp_id" value="'.$item['id_cp'].'">
-                                <input type="submit" name="addcp" id="get'.$item['id_cp'].'" value="'.$item['code_cp'].'">
-                            </form>
+                    }
+                    else{
+                        echo'
+                        <div class="ticket">
+                            <div class="body-ticket">
+                                <span class="cp-description">'.$item['description'].'</span>
+                            </div>
+                            <div class="stubs">
+                                <a href="../login/login_user.php" class="get">Nhận</a>
+                            </div>
                         </div>';
-                    echo'
-                    </div>';
+                    }
+                    
                 }            
                 
-                if (isset($_POST['addcp']) && $_SESSION['user_id']){
+                if (isset($_POST['addcp']))
+                    if ($_SESSION['user_id']){
                         $cp_id = $_POST['cp_id'];
                         $user_id = $_SESSION['user_id'];
-                        execute("insert into cp_user(cp_id, user_id, used) values('$cp_id','$user_id','0')");
-                     echo '
+                        execute("insert into cp_user(cp_id, user_id, used) values('$cp_id','$user_id','0')");   
+                        echo '
                         <script type="text/javascript">
                             document.getElementById("get'.$cp_id.'").value = "Đã Nhận";
                             document.getElementById("get'.$cp_id.'").name = "done";
                         </script> '; 
-                }
-                if (isset($_POST['addcp']) && $_SESSION['user_id'] == 0){
-                    header('location: ../login/login_user.php');
-        die();
-                }
+                    }
+                
             ?>
     </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2021 at 03:00 PM
+-- Generation Time: Dec 21, 2021 at 04:09 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -108,7 +108,15 @@ CREATE TABLE `cp_user` (
 INSERT INTO `cp_user` (`cp_id`, `user_id`, `used`) VALUES
 (1, 3, 0),
 (2, 3, 0),
-(3, 3, 0);
+(3, 3, 0),
+(1, 5, 0),
+(2, 5, 0),
+(3, 5, 0),
+(4, 5, 0),
+(5, 5, 0),
+(1, 8, 0),
+(2, 8, 0),
+(3, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -118,6 +126,7 @@ INSERT INTO `cp_user` (`cp_id`, `user_id`, `used`) VALUES
 
 CREATE TABLE `gallery` (
   `id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
   `img` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -168,8 +177,8 @@ INSERT INTO `meal_detail` (`meal_id`, `product_id`) VALUES
 (1, 13),
 (2, 13),
 (3, 13),
-(2, 15),
-(2, 14);
+(2, 14),
+(2, 15);
 
 -- --------------------------------------------------------
 
@@ -179,7 +188,6 @@ INSERT INTO `meal_detail` (`meal_id`, `product_id`) VALUES
 
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -187,12 +195,12 @@ CREATE TABLE `menu` (
 -- Dumping data for table `menu`
 --
 
-INSERT INTO `menu` (`id`, `description`,`name`) VALUES
-(1,'Các món khai vị siêu ngon' ,'Khai vị'),
-(2,'Các món chính siêu ngon'  ,'Món chính'),
-(3,'Các món tráng miệng siêu ngon' , 'Tráng miệng'),
-(4,'Các món chay siêu ngon' , 'Món chay'),
-(5,'Các món dành cho trẻ em siêu ngon' , 'Dành cho trẻ em');
+INSERT INTO `menu` (`id`, `name`) VALUES
+(1, 'Khai vị'),
+(2, 'Món chính'),
+(3, 'Tráng miệng'),
+(4, 'Món chay'),
+(5, 'Dành cho trẻ em');
 
 -- --------------------------------------------------------
 
@@ -209,7 +217,7 @@ CREATE TABLE `menu_detail` (
 -- Dumping data for table `menu_detail`
 --
 
-INSERT INTO `menu_detail` (`product_id`,`menu_id`) VALUES
+INSERT INTO `menu_detail` (`product_id`, `menu_id`) VALUES
 (11, 1),
 (11, 2),
 (11, 3),
@@ -247,7 +255,6 @@ CREATE TABLE `order` (
   `order_time` datetime DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
   `payment` int(11) DEFAULT NULL,
-  `coupon` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -255,13 +262,15 @@ CREATE TABLE `order` (
 -- Dumping data for table `order`
 --
 
-INSERT INTO `order` (`id`, `fullname`, `phonenumber`, `address`, `note`, `order_time`, `status`, `payment`,`coupon`,`user_id`) VALUES
-(62, 'Nguyễn Trung Kiên', '0989983025', '76 Mai Dịch Quận Bắc Từ Liêm', 'cho ít muối thôi', '2021-12-21 20:03:51', 'Chờ xác nhận', 127000,30000, NULL),
-(63, 'Nguyễn Trung Kiên', '0989983025', '76 Mai Dịch Quận Bắc Từ Liêm', 'cho ít muối thôi', '2021-12-21 20:05:11', 'Chờ xác nhận', 0, 0,NULL),
-(64, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Ba Đình', 'cho ít muối thôi', '2021-12-21 20:05:47', 'Chờ xác nhận', 172000, 15000,NULL),
-(65, 'Nguyễn Trung Kiên', '0222223311', '76 Mai Dịch Quận Ba Đình', 'cho ít muối thôi', '2021-12-21 20:39:36', 'Chờ xác nhận', 322000, 15000,3),
-(66, 'Nguyễn Trung Kiên', '0222223333', 'dfn fgngf Quận Bắc Từ Liêm', 'Nhiều tương ớt', '2021-12-21 20:40:43', 'Chờ xác nhận', 252000, 15000,3),
-(67, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Cầu Giấy', 'cho ít muối thôi', '2021-12-21 20:42:42', 'Chờ xác nhận', 372000,20000, 3);
+INSERT INTO `order` (`id`, `fullname`, `phonenumber`, `address`, `note`, `order_time`, `status`, `payment`, `user_id`) VALUES
+(62, 'Nguyễn Trung Kiên', '0989983025', '76 Mai Dịch Quận Bắc Từ Liêm', 'cho ít muối thôi', '2021-12-21 20:03:51', 'Chờ xác nhận', 127000, NULL),
+(63, 'Nguyễn Trung Kiên', '0989983025', '76 Mai Dịch Quận Bắc Từ Liêm', 'cho ít muối thôi', '2021-12-21 20:05:11', 'Chờ xác nhận', 0, NULL),
+(64, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Ba Đình', 'cho ít muối thôi', '2021-12-21 20:05:47', 'Chờ xác nhận', 172000, NULL),
+(65, 'Nguyễn Trung Kiên', '0222223311', '76 Mai Dịch Quận Ba Đình', 'cho ít muối thôi', '2021-12-21 20:39:36', 'Chờ xác nhận', 322000, 3),
+(66, 'Nguyễn Trung Kiên', '0222223333', 'dfn fgngf Quận Bắc Từ Liêm', 'Nhiều tương ớt', '2021-12-21 20:40:43', 'Chờ xác nhận', 252000, 3),
+(67, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Cầu Giấy', 'cho ít muối thôi', '2021-12-21 20:42:42', 'Chờ xác nhận', 322000, 3),
+(70, 'aaaaaaaaaa', '0123456789', '76 Mai Dịch Quận Ba Đình', '', '2021-12-21 21:37:03', 'Chờ xác nhận', 847000, 5),
+(71, 'srubfdk', '0123456788', '136 Nguyễn An Ninh Quận Bắc Từ Liêm', 'dfc dfc', '2021-12-21 22:04:22', 'Chờ xác nhận', 322000, 8);
 
 -- --------------------------------------------------------
 
@@ -272,7 +281,7 @@ INSERT INTO `order` (`id`, `fullname`, `phonenumber`, `address`, `note`, `order_
 CREATE TABLE `order_detail` (
   `id` int(11) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
-  `product_name` varchar(200) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
   `quatity` int(11) DEFAULT NULL,
   `size` varchar(10) DEFAULT NULL,
@@ -284,13 +293,16 @@ CREATE TABLE `order_detail` (
 -- Dumping data for table `order_detail`
 --
 
-INSERT INTO `order_detail` (`id`, `order_id`, `product_name`, `price`, `quatity`, `size`, `plinth`, `topping`) VALUES
-(89, 62,'Pizza Thập Cẩm', 105000, 1, 'S', 'Giòn', 'Phô mai phủ '),
-(90, 64, 'Pizza Bò Viên', 150000, 1, 'S', 'Giòn', 'Không có'),
-(91, 65, 'Mỳ Ý''', 150000, 2, 'S', 'Giòn', 'Không có'),
-(92, 66, 'Mỳ Hàn', 115000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ '),
-(93, 67, 'Gà sốt cay', 165000, 2, 'S', 'Giòn', 'Phô mai phủ '),
-(94, 67, 'Pizza Hải Sản', 175000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ ');
+INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `price`, `quatity`, `size`, `plinth`, `topping`) VALUES
+(89, 62, 5, 105000, 1, 'S', 'Giòn', 'Phô mai phủ '),
+(90, 64, 2, 150000, 1, 'S', 'Giòn', 'Không có'),
+(91, 65, 2, 150000, 2, 'S', 'Giòn', 'Không có'),
+(92, 66, 5, 115000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ '),
+(93, 67, 2, 165000, 2, 'S', 'Giòn', 'Phô mai phủ '),
+(94, 67, 2, 175000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ '),
+(95, 67, 1, 100000, 3, 'S', 'Giòn', 'Không có'),
+(96, 70, 2, 165000, 5, 'S', 'Giòn', 'Phô mai phủ '),
+(97, 71, 1, 100000, 3, 'S', 'Giòn', 'Không có');
 
 -- --------------------------------------------------------
 
@@ -314,6 +326,7 @@ CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `category_id` int(11) DEFAULT NULL,
   `name` varchar(350) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
   `status_product_id` int(11) DEFAULT NULL,
   `image` varchar(500) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -328,22 +341,23 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `category_id`, `name`, `price`, `status_product_id`, `image`, `description`, `price_free_size`, `price_s`, `price_m`, `price_l`) VALUES
-(1, 1, 'Pizza Thập Cẩm', 1, 'thap_cam.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 100000, 120000, 150000),
-(2, 1, 'Pizzaminsea',  1, 'pizzaminsea.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 150000, 170000, 200000),
-(3, 1, 'Pizza Rau Củ', 1, 'rau_cu.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
-(4, 1, 'Pizza 4 Vị',  1, '4_vi.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 110000, 120000, 130000),
-(5, 1, 'Pizza Thịt Ngập Mõm',  1, '5_loai_thit.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
-(6, 3, 'Đùi Gà Con',  1, 'ga_BBQ.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 50000, 90000, 100000, 110000),
-(7, 1, 'Pizza Bò Tôm',  1, 'bo_tom.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
-(8, 8, 'Double sốt', 1, '', 'rfbf', 9000, 0, 0, 0),
-(9, 8, 'Phô mai viền',  1, '', 'rthrt', 10000, 8000, 0, 0),
-(10, 8, 'Phô mai phủ',  1, '', 'gh', 15000, 15000, 0, 0),
-(11, 5, 'Mỳ đặc biệt', 1, 'mi_y.jpg', 'ngon', 60000, 0, 0, 0),
-(12, 2, 'Gà BBQ',  1, 'bbq.jpg', 'great', 60000, 0, 0, 0),
-(13, 4, 'Cocacola',  1, 'coca1.jpg', 'ngon', 15000, 0, 0, 0),
-(14, 6, 'Combo 1',  1, 'combo1.png', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
-(15, 6, 'Combo 2', 1, 'combo2.jfif', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
-(16, 6, 'conbo 3', 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0);
+(1, 1, 'Pizza Thập Cẩm', 100000, 1, 'thap_cam.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 100000, 120000, 150000),
+(2, 1, 'Pizzaminsea', 150000, 1, 'pizzaminsea.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 150000, 170000, 200000),
+(3, 1, 'Pizza Rau Củ', 90000, 1, 'rau_cu.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
+(4, 1, 'Pizza 4 Vị', 110000, 1, '4_vi.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 110000, 120000, 130000),
+(5, 1, 'Pizza Thịt Ngập Mõm', 90000, 1, '5_loai_thit.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
+(6, 3, 'Đùi Gà Con', 50000, 1, 'ga_BBQ.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 50000, 90000, 100000, 110000),
+(7, 1, 'Pizza Bò Tôm', 90000, 1, 'bo_tom.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
+(8, 8, 'Double sốt', 9000, 1, '', 'rfbf', 9000, 0, 0, 0),
+(9, 8, 'Phô mai viền', 10000, 1, '', 'rthrt', 10000, 8000, 0, 0),
+(10, 8, 'Phô mai phủ', 15000, 1, '', 'gh', 15000, 15000, 0, 0),
+(11, 5, 'Mỳ đặc biệt', 60000, 1, 'mi_y.jpg', 'ngon', 60000, 0, 0, 0),
+(12, 2, 'Gà BBQ', 60000, 1, 'bbq.jpg', 'great', 60000, 0, 0, 0),
+(13, 4, 'Cocacola', 15000, 1, 'coca1.jpg', 'ngon', 15000, 0, 0, 0),
+(14, 6, 'Combo 1', 300000, 1, 'combo1.png', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
+(15, 6, 'Combo đặc biệt', 180000, 1, 'pizzaminsea.jpg', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
+(16, 6, 'conbo 3', 210000, 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0),
+(17, 8, 'topping1', 17000, 1, 'mirinda.png', 'ẻvfd', 17000, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -387,7 +401,10 @@ INSERT INTO `user_account` (`id`, `username`, `address`, `phonenumber`, `email`,
 (1, 'guest', NULL, NULL, NULL, NULL),
 (2, 'trungkien', '136 Nguyễn An Ninh Hoàng mai', '0989989998', 'trungkien07yd@gmail.com', '123456'),
 (3, 'trungkien1', 'ninh bình', '0989983025', 'trungkien@gmail.com', '123456'),
-(4, 'trungkien3', 'ninh bình', '0989983025', 'trungkien@gmail.com', '123456');
+(5, 'trungkienvn2', 'ninh bình', '0989983026', 'trungkienqq@gmail.com', '123456'),
+(6, 'abc', 'ninh bình', '0989989999', 'a@gmail.com', '123456'),
+(7, 'b', 'ibjdfkc', '0989983025', 'b@gmail.com', '123456'),
+(8, 'c', 'feivdkjcm', '0123456787', 'c@gmail.com', '123456');
 
 -- --------------------------------------------------------
 
@@ -395,7 +412,12 @@ INSERT INTO `user_account` (`id`, `username`, `address`, `phonenumber`, `email`,
 -- Table structure for table `voucher`
 --
 
-
+CREATE TABLE `voucher` (
+  `code` varchar(20) NOT NULL,
+  `picture` varchar(100) DEFAULT NULL,
+  `information` varchar(250) DEFAULT NULL,
+  `discount` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -431,7 +453,7 @@ ALTER TABLE `cp_user`
 --
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`),
-
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `meal`
@@ -471,6 +493,7 @@ ALTER TABLE `order`
 --
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
   ADD KEY `order_id` (`order_id`);
 
 --
@@ -502,6 +525,8 @@ ALTER TABLE `user_account`
 --
 -- Indexes for table `voucher`
 --
+ALTER TABLE `voucher`
+  ADD PRIMARY KEY (`code`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -547,13 +572,13 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `plinth`
@@ -565,7 +590,7 @@ ALTER TABLE `plinth`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `status_product`
@@ -577,7 +602,7 @@ ALTER TABLE `status_product`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -593,6 +618,8 @@ ALTER TABLE `cp_user`
 --
 -- Constraints for table `gallery`
 --
+ALTER TABLE `gallery`
+  ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
 -- Constraints for table `meal_detail`
@@ -618,6 +645,7 @@ ALTER TABLE `order`
 -- Constraints for table `order_detail`
 --
 ALTER TABLE `order_detail`
+  ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
 
 --

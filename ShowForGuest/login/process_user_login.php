@@ -1,16 +1,16 @@
 <?php 
 session_start();
-$password = $user_name= $msg = '';
+$password = $email= $msg = '';
     // kiem tra xem nguoi dung co nhap du lieu khong
     // bằng cách kiem tra xem co qua trinh POST len server khong
    
     if(!empty($_POST)){
         //Neu co
-        $user_name = getPost('username');
+        $email = getPost('email');
         $password = getPost('password');
         
         // chay cau lenh sql de lay ra gia tri trong database co gia tri bang gia tri nguoi dung nhap vao
-        $sql = "select id from user_account where username = '$user_name' and password = '$password'";
+        $sql = "select id from user_account where email = '$email' and password = '$password'";
         $userExist = executeResult($sql);
 
         // neu khong co nguoi dung nao

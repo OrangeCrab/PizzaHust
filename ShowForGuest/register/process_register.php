@@ -24,8 +24,10 @@ $gmail_check = false;
             execute($sql);
             
             $sql_id = "select id from user_account where email = '$email'";
-            $user_id = executeResult($sql_id);
-            $_SESSION['user_id'] = $user_id;
+            $userExist_id = executeResult($sql_id);
+            $user_id = array($userExist_id);
+            $_SESSION['user_id'] = $user_id[0][0]['id'];
+            $_SESSION['count_for_login'] = 0;
 
             header("location: ../homepage/homepage.php");
             die();           

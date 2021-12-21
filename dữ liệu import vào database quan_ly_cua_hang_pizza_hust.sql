@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2021 at 03:00 PM
+-- Generation Time: Dec 21, 2021 at 04:09 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -108,7 +108,15 @@ CREATE TABLE `cp_user` (
 INSERT INTO `cp_user` (`cp_id`, `user_id`, `used`) VALUES
 (1, 3, 0),
 (2, 3, 0),
-(3, 3, 0);
+(3, 3, 0),
+(1, 5, 0),
+(2, 5, 0),
+(3, 5, 0),
+(4, 5, 0),
+(5, 5, 0),
+(1, 8, 0),
+(2, 8, 0),
+(3, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -169,8 +177,8 @@ INSERT INTO `meal_detail` (`meal_id`, `product_id`) VALUES
 (1, 13),
 (2, 13),
 (3, 13),
-(2, 15),
-(2, 14);
+(2, 14),
+(2, 15);
 
 -- --------------------------------------------------------
 
@@ -260,7 +268,9 @@ INSERT INTO `order` (`id`, `fullname`, `phonenumber`, `address`, `note`, `order_
 (64, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Ba Đình', 'cho ít muối thôi', '2021-12-21 20:05:47', 'Chờ xác nhận', 172000, NULL),
 (65, 'Nguyễn Trung Kiên', '0222223311', '76 Mai Dịch Quận Ba Đình', 'cho ít muối thôi', '2021-12-21 20:39:36', 'Chờ xác nhận', 322000, 3),
 (66, 'Nguyễn Trung Kiên', '0222223333', 'dfn fgngf Quận Bắc Từ Liêm', 'Nhiều tương ớt', '2021-12-21 20:40:43', 'Chờ xác nhận', 252000, 3),
-(67, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Cầu Giấy', 'cho ít muối thôi', '2021-12-21 20:42:42', 'Chờ xác nhận', 372000, 3);
+(67, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Cầu Giấy', 'cho ít muối thôi', '2021-12-21 20:42:42', 'Chờ xác nhận', 322000, 3),
+(70, 'aaaaaaaaaa', '0123456789', '76 Mai Dịch Quận Ba Đình', '', '2021-12-21 21:37:03', 'Chờ xác nhận', 847000, 5),
+(71, 'srubfdk', '0123456788', '136 Nguyễn An Ninh Quận Bắc Từ Liêm', 'dfc dfc', '2021-12-21 22:04:22', 'Chờ xác nhận', 322000, 8);
 
 -- --------------------------------------------------------
 
@@ -289,7 +299,10 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `price`, `quatity`, 
 (91, 65, 2, 150000, 2, 'S', 'Giòn', 'Không có'),
 (92, 66, 5, 115000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ '),
 (93, 67, 2, 165000, 2, 'S', 'Giòn', 'Phô mai phủ '),
-(94, 67, 2, 175000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ ');
+(94, 67, 2, 175000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ '),
+(95, 67, 1, 100000, 3, 'S', 'Giòn', 'Không có'),
+(96, 70, 2, 165000, 5, 'S', 'Giòn', 'Phô mai phủ '),
+(97, 71, 1, 100000, 3, 'S', 'Giòn', 'Không có');
 
 -- --------------------------------------------------------
 
@@ -342,8 +355,9 @@ INSERT INTO `product` (`id`, `category_id`, `name`, `price`, `status_product_id`
 (12, 2, 'Gà BBQ', 60000, 1, 'bbq.jpg', 'great', 60000, 0, 0, 0),
 (13, 4, 'Cocacola', 15000, 1, 'coca1.jpg', 'ngon', 15000, 0, 0, 0),
 (14, 6, 'Combo 1', 300000, 1, 'combo1.png', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
-(15, 6, 'Combo 2', 180000, 1, 'combo2.jfif', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
-(16, 6, 'conbo 3', 210000, 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0);
+(15, 6, 'Combo đặc biệt', 180000, 1, 'pizzaminsea.jpg', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
+(16, 6, 'conbo 3', 210000, 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0),
+(17, 8, 'topping1', 17000, 1, 'mirinda.png', 'ẻvfd', 17000, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -387,7 +401,10 @@ INSERT INTO `user_account` (`id`, `username`, `address`, `phonenumber`, `email`,
 (1, 'guest', NULL, NULL, NULL, NULL),
 (2, 'trungkien', '136 Nguyễn An Ninh Hoàng mai', '0989989998', 'trungkien07yd@gmail.com', '123456'),
 (3, 'trungkien1', 'ninh bình', '0989983025', 'trungkien@gmail.com', '123456'),
-(4, 'trungkien3', 'ninh bình', '0989983025', 'trungkien@gmail.com', '123456');
+(5, 'trungkienvn2', 'ninh bình', '0989983026', 'trungkienqq@gmail.com', '123456'),
+(6, 'abc', 'ninh bình', '0989989999', 'a@gmail.com', '123456'),
+(7, 'b', 'ibjdfkc', '0989983025', 'b@gmail.com', '123456'),
+(8, 'c', 'feivdkjcm', '0123456787', 'c@gmail.com', '123456');
 
 -- --------------------------------------------------------
 
@@ -555,13 +572,13 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `plinth`
@@ -573,7 +590,7 @@ ALTER TABLE `plinth`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `status_product`
@@ -585,7 +602,7 @@ ALTER TABLE `status_product`
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

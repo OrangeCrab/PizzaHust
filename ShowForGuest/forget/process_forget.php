@@ -9,11 +9,7 @@
 
     session_start();
 
-    if(!empty($_POST)){
-        $username = getPost('username');
-       $sql = "select username from user_account where username = '$username'";
-       $check_username = executeResult($sql);
-       if(!empty($check_username)){
+    
            $email = getPost('email');
            $sql_email = "select email from user_account where email = '$email' and username = '$username'";
            $check_email = executeResult($sql_email);
@@ -60,15 +56,7 @@
                 ';
             }
 
-        }
-       else {
-           echo '
-           <script type="text/javascript">
-               window.alert("Tên người dùng không tồn tại !"); 
-            </script>
-               
-           ';
-       }
+     
         
     }
 ?>

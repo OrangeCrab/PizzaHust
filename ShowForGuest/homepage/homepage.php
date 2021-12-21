@@ -112,7 +112,6 @@
         ';
     };
     $numCate = 7;
-    popup();
 ?> 
 
 <!DOCTYPE html>
@@ -201,7 +200,7 @@
             </div>
             <!--manual navigation end-->
         </div>  
-
+	<?php     popup(); ?>
     <!-- nhận voucher cho khách hàng có tài khoản -->
     <br>
     <div class="voucher" id="menu"> 

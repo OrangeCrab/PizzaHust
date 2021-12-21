@@ -117,61 +117,14 @@ INSERT INTO `cp_user` (`cp_id`, `user_id`, `used`) VALUES
 --
 
 CREATE TABLE `gallery` (
-  `id` int(11) NOT NULL,
+  `id` int(11) PRIMARY key AUTO_INCREMENT,
   `img` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `meal`
---
 
-CREATE TABLE `meal` (
-  `id` int(11) NOT NULL,
-  `name` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `meal`
---
-
-INSERT INTO `meal` (`id`, `name`) VALUES
-(1, 'Bữa sáng'),
-(2, 'Bữa trưa'),
-(3, 'Bữa tối');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `meal_detail`
---
-
-CREATE TABLE `meal_detail` (
-  `meal_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `meal_detail`
---
-
-INSERT INTO `meal_detail` (`meal_id`, `product_id`) VALUES
-(1, 11),
-(2, 11),
-(3, 11),
-(1, 6),
-(2, 6),
-(1, 12),
-(2, 12),
-(3, 12),
-(1, 13),
-(2, 13),
-(3, 13),
-(2, 15),
-(2, 14);
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `menu`
@@ -327,7 +280,7 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `category_id`, `name`, `price`, `status_product_id`, `image`, `description`, `price_free_size`, `price_s`, `price_m`, `price_l`) VALUES
+INSERT INTO `product` (`id`, `category_id`, `name`, `status_product_id`, `image`, `description`, `price_free_size`, `price_s`, `price_m`, `price_l`) VALUES
 (1, 1, 'Pizza Thập Cẩm', 1, 'thap_cam.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 100000, 120000, 150000),
 (2, 1, 'Pizzaminsea',  1, 'pizzaminsea.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 150000, 170000, 200000),
 (3, 1, 'Pizza Rau Củ', 1, 'rau_cu.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
@@ -386,8 +339,8 @@ CREATE TABLE `user_account` (
 INSERT INTO `user_account` (`id`, `username`, `address`, `phonenumber`, `email`, `password`) VALUES
 (1, 'guest', NULL, NULL, NULL, NULL),
 (2, 'trungkien', '136 Nguyễn An Ninh Hoàng mai', '0989989998', 'trungkien07yd@gmail.com', '123456'),
-(3, 'trungkien1', 'ninh bình', '0989983025', 'trungkien@gmail.com', '123456'),
-(4, 'trungkien3', 'ninh bình', '0989983025', 'trungkien@gmail.com', '123456');
+(3, 'trungkien1', 'ninh bình', '0989983025', 'trungkien@gmail.com', '123456');
+
 
 -- --------------------------------------------------------
 
@@ -427,24 +380,11 @@ ALTER TABLE `cp_user`
   ADD KEY `cp_id` (`cp_id`);
 
 --
--- Indexes for table `gallery`
---
-ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`id`),
+
 
 
 --
--- Indexes for table `meal`
---
-ALTER TABLE `meal`
-  ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `meal_detail`
---
-ALTER TABLE `meal_detail`
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `meal_id` (`meal_id`);
 
 --
 -- Indexes for table `menu`
@@ -526,16 +466,8 @@ ALTER TABLE `coupon`
   MODIFY `id_cp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `gallery`
---
-ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `meal`
---
-ALTER TABLE `meal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -596,10 +528,6 @@ ALTER TABLE `cp_user`
 
 --
 -- Constraints for table `meal_detail`
---
-ALTER TABLE `meal_detail`
-  ADD CONSTRAINT `meal_detail_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
-  ADD CONSTRAINT `meal_detail_ibfk_2` FOREIGN KEY (`meal_id`) REFERENCES `meal` (`id`);
 
 --
 -- Constraints for table `menu_detail`

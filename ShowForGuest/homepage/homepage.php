@@ -1,5 +1,6 @@
 <?php
-    if (session_id() === '') session_start();
+    session_start();
+    if( !isset($_SESSION['user_id'])) $_SESSION['user_id'] = 0;
     
     if(isset( $_SESSION['counter'] )){
         // Đếm mỗi lần truy cập

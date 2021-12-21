@@ -14,7 +14,7 @@ $gmail_check = false;
         $address = getPost('address-register');
         
         // chay cau lenh sql de lay ra gia tri trong database co gia tri bang gia tri nguoi dung nhap vao
-        $sql = "select username from user_account where username = '$user_name_register'";
+        $sql = "select email from user_account where email = '$email'";
         $userExist = executeResult($sql);
 
 
@@ -30,7 +30,7 @@ $gmail_check = false;
         else{
             echo '
                 <script type="text/javascript">
-                    alert("This user name did exist"); 
+                    alert("Email này đã đăng ký tài khoản khác !"); 
                 </script>
               
             ';

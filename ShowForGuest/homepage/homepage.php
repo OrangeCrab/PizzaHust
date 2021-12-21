@@ -15,10 +15,11 @@
     $sql = "select * from user_account";
     $user_info = executeResult($sql);
     $customer = '';  // Ten khach hang
-    foreach ($user_info as $user){
-        if ($user['id'] == $_SESSION['user_id'])
-        $customer = $user['username'];
-    }
+    if (isset($_SESSION['user_id']))
+        foreach ($user_info as $user){
+            if ($user['id'] == $_SESSION['user_id'])
+            $customer = $user['username'];
+        }
     # Mỗi lần them sản phẩm vào giỏ hàng,  $_SESSION['giohang'] sẽ thêm một mảng các thuộc
     # tính của sản phẩm mình đang chọn vào biến đó (bảng product chưa hoàn thiện về giá nên cho giá mặc định nên không có biến $price)
     # sẽ thêm biến $price khi người dùng chọn s m l khác (lúc này lại phải truy cập sql để biết được giá)

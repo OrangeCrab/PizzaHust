@@ -167,14 +167,44 @@
         ?>   
     </header>
 
-    <div class="header-page">
-        <img id="launcher" src="../../masterial/image/bgrhomepage/head0.jpg" alt="">
-    </div>
+    <div class="slider">
+            <div class="slides">
+                <!--radio buttons start-->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <!--radio buttons end-->
+                <!--slide images start-->
+                <div class="slide first">
+                    <img src="../../masterial/image/bgrhomepage/head0.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="../../masterial/image/bgrhomepage/head1.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="../../masterial/image/bgrhomepage/head2.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="../../masterial/image/bgrhomepage/head3.jpg" alt="">
+                </div>
+                <!--slide images end-->
+
+            </div>
+            <!--manual navigation start-->
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+            <!--manual navigation end-->
+        </div>  
+
     <!-- nhận voucher cho khách hàng có tài khoản -->
     <br>
     <div class="voucher" id="menu"> 
             <?php
-
                 foreach($coupon as $item) {
                     if (isset($_SESSION['user_id']) && $_SESSION['user_id'] > 0){
                         $sql = "select cp_id, user_id from cp_user where cp_id = '$item[id_cp]' and user_id = '$_SESSION[user_id]'";
@@ -201,18 +231,17 @@
                         echo'
                         </div>';
                     }
-                    else{
+                    else if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == 0){
                         echo'
                         <div class="ticket">
                             <div class="body-ticket">
                                 <span class="cp-description">'.$item['description'].'</span>
                             </div>
                             <div class="stubs">
-                                <a href="../login/login_user.php" class="get">Nhận</a>
+                                <a href="../login/login_user.php" class="get">'.$item['code_cp'].'</a>
                             </div>
                         </div>';
-                    }
-                    
+                    } 
                 }            
                 
                 if (isset($_POST['addcp']))
@@ -230,12 +259,12 @@
     </div>
 
     <div class="tab-btn">
-        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen"></button> 
+        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen">Chúc quý khách ngon miệng! - PizzaHust</button> 
         <!-- <button class="tablink" onclick="openPage('MenuProvide', this)">Combo</button> -->
     </div>
 
     <br>
-    <div class="quote">"Chúc quý khách ngon miệng!" - PizzaHust</div>
+    <!-- <div class="quote">"Chúc quý khách ngon miệng!" - PizzaHust</div> -->
     <br><br><br><br><br>
 
     <div id="Eating" class="tabcontent">
@@ -413,8 +442,15 @@
     </div>
 
     <!-- notice popup -->
-    <!-- <?php popup(); ?> -->
         <script>
+            var counter = 1;
+            setInterval(function(){
+            document.getElementById('radio' + counter).checked = true;
+            counter++;
+            if(counter > 4){
+                counter = 1;
+            }
+            }, 5000);
 
             var infoView = document.querySelectorAll('.info_view');
             var chooseBtn = document.querySelectorAll('.choose_btn');

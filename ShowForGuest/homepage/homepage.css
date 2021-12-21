@@ -2,6 +2,10 @@
     font-family: Montserrat;
     src: url('../../masterial/font/Montserrat-Medium.ttf');
 }
+@font-face {
+    font-family: Corinthia;
+    src: url(../../masterial/font/Corinthia-Regular.ttf);
+}
 @import url('https://fonts.googleapis.com/css2?family=Corinthia&display=swap');
 
 html{
@@ -104,18 +108,75 @@ li.dropdown {
 }
 
 /* ------------------------------------ */
-.header-page{
-    width: 100%;
-    height: 60%;
-}
-
-.header-page img{
+.slider{
     width: 100%;
     height: calc(width/8*3);
+    overflow: hidden;
     box-shadow: 0px 15px 30px black;
-}
-
-/* Style tab btn */
+  }
+  
+  .slides{
+    width: 500%;
+    height: 100%;
+    display: flex;
+  }
+  
+  .slides input{
+    display: none;
+  }
+  
+  .slide{
+    width: 20%;
+    transition: 2s;
+  }
+  
+  .slide img{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .navigation-manual{
+    position: absolute;
+    width: 100%;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .manual-btn{
+    border: 2px solid #F98607;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .manual-btn:not(:last-child){
+    margin-right: 40px;
+  }
+  
+  .manual-btn:hover{
+    background: #F98607;
+  }
+  
+  #radio1:checked ~ .first{
+    margin-left: 0;
+  }
+  
+  #radio2:checked ~ .first{
+    margin-left: -20%;
+  }
+  
+  #radio3:checked ~ .first{
+    margin-left: -40%;
+  }
+  
+  #radio4:checked ~ .first{
+    margin-left: -60%;
+  }
+  
+  
+/* Style tab btn -----------------------------------------*/
 .tab-btn{
     display: inline-block;
 }
@@ -126,13 +187,14 @@ li.dropdown {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
+    padding: 5px 10px;
+    font-size: 40px;
     width: 100%;
     text-align: center;
     /* width: 50%; */
     /* text-align: left; */
     letter-spacing: 5px;
+    font-family: Corinthia;
     transition: 0.5s;
     transition-property: background-color;
   }
@@ -141,9 +203,9 @@ li.dropdown {
     background-color: #F98607;
     color: #A80000;
   }
-  #defaultOpen{
+  /* #defaultOpen{
       text-align: right;
-  }
+  } */
   /* Style the tab content (and add height:100% for full page content) */
   .tabcontent {
     color: #A80000;

@@ -28,9 +28,6 @@
         <form class="box" action="" method="post">
             <h2 class="container h2" style="color: orange ;">MẬT KHẨU SẼ ĐƯỢC GỬI VÀO GMAIL BẠN ĐÃ ĐĂNG KÝ TRƯỚC ĐÂY</h2>
             <p style="color: blue;font-family: Monsterrat;">Vui lòng nhập gmail bạn đã đăng ký trước đây để lấy lại mật khẩu.</p>
-            <label for="username1" style="font-size: 14px;">Tên đăng nhập</label>
-            <input type="text" name="username" id ="username1" placeholder="pizzahust" required = "true" autofocus>       
-            <p id="username-inform" ></p>
             <label for="username" style="font-size: 14px;">Email</label>
             <input type="text" name="email" id ="email" placeholder="abc123@gmail.com" required = "true" onblur="gmail()">       
             <p id="gmail-inform" ></p>
@@ -47,7 +44,7 @@
                 var check = regex.test(gmail);
 
                 if(!check){
-                   gmail_inform.textContent = "trường này phải là gmail !";
+                   gmail_inform.textContent = "trường này phải là email !";
                    gmail_inform.style.color = "red";
                    gmail_inform.style.fontSize = "small";
                    document.getElementById('submit').disabled = true;
@@ -58,11 +55,7 @@
                 }
             }
 
-            // function click(){
-            //     gmail_inform.addEventListener('click', function (){
-            //         gmail_inform.innerHTML = null ;
-            //     });
-            // }
+           
              
            
 

@@ -1,5 +1,6 @@
 <?php
     if (session_id() === '') session_start();
+    
     if(isset( $_SESSION['counter'] )){
         // Đếm mỗi lần truy cập
         $_SESSION['counter'] += 1;
@@ -8,7 +9,6 @@
         // Lần đầu truy cập
         $_SESSION['counter'] = 1;
     }
-
 
     if(!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
     require_once('../../database/dbhelper.php');
@@ -24,11 +24,13 @@
     $sql = "select * from user_account";
     $user_info = executeResult($sql);
     $customer = '';  // Ten khach hang
+
     if (isset($_SESSION['user_id']))
         foreach ($user_info as $user){
             if ($user['id'] == $_SESSION['user_id'])
             $customer = $user['username'];
         }
+
     # Mỗi lần them sản phẩm vào giỏ hàng,  $_SESSION['giohang'] sẽ thêm một mảng các thuộc
     # tính của sản phẩm mình đang chọn vào biến đó (bảng product chưa hoàn thiện về giá nên cho giá mặc định nên không có biến $price)
     # sẽ thêm biến $price khi người dùng chọn s m l khác (lúc này lại phải truy cập sql để biết được giá)
@@ -91,6 +93,7 @@
             $_SESSION['giohang'][]=$sp;
         }
     }
+
     function popup(){
         if($_SESSION['counter'] == 1)
         echo'
@@ -122,8 +125,7 @@
 </head>
 
 <body>
-<header>
-    
+    <header>
         <?php
             echo'
             <ul class="top-bar">
@@ -135,7 +137,7 @@
                 <li><a href="../../cart/cart.php"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                 ';
 
-                if ($_SESSION['user_id'] != 0){
+                if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0){
                 echo '
                 
                 <li class="dropdown">
@@ -174,7 +176,7 @@
             <?php
 
                 foreach($coupon as $item) {
-                    if ($_SESSION['user_id'] > 0){
+                    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] > 0){
                         $sql = "select cp_id, user_id from cp_user where cp_id = '$item[id_cp]' and user_id = '$_SESSION[user_id]'";
                         $cpExist = executeResult($sql);
 
@@ -227,10 +229,8 @@
             ?>
     </div>
 
-    <!-- <br id="menu"><br><br><br><br> -->
     <div class="tab-btn">
-        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen"></button>
-        
+        <button class="tablink" onclick="openPage('Eating', this)" id="defaultOpen"></button> 
         <!-- <button class="tablink" onclick="openPage('MenuProvide', this)">Combo</button> -->
     </div>
 

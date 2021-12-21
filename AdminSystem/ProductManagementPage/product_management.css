@@ -330,13 +330,14 @@ header{
         }
             .left_div{
                 position: absolute;
+                top: 5%;
                 width: 50%;
-                height: 90%;
+                height: 80%;
             }
                 .form_group{
                     position: absolute;
                     width: 100%;
-                    height: 8%;
+                    height: 10%;
                 }
                 .form_group label{
                     height: 60%;
@@ -363,7 +364,7 @@ header{
                     position: absolute;
                     width: 100%;
                     height: 50%;
-                    top: 30%;
+                    top: 37%;
                 }
                     .size_div_wrap label{
                         position: absolute;
@@ -374,7 +375,7 @@ header{
                         .size_div label{
                             position: absolute;
                             width: 30%;
-                            height: 70%;
+                            height: 90%;
                             left: 0;
                         }
 
@@ -382,32 +383,19 @@ header{
                             position: absolute;
                             width: 55%;
                             left: 30%;
-                            height: 70%;
+                            height: 90%;
                         }
                 .description_div{
                     position: absolute;
                     width: 100%;
-                    height: 8%;
-                    top: 80%;
+                    height: 10%;
+                    top: 90%;
                 }
                     .description_div input{
                         position:absolute; 
                         width:60%; 
                         left:30%;
                         height: 100%;
-                    }
-                .meal_div_wrap{
-                    position: absolute;
-                    width: 100%;
-                    height: 8%;
-                    top: 90%;
-                }
-                    .meal_div label{
-                        position: absolute;
-                        width: 70%;
-                        height: 100%;
-                        left: 15%;
-                        top: 3%;
                     }
             .right_div{
                 position: absolute;

@@ -15,8 +15,6 @@ if(!empty($_POST)) {
 
 function deleteProduct() {
 	$id = getPost('id');
-	$sql = "delete from meal_detail where product_id = "."'".$id."'";
-	execute($sql);
 	$sql = "delete from menu_detail where product_id = "."'".$id."'";
 	execute($sql);
 	$sql = "delete from product where id = $id ";

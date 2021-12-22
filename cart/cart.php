@@ -6,7 +6,17 @@ require_once('../database/dbhelper.php');
 $baseUrl = '../';
 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
 
-
+#Lưu tên khách hàng
+$sql = "select * from user_account";
+$user_info = executeResult($sql);
+$customer = '';
+if (isset($_SESSION['user_id']))
+foreach ($user_info as $user){
+    if ($user['id'] == $_SESSION['user_id'])
+    $customer = $user['username'];
+}
+#Biến $_SESSION['giam_gia'] để số tiền được giảm khi áp voucher
+if( !isset($_SESSION['giam_gia'])) $_SESSION['giam_gia'] = 0;
 #Xoá sản phẩm trong giỏ hàng( Pizza)
 if (isset($_GET['delid']) && ($_GET['delid'] >= 0)) {
     array_splice($_SESSION['giohang'], $_GET['delid'], 1);
@@ -75,7 +85,7 @@ if (isset($_POST['thanhtoan'])) {
                 $total += $_SESSION['giohang'][$i][3] *  $giatien;
                 $price =  $giatien * 1000;
             }
-            $thanhtoan = ($total + 22 - $giamgia) * 1000;
+            $thanhtoan = ($total + 22 - $_SESSION['giam_gia']) * 1000;
             $num = (int)$_SESSION['giohang'][$i][3];
             $get_id = mysqli_query($con, "select id from `product` where name = N'{$_SESSION['giohang'][$i][4]}' ");
             $res = mysqli_fetch_array($get_id);
@@ -86,8 +96,8 @@ if (isset($_POST['thanhtoan'])) {
         }
     }
     $sql_giohang = mysqli_query($con, "update `order` set payment = $thanhtoan where id = $get_order_id");
-    unset($_SESSION['giohang']);
-    header('location: ../ShowForGuest/homepage/homepage.php');
+    // unset($_SESSION['giohang']);
+    // header('location: ../ShowForGuest/homepage/homepage.php');
     // $get_order_id = mysqli_query($con,"SELECT `id` FROM `order` where `fullname` ='$name' and `payment`");
 
 }
@@ -227,6 +237,7 @@ function tinhtien()
             } else   $total += $_SESSION['giohang'][$i][3] *  $giatien;
             $thanhtoan = $total + 22;
         }
+        
         $type = 2;
         $phan_tram = 0;
         $toi_da = 0;
@@ -254,7 +265,7 @@ function tinhtien()
                 
             }
             $thanhtoan -= $giamgia;
-    
+            $_SESSION['giam_gia']= $giamgia; 
         }
         // var_dump($thanhtoan);
         echo '
@@ -348,14 +359,44 @@ function tinhtien()
 
 <body>
     <header>
-        <div class="top-bar">
-            <img src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
-            <a href="../ShowForGuest/homepage/homepage.php">Trang chủ</a>
-            <a href="#menu">Thực đơn</a>
-            <a href="#"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-            <a href="#contact">Liên hệ</a>
-            <a href="../AdminSystem/login_form.php"><i class="fa fa-user" aria-hidden="true"></i></a>
-        </div>
+        <?php
+            echo'
+            <ul class="top-bar">
+                <img src="../masterial/image/iconHomePage/PizzaHustLogo.svg" style="float: left;" alt="">
+                <li><a href="../ShowForGuest/homepage/homepage.php">Trang chủ</a></li>
+                <li><a href="../ShowForGuest/homepage/homepage.php">Thực đơn</a></li>
+                <li><a href="#"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+                ';
+
+                if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0){
+                echo '
+                
+                <li class="dropdown">
+                    <a style="color: #F98607;" href="../ShowForGuest/homepage/ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <form class="dropdown-content" action="" method="POST">
+                        <a href="ctm.php">'.$customer.'</a>
+                        <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                        <button type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> 
+                    </form>
+                </li>
+                ';
+                }
+                else
+                echo '
+                    <li class="dropdown">
+                        <a href="../ShowForGuest/login/login_user.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+                ';
+            echo'
+            </ul>
+            ';
+            if (isset($_POST['logout'])){
+                $_SESSION['user_id'] = 0;
+                echo("<meta http-equiv='refresh' content='0'>");
+            }
+        ?>   
     </header>
     <div class="cart">
         <div class="blank"></div>
@@ -430,6 +471,7 @@ function tinhtien()
     </div>
     </form>
     </div>
+    
 </body>
 
 </html>

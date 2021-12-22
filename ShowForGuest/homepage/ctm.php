@@ -66,9 +66,9 @@
                     echo '
                     <div class="personal-information">
                         <h2>Thông tin khách hàng:</h2>
-                        <span>USERNAME:  </span><span>'.$customer['username'].'</span><br>
-                        <span>PHONENUMBER:  </span><span>'.$customer['phonenumber'].'</span><br>
-                        <span>ADDRESS:  </span><span>'.$customer['address'].'</span><br>
+                        <span>USERNAME:  </span><span id="username">'.$customer['username'].'</span><br>
+                        <span>PHONENUMBER:  </span><span id="phonenumber">'.$customer['phonenumber'].'</span><br>
+                        <span>ADDRESS:  </span><span id="address">'.$customer['address'].'</span><br>
                         <span>EMAIL:  </span><span>'.$customer['email'].'</span><br>      
                     ';
                     echo'
@@ -114,9 +114,9 @@
                                 $product_name = $item['product_name'];
                                 $price = $item['price'];
                                 $quantity = $item['quantity'];
-                                $size = '';
-                                $plinth = '';
-                                $topping_ = '';
+                                $size = 'Mặc định';
+                                $plinth = 'Không có';
+                                $topping_ = 'Không có';
                                 if ($item['size'] != null) $size = $item['size'];
                                 if ($item['plinth'] != null) $plinth = $item['plinth'];
                                 if ($item['topping'] != null) $topping_ = $item['topping'];
@@ -160,9 +160,9 @@
                     <form action="" method="POST">
                     <?php 
                         echo '
+                        <span>Username: </span><input type="text" name="username" value="'.$customer['username'].'"><br>
                         <span>Phone Number: <input type="text" name="phonenumber" value="'.$customer['phonenumber'].'"></span><br>
                         <span>Address: </span><input type="text" name="address" value="'.$customer['address'].'"><br>
-                        <span>Email: </span><input type="text" name="email" value="'.$customer['email'].'"><br>
                         ';
                     ?>
                         <input type="submit" name="updateInfo" value="Cập nhật">
@@ -191,15 +191,20 @@
             }
 
             if (isset($_POST['updateInfo']) && $_POST['updateInfo']){
-                if ($_POST['address'] && $_POST['phonenumber'] && $_POST['email']){
+                if ($_POST['address'] && $_POST['phonenumber'] && $_POST['username']){
                     $address = $_POST['address'];
                     $phonenumber = $_POST['phonenumber'];
-                    $email = $_POST['email'];
+                    $username = $_POST['username'];
                     execute("update user_account
-                             set address = '$address', phonenumber = '$phonenumber', email = '$email'
+                             set address = '$address', phonenumber = '$phonenumber', username = '$username'
                              where id = '$customer[id]'");
                     echo("<meta http-equiv='refresh' content='0.1'>");
-                    echo '<script type="text/javascript">alert("Cập nhật thành công");</script>';
+                    echo '<script type="text/javascript">
+                            // document.getElementsByName("username").value = "'.$username.'";
+                            // document.getElementsByName("address").value = '.$address.';
+                            // document.getElementsByName("phonenumber").value = '.$phonenumber.';
+                            alert("Cập nhật thành công");
+                        </script>';
                 }
                 else{
                     echo '<script type="text/javascript">alert("Cập nhật thất bại! Nhập thiếu trường thông tin");</script>';
@@ -209,22 +214,21 @@
         ?>
         <!-- --------------voucher-------------- -->
         <?php                           
-            foreach ($user_coupon as $item)
+            foreach ($user_coupon as $item){
             echo'
                 <div class="info">
                         <div class="popup_box">
                             <div class="bill">
                             </div>
                             <div class="div">
-                                <h2>'.$item['cp_id'].'</h2>
+                                <h2>Mã voucher: '.$item['code_cp'].'</h2>
                                 <i class="fa fa-times close_btn" aria-hidden="true"></i>
-                                <br>
-                                <p>description</p>
-                                <p>Hiệu lực: date to date</p>
+                                <p>'.$item['description'].'</p>
+                                <p>Hiệu lực: '.$item['active_date'].' - '.$item['expire_date'].'</p>
                             </div>
                         </div>
                 </div>
-            ';
+            ';}
         ?>
         
         <!-- script -->

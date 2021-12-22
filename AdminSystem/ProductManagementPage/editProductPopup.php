@@ -107,13 +107,14 @@
         }
             .left_div{
                 position: absolute;
+                top: 5%;
                 width: 50%;
-                height: 90%;
+                height: 80%;
             }
                 .form_group{
                     position: absolute;
                     width: 100%;
-                    height: 8%;
+                    height: 10%;
                 }
                     .form_group label{
                         height: 60%;
@@ -147,7 +148,7 @@
                     position: absolute;
                     width: 100%;
                     height: 50%;
-                    top: 30%;
+                    top: 37%;
                 }
                     .size_div_wrap label{
                         position: absolute;
@@ -158,7 +159,7 @@
                         .size_div label{
                             position: absolute;
                             width: 30%;
-                            height: 70%;
+                            height: 90%;
                             left: 0;
                         }
 
@@ -166,32 +167,19 @@
                             position: absolute;
                             width: 55%;
                             left: 30%;
-                            height: 70%;
+                            height: 90%;
                         }
                 .description_div{
                     position: absolute;
                     width: 100%;
-                    height: 8%;
-                    top: 80%;
+                    height: 10%;
+                    top: 90%;
                 }
                     .description_div input{
                         position:absolute; 
                         width:60%; 
                         left:30%;
                         height: 100%;
-                    }
-                .meal_div_wrap{
-                    position: absolute;
-                    width: 100%;
-                    height: 8%;
-                    top: 90%;
-                }
-                    .meal_div label{
-                        position: absolute;
-                        width: 70%;
-                        height: 100%;
-                        left: 15%;
-                        top: 3%;
                     }
             .right_div{
                 position: absolute;
@@ -274,13 +262,13 @@
                 <div class="panel-body">
                     <form method="post" enctype="multipart/form-data">
                         <div class="left_div">
-                            <div class="form_group" style="top: 5%">
+                            <div class="form_group" style="top: 3%">
                                 <label for="usr">Tên sản phẩm:</label>
                                 <input required="true" type="text" id="usr" name="name" value="<?=$name?>">
                                 <input type="text" name="id" value="<?=$id?>" hidden="true">
                             </div>
                             
-                            <div class="product_type" style="position: absolute; width: 50%; height: 8%; top: 17%; left:10%">
+                            <div class="product_type" style="position: absolute; width: 50%; height: 8%; top: 20%; left:10%">
                                 <label for="status">Loại SP:</label>
                                 <select class="form-control" name="category_id" id="category_id" required="true">
                                     <?php
@@ -294,7 +282,7 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="product_status" style="position: absolute; width: 25%; height: 8%; top: 17%; left:65%">
+                            <div class="product_status" style="position: absolute; width: 25%; height: 8%; top: 20%; left:65%">
                                 <select class="form-control" name="status_product_id" id="status_product_id" required="true">
                                     <?php
                                         foreach($statusList as $status) {
@@ -342,38 +330,6 @@
                             <div class="description_div">
                                 <label for="description" style="position:absolute; width:20%; left:10%">Mô tả:</label>
                                 <input required="true" type="text" id="description" name="description" value="<?=$description?>">
-                            </div>
-                            <div class="meal_div_wrap">
-                                <div class="meal_div" style="position: absolute; width: 25%; height: 100%; left:10%;">
-                                    <label >Bữa sáng</label>
-                                    <input type="checkbox" name="meal[]" value = "1" <?php 
-                                        $sql = 'SELECT COUNT(*) as "count" FROM meal_detail WHERE product_id = '.$id.' AND meal_id = 1';
-                                        $result = getArrResult($sql)['count'];
-                                        if ($result > 0) {
-                                            echo 'checked';
-                                        }
-                                    ?>>
-                                </div>
-                                <div class="meal_div"style="position: absolute; width: 25%; height: 100%; left:40%;">
-                                    <label >Bữa trưa</label>
-                                    <input type="checkbox" name="meal[]" value = "2" <?php 
-                                        $sql = 'SELECT COUNT(*) as "count" FROM meal_detail WHERE product_id = '.$id.' AND meal_id = 2';
-                                        $result = getArrResult($sql)['count'];
-                                        if ($result > 0) {
-                                            echo 'checked';
-                                        }
-                                    ?>>
-                                </div>
-                                <div class="meal_div" style="position: absolute; width: 25%; height: 100%; left:70%;">
-                                    <label >Bữa tối</label>
-                                    <input type="checkbox" name="meal[]" value = "3" <?php 
-                                        $sql = 'SELECT COUNT(*) as "count" FROM meal_detail WHERE product_id = '.$id.' AND meal_id = 3';
-                                        $result = getArrResult($sql)['count'];
-                                        if ($result > 0) {
-                                            echo 'checked';
-                                        }
-                                    ?>>
-                                </div>
                             </div>
                         </div>
                         <div class="right_div">

@@ -48,19 +48,8 @@ if(!empty($_POST)) {
 		
 		execute($sql);
 
-		$sql = "delete from meal_detail where product_id = "."'".$id."'";
-		execute($sql);
 		$sql = "delete from menu_detail where product_id = "."'".$id."'";
 		execute($sql);
-
-		$meals = (isset($_POST['meal'])) ? $_POST['meal'] : array();
-
-		if (count($meals) > 0) {
-			foreach ($meals as $meal) { 
-				$sql = "insert into meal_detail(meal_id,product_id) values ('$meal','$id')";
-				execute($sql);
-			} 
-		}
 
 		$menus = (isset($_POST['menu'])) ? $_POST['menu'] : array();
 
@@ -82,15 +71,6 @@ if(!empty($_POST)) {
 
 		$sql = "select * from product ORDER BY id DESC LIMIT 1";
 		$id = getArrResult($sql)['id'];
-
-		$meals = (isset($_POST['meal'])) ? $_POST['meal'] : array();
-
-		if (count($meals) > 0) {
-			foreach ($meals as $meal) { 
-				$sql = "insert into meal_detail(meal_id,product_id) values ('$meal','$id')";
-				execute($sql);
-			} 
-		}
 
 		$menus = (isset($_POST['menu'])) ? $_POST['menu'] : array();
 

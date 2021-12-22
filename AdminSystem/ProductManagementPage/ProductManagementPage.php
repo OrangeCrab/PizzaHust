@@ -134,13 +134,13 @@
                 <div class="panel-body">
                     <form method="post" enctype="multipart/form-data">
                         <div class="left_div">
-                            <div class="form_group" style="top: 5%">
+                            <div class="form_group" style="top: 3%">
                                 <label for="usr">Tên sản phẩm:</label>
                                 <input required="true" type="text" id="usr" name="name" value="<?=$name?>">
                                 <input type="text" name="id" value="<?=$id?>" hidden="true">
                             </div>
                             
-                            <div class="form_group" style="top: 18%">
+                            <div class="form_group" style="top: 20%">
                                 <label for="usr">Loại sản phẩm:</label>
                                 <select class="form-control" name="category_id" id="category_id" required="true">
                                     <option value="">-- Chọn --</option>
@@ -182,20 +182,6 @@
                             <div class="description_div">
                                 <label for="description" style="position:absolute; width:20%; left:10%">Mô tả:</label>
                                 <input required="true" type="text" id="description" name="description" value="<?=$description?>">
-                            </div>
-                            <div class="meal_div_wrap">
-                                <div class="meal_div" style="position: absolute; width: 25%; height: 100%; left:10%;">
-                                    <label >Bữa sáng</label>
-                                    <input type="checkbox" name="meal[]" value = "1" >
-                                </div>
-                                <div class="meal_div"style="position: absolute; width: 25%; height: 100%; left:40%;">
-                                    <label >Bữa trưa</label>
-                                    <input type="checkbox" name="meal[]" value = "2">
-                                </div>
-                                <div class="meal_div" style="position: absolute; width: 25%; height: 100%; left:70%;">
-                                    <label >Bữa tối</label>
-                                    <input type="checkbox" name="meal[]" value = "3" >
-                                </div>
                             </div>
                         </div>
                         <div class="right_div">

@@ -125,12 +125,7 @@ INSERT INTO `cp_user` (`cp_id`, `user_id`, `used`) VALUES
 --
 
 CREATE TABLE `gallery` (
-<<<<<<< HEAD
   `id` int(11) PRIMARY key AUTO_INCREMENT,
-=======
-  `id` int(11) NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
->>>>>>> 3b911ef28581041d32a7e122337e3a7a8ef0b8f1
   `img` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -138,54 +133,6 @@ CREATE TABLE `gallery` (
 
 --
 
-<<<<<<< HEAD
-=======
-CREATE TABLE `meal` (
-  `id` int(11) NOT NULL,
-  `name` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `meal`
---
-
-INSERT INTO `meal` (`id`, `name`) VALUES
-(1, 'Bữa sáng'),
-(2, 'Bữa trưa'),
-(3, 'Bữa tối');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `meal_detail`
---
-
-CREATE TABLE `meal_detail` (
-  `meal_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `meal_detail`
---
-
-INSERT INTO `meal_detail` (`meal_id`, `product_id`) VALUES
-(1, 11),
-(2, 11),
-(3, 11),
-(1, 6),
-(2, 6),
-(1, 12),
-(2, 12),
-(3, 12),
-(1, 13),
-(2, 13),
-(3, 13),
-(2, 14),
-(2, 15);
-
--- --------------------------------------------------------
->>>>>>> 3b911ef28581041d32a7e122337e3a7a8ef0b8f1
 
 --
 -- Table structure for table `menu`
@@ -345,7 +292,6 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-<<<<<<< HEAD
 INSERT INTO `product` (`id`, `category_id`, `name`, `status_product_id`, `image`, `description`, `price_free_size`, `price_s`, `price_m`, `price_l`) VALUES
 (1, 1, 'Pizza Thập Cẩm', 1, 'thap_cam.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 100000, 120000, 150000),
 (2, 1, 'Pizzaminsea',  1, 'pizzaminsea.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 150000, 170000, 200000),
@@ -363,26 +309,6 @@ INSERT INTO `product` (`id`, `category_id`, `name`, `status_product_id`, `image`
 (14, 6, 'Combo 1',  1, 'combo1.png', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
 (15, 6, 'Combo 2', 1, 'combo2.jfif', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
 (16, 6, 'conbo 3', 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0);
-=======
-INSERT INTO `product` (`id`, `category_id`, `name`, `price`, `status_product_id`, `image`, `description`, `price_free_size`, `price_s`, `price_m`, `price_l`) VALUES
-(1, 1, 'Pizza Thập Cẩm', 100000, 1, 'thap_cam.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 100000, 120000, 150000),
-(2, 1, 'Pizzaminsea', 150000, 1, 'pizzaminsea.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 150000, 170000, 200000),
-(3, 1, 'Pizza Rau Củ', 90000, 1, 'rau_cu.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
-(4, 1, 'Pizza 4 Vị', 110000, 1, '4_vi.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 110000, 120000, 130000),
-(5, 1, 'Pizza Thịt Ngập Mõm', 90000, 1, '5_loai_thit.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
-(6, 3, 'Đùi Gà Con', 50000, 1, 'ga_BBQ.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 50000, 90000, 100000, 110000),
-(7, 1, 'Pizza Bò Tôm', 90000, 1, 'bo_tom.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
-(8, 8, 'Double sốt', 9000, 1, '', 'rfbf', 9000, 0, 0, 0),
-(9, 8, 'Phô mai viền', 10000, 1, '', 'rthrt', 10000, 8000, 0, 0),
-(10, 8, 'Phô mai phủ', 15000, 1, '', 'gh', 15000, 15000, 0, 0),
-(11, 5, 'Mỳ đặc biệt', 60000, 1, 'mi_y.jpg', 'ngon', 60000, 0, 0, 0),
-(12, 2, 'Gà BBQ', 60000, 1, 'bbq.jpg', 'great', 60000, 0, 0, 0),
-(13, 4, 'Cocacola', 15000, 1, 'coca1.jpg', 'ngon', 15000, 0, 0, 0),
-(14, 6, 'Combo 1', 300000, 1, 'combo1.png', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
-(15, 6, 'Combo đặc biệt', 180000, 1, 'pizzaminsea.jpg', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
-(16, 6, 'conbo 3', 210000, 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0),
-(17, 8, 'topping1', 17000, 1, 'mirinda.png', 'ẻvfd', 17000, 0, 0, 0);
->>>>>>> 3b911ef28581041d32a7e122337e3a7a8ef0b8f1
 
 -- --------------------------------------------------------
 
@@ -425,16 +351,8 @@ CREATE TABLE `user_account` (
 INSERT INTO `user_account` (`id`, `username`, `address`, `phonenumber`, `email`, `password`) VALUES
 (1, 'guest', NULL, NULL, NULL, NULL),
 (2, 'trungkien', '136 Nguyễn An Ninh Hoàng mai', '0989989998', 'trungkien07yd@gmail.com', '123456'),
-<<<<<<< HEAD
 (3, 'trungkien1', 'ninh bình', '0989983025', 'trungkien@gmail.com', '123456');
 
-=======
-(3, 'trungkien1', 'ninh bình', '0989983025', 'trungkien@gmail.com', '123456'),
-(5, 'trungkienvn2', 'ninh bình', '0989983026', 'trungkienqq@gmail.com', '123456'),
-(6, 'abc', 'ninh bình', '0989989999', 'a@gmail.com', '123456'),
-(7, 'b', 'ibjdfkc', '0989983025', 'b@gmail.com', '123456'),
-(8, 'c', 'feivdkjcm', '0123456787', 'c@gmail.com', '123456');
->>>>>>> 3b911ef28581041d32a7e122337e3a7a8ef0b8f1
 
 -- --------------------------------------------------------
 
@@ -479,16 +397,8 @@ ALTER TABLE `cp_user`
   ADD KEY `cp_id` (`cp_id`);
 
 --
-<<<<<<< HEAD
 
 
-=======
--- Indexes for table `gallery`
---
-ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
->>>>>>> 3b911ef28581041d32a7e122337e3a7a8ef0b8f1
 
 --
 

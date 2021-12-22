@@ -187,10 +187,11 @@ li.dropdown {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 15px 10px;
     font-size: 17px;
     width: 50%;
     text-align: left;
+    font-weight: bolder;
     letter-spacing: 5px;
     transition: 0.5s;
     transition-property: background-color;
@@ -459,8 +460,8 @@ li.dropdown {
                 padding-bottom: 10px;
                 padding-left: 50px;
                 font-size: 14px;
-                max-height: 120px;
-                overflow: scroll;
+                height: 60px;
+                overflow-y: scroll;
             }
                 .info_card .info .part h3{
                     color: #404040;

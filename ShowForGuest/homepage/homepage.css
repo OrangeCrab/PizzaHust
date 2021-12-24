@@ -188,13 +188,10 @@ li.dropdown {
     outline: none;
     cursor: pointer;
     padding: 5px 10px;
-    font-size: 40px;
-    width: 100%;
-    text-align: center;
-    /* width: 50%; */
-    /* text-align: left; */
+    font-size: 17px;
+    width: 50%;
+    text-align: left;
     letter-spacing: 5px;
-    font-family: Corinthia;
     transition: 0.5s;
     transition-property: background-color;
   }
@@ -203,15 +200,24 @@ li.dropdown {
     background-color: #F98607;
     color: #A80000;
   }
-  /* #defaultOpen{
+  #defaultOpen{
       text-align: right;
-  } */
+  }
   /* Style the tab content (and add height:100% for full page content) */
   .tabcontent {
     color: #A80000;
     display: none;
     height: 100%;
   }
+
+.click-me{
+    width: 100px;
+    height: 80px;
+    position: relative;
+    left: 70%;
+    margin-top: -100px;
+    
+}
 
 /* body page------------------------------------- */
 .body-page{
@@ -221,12 +227,12 @@ li.dropdown {
 }
 
 .quote{
-    font-size: 25px;
+    font-size: 50px;
     text-align: center;
     font-weight: lighter;
     font-style: italic;
     color: black;
-    font-family: 'Corinthia';
+    font-family: Corinthia;
     color: #A80000;
 }
 .left-bar{
@@ -401,7 +407,7 @@ li.dropdown {
         display: flex;
         width: 700px;
         height: 600px;
-        margin: 300px;
+        margin: 360px;
     }
         .info_card .closeViewInfo_btn{
                 color: #A80000;
@@ -449,13 +455,13 @@ li.dropdown {
                 padding-bottom: 10px;
             }
 
-            .info_card .info .part form{
+            .info_card .info .part .form{
                 padding-bottom: 10px;
+                padding-left: 50px;
+                font-size: 14px;
+                max-height: 120px;
+                overflow: scroll;
             }
-                .info_card .info .part form{
-                    padding-left: 50px;
-                    font-size: 14px;
-                }
                 .info_card .info .part h3{
                     color: #404040;
                     font-size: 16px;
@@ -640,3 +646,4 @@ li.dropdown {
         border-radius: 20px;
         cursor: pointer;
     }
+

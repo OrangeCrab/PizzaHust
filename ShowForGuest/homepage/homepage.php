@@ -362,7 +362,7 @@
                                         foreach($product as $topping)
                                         if ($topping['category_id'] == 8)
                                         echo'
-                                            <input type="checkbox" id="1" name="topping" value="'.$topping['name'].'">
+                                            <input type="checkbox" id="1" name="topping[]" value="'.$topping['name'].'">
                                             <label for="1">'.$topping['name'].'</label>
                                             <!-- <span class="cost">'.number_format(10000).'đ</span> -->
                                             <span class="cost">'.$topping['price_free_size'].'đ</span>

@@ -14,6 +14,26 @@
     $index = 0;
     foreach($result as $row)
     {
+        $price_s = $row['price_s'];
+        $price_m = $row['price_m'];
+        $price_l = $row['price_m'];
+        $price_free_size = $row['price_free_size'];
+
+        $price = 0;
+        if ($price_free_size > 0) {
+            $price = $price_free_size;
+        }else {
+            if ($price_s > 0) {
+                $price = $price_s;
+            }else {
+                if ($price_m > 0) {
+                    $price = $price_m;
+                }else {
+                    $price = $price_l;
+                }
+            }
+        }
+
         echo '
         <tr>
             <td>'.(++$index).'</td>
@@ -21,7 +41,7 @@
             <td>'.$row['name'].'</td>
             <td>'.$row['description'].'</td>
             <td>'.getStatusName($row['status_product_id']).'</td>
-            <td>'.number_format($row['price']).' VNĐ</td>
+            <td>'.number_format($price).' VNĐ</td>
             <td>'.getCategoryName($row['category_id']).'</td>
             <td style="width: 20px">
             <a href="editProductPopup.php?id='.$row['id'].'"><button class="btn btn-warning">Sửa</button></a>
@@ -42,14 +62,5 @@
     {
         $sql = "select title from category where id='$category_id'";      
         return getArrResult($sql)['title'];
-    }
-    function getSizeName($size_id)
-    {
-        $sql = "select name from size where id='$size_id'";
-        $result = getArrResult($sql)['name'];
-        if ($result != 'null') {
-            return '_'.$result;
-        }
-        else return '';
     }
 ?>

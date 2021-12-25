@@ -2,7 +2,8 @@
     $title = 'Sửa Sản Phẩm';
 	$baseUrl = '../';
 
-	$id = $msg = $name = $price =  $status_product_id = $category_id  = $image = $description = $price_free_size = $price_s= $price_m = $price_l ='';
+	$id = $msg = $name = $status_product_id = $category_id  = $image = $description = $price_free_size = 
+        $price_s= $price_m = $price_l ='';
 
     require_once('../../database/utility.php');
     require_once('../../database/define.php');
@@ -14,7 +15,6 @@
     $sql = "select * from product where id = '$id' ";
 
     $category_id = getArrResult($sql)['category_id'];
-    $price = getArrResult($sql)['price'];
     $name = getArrResult($sql)['name'];
     $status_product_id = getArrResult($sql)['status_product_id'];
     $description = getArrResult($sql)['description'];

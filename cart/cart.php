@@ -53,7 +53,11 @@ if (isset($_POST['thanhtoan'])) {
     $quanhuyen = $_POST['quanhuyen'];
     $diachi = $_POST['diachi'];
     $ghichu = $_POST['ghichu'];
-    $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status, user_id) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận','{$_SESSION['user_id']}')");
+    if($_SESSION['user_id'] != 0){
+        $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status, user_id) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận','{$_SESSION['user_id']}')");
+    }else{
+        $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận')");
+    }
     $get_order = mysqli_query($con, "select max(id) from `order`");
     $res = mysqli_fetch_array($get_order);
     $get_order_id = (int)$res["max(id)"];
@@ -72,9 +76,9 @@ if (isset($_POST['thanhtoan'])) {
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
-                $get_price = mysqli_query($con, "select price from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
+                $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
-                $get_topping_price = (int)$res["price"];
+                $get_topping_price = (int)$res["price_free_size"];
                 $gia_topping+= $get_topping_price/1000;
             };
             $giatien = $_SESSION['giohang'][$i][7];
@@ -92,10 +96,15 @@ if (isset($_POST['thanhtoan'])) {
             $get_product_id = (int)$res["id"];
 
            
-            $sql_donhang = mysqli_query($con, "insert into `order_detail`(order_id, price, quatity,size,plinth, topping, product_id) values($get_order_id,$price,$num,'{$_SESSION['giohang'][$i][0]}','{$_SESSION['giohang'][$i][1]}','$fulltopping',$get_product_id)");
+            $sql_donhang = mysqli_query($con, "insert into `order_detail`(order_id, price, quatity,size,plinth, topping, product_name) values($get_order_id,$price,$num,'{$_SESSION['giohang'][$i][0]}','{$_SESSION['giohang'][$i][1]}','$fulltopping','{$_SESSION['giohang'][$i][4]}')");
         }
+        // var_dump("insert into `order`(fullname, phonenumber, address,note,order_time,status, user_id) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận','{$_SESSION['user_id']}')");
     }
     $sql_giohang = mysqli_query($con, "update `order` set payment = $thanhtoan where id = $get_order_id");
+    if($_SESSION['giam_gia'] !=0) {
+        $coupon = $_SESSION['giam_gia'] * 1000;
+        $sql_giohang = mysqli_query($con, "update `order` set coupon = $coupon where id = $get_order_id");
+    }
     // unset($_SESSION['giohang']);
     // header('location: ../ShowForGuest/homepage/homepage.php');
     // $get_order_id = mysqli_query($con,"SELECT `id` FROM `order` where `fullname` ='$name' and `payment`");
@@ -228,7 +237,7 @@ function tinhtien()
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
                 $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
-                $get_topping_price = (int)$res["price"];
+                $get_topping_price = (int)$res["price_free_size"];
                 $gia_topping += $get_topping_price/1000;
             };
             $giatien =  $_SESSION['giohang'][$i][7];
@@ -408,19 +417,19 @@ function tinhtien()
         <div class="suggest">
             <h3 style="font-size: 15px;">Có thể bạn sẽ thích</h3>
             <div class="suggest-product">
-                <a href="../ShowForGuest/homepage/homepage.php#4">
+                <a href="../ShowForGuest/homepage/homepage.php#1">
                     <img src="../masterial/image/thuc_don/coca.png" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#4">
+                <a href="../ShowForGuest/homepage/homepage.php#1">
                     <img src="../masterial/image/thuc_don/nuoc_cam.png" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#5">
+                <a href="../ShowForGuest/homepage/homepage.php#1">
                     <img src="../masterial/image/thuc_don/mi_y.jpg" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#2">
+                <a href="../ShowForGuest/homepage/homepage.php#1">
                     <img src="../masterial/image/thuc_don/bbq.jpg" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#2">
+                <a href="../ShowForGuest/homepage/homepage.php#1">
                     <img style="height: 60px;" src="../masterial/image/thuc_don/ga_BBQ.jpg" alt="">
                 </a>
             </div>

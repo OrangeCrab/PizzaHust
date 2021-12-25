@@ -125,7 +125,7 @@ function showgiohang()
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
                 $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
-                $get_topping_price = (int)$res["price"];
+                $get_topping_price = (int)$res["price_free_size"];
                 $full_topping+= $get_topping_price/1000;
             };
             $total = ($price + $full_topping) * $_SESSION['giohang'][$i][3];

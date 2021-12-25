@@ -176,7 +176,7 @@ CREATE TABLE `order_detail` (
 INSERT INTO `order_detail` (`id`, `order_id`, `product_name`, `price`, `quatity`, `size`, `plinth`, `topping`) VALUES
 (89, 62, 'Pizza Thập Cẩm', 105000, 1, 'S', 'Giòn', 'Phô mai phủ '),
 (90, 64, 'Pizza Bò Viên', 150000, 1, 'S', 'Giòn', 'Không có'),
-(91, 65, 'Mỳ Ý\'', 150000, 2, 'S', 'Giòn', 'Không có'),
+(91, 65, 'Mỳ Ý', 150000, 2, 'S', 'Giòn', 'Không có'),
 (92, 66, 'Mỳ Hàn', 115000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ '),
 (93, 67, 'Gà sốt cay', 165000, 2, 'S', 'Giòn', 'Phô mai phủ '),
 (94, 67, 'Pizza Hải Sản', 175000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ ');
@@ -228,7 +228,7 @@ INSERT INTO `product` (`id`, `category_id`, `name`, `status_product_id`, `image`
 (9, 8, 'Phô mai viền', 1, '', 'rthrt', 10000, 8000, 0, 0),
 (10, 8, 'Phô mai phủ', 1, '', 'gh', 15000, 15000, 0, 0),
 (11, 4, 'Mỳ đặc biệt', 1, 'mi_y.jpg', 'ngon', 60000, 0, 0, 0),
-(12, 2, 'Gà BBQ', 1, 'bbq.jpg', 'great', 60000, 0, 0, 0),
+(12, 3, 'Gà BBQ', 1, 'bbq.jpg', 'great', 60000, 0, 0, 0),
 (13, 5, 'Cocacola', 1, 'coca1.jpg', 'ngon', 15000, 0, 0, 0),
 (14, 1, 'Combo 1', 1, 'combo1.png', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
 (15, 1, 'Combo 2', 1, 'combo2.jfif', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),

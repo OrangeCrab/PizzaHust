@@ -86,9 +86,9 @@ CREATE TABLE `coupon` (
 INSERT INTO `coupon` (`id_cp`, `name_cp`, `code_cp`, `type_cp`, `value_cp`, `description`, `active_date`, `expire_date`, `min_order_value`, `max__order_amount`) VALUES
 (1, NULL, 'NOELVUIVE', '1', 1, 'Nhập mã NOELVUIVE để giảm 25000đ hoá đơn thanh toán <br>\r\nGiá trị đơn hàng tối thiểu 200k<br>\r\nHiệu lực: hôm nay đến ngày mai <br>\r\n*Chỉ áp dụng với khách hàng đăng nhập', '2021-12-13 15:28:31', '2021-12-13 15:28:31', 200000, 25000),
 (2, 'tetduonglich', 'TETDONGDAY', '0', 5, 'Nhập mã TETDONGDAY để giảm 5% tổng giá trị đơn hàng (tối đa 45k)<br>\r\nHiệu lực: hôm nay đến ngày mai <br>\r\n*Chỉ áp dụng với khách hàng đăng nhập', '2021-12-13 13:01:19', '2023-12-13 13:01:19', 500000, 40000),
-(3, 'rtbtrbrt', 'BINHAN', '0', 7, 'Nhập mã BINHAN để giảm 7% tổng giá trị đơn hàng (tối đa 35k)<br>\r\nGiá trị đơn hàng tối thiểu 600k<br>\r\nHiệu lực: hôm nay đến ngày mai <br>\r\n*Chỉ áp dụng với khách hàng đăng nhập', '2021-12-13 13:13:51', '2022-12-13 13:13:51', 600000, 35000),
-(4, 'rbrbtrbnrt', 'ILOVEYOU', '1', 1, 'Nhập mã ILOVEYOU để giảm 15000đ hoá đơn thanh toán <br>\r\nGiá trị đơn hàng tối thiểu 150k<br>\r\nHiệu lực: hôm nay đến ngày mai <br>\r\n*Chỉ áp dụng với khách hàng đăng nhập', '2021-12-13 13:14:34', '2022-12-13 13:14:34', 150000, 15000),
-(5, 'ghnnfd', 'hanhphuc', '0', 9, 'Nhập mã TETDONGDAY để giảm 9% tổng giá trị đơn hàng (tối đa 12k)<br>\r\nGiá trị đơn hàng tối thiểu 100k<br>\r\nHiệu lực: hôm nay đến ngày mai <br>\r\n*Chỉ áp dụng với khách hàng đăng nhập', '2021-12-13 13:15:16', '2021-12-13 13:15:16', 100000, 12000);
+(3, 'binhan', 'BINHAN', '0', 7, 'Nhập mã BINHAN để giảm 7% tổng giá trị đơn hàng (tối đa 35k)<br>\r\nGiá trị đơn hàng tối thiểu 600k<br>\r\nHiệu lực: hôm nay đến ngày mai <br>\r\n*Chỉ áp dụng với khách hàng đăng nhập', '2021-12-13 13:13:51', '2022-12-13 13:13:51', 600000, 35000),
+(4, 'iloveyou', 'ILOVEYOU', '1', 1, 'Nhập mã ILOVEYOU để giảm 15000đ hoá đơn thanh toán <br>\r\nGiá trị đơn hàng tối thiểu 150k<br>\r\nHiệu lực: hôm nay đến ngày mai <br>\r\n*Chỉ áp dụng với khách hàng đăng nhập', '2021-12-13 13:14:34', '2022-12-13 13:14:34', 150000, 15000),
+(5, 'hanhphuc', 'hanhphuc', '0', 9, 'Nhập mã TETDONGDAY để giảm 9% tổng giá trị đơn hàng (tối đa 12k)<br>\r\nGiá trị đơn hàng tối thiểu 100k<br>\r\nHiệu lực: hôm nay đến ngày mai <br>\r\n*Chỉ áp dụng với khách hàng đăng nhập', '2021-12-13 13:15:16', '2021-12-13 13:15:16', 100000, 12000);
 
 -- --------------------------------------------------------
 
@@ -142,11 +142,11 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `description`,`name`) VALUES
-(1,'Các món khai vị siêu ngon' ,'Khai vị'),
-(2,'Các món chính siêu ngon'  ,'Món chính'),
-(3,'Các món tráng miệng siêu ngon' , 'Tráng miệng'),
-(4,'Các món chay siêu ngon' , 'Món chay'),
-(5,'Các món dành cho trẻ em siêu ngon' , 'Dành cho trẻ em');
+(1,'Các món khai vị giúp tăng cảm giác ngon miệng trước khi bắt đầu thưởng thức các món ăn' ,'Khai vị'),
+(2,'Các món chính được chế biến một cách kĩ lượng đảm bảo chất lượng ngon nhất'  ,'Món chính'),
+(3,'Các món tráng miệng dễ ăn bao gồm kem và các loại hoa quả' , 'Tráng miệng'),
+(4,'Các món chay phù hợp với những người có sở thích ăn chay và đam mê các món từ thực vật' , 'Món chay'),
+(5,'Các món dành cho trẻ em giúp cho các bé ngon miệng' , 'Dành cho trẻ em');
 
 -- --------------------------------------------------------
 
@@ -282,22 +282,22 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `category_id`, `name`, `status_product_id`, `image`, `description`, `price_free_size`, `price_s`, `price_m`, `price_l`) VALUES
-(1, 1, 'Pizza Thập Cẩm', 1, 'thap_cam.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 100000, 120000, 150000),
-(2, 1, 'Pizzaminsea',  1, 'pizzaminsea.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 150000, 170000, 200000),
-(3, 1, 'Pizza Rau Củ', 1, 'rau_cu.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
-(4, 1, 'Pizza 4 Vị',  1, '4_vi.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 110000, 120000, 130000),
-(5, 1, 'Pizza Thịt Ngập Mõm',  1, '5_loai_thit.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
-(6, 3, 'Đùi Gà Con',  1, 'ga_BBQ.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 50000, 90000, 100000, 110000),
-(7, 1, 'Pizza Bò Tôm',  1, 'bo_tom.jpg', 'ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ngon ', 0, 90000, 100000, 110000),
-(8, 8, 'Double sốt', 1, '', 'rfbf', 9000, 0, 0, 0),
-(9, 8, 'Phô mai viền',  1, '', 'rthrt', 10000, 8000, 0, 0),
-(10, 8, 'Phô mai phủ',  1, '', 'gh', 15000, 15000, 0, 0),
-(11, 5, 'Mỳ đặc biệt', 1, 'mi_y.jpg', 'ngon', 60000, 0, 0, 0),
-(12, 2, 'Gà BBQ',  1, 'bbq.jpg', 'great', 60000, 0, 0, 0),
-(13, 4, 'Cocacola',  1, 'coca1.jpg', 'ngon', 15000, 0, 0, 0),
+(1, 1, 'Pizza Thập Cẩm', 1, 'thap_cam.jpg', 'Phủ Giăm Bông Và Thơm Ngọt Dịu Trên Nền Sốt Cà Chua Truyền Thống ', 0, 100000, 120000, 150000),
+(2, 1, 'Pizzaminsea',  1, 'pizzaminsea.jpg', 'Pizza Gà Nướng Nấm Trong Cuộc Phiêu Lưu Vị Giác Với Thịt Gà, Nấm, Thơm, Cà Rốt Và Rau Mầm Phủ Xốt Tiêu Đen Thơm Nồng', 0, 150000, 170000, 200000),
+(3, 1, 'Pizza Rau Củ', 1, 'rau_cu.jpg', 'Thanh Nhẹ Với Ô Liu Đen Tuyệt Hảo, Cà Chua Bi Tươi Ngon, Nấm, Thơm, Bắp, Hành Tây Và Phô Mai Mozzarella Cho Bạn Bữa Tiệc Rau Củ Tròn Vị ', 0, 90000, 100000, 110000),
+(4, 1, 'Pizza 4 Vị',  1, '4_vi.jpg', 'Thịt Gà, Hành Tây, Nấm Và Bắp Ngọt Trên Nền Sốt Pesto, Thêm Chút Tiêu Đen Thơm Nồng Quện Trong Phô Mai Mozzarella, Cuộn Trong Lớp Bánh Pizza Đặc Trưng Của Pizza Hut. ', 0, 110000, 120000, 130000),
+(5, 1, 'Pizza Tôm Sốt Bơ Tỏi',  1, '5_loai_thit.jpg', 'Với Tôm, HàNh Tây Và Ớt Chuông Phủ Trên Nền Xốt Bơ Tỏi ', 0, 90000, 100000, 110000),
+(6, 3, 'Đùi Gà Con',  1, 'ga_BBQ.jpg', 'Đùi Gà Nướng Thơm Lừng Ngon Tuyệt Với Hương Vị BBQ ', 50000, 90000, 100000, 110000),
+(7, 1, 'Pizza Bò Tôm',  1, 'bo_tom.jpg', 'Tôm, Mực, Thanh Cua, Hành Tây, Thơm Phủ Xốt Tiêu Đen Thơm Nóng Và Phô Mai Mozzarella ', 0, 90000, 100000, 110000),
+(8, 8, 'Double sốt', 1, '', 'Với lượng sốt BBQ gấp đôi nâng cao hương vị món ăn', 9000, 0, 0, 0),
+(9, 8, 'Phô mai viền',  1, '', 'Phô Mai Viền Siêu Thơm Nhập Khẩu Trực Tiếp Tại Mỹ', 10000, 8000, 0, 0),
+(10, 8, 'Phô mai phủ',  1, '', 'Phô Mai Phủ Từ Nhà Máy Phô Mai Nổi Tiếng Ở Anh Quốc', 15000, 15000, 0, 0),
+(11, 5, 'Mỳ đặc biệt', 1, 'mi_y.jpg', 'Mì Ý Xốt Cà Chua Với Tôm, Mực, Hành Tây Và Ớt Chuông Xanh', 60000, 0, 0, 0),
+(12, 2, 'Gà BBQ',  1, 'bbq.jpg', 'Cánh Gà Chiên Giòn Phủ Xốt Hàn Quốc', 60000, 0, 0, 0),
+(13, 4, 'Cocacola',  1, 'coca1.jpg', 'CocaCola lon 360ml', 15000, 0, 0, 0),
 (14, 6, 'Combo 1',  1, 'combo1.png', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
 (15, 6, 'Combo 2', 1, 'combo2.jfif', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
-(16, 6, 'conbo 3', 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0);
+(16, 6, 'Combo 3', 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -340,7 +340,8 @@ CREATE TABLE `user_account` (
 INSERT INTO `user_account` (`id`, `username`, `address`, `phonenumber`, `email`, `password`) VALUES
 (1, 'guest', NULL, NULL, NULL, NULL),
 (2, 'trungkien', '136 Nguyễn An Ninh Hoàng mai', '0989989998', 'trungkien07yd@gmail.com', '123456'),
-(3, 'trungkien1', 'ninh bình', '0989983025', 'trungkien@gmail.com', '123456');
+(3, 'trungkien1', '124 Gia Viễn,Ninh bình', '0989983025', 'trungkien1@gmail.com', '123456');
+
 
 
 -- --------------------------------------------------------

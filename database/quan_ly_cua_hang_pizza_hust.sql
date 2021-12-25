@@ -1,12 +1,11 @@
-
 -- phpMyAdmin SQL Dump
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 21, 2021 at 03:00 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th12 25, 2021 lúc 02:43 PM
+-- Phiên bản máy phục vụ: 10.4.21-MariaDB
+-- Phiên bản PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quan_ly_cua_hang_pizza_hust`
+-- Cơ sở dữ liệu: `quan_ly_cua_hang_pizza_hust`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Cấu trúc bảng cho bảng `admin`
 --
 
 CREATE TABLE `admin` (
@@ -38,7 +37,7 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Cấu trúc bảng cho bảng `category`
 --
 
 CREATE TABLE `category` (
@@ -47,23 +46,23 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `category`
+-- Đang đổ dữ liệu cho bảng `category`
 --
 
 INSERT INTO `category` (`id`, `title`) VALUES
-(1, 'Pizza'),
-(2, 'Gà BBQ'),
-(3, 'Đồ ăn kèm'),
-(4, 'Đồ uống'),
-(5, 'Mỳ ý'),
-(6, 'Combo'),
-(7, 'Menu'),
-(8, 'Topping');
+(1, 'Combo'),
+(2, 'Dành cho trẻ em'),
+(3, 'Khai vị'),
+(4, 'Món chính'),
+(5, 'Tráng miệng'),
+(6, 'Topping'),
+(7, 'Đồ uống'),
+(8, 'Món chay');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coupon`
+-- Cấu trúc bảng cho bảng `coupon`
 --
 
 CREATE TABLE `coupon` (
@@ -80,7 +79,7 @@ CREATE TABLE `coupon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `coupon`
+-- Đang đổ dữ liệu cho bảng `coupon`
 --
 
 INSERT INTO `coupon` (`id_cp`, `name_cp`, `code_cp`, `type_cp`, `value_cp`, `description`, `active_date`, `expire_date`, `min_order_value`, `max__order_amount`) VALUES
@@ -93,7 +92,7 @@ INSERT INTO `coupon` (`id_cp`, `name_cp`, `code_cp`, `type_cp`, `value_cp`, `des
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cp_user`
+-- Cấu trúc bảng cho bảng `cp_user`
 --
 
 CREATE TABLE `cp_user` (
@@ -103,7 +102,7 @@ CREATE TABLE `cp_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `cp_user`
+-- Đang đổ dữ liệu cho bảng `cp_user`
 --
 
 INSERT INTO `cp_user` (`cp_id`, `user_id`, `used`) VALUES
@@ -114,82 +113,18 @@ INSERT INTO `cp_user` (`cp_id`, `user_id`, `used`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gallery`
+-- Cấu trúc bảng cho bảng `gallery`
 --
 
 CREATE TABLE `gallery` (
-  `id` int(11) PRIMARY key AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `img` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
-
-
---
--- Table structure for table `menu`
---
-
-CREATE TABLE `menu` (
-  `id` int(11) NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  `name` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `menu`
---
-
-INSERT INTO `menu` (`id`, `description`,`name`) VALUES
-(1,'Các món khai vị giúp tăng cảm giác ngon miệng trước khi bắt đầu thưởng thức các món ăn' ,'Khai vị'),
-(2,'Các món chính được chế biến một cách kĩ lượng đảm bảo chất lượng ngon nhất'  ,'Món chính'),
-(3,'Các món tráng miệng dễ ăn bao gồm kem và các loại hoa quả' , 'Tráng miệng'),
-(4,'Các món chay phù hợp với những người có sở thích ăn chay và đam mê các món từ thực vật' , 'Món chay'),
-(5,'Các món dành cho trẻ em giúp cho các bé ngon miệng' , 'Dành cho trẻ em');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `menu_detail`
---
-
-CREATE TABLE `menu_detail` (
-  `product_id` int(11) DEFAULT NULL,
-  `menu_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `menu_detail`
---
-
-INSERT INTO `menu_detail` (`product_id`,`menu_id`) VALUES
-(11, 1),
-(11, 2),
-(11, 3),
-(11, 4),
-(11, 5),
-(6, 1),
-(6, 2),
-(6, 3),
-(6, 4),
-(6, 5),
-(12, 1),
-(12, 3),
-(12, 5),
-(13, 1),
-(13, 2),
-(13, 3),
-(13, 5),
-(14, 1),
-(14, 2),
-(14, 3),
-(14, 5);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order`
+-- Cấu trúc bảng cho bảng `order`
 --
 
 CREATE TABLE `order` (
@@ -206,21 +141,21 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order`
+-- Đang đổ dữ liệu cho bảng `order`
 --
 
-INSERT INTO `order` (`id`, `fullname`, `phonenumber`, `address`, `note`, `order_time`, `status`, `payment`,`coupon`,`user_id`) VALUES
-(62, 'Nguyễn Trung Kiên', '0989983025', '76 Mai Dịch Quận Bắc Từ Liêm', 'cho ít muối thôi', '2021-12-21 20:03:51', 'Chờ xác nhận', 127000,30000, NULL),
-(63, 'Nguyễn Trung Kiên', '0989983025', '76 Mai Dịch Quận Bắc Từ Liêm', 'cho ít muối thôi', '2021-12-21 20:05:11', 'Chờ xác nhận', 0, 0,NULL),
-(64, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Ba Đình', 'cho ít muối thôi', '2021-12-21 20:05:47', 'Chờ xác nhận', 172000, 15000,NULL),
-(65, 'Nguyễn Trung Kiên', '0222223311', '76 Mai Dịch Quận Ba Đình', 'cho ít muối thôi', '2021-12-21 20:39:36', 'Chờ xác nhận', 322000, 15000,3),
-(66, 'Nguyễn Trung Kiên', '0222223333', 'dfn fgngf Quận Bắc Từ Liêm', 'Nhiều tương ớt', '2021-12-21 20:40:43', 'Chờ xác nhận', 252000, 15000,3),
-(67, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Cầu Giấy', 'cho ít muối thôi', '2021-12-21 20:42:42', 'Chờ xác nhận', 372000,20000, 3);
+INSERT INTO `order` (`id`, `fullname`, `phonenumber`, `address`, `note`, `order_time`, `status`, `payment`, `coupon`, `user_id`) VALUES
+(62, 'Nguyễn Trung Kiên', '0989983025', '76 Mai Dịch Quận Bắc Từ Liêm', 'cho ít muối thôi', '2021-12-21 20:03:51', 'Chờ xác nhận', 127000, 30000, NULL),
+(63, 'Nguyễn Trung Kiên', '0989983025', '76 Mai Dịch Quận Bắc Từ Liêm', 'cho ít muối thôi', '2021-12-21 20:05:11', 'Chờ xác nhận', 0, 0, NULL),
+(64, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Ba Đình', 'cho ít muối thôi', '2021-12-21 20:05:47', 'Chờ xác nhận', 172000, 15000, NULL),
+(65, 'Nguyễn Trung Kiên', '0222223311', '76 Mai Dịch Quận Ba Đình', 'cho ít muối thôi', '2021-12-21 20:39:36', 'Chờ xác nhận', 322000, 15000, 3),
+(66, 'Nguyễn Trung Kiên', '0222223333', 'dfn fgngf Quận Bắc Từ Liêm', 'Nhiều tương ớt', '2021-12-21 20:40:43', 'Chờ xác nhận', 252000, 15000, 3),
+(67, 'Nguyễn Trung Kiên', '0989983025', 'dfn fgngf Quận Cầu Giấy', 'cho ít muối thôi', '2021-12-21 20:42:42', 'Chờ xác nhận', 372000, 20000, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_detail`
+-- Cấu trúc bảng cho bảng `order_detail`
 --
 
 CREATE TABLE `order_detail` (
@@ -235,13 +170,13 @@ CREATE TABLE `order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order_detail`
+-- Đang đổ dữ liệu cho bảng `order_detail`
 --
 
 INSERT INTO `order_detail` (`id`, `order_id`, `product_name`, `price`, `quatity`, `size`, `plinth`, `topping`) VALUES
-(89, 62,'Pizza Thập Cẩm', 105000, 1, 'S', 'Giòn', 'Phô mai phủ '),
+(89, 62, 'Pizza Thập Cẩm', 105000, 1, 'S', 'Giòn', 'Phô mai phủ '),
 (90, 64, 'Pizza Bò Viên', 150000, 1, 'S', 'Giòn', 'Không có'),
-(91, 65, 'Mỳ Ý''', 150000, 2, 'S', 'Giòn', 'Không có'),
+(91, 65, 'Mỳ Ý\'', 150000, 2, 'S', 'Giòn', 'Không có'),
 (92, 66, 'Mỳ Hàn', 115000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ '),
 (93, 67, 'Gà sốt cay', 165000, 2, 'S', 'Giòn', 'Phô mai phủ '),
 (94, 67, 'Pizza Hải Sản', 175000, 2, 'S', 'Giòn', 'Phô mai viền Phô mai phủ ');
@@ -249,7 +184,7 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_name`, `price`, `quatity`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plinth`
+-- Cấu trúc bảng cho bảng `plinth`
 --
 
 CREATE TABLE `plinth` (
@@ -261,7 +196,7 @@ CREATE TABLE `plinth` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
@@ -278,31 +213,31 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
 INSERT INTO `product` (`id`, `category_id`, `name`, `status_product_id`, `image`, `description`, `price_free_size`, `price_s`, `price_m`, `price_l`) VALUES
-(1, 1, 'Pizza Thập Cẩm', 1, 'thap_cam.jpg', 'Phủ Giăm Bông Và Thơm Ngọt Dịu Trên Nền Sốt Cà Chua Truyền Thống ', 0, 100000, 120000, 150000),
-(2, 1, 'Pizzaminsea',  1, 'pizzaminsea.jpg', 'Pizza Gà Nướng Nấm Trong Cuộc Phiêu Lưu Vị Giác Với Thịt Gà, Nấm, Thơm, Cà Rốt Và Rau Mầm Phủ Xốt Tiêu Đen Thơm Nồng', 0, 150000, 170000, 200000),
-(3, 1, 'Pizza Rau Củ', 1, 'rau_cu.jpg', 'Thanh Nhẹ Với Ô Liu Đen Tuyệt Hảo, Cà Chua Bi Tươi Ngon, Nấm, Thơm, Bắp, Hành Tây Và Phô Mai Mozzarella Cho Bạn Bữa Tiệc Rau Củ Tròn Vị ', 0, 90000, 100000, 110000),
-(4, 1, 'Pizza 4 Vị',  1, '4_vi.jpg', 'Thịt Gà, Hành Tây, Nấm Và Bắp Ngọt Trên Nền Sốt Pesto, Thêm Chút Tiêu Đen Thơm Nồng Quện Trong Phô Mai Mozzarella, Cuộn Trong Lớp Bánh Pizza Đặc Trưng Của Pizza Hut. ', 0, 110000, 120000, 130000),
-(5, 1, 'Pizza Tôm Sốt Bơ Tỏi',  1, '5_loai_thit.jpg', 'Với Tôm, HàNh Tây Và Ớt Chuông Phủ Trên Nền Xốt Bơ Tỏi ', 0, 90000, 100000, 110000),
-(6, 3, 'Đùi Gà Con',  1, 'ga_BBQ.jpg', 'Đùi Gà Nướng Thơm Lừng Ngon Tuyệt Với Hương Vị BBQ ', 50000, 90000, 100000, 110000),
-(7, 1, 'Pizza Bò Tôm',  1, 'bo_tom.jpg', 'Tôm, Mực, Thanh Cua, Hành Tây, Thơm Phủ Xốt Tiêu Đen Thơm Nóng Và Phô Mai Mozzarella ', 0, 90000, 100000, 110000),
-(8, 8, 'Double sốt', 1, '', 'Với lượng sốt BBQ gấp đôi nâng cao hương vị món ăn', 9000, 0, 0, 0),
-(9, 8, 'Phô mai viền',  1, '', 'Phô Mai Viền Siêu Thơm Nhập Khẩu Trực Tiếp Tại Mỹ', 10000, 8000, 0, 0),
-(10, 8, 'Phô mai phủ',  1, '', 'Phô Mai Phủ Từ Nhà Máy Phô Mai Nổi Tiếng Ở Anh Quốc', 15000, 15000, 0, 0),
-(11, 5, 'Mỳ đặc biệt', 1, 'mi_y.jpg', 'Mì Ý Xốt Cà Chua Với Tôm, Mực, Hành Tây Và Ớt Chuông Xanh', 60000, 0, 0, 0),
-(12, 2, 'Gà BBQ',  1, 'bbq.jpg', 'Cánh Gà Chiên Giòn Phủ Xốt Hàn Quốc', 60000, 0, 0, 0),
-(13, 4, 'Cocacola',  1, 'coca1.jpg', 'CocaCola lon 360ml', 15000, 0, 0, 0),
-(14, 6, 'Combo 1',  1, 'combo1.png', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
-(15, 6, 'Combo 2', 1, 'combo2.jfif', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
-(16, 6, 'Combo 3', 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0);
+(1, 4, 'Pizza Thập Cẩm', 1, 'thap_cam.jpg', 'Phủ Giăm Bông Và Thơm Ngọt Dịu Trên Nền Sốt Cà Chua Truyền Thống ', 0, 100000, 120000, 150000),
+(2, 4, 'Pizzaminsea', 1, 'pizzaminsea.jpg', 'Pizza Gà Nướng Nấm Trong Cuộc Phiêu Lưu Vị Giác Với Thịt Gà, Nấm, Thơm, Cà Rốt Và Rau Mầm Phủ Xốt Tiêu Đen Thơm Nồng', 0, 150000, 170000, 200000),
+(3, 7, 'Pizza Rau Củ', 1, 'rau_cu.jpg', 'Thanh Nhẹ Với Ô Liu Đen Tuyệt Hảo, Cà Chua Bi Tươi Ngon, Nấm, Thơm, Bắp, Hành Tây Và Phô Mai Mozzarella Cho Bạn Bữa Tiệc Rau Củ Tròn Vị ', 0, 90000, 100000, 110000),
+(4, 4, 'Pizza 4 Vị', 1, '4_vi.jpg', 'Thịt Gà, Hành Tây, Nấm Và Bắp Ngọt Trên Nền Sốt Pesto, Thêm Chút Tiêu Đen Thơm Nồng Quện Trong Phô Mai Mozzarella, Cuộn Trong Lớp Bánh Pizza Đặc Trưng Của Pizza Hut. ', 0, 110000, 120000, 130000),
+(5, 4, 'Pizza Tôm Sốt Bơ Tỏi', 1, '5_loai_thit.jpg', 'Với Tôm, HàNh Tây Và Ớt Chuông Phủ Trên Nền Xốt Bơ Tỏi ', 0, 90000, 100000, 110000),
+(6, 3, 'Đùi Gà Con', 1, 'ga_BBQ.jpg', 'Đùi Gà Nướng Thơm Lừng Ngon Tuyệt Với Hương Vị BBQ ', 50000, 90000, 100000, 110000),
+(7, 4, 'Pizza Bò Tôm', 1, 'bo_tom.jpg', 'Tôm, Mực, Thanh Cua, Hành Tây, Thơm Phủ Xốt Tiêu Đen Thơm Nóng Và Phô Mai Mozzarella ', 0, 90000, 100000, 110000),
+(8, 6, 'Double sốt', 1, '', 'Với lượng sốt BBQ gấp đôi nâng cao hương vị món ăn', 9000, 0, 0, 0),
+(9, 8, 'Phô mai viền', 1, '', 'Phô Mai Viền Siêu Thơm Nhập Khẩu Trực Tiếp Tại Mỹ', 10000, 8000, 0, 0),
+(10, 6, 'Phô mai phủ', 1, '', 'Phô Mai Phủ Từ Nhà Máy Phô Mai Nổi Tiếng Ở Anh Quốc', 15000, 15000, 0, 0),
+(11, 3, 'Mỳ đặc biệt', 1, 'mi_y.jpg', 'Mì Ý Xốt Cà Chua Với Tôm, Mực, Hành Tây Và Ớt Chuông Xanh', 60000, 0, 0, 0),
+(12, 2, 'Gà BBQ', 1, 'bbq.jpg', 'Cánh Gà Chiên Giòn Phủ Xốt Hàn Quốc', 60000, 0, 0, 0),
+(13, 7, 'Cocacola', 1, 'coca1.jpg', 'CocaCola lon 360ml', 15000, 0, 0, 0),
+(14, 1, 'Combo 1', 1, 'combo1.png', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
+(15, 1, 'Combo 2', 1, 'combo2.jfif', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
+(16, 1, 'Combo 3', 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status_product`
+-- Cấu trúc bảng cho bảng `status_product`
 --
 
 CREATE TABLE `status_product` (
@@ -311,7 +246,7 @@ CREATE TABLE `status_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `status_product`
+-- Đang đổ dữ liệu cho bảng `status_product`
 --
 
 INSERT INTO `status_product` (`id`, `status`) VALUES
@@ -321,7 +256,7 @@ INSERT INTO `status_product` (`id`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_account`
+-- Cấu trúc bảng cho bảng `user_account`
 --
 
 CREATE TABLE `user_account` (
@@ -334,7 +269,7 @@ CREATE TABLE `user_account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_account`
+-- Đang đổ dữ liệu cho bảng `user_account`
 --
 
 INSERT INTO `user_account` (`id`, `username`, `address`, `phonenumber`, `email`, `password`) VALUES
@@ -342,87 +277,63 @@ INSERT INTO `user_account` (`id`, `username`, `address`, `phonenumber`, `email`,
 (2, 'trungkien', '136 Nguyễn An Ninh Hoàng mai', '0989989998', 'trungkien07yd@gmail.com', '123456'),
 (3, 'trungkien1', '124 Gia Viễn,Ninh bình', '0989983025', 'trungkien1@gmail.com', '123456');
 
-
-
--- --------------------------------------------------------
-
 --
--- Table structure for table `voucher`
---
-
-
-
---
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `admin`
+-- Chỉ mục cho bảng `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category`
+-- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `coupon`
+-- Chỉ mục cho bảng `coupon`
 --
 ALTER TABLE `coupon`
   ADD PRIMARY KEY (`id_cp`);
 
 --
--- Indexes for table `cp_user`
+-- Chỉ mục cho bảng `cp_user`
 --
 ALTER TABLE `cp_user`
   ADD KEY `user_id` (`user_id`),
   ADD KEY `cp_id` (`cp_id`);
 
 --
-
-
-
+-- Chỉ mục cho bảng `gallery`
 --
-
-
---
--- Indexes for table `menu`
---
-ALTER TABLE `menu`
+ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu_detail`
---
-ALTER TABLE `menu_detail`
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `menu_id` (`menu_id`);
-
---
--- Indexes for table `order`
+-- Chỉ mục cho bảng `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `order_detail`
+-- Chỉ mục cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `order_id` (`order_id`);
 
 --
--- Indexes for table `plinth`
+-- Chỉ mục cho bảng `plinth`
 --
 ALTER TABLE `plinth`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
@@ -430,128 +341,106 @@ ALTER TABLE `product`
   ADD KEY `status_product_id` (`status_product_id`);
 
 --
--- Indexes for table `status_product`
+-- Chỉ mục cho bảng `status_product`
 --
 ALTER TABLE `status_product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_account`
+-- Chỉ mục cho bảng `user_account`
 --
 ALTER TABLE `user_account`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `voucher`
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `coupon`
+-- AUTO_INCREMENT cho bảng `coupon`
 --
 ALTER TABLE `coupon`
   MODIFY `id_cp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
-
-
+-- AUTO_INCREMENT cho bảng `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `menu`
---
-ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT cho bảng `order`
 --
 ALTER TABLE `order`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
--- AUTO_INCREMENT for table `order_detail`
+-- AUTO_INCREMENT cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
--- AUTO_INCREMENT for table `plinth`
+-- AUTO_INCREMENT cho bảng `plinth`
 --
 ALTER TABLE `plinth`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `status_product`
+-- AUTO_INCREMENT cho bảng `status_product`
 --
 ALTER TABLE `status_product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user_account`
+-- AUTO_INCREMENT cho bảng `user_account`
 --
 ALTER TABLE `user_account`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `cp_user`
+-- Các ràng buộc cho bảng `cp_user`
 --
 ALTER TABLE `cp_user`
   ADD CONSTRAINT `cp_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`),
   ADD CONSTRAINT `cp_user_ibfk_2` FOREIGN KEY (`cp_id`) REFERENCES `coupon` (`id_cp`);
 
 --
--- Constraints for table `gallery`
---
-
---
--- Constraints for table `meal_detail`
-
---
--- Constraints for table `menu_detail`
---
-ALTER TABLE `menu_detail`
-  ADD CONSTRAINT `menu_detail_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
-  ADD CONSTRAINT `menu_detail_ibfk_2` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`);
-
---
--- Constraints for table `order`
+-- Các ràng buộc cho bảng `order`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`);
 
 --
--- Constraints for table `order_detail`
+-- Các ràng buộc cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
 
 --
--- Constraints for table `product`
+-- Các ràng buộc cho bảng `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),

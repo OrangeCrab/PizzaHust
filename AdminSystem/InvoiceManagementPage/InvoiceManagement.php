@@ -101,25 +101,23 @@
                                 <td>'.$item_Order['oAddress'].'</td>';
                                 
                                 // In danh sach dat hang cua khach hang nay
-                                $sql_Detail = "SELECT `product`.`name` AS pName, `order_detail`.`quatity` AS odQuantity, 
-                                    `order_detail`.`size` AS odSize, `order_detail`.`plinth` AS odPlinth, `order_detail`.`topping` AS odTopping
-                                    FROM `order_detail`, `product` 
-                                    WHERE `product`.`id` = `order_detail`.`product_id` 
-                                    AND `order_id` = ".$item_Order['id'];
+                                $sql_Detail = "SELECT `product_name`, `quatity`, `size`, `plinth`, `topping`
+                                    FROM `order_detail`
+                                    WHERE `order_id` = ".$item_Order['id'];
                                 $data_Detail = executeResult($sql_Detail);
                                 echo '<td>';
                                 foreach ($data_Detail as $item_Detail){
-                                    echo '<b>&#9654 '.$item_Detail['pName'].'</b><small>';
-                                    if ($item_Detail['odSize'] != NULL){
-                                        echo ', Size: <b>'.$item_Detail['odSize'].'</b>';
+                                    echo '<b>&#9654 '.$item_Detail['product_name'].'</b><small>';
+                                    if ($item_Detail['size'] != NULL){
+                                        echo ', Size: <b>'.$item_Detail['size'].'</b>';
                                     }
-                                    if ($item_Detail['odPlinth'] != NULL){
-                                        echo ', Đế: <b>'.$item_Detail['odPlinth'].'</b>';
+                                    if ($item_Detail['plinth'] != NULL){
+                                        echo ', Đế: <b>'.$item_Detail['plinth'].'</b>';
                                     }
-                                    if ($item_Detail['odTopping'] != NULL){
-                                        echo ', Topping: <b>'.$item_Detail['odTopping'].'</b>';
+                                    if ($item_Detail['topping'] != NULL){
+                                        echo ', Topping: <b>'.$item_Detail['topping'].'</b>';
                                     }
-                                    echo ', SL: <b>'.$item_Detail['odQuantity'].'</b></small><br>';
+                                    echo ', SL: <b>'.$item_Detail['quatity'].'</b></small><br>';
                                 }
                                 echo '</td>';
 

@@ -14,23 +14,22 @@
 
     $row = $data[0];
     echo '<div class="popup_name">
-        <p>Tên khách hàng: '.$row['fullname'].'</p>
-        <p>Số điện thoại: '.$row['phonenumber'].'</p>
-        <p>Địa chỉ: '.$row['address'].'</p>
+        <p><i>Tên khách hàng:</i> '.$row['fullname'].'</p>
+        <p><i>Số điện thoại:</i> '.$row['phonenumber'].'</p>
+        <p><i>Địa chỉ:</i> '.$row['address'].'</p>
     </div>';
     echo '<div class="popup_id">
-        <p>Mã đơn hàng: '.$row['id'].'</p>
-        <p>Ngày mua: '.$row['order_time'].'</p>
+        <p><i>Mã đơn hàng:</i> '.$row['id'].'</p>
+        <p><i>Ngày mua:</i> '.$row['order_time'].'</p>
     </div>';
     echo '<div class="popup_note">
-        <p>Ghi chú: '.$row['note'].'</p>
+        <p><i>Ghi chú:</i> '.$row['note'].'</p>
     </div>';
 ?>
 
 <!-- Chi tiết danh sách món trong đơn hàng -->
 <table class="popup_table">
     <tr>
-        <th>Mã</th>
         <th>Tên món ăn</th>
         <th>Đặc tả</th>
         <th>Giá tiền</th>
@@ -39,10 +38,9 @@
     </tr>
 
     <?php 
-        $sql = "SELECT `product`.`id` AS pID, `product`.`name` AS pName, `order_detail`.`size` AS size, `order_detail`.`topping` AS topping,
-            `order_detail`.`plinth` AS plinth, `order_detail`.`price` AS price, `order_detail`.`quatity` AS quantity
-        FROM `order_detail`, `order`, `product`
-        WHERE `order_detail`.`order_id` = `order`.`id` AND `product`.`id` = `order_detail`.`product_id` AND `order`.`id` = ".$orderid;
+        $sql = "SELECT `product_name`, `size`, `topping`, `plinth`, `price`, `quatity`
+        FROM `order_detail`
+        WHERE `order_detail`.`order_id` = ".$orderid;
 
         $dataOrder = executeResult($sql);
 
@@ -50,39 +48,44 @@
 
         foreach ($dataOrder as $item){
             echo '<tr>
-                <td>'.$item['pID'].'</td>
-                <td>'.$item['pName'].'</td>';
+                <td>'.$item['product_name'].'</td>';
                 echo '<td>';
                 if ($item['size'] != NULL){
-                    echo 'Size: '.$item['size'].'<br>';
+                    echo '&#9654 <i>Size:</i> '.$item['size'].'<br>';
                 } 
                 if ($item['plinth'] != NULL){
-                    echo 'Đế: '.$item['plinth'].'<br>';
+                    echo '&#9654 <i>Đế</i>: '.$item['plinth'].'<br>';
                 }
                 if ($item['topping'] != NULL){
-                    echo 'Topping: '.$item['topping'].'<br>';
+                    echo '&#9654 <i>Topping</i>: '.$item['topping'].'<br>';
                 }
                 echo'</td>';
                 echo '<td>'.$item['price'].'</td>
-                <td>'.$item['quantity'].'</td>
-                <td>'.($item['price'] * $item['quantity']).'</td>
+                <td>'.$item['quatity'].'</td>
+                <td>'.($item['price'] * $item['quatity']).'</td>
             </tr>';
 
-            $total_money += ($item['price'] * $item['quantity']);
+            $total_money += ($item['price'] * $item['quatity']);
         }
 
         echo '<tr class="sum">
-            <td colspan="5">Giá trị sản phẩm:</td>
+            <td colspan="4">Giá trị sản phẩm:</td>
             <td>'.$total_money.'</td>
         </tr>';
-        if (FALSE){ // if có voucher
+        if ($row['address'] != 'Nhận tại quán'){
             echo '<tr class="sum">
-                <td colspan="5">Giảm giá (chưa có thông tin trong CSDL):</td>
-                <td>0</td>
+                <td colspan="4">Phí ship:</td>
+                <td>+22000</td>
+            </tr>';
+        }
+        if ($row['coupon'] != 0){ // if có voucher
+            echo '<tr class="sum">
+                <td colspan="4">Giảm giá:</td>
+                <td>-'.$row['coupon'].'</td>
             </tr>';
         }
         echo '<tr class="sum">
-            <td colspan="5"><span>Tổng giá trị đơn hàng:</span></td>
+            <td colspan="4"><span>Tổng giá trị đơn hàng:</span></td>
             <td><span>'.$row['payment'].'</span></td>
         </tr>';
     ?>

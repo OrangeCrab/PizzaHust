@@ -6,7 +6,17 @@ require_once('../database/dbhelper.php');
 $baseUrl = '../';
 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
 
-
+#Lưu tên khách hàng
+$sql = "select * from user_account";
+$user_info = executeResult($sql);
+$customer = '';
+if (isset($_SESSION['user_id']))
+foreach ($user_info as $user){
+    if ($user['id'] == $_SESSION['user_id'])
+    $customer = $user['username'];
+}
+#Biến $_SESSION['giam_gia'] để số tiền được giảm khi áp voucher
+if( !isset($_SESSION['giam_gia'])) $_SESSION['giam_gia'] = 0;
 #Xoá sản phẩm trong giỏ hàng( Pizza)
 if (isset($_GET['delid']) && ($_GET['delid'] >= 0)) {
     array_splice($_SESSION['giohang'], $_GET['delid'], 1);
@@ -43,7 +53,11 @@ if (isset($_POST['thanhtoan'])) {
     $quanhuyen = $_POST['quanhuyen'];
     $diachi = $_POST['diachi'];
     $ghichu = $_POST['ghichu'];
-    $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận')");
+    if($_SESSION['user_id'] != 0){
+        $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status, user_id) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận','{$_SESSION['user_id']}')");
+    }else{
+        $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận')");
+    }
     $get_order = mysqli_query($con, "select max(id) from `order`");
     $res = mysqli_fetch_array($get_order);
     $get_order_id = (int)$res["max(id)"];
@@ -62,9 +76,9 @@ if (isset($_POST['thanhtoan'])) {
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
-                $get_price = mysqli_query($con, "select price from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
+                $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
-                $get_topping_price = (int)$res["price"];
+                $get_topping_price = (int)$res["price_free_size"];
                 $gia_topping+= $get_topping_price/1000;
             };
             $giatien = $_SESSION['giohang'][$i][7];
@@ -75,18 +89,24 @@ if (isset($_POST['thanhtoan'])) {
                 $total += $_SESSION['giohang'][$i][3] *  $giatien;
                 $price =  $giatien * 1000;
             }
-            $giamgia = (int)($total * 0.05);
-            $thanhtoan = ($total + 22 - $giamgia) * 1000;
+            $thanhtoan = ($total + 22 - $_SESSION['giam_gia']) * 1000;
             $num = (int)$_SESSION['giohang'][$i][3];
             $get_id = mysqli_query($con, "select id from `product` where name = N'{$_SESSION['giohang'][$i][4]}' ");
             $res = mysqli_fetch_array($get_id);
             $get_product_id = (int)$res["id"];
 
            
-            $sql_donhang = mysqli_query($con, "insert into `order_detail`(order_id, price, quatity,size,plinth, topping, product_id) values($get_order_id,$price,$num,'{$_SESSION['giohang'][$i][0]}','{$_SESSION['giohang'][$i][1]}','$fulltopping',$get_product_id)");
+            $sql_donhang = mysqli_query($con, "insert into `order_detail`(order_id, price, quatity,size,plinth, topping, product_name) values($get_order_id,$price,$num,'{$_SESSION['giohang'][$i][0]}','{$_SESSION['giohang'][$i][1]}','$fulltopping','{$_SESSION['giohang'][$i][4]}')");
         }
+        // var_dump("insert into `order`(fullname, phonenumber, address,note,order_time,status, user_id) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận','{$_SESSION['user_id']}')");
     }
     $sql_giohang = mysqli_query($con, "update `order` set payment = $thanhtoan where id = $get_order_id");
+    if($_SESSION['giam_gia'] !=0) {
+        $coupon = $_SESSION['giam_gia'] * 1000;
+        $sql_giohang = mysqli_query($con, "update `order` set coupon = $coupon where id = $get_order_id");
+    }
+    // unset($_SESSION['giohang']);
+    // header('location: ../ShowForGuest/homepage/homepage.php');
     // $get_order_id = mysqli_query($con,"SELECT `id` FROM `order` where `fullname` ='$name' and `payment`");
 
 }
@@ -112,13 +132,13 @@ function showgiohang()
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
-                $get_price = mysqli_query($con, "select price from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
+                $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
-                $get_topping_price = (int)$res["price"];
+                $get_topping_price = (int)$res["price_free_size"];
                 $full_topping+= $get_topping_price/1000;
             };
             $total = ($price + $full_topping) * $_SESSION['giohang'][$i][3];
-            if ($_SESSION['giohang'][$i][6] == 1)
+            if ($_SESSION['giohang'][$i][6] == 2)
                 echo '
                     <div class="product">
                     <div class="img">
@@ -215,9 +235,9 @@ function tinhtien()
             }else
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
-                $get_price = mysqli_query($con, "select price from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
+                $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
-                $get_topping_price = (int)$res["price"];
+                $get_topping_price = (int)$res["price_free_size"];
                 $gia_topping += $get_topping_price/1000;
             };
             $giatien =  $_SESSION['giohang'][$i][7];
@@ -226,6 +246,7 @@ function tinhtien()
             } else   $total += $_SESSION['giohang'][$i][3] *  $giatien;
             $thanhtoan = $total + 22;
         }
+        
         $type = 2;
         $phan_tram = 0;
         $toi_da = 0;
@@ -253,8 +274,9 @@ function tinhtien()
                 
             }
             $thanhtoan -= $giamgia;
-    
+            $_SESSION['giam_gia']= $giamgia; 
         }
+        // var_dump($thanhtoan);
         echo '
             <div class="pay">
                 <div class="field"><span>Tổng:</span><span class="price">' . $total . ' 000đ</span></div>
@@ -286,7 +308,7 @@ function tinhtien()
                     <select name="apvoucher" id="">
                         <option value="'.$code_voucher.'">   '.$code_voucher.'   </option>
                     ';
-                    $sql = "SELECT coupon.* from coupon,cp_user where coupon.id_cp = cp_user.cp_id and cp_user.user_id = 1";
+                    $sql = "SELECT coupon.* from coupon,cp_user where coupon.id_cp = cp_user.cp_id and cp_user.user_id = '{$_SESSION['user_id']}'";
                     $voucher = executeResult($sql);
                     foreach($voucher as $item){
                         if($total*1000 >= (int)$item['min_order_value'] && $item['code_cp'] != $code_voucher){
@@ -306,7 +328,7 @@ function tinhtien()
                 <!-- <div class="buy"><a href="#">Đặt hàng: <span>478 000đ</span></a></div> -->
                 <div >
                     <div class="field"><span>Thanh toán:</span><span class="price">' . $thanhtoan . ' 000đ</span></div>
-                    <input type="submit" onclick="send()" class="buy" value="Đặt hàng" name="thanhtoan">
+                    <input type="submit" onclick=" return send()" class="buy" value="Đặt hàng" name="thanhtoan">
                 </div>
         
             </div>
@@ -321,7 +343,7 @@ function tinhtien()
                 <hr>
                 <div >
                     <div class="field"><span>Thanh toán:</span><span class="price">0đ</span></div>
-                    <input onclick="send()" type="subdmit" class="buy" value="Đặt hàng" name="thanhtoan">
+                    <input onclick="send()" class="buy" value="Đặt hàng" name="thanhtoan">
                 </div>
         
             </div>
@@ -346,14 +368,44 @@ function tinhtien()
 
 <body>
     <header>
-        <div class="top-bar">
-            <img src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
-            <a href="../ShowForGuest/homepage/homepage.php">Trang chủ</a>
-            <a href="#menu">Thực đơn</a>
-            <a href="#"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-            <a href="#contact">Liên hệ</a>
-            <a href="../AdminSystem/login_form.php"><i class="fa fa-user" aria-hidden="true"></i></a>
-        </div>
+        <?php
+            echo'
+            <ul class="top-bar">
+                <img src="../masterial/image/iconHomePage/PizzaHustLogo.svg" style="float: left;" alt="">
+                <li><a href="../ShowForGuest/homepage/homepage.php">Trang chủ</a></li>
+                <li><a href="../ShowForGuest/homepage/homepage.php">Thực đơn</a></li>
+                <li><a href="#"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+                ';
+
+                if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0){
+                echo '
+                
+                <li class="dropdown">
+                    <a style="color: #F98607;" href="../ShowForGuest/homepage/ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <form class="dropdown-content" action="" method="POST">
+                        <a href="ctm.php">'.$customer.'</a>
+                        <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                        <button type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> 
+                    </form>
+                </li>
+                ';
+                }
+                else
+                echo '
+                    <li class="dropdown">
+                        <a href="../ShowForGuest/login/login_user.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+                ';
+            echo'
+            </ul>
+            ';
+            if (isset($_POST['logout'])){
+                $_SESSION['user_id'] = 0;
+                echo("<meta http-equiv='refresh' content='0'>");
+            }
+        ?>   
     </header>
     <div class="cart">
         <div class="blank"></div>
@@ -365,19 +417,19 @@ function tinhtien()
         <div class="suggest">
             <h3 style="font-size: 15px;">Có thể bạn sẽ thích</h3>
             <div class="suggest-product">
-                <a href="../ShowForGuest/homepage/homepage.php#4">
+                <a href="../ShowForGuest/homepage/homepage.php#1">
                     <img src="../masterial/image/thuc_don/coca.png" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#4">
+                <a href="../ShowForGuest/homepage/homepage.php#1">
                     <img src="../masterial/image/thuc_don/nuoc_cam.png" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#5">
+                <a href="../ShowForGuest/homepage/homepage.php#1">
                     <img src="../masterial/image/thuc_don/mi_y.jpg" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#2">
+                <a href="../ShowForGuest/homepage/homepage.php#1">
                     <img src="../masterial/image/thuc_don/bbq.jpg" alt="">
                 </a>
-                <a href="../ShowForGuest/homepage/homepage.php#2">
+                <a href="../ShowForGuest/homepage/homepage.php#1">
                     <img style="height: 60px;" src="../masterial/image/thuc_don/ga_BBQ.jpg" alt="">
                 </a>
             </div>
@@ -428,6 +480,7 @@ function tinhtien()
     </div>
     </form>
     </div>
+    
 </body>
 
 </html>

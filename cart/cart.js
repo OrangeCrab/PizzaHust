@@ -8,20 +8,21 @@ function send(){
     console.log(thanhtoan);
     if(thanhtoan == 0){
         confirm("Bạn chưa có sản phẩm nào trong giỏ hàng!");
-        return;
+        return false;
     } 
     if(name == "" || sdt ==""||quan_huyen ==""||diachi ==""){
         confirm("Vui lòng điền đầy đủ thông tin của bạn");
-        return;
+        return false;
     }
     if(sdt.length != 10 || isNaN(sdt)){
         confirm("Vui lòng Nhập đúng số điện thoại");
-        return;
+        return false;
     }
     if(quan_huyen == "" && sonha == " "){
         confirm("Vui lòng điền đầy đủ địa của bạn");
-        return;
+        return false;
     }
     confirm('Thông tin khách hàng: \nTên:'+name +'\nSđt: '+sdt+'\nĐịa chỉ: '+diachi+'\nNếu có sai sót thì mời bạn nhập lại! \nSau khi bạn đặt hàng, cửa hàng sẽ gọi lại cho bạn để xác nhận\nCảm ơn quý khách đã mua hàng ở PizzaHust!');
+    alert("Bạn đã đặt hàng thành công! Bạn có thể quay lại trang chủ để mua hàng tiếp!")
 
 }

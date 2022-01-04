@@ -34,18 +34,6 @@ if(!empty($_POST)) {
 		}
 		
 		execute($sql);
-
-		$sql = "delete from menu_detail where product_id = "."'".$id."'";
-		execute($sql);
-
-		$menus = (isset($_POST['menu'])) ? $_POST['menu'] : array();
-
-		if (count($menus) > 0) {
-			foreach ($menus as $menu) { 
-				$sql = "insert into menu_detail(menu_id,product_id) values ('$menu','$id')";
-				execute($sql);
-			} 
-		}
 		move_uploaded_file($image_tmp_name, "../../masterial/image/thuc_don/$image");
 		header('location: ProductManagementPage.php');
 		die();
@@ -59,16 +47,7 @@ if(!empty($_POST)) {
 
 		$sql = "select * from product ORDER BY id DESC LIMIT 1";
 		$id = getArrResult($sql)['id'];
-
-		$menus = (isset($_POST['menu'])) ? $_POST['menu'] : array();
-
-		if (count($menus) > 0) {
-			foreach ($menus as $menu) { 
-				$sql = "insert into menu_detail(menu_id,product_id) values ('$menu','$id')";
-				execute($sql);
-			} 
-		}
-
+		
 		header('location: ProductManagementPage.php');
 		die();
 	}

@@ -1,6 +1,6 @@
 <?php
-	$id = $msg = $name = $price  = $category_id = $image = $description = $price_free_size = $price_s= $price_m = $price_l ='';
-    $count_menu = '';
+	$id = $msg = $name = $price  = $category_id = $image = $description = $price_free_size = $price_s= $price_m 
+    = $price_l ='';
 
     require_once('../../database/utility.php');   
 	require_once('../../database/define.php');
@@ -29,9 +29,6 @@
 
 	$sql = "select * from category";
 	$categoryItems = executeResult($sql);
-
-    $sql = "SELECT COUNT(*) FROM menu";
-    $count_menu = getArrResult($sql)['COUNT(*)'];
 ?> 
 
 <!DOCTYPE html>
@@ -55,8 +52,8 @@
         <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"> -->
         <link rel="stylesheet" href="product_management.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src="jquery.tabledit.min.js"></script>            
         <title>Product Management</title>
     </head>
     <body>
@@ -185,55 +182,26 @@
                             </div>
                         </div>
                         <div class="right_div">
-                            <div class = "select_menu">
-
-                                <label for="" >Menu:</label>
-                                <div class="menu_div" style="position: absolute;width: 40%; height: 25%; left:20%">
-                                    <label >Khai vị</label>
-                                    <input type="checkbox" name="menu[]" value = "1" >
+                            <div class = "upload_img">
+                                <div class="title_of_img_card">
+                                    <label for="image">Hình ảnh sản phẩm:</label>
                                 </div>
-                                
-                                <div class="menu_div" style="position: absolute;width: 40%; height: 25%; left:60%">
-                                    <label >Món chính</label>
-                                    <input type="checkbox" name="menu[]" value = "2" >
-                                </div>   
-                                
-                                <div class="menu_div" style="position: absolute;width: 40%; height: 25%; left:20%; top: 30%">
-                                    <label >Tráng miệng</label>
-                                    <input type="checkbox" name="menu[]" value = "3">
+                                <div class="img_card">
+                                    <input name="image" id="image" required="true" type="file" accept="image/*" onchange="loadFile(event)">
                                 </div>
-                                
-                                <br>
-                                <div class="menu_div" style="position: absolute;width: 40%; height: 25%; left:60%; top: 30%">
-                                    <label >Món chay</label>
-                                    <input type="checkbox" name="menu[]" value = "4">
+                                <div class="img_container">
+                                    <img id="output"/>
+                                    <script>
+                                        var loadFile = function(event) {
+                                            var output = document.getElementById('output');
+                                            output.src = URL.createObjectURL(event.target.files[0]);
+                                            output.onload = function() {
+                                            URL.revokeObjectURL(output.src) // free memory
+                                            }
+                                        };
+                                    </script>
                                 </div>
-                                
-                                <div class="menu_div" style="position: absolute;width: 40%; height: 25%; left:20%; top: 60%">
-                                    <label >Dành cho trẻ em</label>
-                                    <input type="checkbox" name="menu[]" value = "5">
-                                </div>
-                                
                             </div>
-                            <div class="title_of_img_card">
-                                <label for="image">Hình ảnh sản phẩm:</label>
-                            </div>
-                            <div class="img_card">
-                                <input name="image" id="image" required="true" type="file" accept="image/*" onchange="loadFile(event)">
-                            </div>
-                            <div class="img_container">
-                                <img id="output"/>
-                                <script>
-                                    var loadFile = function(event) {
-                                        var output = document.getElementById('output');
-                                        output.src = URL.createObjectURL(event.target.files[0]);
-                                        output.onload = function() {
-                                        URL.revokeObjectURL(output.src) // free memory
-                                        }
-                                    };
-                                </script>
-                            </div>
-                            
                         </div>
                         <div class="bottom_div">
                             <button class="btn btn-success" name="confirm">Xác Nhận</button>

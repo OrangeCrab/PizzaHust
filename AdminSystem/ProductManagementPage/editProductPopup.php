@@ -71,187 +71,174 @@
                 transition: 0.5s;
             }
             .product_popup .info_card{
-    position: fixed;
-    width: 70%;
-    height: 80%;
-    left: 15%;
-    top: 10%;
-    background: #f2f2f2;
-    border-radius: 5px;
-}
-    .product_popup .info_card .close_btn{
-        color: #404040;
-        z-index: 3;
-        position: absolute;
-        right: 0;
-        font-size: 20px;
-        margin: 20px;
-        cursor: pointer;
-    }
-    .product_popup .info_card h3{
-        position: absolute;
-        top: 5%;
-        left: 35%;
-        height: 5%;
-    }
-    .panel-body{
-        position: absolute;
-        width: 100%;
-        height: 90%;
-        top: 10%;
-    }
-        form{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-            .left_div{
-                position: absolute;
-                top: 5%;
-                width: 50%;
+                position: fixed;
+                width: 70%;
                 height: 80%;
+                left: 15%;
+                top: 10%;
+                background: #f2f2f2;
+                border-radius: 5px;
             }
-                .form_group{
+                .product_popup .info_card .close_btn{
+                    color: #404040;
+                    z-index: 3;
                     position: absolute;
-                    width: 100%;
-                    height: 10%;
+                    right: 0;
+                    font-size: 20px;
+                    margin: 20px;
+                    cursor: pointer;
                 }
-                    .form_group label{
-                        height: 60%;
-                        width: 35%;
-                        text-align: right;
-                        clear: both;
-                        float:left;
-                        margin-right:5%;
-                        margin-top: 0.5%;
-                    }
-                    .form_group input{
-                        position: absolute;
-                        width: 50%;
-                        height: 100%;
-                        left: 40%;
-                    }
-                
-                    .product_type label{
-                        position: absolute;
-                        width: 40%;
-                        height: 70%;
-                        top: 15%;
-                    }
-
-                    .product_type select{
-                        position: absolute;
-                        width: 60%;
-                        left: 40%;
-                    }
-                .size_div_wrap{
+                .product_popup .info_card h3{
                     position: absolute;
-                    width: 100%;
-                    height: 50%;
-                    top: 37%;
-                }
-                    .size_div_wrap label{
-                        position: absolute;
-                        width: 20%;
-                        height: fit-content;
-                        left: 10%;
-                    }
-                        .size_div label{
-                            position: absolute;
-                            width: 30%;
-                            height: 90%;
-                            left: 0;
-                        }
-
-                        .size_div input{
-                            position: absolute;
-                            width: 55%;
-                            left: 30%;
-                            height: 90%;
-                        }
-                .description_div{
-                    position: absolute;
-                    width: 100%;
-                    height: 10%;
-                    top: 90%;
-                }
-                    .description_div input{
-                        position:absolute; 
-                        width:60%; 
-                        left:30%;
-                        height: 100%;
-                    }
-            .right_div{
-                position: absolute;
-                width: 50%;
-                height: 80%;
-                top: 5%;
-                left: 50%;
-            }
-                .select_menu{
-                    position: absolute;
-                    width: 100%;
-                    height: 25%;
-                }
-
-                .select_menu label{
-                    position: absolute;
-                    width: 20%;
-                    left: 8%;
-                }
-                    .menu_div label{
-                        position: absolute;
-                        width: 80%;
-                        top: 4%;
-                    }
-                .title_of_img_card{
-                    position: absolute;
-                    width: 100%;
+                    top: 5%;
+                    left: 35%;
                     height: 5%;
-                    top: 25%;
-                    text-align: center;
-                    font-style: italic;
                 }
-                .img_card{
-                    position: absolute;
-                    width: 80%;
-                    height: 10%;
-                    top: 30%;
-                    left: 10%;
-                    text-align: center;
-                    border: 1px  solid  #000000;
-                }
-                .img_card input{
-                    position: absolute;
-                    width: 100%;
-                    height: auto;
-                    left: 20%;
-                    top: 15%;
-                }
-                .img_container{
-                    position: absolute;
-                    width: 80%;
-                    height: 60%;
-                    top: 40%;
-                    left: 10%;
-                    text-align: center;
-                    border: 1px  solid  #000000;
-                }
-                    .img_container img{
-                        margin: 5px;
-                        width: 80%;
-                        max-height: 100%;
-                    }
-            .bottom_div{
+            .panel-body{
                 position: absolute;
                 width: 100%;
-                height: 10%;
-                top: 90%;
+                height: 90%;
+                top: 10%;
             }
-                .bottom_div button{
+                form{
                     position: absolute;
-                    left: 45%;
+                    width: 100%;
+                    height: 100%;
                 }
+                    .left_div{
+                        position: absolute;
+                        top: 5%;
+                        width: 50%;
+                        height: 80%;
+                    }
+                        .form_group{
+                            position: absolute;
+                            width: 100%;
+                            height: 10%;
+                        }
+                            .form_group label{
+                                height: 60%;
+                                width: 35%;
+                                text-align: right;
+                                clear: both;
+                                float:left;
+                                margin-right:5%;
+                                margin-top: 0.5%;
+                            }
+                            .form_group input{
+                                position: absolute;
+                                width: 50%;
+                                height: 100%;
+                                left: 40%;
+                            }
+                        
+                            .product_type label{
+                                position: absolute;
+                                width: 40%;
+                                height: 70%;
+                                top: 15%;
+                            }
+
+                            .product_type select{
+                                position: absolute;
+                                width: 60%;
+                                left: 40%;
+                            }
+                        .size_div_wrap{
+                            position: absolute;
+                            width: 100%;
+                            height: 50%;
+                            top: 37%;
+                        }
+                            .size_div_wrap label{
+                                position: absolute;
+                                width: 20%;
+                                height: fit-content;
+                                left: 10%;
+                            }
+                                .size_div label{
+                                    position: absolute;
+                                    width: 30%;
+                                    height: 90%;
+                                    left: 0;
+                                }
+
+                                .size_div input{
+                                    position: absolute;
+                                    width: 55%;
+                                    left: 30%;
+                                    height: 90%;
+                                }
+                        .description_div{
+                            position: absolute;
+                            width: 100%;
+                            height: 10%;
+                            top: 90%;
+                        }
+                            .description_div input{
+                                position:absolute; 
+                                width:60%; 
+                                left:30%;
+                                height: 100%;
+                            }
+                    .right_div{
+                        position: absolute;
+                        width: 50%;
+                        height: 80%;
+                        top: 5%;
+                        left: 50%;
+                    }
+                        .upload_img{
+                            position: absolute;
+                            width: 90%;
+                            height: 100%;
+                        }
+                            .title_of_img_card{
+                                position: absolute;
+                                width: 100%;
+                                height: 5%;
+                                text-align: center;
+                                font-style: italic;
+                            }
+                            .img_card{
+                                position: absolute;
+                                width: 100%;
+                                height: 10%;
+                                top: 6%;
+                                text-align: center;
+                                border: 1px  solid  #000000;
+                            }
+                                .img_card input{
+                                    position: absolute;
+                                    width: 100%;
+                                    height: auto;
+                                    left: 20%;
+                                    top: 15%;
+                                }
+                            .img_container{
+                                position: absolute;
+                                width: 100%;
+                                height: 84%;
+                                top: 16%;
+                                text-align: center;
+                                border: 1px  solid  #000000;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                                .img_container img{
+                                    width: auto;
+                                    max-height: 90%;
+                                }
+                    .bottom_div{
+                        position: absolute;
+                        width: 100%;
+                        height: 10%;
+                        top: 90%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    } 
         </style>
     </head>
     <body>
@@ -333,87 +320,28 @@
                             </div>
                         </div>
                         <div class="right_div">
-                            <div class = "select_menu">
-
-                                <label for="" >Menu:</label>
-                                <div class="menu_div" style="position: absolute;width: 40%; height: 25%; left:20%">
-                                    <label >Khai vị</label>
-                                    <input type="checkbox" name="menu[]" value = "1" <?php 
-                                        $sql = 'SELECT COUNT(*) as "count" FROM menu_detail WHERE product_id = '.$id.' AND menu_id = 1';
-                                        $result = getArrResult($sql)['count'];
-                                        if ($result > 0) {
-                                            echo 'checked';
-                                        }
-                                    ?>>
+                            <div class = "upload_img">
+                                <div class="title_of_img_card">
+                                    <label for="image">Hình ảnh sản phẩm:</label>
                                 </div>
-                                
-                                <div class="menu_div" style="position: absolute;width: 40%; height: 25%; left:60%">
-                                    <label >Món chính</label>
-                                    <input type="checkbox" name="menu[]" value = "2" <?php 
-                                        $sql = 'SELECT COUNT(*) as "count" FROM menu_detail WHERE product_id = '.$id.' AND menu_id = 2';
-                                        $result = getArrResult($sql)['count'];
-                                        if ($result > 0) {
-                                            echo 'checked';
-                                        }
-                                    ?>>
-                                </div>   
-                                
-                                <div class="menu_div" style="position: absolute;width: 40%; height: 25%; left:20%; top: 30%">
-                                    <label >Tráng miệng</label>
-                                    <input type="checkbox" name="menu[]" value = "3" <?php 
-                                        $sql = 'SELECT COUNT(*) as "count" FROM menu_detail WHERE product_id = '.$id.' AND menu_id = 3';
-                                        $result = getArrResult($sql)['count'];
-                                        if ($result > 0) {
-                                            echo 'checked';
-                                        }
-                                    ?>>
+                                <div class="img_card">
+                                    <input name="image" id="image" type="file" accept="image/*" onchange="loadFile(event)">
                                 </div>
-                                
-                                <br>
-                                <div class="menu_div" style="position: absolute;width: 40%; height: 25%; left:60%; top: 30%">
-                                    <label >Món chay</label>
-                                    <input type="checkbox" name="menu[]" value = "4" <?php 
-                                        $sql = 'SELECT COUNT(*) as "count" FROM menu_detail WHERE product_id = '.$id.' AND menu_id = 4';
-                                        $result = getArrResult($sql)['count'];
-                                        if ($result > 0) {
-                                            echo 'checked';
-                                        }
-                                    ?>>
+                                <div class="img_container">
+                                    <?php 
+                                        echo '<img id="output"  src="../../masterial/image/thuc_don/'.$image.'"/>';
+                                    ?>
+                                    <script>
+                                        var loadFile = function(event) {
+                                            var output = document.getElementById('output');
+                                            output.src = URL.createObjectURL(event.target.files[0]);
+                                            output.onload = function() {
+                                            URL.revokeObjectURL(output.src) // free memory
+                                            }
+                                        };
+                                    </script>
                                 </div>
-                                
-                                <div class="menu_div" style="position: absolute;width: 40%; height: 25%; left:20%; top: 60%">
-                                    <label >Dành cho trẻ em</label>
-                                    <input type="checkbox" name="menu[]" value = "5" <?php 
-                                        $sql = 'SELECT COUNT(*) as "count" FROM menu_detail WHERE product_id = '.$id.' AND menu_id = 5';
-                                        $result = getArrResult($sql)['count'];
-                                        if ($result > 0) {
-                                            echo 'checked';
-                                        }
-                                    ?>>
-                                </div>
-                                
                             </div>
-                            <div class="title_of_img_card">
-                                <label for="image">Hình ảnh sản phẩm:</label>
-                            </div>
-                            <div class="img_card">
-                                <input name="image" id="image" type="file" accept="image/*" onchange="loadFile(event)">
-                            </div>
-                            <div class="img_container">
-                                <?php 
-                                    echo '<img id="output"  src="../../masterial/image/thuc_don/'.$image.'"/>';
-                                ?>
-                                <script>
-                                    var loadFile = function(event) {
-                                        var output = document.getElementById('output');
-                                        output.src = URL.createObjectURL(event.target.files[0]);
-                                        output.onload = function() {
-                                        URL.revokeObjectURL(output.src) // free memory
-                                        }
-                                    };
-                                </script>
-                            </div>
-                            
                         </div>
                         <div class="bottom_div">
                             <button class="btn btn-success" name="confirm">Xác Nhận</button>

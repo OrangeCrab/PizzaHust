@@ -138,7 +138,7 @@ function showgiohang()
                 $full_topping+= $get_topping_price/1000;
             };
             $total = ($price + $full_topping) * $_SESSION['giohang'][$i][3];
-            if ($_SESSION['giohang'][$i][6] == 1)
+            if ($_SESSION['giohang'][$i][6] == 2)
                 echo '
                     <div class="product">
                     <div class="img">

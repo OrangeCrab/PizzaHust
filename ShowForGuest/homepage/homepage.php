@@ -299,7 +299,7 @@
                     <div class="category">';  
                     foreach($product as $item) {
                     if ($item['category_id'] == $id){
-                        if($id == 1){
+                        if($id == 2){
                         echo                                 
                         '<div class="product">
                             <img class="product_img" src="../../masterial/image/thuc_don/'.$item['image'].'"/>

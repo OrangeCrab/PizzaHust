@@ -279,7 +279,7 @@
         <?php 
             $dem = 0;
             foreach($product as $item){
-                if ($item['category_id'] == $numCate)
+                if ($item['category_id'] == 1)
                     $dem ++;
             }
             if ($dem > 0) 

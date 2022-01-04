@@ -23,8 +23,6 @@
     $category = executeResult($sql);
     $sql = "select * from plinth";
     $plinth = executeResult($sql);
-    $sql = "select * from menu";
-    $menu = executeResult($sql);
 
     $sql = "select * from user_account";
     $user_info = executeResult($sql);

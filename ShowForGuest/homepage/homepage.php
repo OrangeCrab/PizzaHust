@@ -113,7 +113,7 @@
         </div>
         ';
     };
-    $numCate = 6;
+    $numCate = 7;
     $sql = "select product.* from product";
     $product = executeResult($sql);
 ?> 

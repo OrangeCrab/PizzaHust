@@ -23,8 +23,6 @@
     $category = executeResult($sql);
     $sql = "select * from plinth";
     $plinth = executeResult($sql);
-    $sql = "select * from menu";
-    $menu = executeResult($sql);
 
     $sql = "select * from user_account";
     $user_info = executeResult($sql);
@@ -275,7 +273,7 @@
         <?php 
             $dem = 0;
             foreach($product as $item){
-                if ($item['category_id'] == $numCate)
+                if ($item['category_id'] == 1)
                     $dem ++;
             }
             if ($dem > 0) 

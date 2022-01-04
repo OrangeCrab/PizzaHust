@@ -20,7 +20,7 @@
     if(isset($_GET['fixid']) && ($_GET['fixid'] >= 0)){
         $i =$_GET['fixid'];
     }
-    if($_SESSION['giohang'][$i][6] == 1){
+    if($_SESSION['giohang'][$i][6] == 2){
     echo'
     <form class="info_view" action="cart.php" method="post">
         <div class="info_card">

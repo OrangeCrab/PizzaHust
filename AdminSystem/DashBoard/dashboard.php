@@ -202,7 +202,7 @@ $data_chart = get_sales();
                 }
                         
             });
- 
+         </script>
 
     </body>
 </html>

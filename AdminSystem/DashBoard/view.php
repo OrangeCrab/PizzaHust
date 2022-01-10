@@ -65,16 +65,27 @@ function status_css($status){
 
 //doanh thu tuan
 function get_sales(){
-    $sql = "SELECT  order_time, SUM(payment) as sales
+    $sql = "SELECT  order_time, SUM(payment) as sales 
             FROM `order`
-            WHERE	 
-            `order`.`order_time` > CURRENT_DATE -10
+            WHERE `status` = N'Đã xác nhận' and
+            `order`.`order_time` > CURRENT_DATE - 7
             GROUP BY DATE_FORMAT(order_time, '%y-%m-%d')
             ORDER BY order_time ASC";
     $data = executeResult($sql);
-
     $res[]='';
     $res[1]='';
+
+    if($data == NULL){
+       $dateBegin = date('Y-m-d',strtotime ( '-7 day' ,  strtotime ( date("Y-m-d"))));
+       $dateEnd = date("Y-m-d");
+       while($dateBegin <= $dateEnd){
+        $res[0] = $res[0] . '"'. date('d-m', strtotime($dateBegin)).'",';
+        $res[1] = $res[1] . '"0",';
+        $dateBegin = date('Y-m-d',strtotime ( '+1 day' , strtotime ( $dateBegin ))) ;
+       }
+       return $res;
+    }else{
+
     $date = date('Y-m-d', strtotime($data[0]['order_time']));
 
     foreach( $data as $item){
@@ -84,7 +95,6 @@ function get_sales(){
             $res[1] = $res[1] . '"0",';
             $date = date('Y-m-d',strtotime ( '+1 day' , strtotime ( $date ))) ;
         }
-
         $res[0] = $res[0] . '"'. date('d-m', strtotime($item['order_time'])).'",';
         $res[1] = $res[1] . '"'. $item['sales'].'",';
         $date = date('Y-m-d',strtotime ( '+1 day' , strtotime ( $date ))) ;
@@ -94,6 +104,7 @@ function get_sales(){
 	$res[1] = trim($res[1],",");
 	$res[0] = trim($res[0],",");
     return $res;
+    }
     
 }
 // $data = get_sales();

@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th1 04, 2022 lúc 04:03 AM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 8.0.13
+-- Host: 127.0.0.1
+-- Generation Time: Jan 10, 2022 at 05:43 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `dcm2`
+-- Database: `quan_ly_cua_hang_pizza_hust`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,10 +34,17 @@ CREATE TABLE `admin` (
   `password` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `name`, `username`, `password`) VALUES
+(1, 'Chủ cửa hàng', 'admin', '123456');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -46,7 +53,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `title`) VALUES
@@ -62,7 +69,7 @@ INSERT INTO `category` (`id`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `coupon`
+-- Table structure for table `coupon`
 --
 
 CREATE TABLE `coupon` (
@@ -79,7 +86,7 @@ CREATE TABLE `coupon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `coupon`
+-- Dumping data for table `coupon`
 --
 
 INSERT INTO `coupon` (`id_cp`, `name_cp`, `code_cp`, `type_cp`, `value_cp`, `description`, `active_date`, `expire_date`, `min_order_value`, `max__order_amount`) VALUES
@@ -92,7 +99,7 @@ INSERT INTO `coupon` (`id_cp`, `name_cp`, `code_cp`, `type_cp`, `value_cp`, `des
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `cp_user`
+-- Table structure for table `cp_user`
 --
 
 CREATE TABLE `cp_user` (
@@ -102,7 +109,7 @@ CREATE TABLE `cp_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `cp_user`
+-- Dumping data for table `cp_user`
 --
 
 INSERT INTO `cp_user` (`cp_id`, `user_id`, `used`) VALUES
@@ -111,12 +118,13 @@ INSERT INTO `cp_user` (`cp_id`, `user_id`, `used`) VALUES
 (3, 3, 0),
 (1, 2, 0),
 (2, 2, 0),
-(3, 2, 0);
+(3, 2, 0),
+(4, 2, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `gallery`
+-- Table structure for table `gallery`
 --
 
 CREATE TABLE `gallery` (
@@ -127,7 +135,7 @@ CREATE TABLE `gallery` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order`
+-- Table structure for table `order`
 --
 
 CREATE TABLE `order` (
@@ -144,17 +152,23 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `order`
+-- Dumping data for table `order`
 --
 
 INSERT INTO `order` (`id`, `fullname`, `phonenumber`, `address`, `note`, `order_time`, `status`, `payment`, `coupon`, `user_id`) VALUES
-(86, 'Nguyễn Trung Kiên', '0989988888', '136 Nguyễn An Ninh Quận Nam Từ Liêmy', 'erphobnfkldvjosdkcx', '2021-12-25 16:09:30', 'Chờ xác nhận', 842000, NULL, NULL),
-(87, 'Nguyễn Văn B', '0123456789', '20 Giải Phóng Quận Thanh Xuân', 'cho ít muối thôi', '2021-12-25 16:10:59', 'Chờ xác nhận', 802000, 40000, 2);
+(86, 'Nguyễn Trung Kiên', '0989988888', '136 Nguyễn An Ninh Quận Hoàng Mai', 'erphobnfkldvjosdkcx', '2022-01-09 16:09:30', 'Đã xác nhận', 842000, NULL, NULL),
+(87, 'Nguyễn Văn B', '0123456789', '20 Giải Phóng Quận Thanh Xuân', 'cho ít muối thôi', '2021-12-25 16:10:59', 'Đã xác nhận', 802000, 40000, 2),
+(88, 'Phạm Thị C', '0223334444', '20 Trương Định Quận Thanh Xuân', 'cho ít muối thôi', '2022-01-10 23:06:50', 'Chờ xác nhận', 512000, NULL, NULL),
+(89, 'Đào Thị Quất', '0223334445', '13 Đường Láng Quận Nam Từ Liêmy', 'Giao nhanh nhất có thể', '2022-01-11 23:23:03', 'Đã xác nhận', 1392000, 35000, 2),
+(90, 'Đỗ Văn Đậu', '0123654978', '189 Thanh Nhàn Quận Hai Bà Trưng\r\n', 'óiibkmlvfd', '2022-01-06 23:30:47', 'Đã xác nhận', 382000, NULL, 2),
+(91, 'Hehe', '0111111111', 'srsbfvcerfd Quận Tây Hồ', 'ébrffdv', '2022-01-10 23:35:49', 'Đã bị hủy', 872000, NULL, 2),
+(92, 'oielkdvm', '0999999999', 'tự đi mà tìm Quận Nam Từ Liêmy', 'hahaha', '2022-01-10 23:38:39', 'Đã bị hủy', 4372000, NULL, 2),
+(93, 'Lê Văn Tám', '0357357357', '20 Cầu giấy Quận Cầu Giấy', 'Nhớ cho nhiều đường, ít tương ớt, không bỏ gia vị', '2022-01-10 23:40:20', 'Chờ xác nhận', 532000, NULL, 2);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order_detail`
+-- Table structure for table `order_detail`
 --
 
 CREATE TABLE `order_detail` (
@@ -169,7 +183,7 @@ CREATE TABLE `order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `order_detail`
+-- Dumping data for table `order_detail`
 --
 
 INSERT INTO `order_detail` (`id`, `order_id`, `product_name`, `price`, `quatity`, `size`, `plinth`, `topping`) VALUES
@@ -180,12 +194,34 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_name`, `price`, `quatity`
 (125, 87, 'Pizza Thập Cẩm', 110000, 2, 'S', 'Mềm xốp', 'Phô mai viền '),
 (126, 87, 'Pizzaminsea', 165000, 2, 'S', 'Mềm xốp', 'Phô mai phủ '),
 (127, 87, 'Pizza Tôm Sốt Bơ Tỏi', 105000, 2, 'S', 'Mềm xốp', 'Phô mai phủ '),
-(128, 87, 'Mỳ đặc biệt', 60000, 1, '', '', 'Không có');
+(128, 87, 'Mỳ đặc biệt', 60000, 1, '', '', 'Không có'),
+(129, 88, 'Pizza Thập Cẩm', 100000, 1, 'S', 'Mềm xốp', 'Double sốt '),
+(130, 88, 'Pizzaminsea', 150000, 2, 'S', 'Mềm xốp', 'Phô mai phủ '),
+(131, 88, 'Pizza Tôm Sốt Bơ Tỏi', 90000, 1, 'S', 'Mềm xốp', 'Phô mai phủ '),
+(132, 89, 'Pizza Thập Cẩm', 100000, 1, 'S', 'Mềm xốp', 'Không có'),
+(133, 89, 'Pizzaminsea', 150000, 1, 'S', 'Mềm xốp', 'Phô mai viền Phô mai phủ '),
+(134, 89, 'Pizza Bò Tôm', 90000, 2, 'S', 'Mềm xốp', 'Phô mai phủ '),
+(135, 89, 'Combo 2', 180000, 2, '', '', 'Không có'),
+(136, 89, 'Combo 3', 210000, 2, '', '', 'Không có'),
+(137, 89, 'Gà BBQ', 60000, 2, '', '', 'Không có'),
+(138, 89, 'Mỳ đặc biệt', 60000, 1, '', '', 'Không có'),
+(139, 89, 'Cocacola', 15000, 1, '', '', 'Không có'),
+(140, 90, 'Pizza Thập Cẩm', 100000, 3, 'S', 'Mềm xốp', 'Phô mai phủ '),
+(141, 90, 'Cocacola', 15000, 4, '', '', 'Không có'),
+(142, 91, 'Pizza Thập Cẩm', 100000, 4, 'S', 'Mềm xốp', 'Phô mai phủ '),
+(143, 91, 'Pizzaminsea', 150000, 3, 'S', 'Mềm xốp', 'Phô mai phủ '),
+(144, 92, 'Pizza Rau Củ', 90000, 5, 'S', 'Mềm xốp', 'Phô mai viền Phô mai phủ '),
+(145, 92, 'Pizzaminsea', 150000, 5, 'S', 'Mềm xốp', 'Phô mai phủ '),
+(146, 92, 'Pizza Thập Cẩm', 100000, 5, 'S', 'Mềm xốp', 'Không có'),
+(147, 92, 'Pizza 4 Vị', 110000, 5, 'S', 'Mềm xốp', 'Phô mai phủ '),
+(148, 92, 'Combo 1', 300000, 7, '', '', 'Không có'),
+(149, 93, 'Pizzaminsea', 150000, 2, 'S', 'Mềm xốp', 'Phô mai phủ '),
+(150, 93, 'Combo 3', 210000, 1, '', '', 'Không có');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `plinth`
+-- Table structure for table `plinth`
 --
 
 CREATE TABLE `plinth` (
@@ -195,7 +231,7 @@ CREATE TABLE `plinth` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `plinth`
+-- Dumping data for table `plinth`
 --
 
 INSERT INTO `plinth` (`id`, `name`, `price`) VALUES
@@ -205,7 +241,7 @@ INSERT INTO `plinth` (`id`, `name`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -222,7 +258,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `category_id`, `name`, `status_product_id`, `image`, `description`, `price_free_size`, `price_s`, `price_m`, `price_l`) VALUES
@@ -246,7 +282,7 @@ INSERT INTO `product` (`id`, `category_id`, `name`, `status_product_id`, `image`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `status_product`
+-- Table structure for table `status_product`
 --
 
 CREATE TABLE `status_product` (
@@ -255,7 +291,7 @@ CREATE TABLE `status_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `status_product`
+-- Dumping data for table `status_product`
 --
 
 INSERT INTO `status_product` (`id`, `status`) VALUES
@@ -265,7 +301,7 @@ INSERT INTO `status_product` (`id`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user_account`
+-- Table structure for table `user_account`
 --
 
 CREATE TABLE `user_account` (
@@ -278,70 +314,71 @@ CREATE TABLE `user_account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `user_account`
+-- Dumping data for table `user_account`
 --
 
 INSERT INTO `user_account` (`id`, `username`, `address`, `phonenumber`, `email`, `password`) VALUES
 (2, 'trungkien', '136 Nguyễn An Ninh Hoàng mai', '0989989998', 'trungkien07yd@gmail.com', '123456'),
-(3, 'trungkien1', '124 Gia Viễn,Ninh bình', '0989983025', 'trungkien1@gmail.com', '123456');
+(3, 'trungkien1', '124 Gia Viễn,Ninh bình', '0989983025', 'trungkien1@gmail.com', '123456'),
+(5, 'a@gmail.com', 'Ninh Bình', '0123456788', 'nguyenkien2022001@gmail.c', '123456');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `coupon`
+-- Indexes for table `coupon`
 --
 ALTER TABLE `coupon`
   ADD PRIMARY KEY (`id_cp`);
 
 --
--- Chỉ mục cho bảng `cp_user`
+-- Indexes for table `cp_user`
 --
 ALTER TABLE `cp_user`
   ADD KEY `user_id` (`user_id`),
   ADD KEY `cp_id` (`cp_id`);
 
 --
--- Chỉ mục cho bảng `gallery`
+-- Indexes for table `gallery`
 --
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `order`
+-- Indexes for table `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Chỉ mục cho bảng `order_detail`
+-- Indexes for table `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `order_id` (`order_id`);
 
 --
--- Chỉ mục cho bảng `plinth`
+-- Indexes for table `plinth`
 --
 ALTER TABLE `plinth`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
@@ -349,106 +386,106 @@ ALTER TABLE `product`
   ADD KEY `status_product_id` (`status_product_id`);
 
 --
--- Chỉ mục cho bảng `status_product`
+-- Indexes for table `status_product`
 --
 ALTER TABLE `status_product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `user_account`
+-- Indexes for table `user_account`
 --
 ALTER TABLE `user_account`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `coupon`
+-- AUTO_INCREMENT for table `coupon`
 --
 ALTER TABLE `coupon`
   MODIFY `id_cp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `gallery`
+-- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `order`
+-- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
--- AUTO_INCREMENT cho bảng `order_detail`
+-- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
--- AUTO_INCREMENT cho bảng `plinth`
+-- AUTO_INCREMENT for table `plinth`
 --
 ALTER TABLE `plinth`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT cho bảng `status_product`
+-- AUTO_INCREMENT for table `status_product`
 --
 ALTER TABLE `status_product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `user_account`
+-- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `cp_user`
+-- Constraints for table `cp_user`
 --
 ALTER TABLE `cp_user`
   ADD CONSTRAINT `cp_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`),
   ADD CONSTRAINT `cp_user_ibfk_2` FOREIGN KEY (`cp_id`) REFERENCES `coupon` (`id_cp`);
 
 --
--- Các ràng buộc cho bảng `order`
+-- Constraints for table `order`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_account` (`id`);
 
 --
--- Các ràng buộc cho bảng `order_detail`
+-- Constraints for table `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
 
 --
--- Các ràng buộc cho bảng `product`
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),

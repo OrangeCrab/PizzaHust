@@ -7,7 +7,7 @@
 
     require 'controller_cp.php';
     //phan trang
-    $limit = 2;
+    $limit = 10;
     $page = 1;
     if(isset($_GET['page'])){
         $page = $_GET['page'];
@@ -17,7 +17,7 @@
     }
     $firstIndex = ($page - 1)*$limit;
     // $coupon = get_coupon();
-    $sql = "SELECT * from `coupon` where 1 limit ".$firstIndex.",".$limit;
+    $sql = "SELECT * from `coupon` where 1 ORDER BY id_cp desc limit ".$firstIndex.",".$limit;
     $coupon = executeResult($sql);
     $sql = "SELECT count(id_cp) as total_cp from `coupon` ";
     $coutResult = getArrResult($sql);
@@ -84,56 +84,38 @@
     </head>
     <body>
 
-        <header class="scroll">
-            <meta charset="UTF-8">
-            <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
-            <div class="top_bar">
-                <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
-                <form action="" method="post">
-                    <input type="text" name="logout" id="logout" value="logout" style="display: none;">
-                    <button type="submit" class="logout_btn">Logout</button>
-                </form>
-                <?php 
-                    if (isset($_POST['logout'])){
-                        $_SESSION['user_id'] = 0;
-                        header('location: homepage.php');
-                        die();
-                    }
-                ?>
-            </div>
-        </header>
+    <header>
+        <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
+        <div class="top_bar">
+            <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
+            <form action="" method="post">
+                <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                <button type="submit" class="logout_btn">Logout</button>
+            </form>
+            <?php 
+                if (isset($_POST['logout'])){
+                    $_SESSION['admin_id'] = 0;
+                    header('location: ../login_form.php');
+                    die();
+                }
+            ?>
+        </div>
+    </header>
 
         <div class="work_screen">
             <div class="left_bar scroll">
-                <a href="#" class="active"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
+                <a href="../DashBoard/DashBoard.php" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
                 <a href="../ProductManagementPage/ProductManagementPage.php"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
                 <a href="../InvoiceManagementPage/InvoiceManagementPage.html"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
+                <a href="#" class="active"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Mã khuyến mãi</span></a>
             </div>
 
             <div id="main_center_panel">
                 <!-- lamf tiếp vào đây -->
 
                 <div class="head">
-                    <div id="h1">Danh sách ma khuyen mai</div>
-                    <div class="filter_wrap">
-                        <select class="form-control" name="filter" id="filter" required="true" method="post">
-                            <option value="">Tất cả</option>
-                            <?php
-                                foreach($categoryItems as $category) {
-                                    if($category['id'] == $category_id) {
-                                        echo '<option selected value="'.$category['id'].'">'.$category['name'].'</option>';
-                                    } else {
-                                        echo '<option value="'.$category['id'].'">'.$category['name'].'</option>';
-                                    }
-                                }
-                            ?>
-                        </select>
-                        <input type="hidden" name="category_selected" id="category_selected" />
-                    </div>
-                    <div class="timkiem">
-                        <div class="search_logo"></div>  
-                        <input type="text" placeholder="Tìm kiếm" id="search_tf" name = "search_tf"/>
-                    </div>
+                    <div id="h1">Danh sách mã khuyến mãi</div>
+                    
                     <div class="wrap_btn">
                         <button class="btn btn-success add_button">Thêm khuyen mai</button>
                     </div> 
@@ -147,7 +129,7 @@
                     <table class="table table-bordered table-hover" id="main_table">
                         <thead>
                             <tr>
-                                <th>ID:</th>
+                                <th>ID</th>
                                 <th>Tên Mã</th>
                                 <th>Code</th>
                                 <!-- <th>Loại </th> -->
@@ -167,9 +149,9 @@
                                 <td><?php echo $item['name_cp']; ?></td>
                                 <td><?php echo $item['code_cp']; ?></td> 
                                 <!-- <td><?php echo $item['type_cp']; ?></td>  -->
-                                <td><?php echo $item['value_cp']." ".$item['type_cp']; ?></td> 
-                                <td><?php echo $item['active_date']; ?></td> 
-                                <td><?php echo $item['expire_date']; ?></td> 
+                                <td><?php echo value_coupon($item['value_cp'],$item['type_cp']); ?></td> 
+                                <td><?php echo date("h:m  d-m-Y", strtotime($item['active_date'])); ?></td> 
+                                <td><?php echo date("h:m  d-m-Y", strtotime($item['expire_date'])); ?></td> 
                                 <td><?php echo $item['description']; ?></td>
                                 <td style="width: 20px">
                                 <!-- <a href="<?php echo "form.php?id=".$item['id_cp'];?>"><button class="btn btn-warning">Sửa</button></a> -->
@@ -178,7 +160,9 @@
                                     // hiển thị edit sản phẩm coupon id=?
                                     function editCoupon(id){
 
-                                        console.log("id =", id );
+                                        document.getElementById('active_date').min = '';
+                                        console.log("id =", document.getElementById('active_date').min);
+
                                         $.ajax({ url: 'ajaxcp.php',
                                                 data: {'action': 'edit', 'id': id},
                                                 dataType: "json",
@@ -189,8 +173,8 @@
                                                     document.getElementById('name_cp').value = relust['name_cp'];
                                                     document.getElementById('code_cp').value = relust['code_cp'];
                                                     document.getElementById('value_cp').value = relust['value_cp'];
-                                                    document.getElementById('active_date').value = (relust['active_date']).replaceAll( ' ', 'T');
-                                                    document.getElementById('expire_date').value = relust['expire_date'].replaceAll( ' ', 'T');
+                                                    document.getElementById('active_date').value = (relust['active_date']).replaceAll( ' ', 'T').slice(0, 16);
+                                                    document.getElementById('expire_date').value = relust['expire_date'].replaceAll( ' ', 'T').slice(0, 16);
                                                     document.getElementById('description').value = relust['description'];
                                                     document.getElementById('type_cp').value = relust['type_cp'];
                                                     document.getElementById('max__order_amount').value = relust['max__order_amount'];
@@ -249,7 +233,7 @@
         </div>
         <div class="product_popup" id="Product_popup">
             <div class="testbox" id="testbox">
-                <form  method="post" enctype="multipart/form-data">
+                <form class="form_cp"  method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_cp" id="id_cp" />
 
                     <div class="banner">
@@ -301,31 +285,31 @@
                         <div class="city-item">
                         <input type="number" name="value_cp" value="" id="value_cp" min = "0" required/>
                         <select name="type_cp" value="" id="type_cp"  onchange="setvalue_cp()" required>
-                            <option value="PERCENTAGE" >Theo phần trăm</option>
-                            <option value="CURRENCY" >Cố dịnh</option>
+                            <option value="0" >Theo phần trăm</option>
+                            <option value="1" >Cố dịnh</option>
                         </select>
                         <script>
                             let type_cp = document.getElementById("type_cp");
                             let value_cp = document.getElementById("value_cp");
-                            if(type_cp.value == "PERCENTAGE"){
+                            if(type_cp.value == "0"){
                                     console.log("Loai cp: ",type_cp.value );
                                     
                                     value_cp.max = 100;
 
-                                }else if(type_cp.value == "CURRENCY"){
+                                }else if(type_cp.value == "1"){
                                     value_cp.max = null;
                                 }
                                 console.log(" dèuale min cp: ",value_cp.min," - ", value_cp.max);
 
                             function setvalue_cp(){
 
-                                if(type_cp.value == "PERCENTAGE"){
+                                if(type_cp.value == "0"){
                                     console.log("Loai cp: ",type_cp.value );
                                     
                                     value_cp.max = 100;
                                     console.log("min cp: ",value_cp.min," - ", value_cp.max);
 
-                                }else if(type_cp.value == "CURRENCY"){
+                                }else if(type_cp.value == "1"){
                                     value_cp.max = null;
                                 }
                                 console.log(" dèuale min cp: ",value_cp.min," - ", value_cp.max);
@@ -363,7 +347,7 @@
                                     document.getElementById('active_date').value = '';
                                     document.getElementById('expire_date').value = '';
                                     document.getElementById('description').value = '';
-                                    document.getElementById('type_cp').value = 'PERCENTAGE';
+                                    document.getElementById('type_cp').value = '0';
                                     document.getElementById('max__order_amount').value = '';
                                     }
                             </script>

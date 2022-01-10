@@ -1,15 +1,6 @@
 <?php
 require_once('../../database/dbhelper.php');
 
-
-// if ( !empty($_POST)){
-//     $id_cp = isset($_POST['data']) ? $_POST['data']: "not";
-//     echo $id_cp." no";
-//     get_acoupon($_POST['data']);
-//     echo "dug roi";
-// }
-
-
 // them
 function add_coupon($name_cp, $type_cp, $code_cp, $value_cp ,$description, 
                     $active_date, $expire_date, $min_order_value, $max__order_amount){
@@ -17,8 +8,8 @@ function add_coupon($name_cp, $type_cp, $code_cp, $value_cp ,$description,
         active_date, expire_date, min_order_value, max__order_amount)
         VALUES ('$name_cp', '$type_cp', '$code_cp', $value_cp ,'$description', 
         '$active_date', '$expire_date', '$min_order_value', '$max__order_amount') ";   
-    print_r($sql);
-    // execute($sql);
+    // print_r($sql);
+    execute($sql);
 }
 
 function update_coupon($id_cp, $name_cp, $type_cp, $code_cp, $value_cp ,$description, 
@@ -27,11 +18,6 @@ function update_coupon($id_cp, $name_cp, $type_cp, $code_cp, $value_cp ,$descrip
           SET  name_cp = '$name_cp', type_cp = '$type_cp', code_cp = '$code_cp', value_cp  = $value_cp ,description = '$description', 
                 active_date = '$active_date', expire_date = '$expire_date', min_order_value = '$min_order_value', max__order_amount= '$max__order_amount'
           WHERE id_cp = $id_cp;";  
-          echo '<br/><br/>';
-         
-
-    print_r($sql);
-    echo '<br/><br/>';
 
     execute($sql);
 }
@@ -74,34 +60,23 @@ function status_coupon($code_cp) {
     if($info_cp["active_date"]== "0000-00-00 00:00:00" || $info_cp["active_date"]== null){
         return "Vĩnh viễn ";
     }else if($info_cp["expire_date"]<$currentDateTime){
-        return "Qua han";
+        return "Quá hạn";
     }else if($info_cp["active_date"]>$currentDateTime){ 
-        return "Sap dien ra";
+        return "Sắpp diễn ra";
     } else  {
-        return "Dang dien ra";
+        return "Đang diễn ra";
     }
 }
 
 // mô tả giá trị coupon (vd giamr 20% toi da 100K cho don toi thieu 300K)
-function value_coupon($code_cp){
-    date_default_timezone_set('Asia/Ho_Chi_Minh');
-    $currentDateTime = date("Y-m-d h-m-s    ");
-    $sql = "SELECT * from `coupon` WHERE code_cp='$code_cp'";
-    $info_cp = getArrResult($sql);
-    // echo var_dump($info_cp );
-    if($info_cp['type_cp']=="PERCENTAGE"){
-        $str = "Giảm ".$info_cp['value_cp']." % ";
-        if($info_cp['max__order_amount']!=0){
-            $str .=" tối đa ".$info_cp['max__order_amount']." đồng ";
-        }
-        if($info_cp['min_order_value']!=0){
-            $str .=" cho đơn hàng từ ".$info_cp['min_order_value']." đồng trở lên";
-        }
-        
-    }else if($info_cp['type_cp']=="CURRENCY"){
-        $str = "Giảm ".$info_cp['value_cp']." đồng ";
-        if($info_cp['min_order_value']!=0){
-            $str .=" cho đơn hàng từ ".$info_cp['min_order_value']." đồng trở lên";
+function value_coupon($value, $type){
+    if($type=="0"){
+        $str = "Giảm ".$value." % ";
+    }else if($type=="1"){
+        if($value % 1000 == 0){
+            $str = "Giảm ".($value/1000)." K ";
+        }else{
+            $str = "Giảm ".$value." VNĐ ";
         }
     }else{
         $str = " Ưu đãi khác";

@@ -1,14 +1,16 @@
 <?php
-    $title = 'Sửa Sản Phẩm';
-	$baseUrl = '../';
-
-	$id = $msg = $name = $status_product_id = $category_id  = $image = $description = $price_free_size = 
-        $price_s= $price_m = $price_l ='';
-
     require_once('../../database/utility.php');
     require_once('../../database/define.php');
     require_once('../../database/dbhelper.php');
     require_once('form_save.php');
+    session_start();
+    if (!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0) {
+        header('location: ../login_form.php');
+        die();
+    }
+
+	$id = $msg = $name = $status_product_id = $category_id  = $image = $description = $price_free_size = 
+        $price_s= $price_m = $price_l ='';
 
 	$id = getGet('id');
 

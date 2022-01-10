@@ -1,5 +1,9 @@
 <?php
-
+if (isset($_POST['logout'])){
+	$_SESSION['admin_id'] = 0;
+	header('location: ../login_form.php');
+	die();
+}
 if(!empty($_POST)) {
 	$image = setImgAndGetImg_id();
 	$id = getPost('id');

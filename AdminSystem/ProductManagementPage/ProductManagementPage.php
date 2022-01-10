@@ -1,12 +1,15 @@
 <?php
-	$id = $msg = $name = $price  = $category_id = $image = $description = $price_free_size = $price_s= $price_m 
-    = $price_l ='';
-
     require_once('../../database/utility.php');   
 	require_once('../../database/define.php');
 	require_once('../../database/dbhelper.php');
 	require_once('form_save.php');
-
+    session_start();
+    if (!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0) {
+        header('location: ../login_form.php');
+        die();
+    }
+    $id = $msg = $name = $price  = $category_id = $image = $description = $price_free_size = $price_s= $price_m 
+    = $price_l ='';
 	$id = getGet('id');
     
    	if($id != '' && $id > 0) {
@@ -61,7 +64,10 @@
             <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
             <div class="top_bar">
                 <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
-                <a href="../login_form.php" class="logout_btn">Logout</a>
+                <form action="" method="post">
+                    <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                    <button type="submit" class="logout_btn">Logout</button>
+                </form>
             </div>
         </header>
         <div class="work_screen">

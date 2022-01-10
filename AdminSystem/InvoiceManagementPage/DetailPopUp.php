@@ -3,6 +3,11 @@
 
 <!-- Thông tin khách hàng và đơn hàng -->
 <?php
+    session_start();
+    if (!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0) {
+        header('location: ../login_form.php');
+        die();
+    }
     require_once('../../database/dbhelper.php');
     $baseUrl = '../';
     $orderid = $_GET["orderid"];

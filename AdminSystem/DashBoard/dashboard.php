@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0) {
+    header('location: ../login_form.php');
+    die();
+}
 require 'view.php';
 $order = get_overview();
 $top_product = get_order_top();
@@ -22,7 +27,17 @@ $data_chart = get_sales();
             <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
             <div class="top_bar">
                 <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
-                <a href="../login_form.php" class="logout_btn">Logout</a>
+                <form action="" method="post">
+                    <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                    <button type="submit" class="logout_btn" style="border: none;">Logout</button>
+                </form>
+                <?php 
+                    if (isset($_POST['logout'])){
+                        $_SESSION['admin_id'] = 0;
+                        header('location: ../login_form.php');
+                        die();
+                    }
+                ?>
             </div>
         </header>
 

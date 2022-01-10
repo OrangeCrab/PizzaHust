@@ -105,8 +105,8 @@ if (isset($_POST['thanhtoan'])) {
         $coupon = $_SESSION['giam_gia'] * 1000;
         $sql_giohang = mysqli_query($con, "update `order` set coupon = $coupon where id = $get_order_id");
     }
-    // unset($_SESSION['giohang']);
-    // header('location: ../ShowForGuest/homepage/homepage.php');
+    unset($_SESSION['giohang']);
+    header('location: ../ShowForGuest/homepage/homepage.php');
     // $get_order_id = mysqli_query($con,"SELECT `id` FROM `order` where `fullname` ='$name' and `payment`");
 
 }

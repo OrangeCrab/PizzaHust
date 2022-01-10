@@ -64,15 +64,12 @@
                 <a href="../login_form.php" class="logout_btn">Logout</a>
             </div>
         </header>
-        
-
         <div class="work_screen">
             <div class="left_bar scroll">
                 <a href="../DashBoard/DashBoard.html"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
                 <a href="#" class="active"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
                 <a href="../InvoiceManagementPage/InvoiceManagement.php"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
             </div>
-            
             <div id="main_center_panel">
                 <div class="head">
                     <div id="h1">Danh sách sản phẩm</div>

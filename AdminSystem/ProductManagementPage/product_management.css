@@ -196,7 +196,6 @@ header{
             background-color: rgb(1, 102, 102);
         }
     #table_panel{
-        
         position: absolute;
         width: 96%;
         height: 90%;
@@ -206,18 +205,18 @@ header{
         border-radius: 5px;
         box-shadow: 0px 5px 10px #404040;
     }
-        
         #table_panel table {
-            position: absolute;
+            position: relative;
+            display: block;
+            height: 100%;
             width: 100%;
             border-collapse: collapse;
-            table-layout: fixed;  
+            table-layout: fixed;
+            overflow: auto;
             font-size: 15px;
             font-family: Monsterrat;
             font-weight: lighter;
-            height: 100%;
-            display: block;
-            overflow: auto; 
+            margin-bottom: 100px;
         }
             #table_panel table tr {
                 height: 50px;
@@ -226,7 +225,6 @@ header{
             #table_panel table th {
                 position: sticky; 
                 top: 0;
-                padding: 5px;
                 text-align: center;
                 z-index: 0;
                 background: white;
@@ -235,42 +233,30 @@ header{
                 padding: 5px;
                 border-bottom: 0.5px solid rgb(200, 200, 200);
             }
-            #table_panel table th:nth-child(8), td:nth-child(8) {
-                width: 5%;
-                text-align: center;
-            }
-            #table_panel table th:nth-child(7), td:nth-child(7) {
-                width: 5%;
-            }
-            #table_panel table th:nth-child(6), td:nth-child(6) {
-                width: 10%;
-                min-width: 50px;
-                max-width: 80px;
-            }
-            #table_panel table th:nth-child(5), td:nth-child(5) {
-                width: 11%;
-                min-width: 50px;
-                max-width: 150px;
-            }
-            #table_panel table th:nth-child(4), td:nth-child(4) {
-                width: 31%;
-                min-width: 50px;
-                max-width: 150px;
-            }
-            #table_panel table th:nth-child(3), td:nth-child(3) {
-                width: 15%;
-                min-width: 50px;
-                max-width: 80px;
-            }
-            #table_panel table th:nth-child(2), td:nth-child(2) {
-                width: 10%;
-                max-width: 150px;
-                background-position: center;
-                background-size: contain;
-            }
-            #table_panel table th:nth-child(1), td:nth-child(1) {
+            #table_panel th:nth-child(1), #table_panel td:nth-child(1) {
                 width: 7%;
                 text-align: center;
+            }
+            #table_panel th:nth-child(2), #table_panel td:nth-child(2){
+                width: 10%;
+            }
+            #table_panel th:nth-child(3), #table_panel td:nth-child(3) {
+                width: 15%;
+            }
+            #table_panel th:nth-child(4), #table_panel td:nth-child(4) {
+                width: 31%;
+            }
+            #table_panel th:nth-child(5), #table_panel td:nth-child(5) {
+                width: 11%;
+            }
+            #table_panel th:nth-child(6), #table_panel td:nth-child(6) {
+                width: 10%;
+            }
+            #table_panel th:nth-child(7), #table_panel td:nth-child(7) {
+                width: 8%;
+            }
+            #table_panel th:nth-child(8), #table_panel td:nth-child(8) {
+                width: 8%;
             } 
 .product_popup{
     z-index: 2;    

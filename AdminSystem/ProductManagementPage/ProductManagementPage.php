@@ -1,4 +1,10 @@
 <?php
+    session_start();
+    if(!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0){
+        header('location: ../login_form.php');
+        die();
+    }
+
 	$id = $msg = $name = $price  = $category_id = $image = $description = $price_free_size = $price_s= $price_m 
     = $price_l ='';
 
@@ -61,7 +67,7 @@
             <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
             <div class="top_bar">
                 <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
-                <a href="../login_form.php" class="logout_btn">Logout</a>
+                <a href="../process_logout.php" class="logout_btn">Logout</a>
             </div>
         </header>
         <div class="work_screen">

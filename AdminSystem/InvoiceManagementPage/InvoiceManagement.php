@@ -1,4 +1,10 @@
 <?php
+    session_start();
+    if(!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0){
+        header('location: ../login_form.php');
+        die();
+    }
+
     require_once('../../database/dbhelper.php');
 	$baseUrl = '../';
 ?>
@@ -31,7 +37,9 @@
         <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
         <div class="top_bar">
             <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
-            <a href="#" class="logout_btn">Logout</a>
+            <a href="../process_logout.php" class="logout_btn">Logout</a>
+            <!-- <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+            <button class="logout_btn" type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button>  -->
         </div>
     </header>
 

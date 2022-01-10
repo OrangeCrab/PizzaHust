@@ -15,22 +15,14 @@ require_once ('process_login.php');
         <img class="background_img" src="../masterial/image/bgrAdminPage/bgrLogin.jpg" alt="">
         <div class="screen"></div>
         
-        <a href="../homepage/homepageDraft.php"><img class="logo" src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo"></a>
+        <a href="../ShowForGuest/homepage/homepage.php"><img class="logo" src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo"></a>
         
-
-
         <form class="box" action="" method="post">
             <h2>LOGIN</h2>
             <input type="text" name="username" id ="username" placeholder="Username">       
             <input type="password" name="password" id ="password" placeholder="Password">
-            <!-- <img type = "submit" src="../../masterial/image/iconAdminPage/login.svg" alt=""> -->
-            <!-- <input type="submit" name="" value="Login"> -->
-            <a href="ProductManagementPage/ProductManagementPage.php" type="submit" class="button btn btn-primary active">LOGIN</a>
-            <!-- <a href="#">Quên mật khẩu</a> -->
-            
+            <input type="submit" name="" value="Login">
         </form>
-      
-
     </body>
 
 </html>

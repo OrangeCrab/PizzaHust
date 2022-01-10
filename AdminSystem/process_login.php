@@ -1,4 +1,6 @@
 <?php 
+session_start();
+$_SESSION['admin_id'] = 0;
 require_once('../database/dbhelper.php');
 require_once('../database/utility.php');
 $password = $user_name= $msg = '';
@@ -11,8 +13,8 @@ $password = $user_name= $msg = '';
         $password = getPost('password');
         
         // chay cau lenh sql de lay ra gia tri trong database co gia tri bang gia tri nguoi dung nhap vao
-        $sql = "select * from admin where user_name = '$user_name' and password = '$password'";
-        $userExist = executeResult($sql);
+        $sql = "select * from admin";
+        $userExist = getArrResult($sql);
 
 
         // neu khong co nguoi dung nao
@@ -23,8 +25,13 @@ $password = $user_name= $msg = '';
         else{
             // dang nhap thanh cong
             //echo"thành công";
-            header('location: ProductManagementPage/ProductManagementPage.php');
-            die();
+            if ($user_name == $userExist['username'] && $password == $userExist['password']) {
+                $_SESSION['admin_id'] = $userExist['id'];
+                header('location: ./DashBoard/dashboard.php');
+                die();
+            }else{
+                $msg = "Đăng nhập không thành công, vui lòng kiểm tra lại tên đăng nhập hoặc mật khẩu";
+            }
         }   
      }
 ?>

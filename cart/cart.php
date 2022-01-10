@@ -459,7 +459,7 @@ function tinhtien()
                             <option value="Quận Hoàn Kiếm">Quận Hoàn Kiếm</option>
                             <option value="	Quận Hoàng Mai">Quận Hoàng Mai</option>
                             <option value="Quận Long Biên">Quận Long Biên</option>
-                            <option value="Quận Nam Từ Liêmy">Quận Nam Từ Liêm</option>
+                            <option value="Quận Nam Từ Liêm">Quận Nam Từ Liêm</option>
                             <option value="Quận Tây Hồ">Quận Tây Hồ</option>
                             <option value="Quận Thanh Xuân">Quận Thanh Xuân</option>
 

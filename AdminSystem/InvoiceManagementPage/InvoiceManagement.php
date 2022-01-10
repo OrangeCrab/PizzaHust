@@ -1,9 +1,17 @@
 <?php
     session_start();
+<<<<<<< HEAD
     if (!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0) {
         header('location: ../login_form.php');
         die();
     }
+=======
+    if(!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0){
+        header('location: ../login_form.php');
+        die();
+    }
+
+>>>>>>> 74d98b67ea77664a6697d117236ff61e01247210
     require_once('../../database/dbhelper.php');
 	$baseUrl = '../';
 ?>
@@ -36,6 +44,7 @@
         <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
         <div class="top_bar">
             <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
+<<<<<<< HEAD
             <form action="" method="post">
                 <input type="text" name="logout" id="logout" value="logout" style="display: none;">
                 <button type="submit" class="logout_btn">Logout</button>
@@ -47,6 +56,11 @@
                     die();
                 }
             ?>
+=======
+            <a href="../process_logout.php" class="logout_btn">Logout</a>
+            <!-- <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+            <button class="logout_btn" type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button>  -->
+>>>>>>> 74d98b67ea77664a6697d117236ff61e01247210
         </div>
     </header>
 

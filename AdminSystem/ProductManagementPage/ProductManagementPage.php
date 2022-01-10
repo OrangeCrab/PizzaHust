@@ -1,4 +1,16 @@
 <?php
+<<<<<<< HEAD
+=======
+    session_start();
+    if(!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0){
+        header('location: ../login_form.php');
+        die();
+    }
+
+	$id = $msg = $name = $price  = $category_id = $image = $description = $price_free_size = $price_s= $price_m 
+    = $price_l ='';
+
+>>>>>>> 74d98b67ea77664a6697d117236ff61e01247210
     require_once('../../database/utility.php');   
 	require_once('../../database/define.php');
 	require_once('../../database/dbhelper.php');
@@ -64,10 +76,14 @@
             <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
             <div class="top_bar">
                 <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
+<<<<<<< HEAD
                 <form action="" method="post">
                     <input type="text" name="logout" id="logout" value="logout" style="display: none;">
                     <button type="submit" class="logout_btn">Logout</button>
                 </form>
+=======
+                <a href="../process_logout.php" class="logout_btn">Logout</a>
+>>>>>>> 74d98b67ea77664a6697d117236ff61e01247210
             </div>
         </header>
         <div class="work_screen">

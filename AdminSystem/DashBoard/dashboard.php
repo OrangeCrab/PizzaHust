@@ -1,9 +1,17 @@
 <?php
 session_start();
+<<<<<<< HEAD
 if (!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0) {
     header('location: ../login_form.php');
     die();
 }
+=======
+if(!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] == 0){
+    header('location: ../login_form.php');
+    die();
+}
+
+>>>>>>> 74d98b67ea77664a6697d117236ff61e01247210
 require 'view.php';
 $order = get_overview();
 $top_product = get_order_top();
@@ -27,6 +35,7 @@ $data_chart = get_sales();
             <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
             <div class="top_bar">
                 <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
+<<<<<<< HEAD
                 <form action="" method="post">
                     <input type="text" name="logout" id="logout" value="logout" style="display: none;">
                     <button type="submit" class="logout_btn" style="border: none;">Logout</button>
@@ -38,6 +47,9 @@ $data_chart = get_sales();
                         die();
                     }
                 ?>
+=======
+                <a href="../process_logout.php" class="logout_btn">Logout</a>
+>>>>>>> 74d98b67ea77664a6697d117236ff61e01247210
             </div>
         </header>
 

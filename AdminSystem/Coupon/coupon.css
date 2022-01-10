@@ -54,6 +54,7 @@ header{
         font-weight: bolder;
         transition: 0.5s;
         transition-property: background;
+        border: none;
     }
 
     .logout_btn:hover{

@@ -89,15 +89,24 @@
             <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
             <div class="top_bar">
                 <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
-                <a href="../process_logout.php" class="logout_btn">Logout</a>
+                <form action="" method="post">
+                    <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                    <button type="submit" class="logout_btn">Logout</button>
+                </form>
+                <?php 
+                    if (isset($_POST['logout'])){
+                        $_SESSION['user_id'] = 0;
+                        header('location: homepage.php');
+                        die();
+                    }
+                ?>
             </div>
         </header>
 
         <div class="work_screen">
             <div class="left_bar scroll">
                 <a href="#" class="active"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
-                <a href="../CategoryManagementPage/CategoryManagement.php"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Danh Mục Món ăn</span></a>
-                <a href="../CodeProductManagementPage/productManagementPage.php"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
+                <a href="../ProductManagementPage/ProductManagementPage.php"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
                 <a href="../InvoiceManagementPage/InvoiceManagementPage.html"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
             </div>
 

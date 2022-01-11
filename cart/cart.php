@@ -257,7 +257,7 @@ function tinhtien()
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
                 $get_price = mysqli_query($con, "SELECT * from coupon where code_cp = '$code_voucher'");
                 $res = mysqli_fetch_array($get_price);
-                
+                if($res != null)
                 if((int)$res["type_cp"] ==1 ){
                     $giamgia = (int)$res["max__order_amount"]/1000;
                     $type = 1;

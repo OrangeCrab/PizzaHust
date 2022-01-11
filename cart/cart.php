@@ -76,7 +76,7 @@ if (isset($_POST['thanhtoan'])) {
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
-                $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
+                $get_price = mysqli_query($con, "select price_free_size from `product` where name = N'{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
                 $get_topping_price = (int)$res["price_free_size"];
                 $gia_topping+= $get_topping_price/1000;
@@ -132,7 +132,7 @@ function showgiohang()
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
-                $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
+                $get_price = mysqli_query($con, "select price_free_size from `product` where name = N'{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
                 $get_topping_price = (int)$res["price_free_size"];
                 $full_topping+= $get_topping_price/1000;
@@ -235,7 +235,7 @@ function tinhtien()
             }else
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
-                $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
+                $get_price = mysqli_query($con, "select price_free_size from `product` where name = N'{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
                 $get_topping_price = (int)$res["price_free_size"];
                 $gia_topping += $get_topping_price/1000;

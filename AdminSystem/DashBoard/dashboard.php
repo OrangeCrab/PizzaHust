@@ -116,7 +116,7 @@ $data_chart = get_sales();
                     
                     <dib class="recentCustomers">
                         <div class="cardHeader">
-                            <h2>Dặt nhiều</h2>
+                            <h2>Đặt nhiều</h2>
                             <!-- <a href="#" class="btn">View All</a> -->
                         </div>
                         <table>

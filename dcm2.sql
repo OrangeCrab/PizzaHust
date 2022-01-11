@@ -269,14 +269,14 @@ INSERT INTO `product` (`id`, `category_id`, `name`, `status_product_id`, `image`
 (5, 2, 'Pizza Tôm Sốt Bơ Tỏi', 1, '5_loai_thit.jpg', 'Với Tôm, HàNh Tây Và Ớt Chuông Phủ Trên Nền Xốt Bơ Tỏi ', 0, 90000, 100000, 110000),
 (6, 3, 'Đùi Gà Con', 1, 'ga_BBQ.jpg', 'Đùi Gà Nướng Thơm Lừng Ngon Tuyệt Với Hương Vị BBQ ', 50000, 90000, 100000, 110000),
 (7, 2, 'Pizza Bò Tôm', 1, 'bo_tom.jpg', 'Tôm, Mực, Thanh Cua, Hành Tây, Thơm Phủ Xốt Tiêu Đen Thơm Nóng Và Phô Mai Mozzarella ', 0, 90000, 100000, 110000),
-(8, 8, 'Double sốt', 1, '', 'Với lượng sốt BBQ gấp đôi nâng cao hương vị món ăn', 9000, 0, 0, 0),
-(9, 8, 'Phô mai viền', 1, '', 'Phô Mai Viền Siêu Thơm Nhập Khẩu Trực Tiếp Tại Mỹ', 10000, 8000, 0, 0),
-(10, 8, 'Phô mai phủ', 1, '', 'Phô Mai Phủ Từ Nhà Máy Phô Mai Nổi Tiếng Ở Anh Quốc', 15000, 15000, 0, 0),
+(8, 8, 'Double sốt', 1, 'sauce1.jpg', 'Với lượng sốt BBQ gấp đôi nâng cao hương vị món ăn', 9000, 0, 0, 0),
+(9, 8, 'Phô mai viền', 1, 'pizza_vien.jpg', 'Phô Mai Viền Siêu Thơm Nhập Khẩu Trực Tiếp Tại Mỹ', 10000, 8000, 0, 0),
+(10, 8, 'Phô mai phủ', 1, 'phomai_phu.jpg', 'Phô Mai Phủ Từ Nhà Máy Phô Mai Nổi Tiếng Ở Anh Quốc', 15000, 15000, 0, 0),
 (11, 4, 'Mỳ đặc biệt', 1, 'mi_y.jpg', 'Mì Ý Xốt Cà Chua Với Tôm, Mực, Hành Tây Và Ớt Chuông Xanh', 60000, 0, 0, 0),
 (12, 3, 'Gà BBQ', 1, 'bbq.jpg', 'Cánh Gà Chiên Giòn Phủ Xốt Hàn Quốc', 60000, 0, 0, 0),
 (13, 5, 'Cocacola', 1, 'coca1.jpg', 'CocaCola lon 360ml', 15000, 0, 0, 0),
-(14, 1, 'Combo 1', 1, 'combo1.png', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
-(15, 1, 'Combo 2', 1, 'combo2.jfif', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
+(14, 1, 'Combo 1', 1, 'combo1.jpg', '4 Pizza Thập Cẩm, 4 Cocacola, 1 gà BBQ', 300000, 0, 0, 30000),
+(15, 1, 'Combo 2', 1, 'combo2.jpg', '1 Pizza Chay, 2 Pepsi, 1 gà BBQ', 180000, 0, 0, 180000),
 (16, 1, 'Combo 3', 1, 'combo3.jpg', '2 Pizza + 1 Pepsi', 210000, 0, 0, 0);
 
 -- --------------------------------------------------------

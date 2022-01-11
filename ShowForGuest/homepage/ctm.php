@@ -66,10 +66,10 @@
                     echo '
                     <div class="personal-information">
                         <h2>Thông tin khách hàng:</h2>
-                        <span>USERNAME:  </span><span id="username">'.$customer['username'].'</span><br>
-                        <span>PHONENUMBER:  </span><span id="phonenumber">'.$customer['phonenumber'].'</span><br>
-                        <span>ADDRESS:  </span><span id="address">'.$customer['address'].'</span><br>
-                        <span>EMAIL:  </span><span>'.$customer['email'].'</span><br>      
+                        <span>Họ tên:  </span><span id="username">'.$customer['username'].'</span><br>
+                        <span>Điện thoại:  </span><span id="phonenumber">'.$customer['phonenumber'].'</span><br>
+                        <span>Địa chỉ:  </span><span id="address">'.$customer['address'].'</span><br>
+                        <span>Email:  </span><span>'.$customer['email'].'</span><br>      
                     ';
                     echo'
                     </div>';
@@ -96,7 +96,7 @@
             </div>
 
             <div class="history-order">
-                <h1>Lịch sử đơn hàng:</h1>
+                <h2>Lịch sử mua hàng:</h2>
 
                 <div class="sidenav">
                     <?php 

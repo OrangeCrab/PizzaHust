@@ -44,13 +44,25 @@ ul{
 
 ul img{
     margin: 0;
-    height: 80px;
-    width: 300px;
+    height: 75px;
+    width: 285px;
 }
 
+.login-admin{
+    width: 25px;
+    height: 25px;
+}
+
+li a::before, .dropbtn::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+}
 li a, .dropbtn {
     display: inline-block;
-    padding: 30px 30px;
+    vertical-align: middle;
     color: #f2f2f2;
     text-decoration: none;
     text-align: center;
@@ -74,6 +86,7 @@ li.dropdown {
 }
 .dropdown-content {
     display: none;
+    margin-top: 27px;
     position: absolute;
     background-color: black;
     opacity: 0.9;

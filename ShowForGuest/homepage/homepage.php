@@ -134,7 +134,6 @@
             echo'
             <ul class="top-bar">
                 <img src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" style="float: left;" alt="">
-                <!-- <li></li> -->
                 <li><a href="#launcher">Trang chủ</a></li>
                 <li><a href="#menu">Thực đơn</a></li>
                 <li><a href="#contact">Liên hệ</a></li>
@@ -145,7 +144,7 @@
                 echo '
                 
                 <li class="dropdown">
-                    <a style="color: #F98607;" href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <a style="color: #F98607;" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
                     <form class="dropdown-content" action="" method="POST">
                         <a href="ctm.php">'.$customer.'</a>
                         <input type="text" name="logout" id="logout" value="logout" style="display: none;">
@@ -157,7 +156,11 @@
                 else
                 echo '
                     <li class="dropdown">
-                        <a href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <a class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <form class="dropdown-content" action="" method="POST">
+                            <a href="ctm.php">Khách hàng</a>
+                            <a href="../../AdminSystem/login_form.php">Chủ quán</a>
+                        </form>
                     </li>
                 </ul>
                 ';

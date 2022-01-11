@@ -386,7 +386,7 @@ function tinhtien()
                 <li class="dropdown">
                     <a style="color: #F98607;" href="../ShowForGuest/homepage/ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
                     <form class="dropdown-content" action="" method="POST">
-                        <a href="ctm.php">'.$customer.'</a>
+                        <a href="../ShowForGuest/homepage/ctm.php">'.$customer.'</a>
                         <input type="text" name="logout" id="logout" value="logout" style="display: none;">
                         <button type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> 
                     </form>

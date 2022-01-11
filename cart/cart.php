@@ -89,6 +89,7 @@ if (isset($_POST['thanhtoan'])) {
                 $total += $_SESSION['giohang'][$i][3] *  $giatien;
                 $price =  $giatien * 1000;
             }
+            $total += $gia_topping;
             $thanhtoan = ($total + 22 - $_SESSION['giam_gia']) * 1000;
             $num = (int)$_SESSION['giohang'][$i][3];
             $get_id = mysqli_query($con, "select id from `product` where name = N'{$_SESSION['giohang'][$i][4]}' ");
@@ -244,6 +245,7 @@ function tinhtien()
             if ($_SESSION['giohang'][$i][6] == 1) {
                 $total += $_SESSION['giohang'][$i][3] * ($giatien + $gia_topping);
             } else   $total += $_SESSION['giohang'][$i][3] *  $giatien;
+            $total += $gia_topping;
             $thanhtoan = $total + 22;
         }
         

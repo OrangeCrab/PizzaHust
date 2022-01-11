@@ -175,11 +175,16 @@
             if (isset($_POST['changePassword']) && $_POST['changePassword']){
                 if ($customer['password'] == $_POST['password']){
                     if ($_POST['newpw'] == $_POST['cfnewpw'] && $_POST['newpw']){
-                        $newpw = $_POST['cfnewpw'];
-                        execute("update user_account
-                                 set password = '$newpw'
-                                 where id = '$customer[id]'");
-                        echo '<script type="text/javascript">alert("Đổi mật khẩu thành công");</script>';
+                        if (strlen($_POST['newpw']) >= 6){
+                            $newpw = $_POST['cfnewpw'];
+                            execute("update user_account
+                                     set password = '$newpw'
+                                     where id = '$customer[id]'");
+                            echo '<script type="text/javascript">alert("Đổi mật khẩu thành công");</script>';
+                        }
+                        else {
+                            echo '<script type="text/javascript">alert("Mật khẩu phải có ít nhất 6 kí tự");</script>';
+                        }
                     }
                     else{
                         echo '<script type="text/javascript">alert("Mật khẩu mới không khớp");</script>';

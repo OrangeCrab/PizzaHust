@@ -11,7 +11,7 @@
 
     
            $email = getPost('email');
-           $sql_email = "select email from user_account where email = '$email' and username = '$username'";
+           $sql_email = "select email from user_account where email = '$email'";
            $check_email = executeResult($sql_email);
            if(!empty($check_email)){
               // check password

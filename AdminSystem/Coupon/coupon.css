@@ -291,6 +291,7 @@ header{
 .product_popup{
     z-index: 2;
     position: fixed;
+    overflow: auto;
     background-color: rgba(0, 0, 0, 0.9);
     top: 0;
     right: 0;
@@ -308,7 +309,7 @@ header{
     visibility: visible;
 }
 .testbox {
-    position: fixed;
+    position: relative;
     width: 50%;
     height: 80%;
     left: 25%;

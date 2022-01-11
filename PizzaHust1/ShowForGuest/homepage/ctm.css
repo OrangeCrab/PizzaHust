@@ -1,0 +1,326 @@
+@font-face {
+    font-family: Montserrat;
+    src: url('../../masterial/font/Montserrat-Medium.ttf');
+}
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    background-image: url('../../masterial/image/bgrhomepage/bgrhomepage.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: block;
+    grid-template-columns: 1fr;
+    font-family: Montserrat;
+}
+
+header{
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+}
+/* ----------------------------------------------------------------- */
+
+.top-bar {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 15% 15% 15% 15% 10%;
+    text-align: center;
+    background-color: black;
+    opacity: 0.9;
+}
+
+.top-bar img{
+    margin: 0;
+    height: 80px;
+    width: 300px;
+}
+
+.top-bar li{
+    transition: 0.5s;
+    transition-property: background;
+}
+.top-bar li a, .dropbtn {
+    display: inline-block;
+    padding: 30px 30px;
+    color: #f2f2f2;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    transition-property: background;
+}
+
+.top-bar li a.dropbtn{
+    color: #F98607;
+}
+
+.top-bar li:hover, .dropdown:hover{
+    background: #404040;
+}
+
+.top-bar li a:hover{
+    color: #F98607;
+}
+
+.top-bar li.dropdown {
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    opacity: 0.9;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.top-bar .dropdown-content a, .out {
+    color: #f2f2f2;
+    padding: 12px 16px;
+    font-size: 10px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover, .out:hover {
+    color: #F98607;
+}
+
+.dropdown-content .out{
+    border: none;
+    background-color: black;
+    cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ------------------- */
+
+.body-page{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5% 30% 60% 5%;
+    height: 100%;
+}
+.customer-info{
+    position: sticky;
+    top: 0px;
+    padding-top: 120px;
+    padding-bottom: 200px;
+    width: 80%;
+    display: block;
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: #F98607;
+    height: fit-content;
+    border-bottom-left-radius: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+}
+.personal-information h2{
+    color: black;
+}
+
+.personal-information span{
+    line-height: 30px;
+    color: black;
+    font-size: 14px;
+}
+
+.customer-info hr{
+    border: 1px solid #A80000;
+}
+
+.customer-info button{
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 1px solid #A80000;
+    border-radius: 15px;
+    background: #f2f2f2;
+    cursor: pointer;
+    transition: 0.5s;
+    transition-property: background-color;
+}
+.customer-info button:hover{
+    color: #f2f2f2;
+    background-color: #A80000;
+}
+.voucher-collection{
+    width: 100%;
+}
+.voucher-collection h3{
+    color: black;
+}
+
+.voucher-collection a{
+    background-color: #A80000;
+    color: #f2f2f2;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-top: 10px;
+    display: inline-flex;
+    text-decoration: none;
+    /* cursor: pointer; */
+}
+
+.history-order{
+    background-color: #f2f2f2;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 120px;
+    padding-bottom: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+}
+
+.history-order h1{
+    color: #404040;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a, .dropdown-btn {
+    padding: 6px 0px 6px 0px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #818181;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #404040;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  /* On mouse-over */
+  .sidenav a:hover, .dropdown-btn:hover {
+    color: black;
+  }
+  
+    .dropdown-container {
+        display: none;
+        padding-left: 10px;
+    }
+    .dropdown-container span{
+        font-size: 11px;
+        
+    }
+
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+
+
+
+
+/* popup---------------- */
+.changePasswordScreen, .updateInfoScreen, .info{
+    top: 0;
+    z-index: 99999;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    transition: 0.5s ease;
+    transition-property: visibility;
+}
+
+.updateInfoScreen.active, .changePasswordScreen.active, .info.active{
+    visibility: visible;
+}
+
+.popup_box{
+    position: relative;
+    background: #f2f2f2;
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px #404040;
+}
+
+    .popup_box .bill{
+        width: 100px;
+        background-color: #F98607;
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+    }
+    .popup_box .div{
+        padding: 50px 40px;
+        margin-left: 10px;
+        color: #404040;
+        font-family: Montserrat;
+        font-size: 12px;
+    }
+    
+    .popup_box .div h2{
+        text-transform: uppercase;
+        color: #404040;
+    }
+    .close_btn{
+        position: absolute;
+        font-size: 10px;
+        color: #404040;
+        top: 0;
+        right: 0;
+        margin: 15px;
+        cursor: pointer;
+    }
+    .popup_box span{
+        line-height: 40px;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    input[type = "password"], input[type = "text"]{
+        font-size: 14px;
+        width: 200px;
+        border: 1px solid #979797;
+        padding: 7px 10px;
+        border-radius: 20px;
+        float: right;
+    }
+    input[type = "submit"]{
+        font-weight: bolder;
+        text-align: center;
+        font-size: 14px;
+        float: right;
+        text-transform: uppercase;
+        border: none;
+        background-color: #A80000;
+        padding: 7px 10px;
+        color: #f2f2f2;
+        border-radius: 20px;
+        cursor: pointer;
+    }

@@ -75,6 +75,7 @@
                 <a href="../DashBoard/DashBoard.php"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
                 <a href="#" class="active"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
                 <a href="../InvoiceManagementPage/InvoiceManagement.php"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
+                <a href="../Coupon/coupon.php" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến mãi</span></a>
             </div>
             <div id="main_center_panel">
                 <div class="head">

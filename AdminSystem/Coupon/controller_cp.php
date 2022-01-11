@@ -84,16 +84,7 @@ function value_coupon($value, $type){
     return $str;
 }
 
-// tinhs so tien duoc khuyem mai
-function value_promotional($total,$code_cp){
-    $cp = get_coupon($code_cp);
-    if($cp['type_cp']=='CURRENCY'){
-        return  $cp['value_cp'];
-    }else
-    if($cp['type_cp']=='PERCENTAGE' ){
-        return ($cp['max__order_amount']<$cp['value_cp']*$total)? $cp['max__order_amount'] : $cp['value_cp']*$total;       
-    }
-}
+
 
 
 

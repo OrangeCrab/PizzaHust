@@ -106,8 +106,8 @@
             <div class="left_bar scroll">
                 <a href="../DashBoard/DashBoard.php" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
                 <a href="../ProductManagementPage/ProductManagementPage.php"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
-                <a href="../InvoiceManagementPage/InvoiceManagementPage.html"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
-                <a href="#" class="active"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Mã khuyến mãi</span></a>
+                <a href="../InvoiceManagementPage/InvoiceManagement.php"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
+                <a href="#" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến mãi</span></a>
             </div>
 
             <div id="main_center_panel">
@@ -117,7 +117,7 @@
                     <div id="h1">Danh sách mã khuyến mãi</div>
                     
                     <div class="wrap_btn">
-                        <button class="btn btn-success add_button">Thêm khuyen mai</button>
+                        <button class="btn btn-success add_button">Thêm khuyến mãi</button>
                     </div> 
 
                     <!-- <div class="wrap_plinth">

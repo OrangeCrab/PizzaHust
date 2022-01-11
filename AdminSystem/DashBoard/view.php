@@ -48,7 +48,7 @@ function get_order_top(){
     $sql = "SELECT order_detail.product_name ,SUM(quatity) , `image`
     FROM `order_detail`,`order` , `product`
     WHERE   `order_detail`.order_id=`order`.`id` 
-    AND ( `order`.`order_time` > CURRENT_DATE -700 ) 
+    -- AND ( `order`.`order_time` > CURRENT_DATE -700 ) 
     and `product`.`name` = order_detail.product_name
     GROUP BY product_name ORDER BY SUM(quatity) DESC  LIMIT 5";
     return executeResult($sql);

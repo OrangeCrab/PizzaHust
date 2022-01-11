@@ -1,6 +1,5 @@
 <?php
 session_start();
-        // var_dump(sizeof($_SESSION['giohang'][$i][2]));
 #Kết nối csdl
 include("config.php");
 require_once('../database/dbhelper.php');
@@ -74,7 +73,7 @@ if (isset($_POST['thanhtoan'])) {
                 $fulltopping = "Không có";
                 $gia_topping = 0;
             }else
-            for ((int)$j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
+            for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
                 $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
@@ -90,7 +89,7 @@ if (isset($_POST['thanhtoan'])) {
                 $total += $_SESSION['giohang'][$i][3] *  $giatien;
                 $price =  $giatien * 1000;
             }
-            $total += $_SESSION['giohang'][$i][3] * $gia_topping;
+            $total += $gia_topping;
             $thanhtoan = ($total + 22 - $_SESSION['giam_gia']) * 1000;
             $num = (int)$_SESSION['giohang'][$i][3];
             $get_id = mysqli_query($con, "select id from `product` where name = N'{$_SESSION['giohang'][$i][4]}' ");
@@ -131,10 +130,10 @@ function showgiohang()
             if($_SESSION['giohang'][$i][2] == null) {
                 $fulltopping = "Không có";
             }else
-            for ((int)$j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
+            for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
-                $get_price = mysqli_query($con, "select price_free_size from `product` where name = N'{$_SESSION['giohang'][$i][2][$j]}'");
+                $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
                 $get_topping_price = (int)$res["price_free_size"];
                 $full_topping+= $get_topping_price/1000;
@@ -246,7 +245,7 @@ function tinhtien()
             if ($_SESSION['giohang'][$i][6] == 1) {
                 $total += $_SESSION['giohang'][$i][3] * ($giatien + $gia_topping);
             } else   $total += $_SESSION['giohang'][$i][3] *  $giatien;
-            $total += $_SESSION['giohang'][$i][3] * $gia_topping;
+            $total += $gia_topping;
             $thanhtoan = $total + 22;
         }
         
@@ -260,7 +259,7 @@ function tinhtien()
                 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
                 $get_price = mysqli_query($con, "SELECT * from coupon where code_cp = '$code_voucher'");
                 $res = mysqli_fetch_array($get_price);
-                if($res != null)
+                
                 if((int)$res["type_cp"] ==1 ){
                     $giamgia = (int)$res["max__order_amount"]/1000;
                     $type = 1;
@@ -308,7 +307,7 @@ function tinhtien()
                 <div class="form__row">
                 <form class="" action="cart.php" method="post">
                     <label class="form__label" for="name"> <b>Voucher:</b></label>
-                    <select name="apvoucher" id = "ap_dung">
+                    <select name="apvoucher" id="">
                         <option value="'.$code_voucher.'">   '.$code_voucher.'   </option>
                     ';
                     $sql = "SELECT coupon.* from coupon,cp_user where coupon.id_cp = cp_user.cp_id and cp_user.user_id = '{$_SESSION['user_id']}'";
@@ -322,7 +321,7 @@ function tinhtien()
                     }
                 echo'
                     </select>
-                    <div class="apdung"><input type="submit" onclick="check()"  value="Áp dụng" name="apdung"></div>
+                    <div class="apdung"><input type="submit"  value="Áp dụng" name="apdung"></div>
                 </form>
             </div>
 
@@ -377,15 +376,15 @@ function tinhtien()
                 <img src="../masterial/image/iconHomePage/PizzaHustLogo.svg" style="float: left;" alt="">
                 <li><a href="../ShowForGuest/homepage/homepage.php">Trang chủ</a></li>
                 <li><a href="../ShowForGuest/homepage/homepage.php">Thực đơn</a></li>
-                <li><a href="#"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
-                <li><a href="#contact">Liên hệ</a></li>
+                <li><a href="../ShowForGuest/homepage/homepage.php">Liên hệ</a></li>
+                <li><a href=""><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                 ';
 
                 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0){
                 echo '
                 
                 <li class="dropdown">
-                    <a style="color: #F98607;" href="../ShowForGuest/homepage/ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <a style="color: #F98607;" href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
                     <form class="dropdown-content" action="" method="POST">
                         <a href="../ShowForGuest/homepage/ctm.php">'.$customer.'</a>
                         <input type="text" name="logout" id="logout" value="logout" style="display: none;">
@@ -397,7 +396,11 @@ function tinhtien()
                 else
                 echo '
                     <li class="dropdown">
-                        <a href="../ShowForGuest/login/login_user.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <a class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        <form class="dropdown-content" action="" method="POST">
+                            <a href="../ShowForGuest/homepage/ctm.php">Khách hàng</a>
+                            <a href="../AdminSystem/login_form.php">Chủ quán</a>
+                        </form>
                     </li>
                 </ul>
                 ';
@@ -462,7 +465,7 @@ function tinhtien()
                             <option value="Quận Hoàn Kiếm">Quận Hoàn Kiếm</option>
                             <option value="	Quận Hoàng Mai">Quận Hoàng Mai</option>
                             <option value="Quận Long Biên">Quận Long Biên</option>
-                            <option value="Quận Nam Từ Liêmy">Quận Nam Từ Liêm</option>
+                            <option value="Quận Nam Từ Liêm">Quận Nam Từ Liêm</option>
                             <option value="Quận Tây Hồ">Quận Tây Hồ</option>
                             <option value="Quận Thanh Xuân">Quận Thanh Xuân</option>
 

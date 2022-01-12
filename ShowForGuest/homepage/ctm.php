@@ -27,13 +27,17 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="ctm.css">
+        <link rel="shortcut icon" href="../../masterial/image/iconHomePage/pieceOfPizzaLogo.svg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">  
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">        
+<!--         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    -->    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     </head>
     <body>
         <header>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn"><i class="fas fa-bars"></i></label>
+            <img src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" style="float: left;" alt="">
                 <ul class="top-bar">
-                    <img src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" style="float: left;" alt="">
                     <li><a href="homepage.php">Trang chủ</a></li>
                     <li><a href="homepage.php">Thực đơn</a></li>
                     <li><a href="homepage.php">Liên hệ</a></li>
@@ -41,10 +45,16 @@
                     <li class="dropdown">
                         <a href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
                         <form class="dropdown-content" action="" method="POST">
-                            <?php
-                            echo '<a href="ctm.php">'.$customer['username'].'</a>'; ?>
+                        <?php
+                        echo '<a class="nameCus">'.$customer['username'].'</a>'; ?>
                             <input type="text" name="logout" id="logout" value="logout" style="display: none;">
-                            <button class="out" type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> 
+                            <a><button class="out" type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> </a>
+                        </form>
+                    </li>
+                    <li>
+                        <form class="log-out" action="" method="POST">
+                            <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                            <a><button class="log_out" type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> </a>
                         </form>
                     </li>
                 </ul> 
@@ -59,9 +69,9 @@
         </header>
 
         <div class="body-page">
-            <div class="blank"></div>
+            <!-- <div class="blank"></div> -->
             <div class="customer-info">
-
+                <div class="manage-info">
                 <?php 
                     echo '
                     <div class="personal-information">
@@ -74,15 +84,17 @@
                     echo'
                     </div>';
                 ?>
+                <div class="btn">
+                    <button class="updateInfo_btn">Cập nhật thông tin</button> <br>
+                    <button class="changePassword_btn">Đổi mật khẩu</button>                    
+                </div>                    
+                </div>
 
-                <br>
-                <button class="updateInfo_btn">Cập nhật thông tin</button>
-                <button class="changePassword_btn">Đổi mật khẩu</button>
                 <hr>
                     <?php 
                         echo '                
                         <div class="voucher-collection">
-                            <h3>Voucher của bạn:</h3>
+                            <h2>Voucher của bạn:</h2>
                         ';
 
                         foreach ($user_coupon as $item)
@@ -126,14 +138,15 @@
                         }
                     ?>
                 </div>
+
                 <br><br><br><br><br><br><br>
             </div>
-            <div class="blank"></div>
+<!--             <div class="blank"></div> -->
         </div>
         <!-- ------------------------ -->
         <div class="changePasswordScreen">
             <div class="popup_box">
-            <div class="bill">
+                <div class="bill">
                 </div>
                 <div class="div">
                     <h2>Đổi mật khẩu</h2>
@@ -228,6 +241,7 @@
                             <div class="div">
                                 <h2>Mã voucher: '.$item['code_cp'].'</h2>
                                 <i class="fa fa-times close_btn" aria-hidden="true"></i>
+                                <br>
                                 <p>'.$item['description'].'</p>
                                 <p>Hiệu lực: '.$item['active_date'].' - '.$item['expire_date'].'</p>
                             </div>

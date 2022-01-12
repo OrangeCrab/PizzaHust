@@ -65,9 +65,9 @@
                     echo '&#9654 <i>Topping</i>: '.$item['topping'].'<br>';
                 }
                 echo'</td>';
-                echo '<td>'.$item['price'].'</td>
+                echo '<td>'.number_format($item['price']).'</td>
                 <td>'.$item['quatity'].'</td>
-                <td>'.($item['price'] * $item['quatity']).'</td>
+                <td>'.number_format($item['price'] * $item['quatity']).'</td>
             </tr>';
 
             $total_money += ($item['price'] * $item['quatity']);
@@ -75,23 +75,23 @@
 
         echo '<tr class="sum">
             <td colspan="4">Giá trị sản phẩm:</td>
-            <td>'.$total_money.'</td>
+            <td>'.number_format($total_money).'</td>
         </tr>';
         if ($row['address'] != 'Nhận tại quán'){
             echo '<tr class="sum">
                 <td colspan="4">Phí ship:</td>
-                <td>+22000</td>
+                <td>+ 22,000</td>
             </tr>';
         }
         if ($row['coupon'] != 0){ // if có voucher
             echo '<tr class="sum">
                 <td colspan="4">Giảm giá:</td>
-                <td>-'.$row['coupon'].'</td>
+                <td>- '.number_format($row['coupon']).'</td>
             </tr>';
         }
         echo '<tr class="sum">
             <td colspan="4"><span>Tổng giá trị đơn hàng:</span></td>
-            <td><span>'.$row['payment'].'</span></td>
+            <td><span>'.number_format($row['payment']).'</span></td>
         </tr>';
     ?>
 

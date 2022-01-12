@@ -13,6 +13,9 @@
 <head>
     <meta charset="UTF-8">
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
      <!-- jQuery library -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -23,7 +26,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="invoice_management.css">
-    <link rel="stylesheet" href="../ProductManagementPage/draft.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PizzaHust Admin</title>
@@ -59,7 +61,22 @@
         </div>
 
         <div class="main_center_panel">
-            <h1>Danh sách đơn hàng</h1>
+            <div id="h1">Danh sách đơn hàng</div>
+
+            <div class="Search TimKiem">
+                <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem">
+                <select name="searchOption" id="searchOption" onchange="searchTable()">
+                    <option>Mã</option>
+                    <option>Ngày tạo</option>
+                    <option>Khách hàng</option>
+                    <option>Số điện thoại</option>
+                    <option>Địa chỉ</option>
+                    <option>Danh sách đặt hàng</option>
+                    <option>Trạng thái</option>
+                    <option>Tổng tiền</option>
+                </select>
+                <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
+            </div>
 
             <div class="table_wrap">
                 <ul>
@@ -73,20 +90,6 @@
                     <img src="../../masterial/image/iconAdminPage/screeningLogo.svg" alt="Loc">
                     <input type="text" placeholder="Thêm điều kiện lọc"/>
                 </div> -->
-                <div class="Search TimKiem">
-                    <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem">
-                    <select name="searchOption" id="searchOption" onchange="searchTable()">
-                        <option>Mã</option>
-                        <option>Ngày tạo</option>
-                        <option>Khách hàng</option>
-                        <option>Số điện thoại</option>
-                        <option>Địa chỉ</option>
-                        <option>Danh sách đặt hàng</option>
-                        <option>Trạng thái</option>
-                        <option>Tổng tiền</option>
-                    </select>
-                    <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
-                </div>
 
                 <table id="OrderList" class="OrderList">
                     <tr class="Orderist_head">
@@ -146,7 +149,7 @@
                                 echo $item_Order['oStatus'];
                             
                                 echo '</td>
-                                <td><b>'.$item_Order['oMoney'].'</b></td>
+                                <td><b>'.number_format($item_Order['oMoney']).' VNĐ</b></td>
                             </tr>';
 
                         }

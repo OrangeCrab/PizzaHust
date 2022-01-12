@@ -1,0 +1,512 @@
+@font-face {
+    font-family: Montserrat;
+    src: url('../../masterial/font/Montserrat-Medium.ttf');
+}
+* {
+    box-sizing: border-box;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-image: url('../../masterial/image/bgrhomepage/bgrhomepage.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Montserrat;
+}
+
+/* ----------------------------------------------------------------- */
+header{
+    width: 100%;
+    position: fixed;
+    background: rgba(0,0,0,0.9);
+    height: 80px;
+    z-index: 10;
+}
+
+.top-bar {
+    float: right;
+    margin-left: 20px;
+}
+
+img{
+    margin: 0;
+    height: 70px;
+    width: 270px;
+    margin-top: 5px;
+    line-height: 80px;
+    margin-left: 15px;
+}
+
+.checkbtn{
+    font-size: 30px;
+    color: #f2f2f2;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check{
+    display: none;
+}
+
+.top-bar li{
+    display: inline-block;
+    line-height: 80px;
+}
+.top-bar li a, .dropbtn {
+    color: #f2f2f2;
+    padding: 7px 30px;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.top-bar li a.dropbtn{
+    color: #F98607;
+}
+
+.top-bar li:hover, .dropdown:hover{
+    /*background: #404040;*/
+    color: #F98607;
+    transition: 0.5s;
+}
+
+.top-bar li a:hover{
+    color: #F98607;
+}
+
+.top-bar li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    top: 80px;
+    display: none;
+    position: absolute;
+    border: none;
+    background: rgba(0,0,0,0.9); 
+    width: 150px;
+    right: 0;
+    z-index: 1;
+    line-height: 30px;
+}
+
+.top-bar .dropdown-content a{
+    color: #F98607;
+    line-height: 30px;
+    font-size: 10px;
+    display: block;
+    text-align: right;
+}
+
+.dropdown-content .out:hover {
+    color: #F98607;
+}
+
+.dropdown-content .out{
+    border: none;
+    color: #f2f2f2;
+    cursor: pointer;
+    background: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.log-out{
+    display: none;
+}
+/* ------------------- */
+
+.body-page{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.customer-info{
+    top: 0px;
+    padding-top: 120px;
+    padding-bottom: 200px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 30%;
+    display: block;
+    background-color: #F98607;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+}
+.personal-information h2{
+    color: black;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.personal-information span{
+    line-height: 30px;
+    color: black;
+    font-size: 14px;
+}
+
+.customer-info hr{
+    border: 1px solid #A80000;
+}
+
+.customer-info button{
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 1px solid #A80000;
+    border-radius: 15px;
+    background: #f2f2f2;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-bottom: 10px;
+    width: 250px;
+    transition-property: background-color;
+}
+.customer-info button:hover{
+    color: #f2f2f2;
+    background-color: #A80000;
+}
+.voucher-collection{
+    width: 100%;
+}
+.voucher-collection h2{
+    margin-top: 30px;
+    color: black;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.voucher-collection a{
+    background-color: #A80000;
+    color: #f2f2f2;
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-top: 10px;
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer; 
+    font-size: 12px;
+}
+
+.history-order{
+    background-color: #f2f2f2;
+    width: 60%;
+    padding-top: 120px;
+    padding-bottom: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    border-bottom-right-radius: 5px;
+}
+
+.history-order h2{
+    color: #404040;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a, .dropdown-btn {
+    padding: 6px 0px 6px 0px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #818181;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #404040;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  /* On mouse-over */
+  .sidenav a:hover, .dropdown-btn:hover {
+    color: black;
+  }
+  
+    .dropdown-container {
+        display: none;
+        padding-left: 10px;
+    }
+    .dropdown-container span{
+        font-size: 11px;
+        
+    }
+
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+
+
+/* popup---------------- */
+.changePasswordScreen, .updateInfoScreen, .info{
+    top: 0;
+    z-index: 99999;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    transition: 0.5s ease;
+    transition-property: visibility;
+}
+
+.updateInfoScreen.active, .changePasswordScreen.active, .info.active{
+    visibility: visible;
+}
+
+.popup_box{
+    position: relative;
+    background: #f2f2f2;
+    max-width: 700px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 10px 25px #404040;
+}
+
+    .popup_box .bill{
+        width: 100px;
+        background-color: #F98607;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    .popup_box .div{
+        padding: 50px 40px;
+        margin-left: 10px;
+        color: #404040;
+        font-family: Montserrat;
+        font-size: 12px;
+    }
+    
+    .popup_box .div h2{
+        text-transform: uppercase;
+        color: #404040;
+    }
+    .close_btn{
+        position: absolute;
+        font-size: 10px;
+        color: #404040;
+        top: 0;
+        right: 0;
+        margin: 15px;
+        cursor: pointer;
+    }
+    .popup_box span{
+        line-height: 40px;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+@media (max-width: 1024px){
+    /* top bar */
+    .top-bar li a, .dropbtn{
+        padding: 7px 15px;
+        font-size: 15px;
+    }
+    .checkbtn{
+        font-size: 24px;
+    }
+
+    img{
+        width: 220px;
+        height: 55px;
+        margin-top: 15px;
+        margin-left: 0;        
+    }
+
+    .div h2{
+        font-size: 14px;
+    }
+    .div form span{
+        font-size: 12px;
+    }   
+
+    /* body */
+    .body-page{
+        display: block;
+    }
+
+    .customer-info{
+        margin: 0 auto;
+        width: 90%;
+        padding-bottom: 30px;
+        display: flex;
+    }
+    .manage-info{
+        border-right: 2px solid #A80000;
+        padding-right: 50px;
+        width: 350px;
+    }
+
+    hr {
+        display: none;
+    }
+
+    .voucher-collection{
+        width: 40%;
+        margin-left: 30px;
+        margin-top: -30px;
+    }
+    .customer-info button{
+        width: 250px;
+    }
+    .history-order{
+        margin: 0 auto;
+        width: 90%;
+        padding-top: 30px;
+    }
+
+    .personal-information h2, .voucher-collection h2, .history-order h2{
+        font-size: 14px;
+    }
+
+    .personal-information span, .voucher-collection a{
+        font-size: 11px;
+    }
+
+    .customer-info .btn button{
+        font-size: 11px;
+        width: 200px;
+    }
+
+    .dropdown-btn{
+        font-size: 11px;
+    }
+    .dropdown-container span{
+        font-size: 10px;
+    }
+
+    input[type="submit"]{
+        font-size: 11px;
+    }
+}
+
+@media (max-width:768px){
+    .checkbtn{
+        display: block;
+    }
+
+    .top-bar{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #404040;
+        top: 80px;
+        right: -100%;
+        text-align: center;
+        transition: all 0.5s;
+    }
+    .top-bar li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+
+    .top-bar li a{
+        font-size: 20px
+    }
+
+    .top-bar li a:hover{
+        background: none;
+        color: #F98607;
+    }
+
+    #check:checked ~ ul{
+        right: 0;
+    }
+
+    .dropdown{
+        visibility: hidden;
+    }
+
+
+    .log-out{
+        display: block;
+    }
+
+    .log_out{
+        background: none;
+        cursor: pointer;
+        color: #f2f2f2;
+        border: none;
+    }
+    .log_out:hover{
+        color: #F98607;
+    }
+    h2{
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width:  700px){
+    .customer-info{
+        display: block;
+    }
+    .manage-info{
+        border: 0;
+    }
+    hr {
+        display: block;
+    }
+    .voucher-collection{
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .bill {
+        display: none;
+    }
+
+}
+    input[type = "password"], input[type = "text"]{
+        font-size: 14px;
+        width: 200px;
+        border: none;
+        padding: 7px 10px;
+        float: right;
+    }
+    input[type = "submit"]{
+        text-align: center;
+        font-size: 12px;
+        float: right;
+        text-transform: uppercase;
+        border: none;
+        background-color: #A80000;
+        padding: 7px 10px;
+        color: #f2f2f2;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+

@@ -105,7 +105,7 @@ function searchTable() {
     var searchOption, input, filter, table, tr, td, i, txtValue;
     searchOption = document.getElementById("searchOption").selectedIndex;
     input = document.getElementById("searchInput");
-    filter = input.value.toLowerCase();
+    filter = removeAccents(input.value).toLowerCase();
     table = document.getElementById("OrderList");
     tr = table.getElementsByTagName("tr");
 
@@ -114,7 +114,7 @@ function searchTable() {
 
         if (td) {
             txtValue = td.textContent || td.innerText;
-            if (txtValue.toLowerCase().indexOf(filter) > -1) {
+            if (removeAccents(txtValue).toLowerCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
@@ -122,6 +122,31 @@ function searchTable() {
         }
     }
 }
+
+function removeAccents(str) {
+    var AccentsMap = [
+      "aàảãáạăằẳẵắặâầẩẫấậ",
+      "AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬ",
+      "dđ", "DĐ",
+      "eèẻẽéẹêềểễếệ",
+      "EÈẺẼÉẸÊỀỂỄẾỆ",
+      "iìỉĩíị",
+      "IÌỈĨÍỊ",
+      "oòỏõóọôồổỗốộơờởỡớợ",
+      "OÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢ",
+      "uùủũúụưừửữứự",
+      "UÙỦŨÚỤƯỪỬỮỨỰ",
+      "yỳỷỹýỵ",
+      "YỲỶỸÝỴ"    
+    ];
+    for (var i=0; i<AccentsMap.length; i++) {
+      var re = new RegExp('[' + AccentsMap[i].substr(1) + ']', 'g');
+      var char = AccentsMap[i][0];
+      str = str.replace(re, char);
+    }
+    return str.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+}
+  
 
 // NAVI TABLE
 function filterStatus(filter){

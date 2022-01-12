@@ -140,15 +140,15 @@
                                 echo '</td>';
 
                                 if ($item_Order['oStatus'] == 'Chờ xác nhận'){
-                                    echo "<td style='color:#F98607;'>";
+                                    echo "<td><span class='status' style='background: #F98607;'>";
                                 } elseif ($item_Order['oStatus'] == 'Đã xác nhận') {
-                                    echo "<td style='color:#4CAF50;'>";
+                                    echo "<td><span class='status' style='background: #4CAF50;'>";
                                 } elseif ($item_Order['oStatus'] == 'Đã bị hủy'){
-                                    echo "<td style='color:#A80000;'>";
+                                    echo "<td><span class='status' style='background: #A80000;'>";
                                 }
                                 echo $item_Order['oStatus'];
                             
-                                echo '</td>
+                                echo '</span></td>
                                 <td><b>'.number_format($item_Order['oMoney']).' VNĐ</b></td>
                             </tr>';
 

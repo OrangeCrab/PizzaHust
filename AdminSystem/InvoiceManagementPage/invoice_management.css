@@ -162,6 +162,9 @@ header{
         width: 35%;
         height: 33px;
         text-align: center;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        color: #495057;
     }
 
 .table_wrap {
@@ -237,7 +240,7 @@ ul {
         padding: 5px;
         background: white;
         text-align: center;
-        z-index: 0;
+        z-index: 1;
         cursor: pointer;
     }
     .OrderList td {
@@ -245,7 +248,7 @@ ul {
         text-align: center;
     }
     .OrderList th, td{
-        border: 1px solid rgb(200, 200, 200);
+        border-bottom: 1px solid rgb(200, 200, 200);
     }
         .OrderList th:nth-child(1), .OrderList td:nth-child(1) {
             width: 5%;
@@ -273,6 +276,16 @@ ul {
         }
         .OrderList th:nth-child(7), .OrderList td:nth-child(7) {
             width: 11%;
+        }
+        .OrderList td:nth-child(7) .status{
+            position: relative;
+            padding: 2px 4px;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            z-index: 0;
         }
         .OrderList th:nth-child(8), .OrderList td:nth-child(8) {
             width: 11%;

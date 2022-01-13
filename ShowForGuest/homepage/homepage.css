@@ -240,10 +240,12 @@ header{
   }
 
 .click-me{
-    width: 100px;
-    height: 80px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
     position: relative;
-    left: 5%;
+    left: 2%;
+    margin-top: -10px;
 }
 
 /* body page------------------------------------- */
@@ -649,8 +651,9 @@ header{
         letter-spacing: 4px;
     }
     .click-me{
-        width: 60px;
-        height: 48px;
+        width: 20px;
+        height: 20px;
+        margin-top: -60px;
     }
     .quote{
         font-size: 36px;
@@ -784,9 +787,7 @@ header{
 
     .info_card{
         width: 396px;
-        /*height: 600px;*/
         display: block;
-        /*padding: 20px;*/
         top: -80px;
     }
         .info_card .closeViewInfo_btn{

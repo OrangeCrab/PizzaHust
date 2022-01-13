@@ -1,7 +1,7 @@
 # PizzaHust
 * Giới thiệu:
 * Website cho cửa hàng PizzaHust - Nhóm 6 lớp Nhập môn công nghệ phần mềm IT3180 128699
-<img width="1440" alt="Ảnh chụp Màn hình 2022-01-13 lúc 11 25 58" src="https://user-images.githubusercontent.com/68985886/149265804-9f5211fe-9472-4926-84eb-8d8a61535468.png">
+* <img width="1440" alt="Ảnh chụp Màn hình 2022-01-13 lúc 11 25 58" src="https://user-images.githubusercontent.com/68985886/149265804-9f5211fe-9472-4926-84eb-8d8a61535468.png">
 * Trang web gồm: 
     - Trang Homepage - nơi khách hàng có thể truy cập để xem sản phẩm, voucher và đặt hàng
     - Trang giỏ hàng - nơi hiển thị các sản phẩm mà khách hàng đã lựa chọn

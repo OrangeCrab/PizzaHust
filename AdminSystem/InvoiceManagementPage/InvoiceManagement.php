@@ -63,19 +63,21 @@
         <div class="main_center_panel">
             <div id="h1">Danh sách đơn hàng</div>
 
-            <div class="Search TimKiem">
-                <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem">
-                <select name="searchOption" id="searchOption" onchange="searchTable()">
-                    <option>Mã</option>
-                    <option>Ngày tạo</option>
-                    <option>Khách hàng</option>
-                    <option>Số điện thoại</option>
-                    <option>Địa chỉ</option>
-                    <option>Danh sách đặt hàng</option>
-                    <option>Trạng thái</option>
-                    <option>Tổng tiền</option>
-                </select>
-                <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
+            <div class="wrapSearch">
+                <div class="TimKiem">
+                    <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem">
+                    <select name="searchOption" id="searchOption" onchange="searchTable()">
+                        <option>Mã</option>
+                        <option>Ngày tạo</option>
+                        <option>Khách hàng</option>
+                        <option>Số điện thoại</option>
+                        <option>Địa chỉ</option>
+                        <option>Danh sách đặt hàng</option>
+                        <option>Trạng thái</option>
+                        <option>Tổng tiền</option>
+                    </select>
+                    <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
+                </div>
             </div>
 
             <div class="table_wrap">

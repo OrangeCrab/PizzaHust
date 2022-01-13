@@ -200,7 +200,7 @@ header{
     #table_panel{
         position: absolute;
         width: 96%;
-        height: calc(99% - 50px);
+        height: calc(98% - 50px);
         top: 50px;
         left: 2%;
         background: #fff;
@@ -210,6 +210,7 @@ header{
         #table_panel table {
             position: relative;
             display: block;
+            /* height: calc(100% - 5px); */
             height: 100%;
             width: 100%;
             border-collapse: collapse;
@@ -219,6 +220,9 @@ header{
             font-family: Monsterrat;
             font-weight: lighter;
             margin-bottom: 100px;
+            /* margin-top: 5px; */
+            border-radius: 5px;
+            border: none;
         }
             #table_panel table tr {
                 height: 50px;

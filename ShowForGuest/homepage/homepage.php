@@ -292,9 +292,6 @@
                 }
         ?>
     </div>
-        
-    <br>
-    
         <?php 
             $dem = 0;
             foreach($product as $item){

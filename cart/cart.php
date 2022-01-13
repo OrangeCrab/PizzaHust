@@ -4,7 +4,7 @@ session_start();
 include("config.php");
 require_once('../database/dbhelper.php');
 $baseUrl = '../';
-$con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+$con = mysqli_connect("localhost", "root", "", "dcm3");
 
 #Lưu tên khách hàng
 $sql = "select * from user_account";
@@ -75,7 +75,7 @@ if (isset($_POST['thanhtoan'])) {
             }else
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
-                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+                $con = mysqli_connect("localhost", "root", "", "dcm3");
                 $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
                 $get_topping_price = (int)$res["price_free_size"];
@@ -132,7 +132,7 @@ function showgiohang()
             }else
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
-                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+                $con = mysqli_connect("localhost", "root", "", "dcm3");
                 $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
                 $get_topping_price = (int)$res["price_free_size"];
@@ -235,7 +235,7 @@ function tinhtien()
                 $gia_topping = 0;
             }else
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
-                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+                $con = mysqli_connect("localhost", "root", "", "dcm3");
                 $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
                 $get_topping_price = (int)$res["price_free_size"];
@@ -256,7 +256,7 @@ function tinhtien()
             if(isset($_POST['apvoucher'])){
                 $code_voucher = $_POST['apvoucher'];
     
-                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
+                $con = mysqli_connect("localhost", "root", "", "dcm3");
                 $get_price = mysqli_query($con, "SELECT * from coupon where code_cp = '$code_voucher'");
                 $res = mysqli_fetch_array($get_price);
                 
@@ -369,41 +369,54 @@ function tinhtien()
 </head>
 
 <body>
-    <header>
+    <header>        
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn"><i class="fas fa-bars"></i></label>            
+        <img src="../masterial/image/iconHomePage/PizzaHustLogo.svg" class="top-logo" style="float: left;" alt="">
         <?php
             echo'
             <ul class="top-bar">
-                <img src="../masterial/image/iconHomePage/PizzaHustLogo.svg" style="float: left;" alt="">
                 <li><a href="../ShowForGuest/homepage/homepage.php">Trang chủ</a></li>
                 <li><a href="../ShowForGuest/homepage/homepage.php">Thực đơn</a></li>
                 <li><a href="../ShowForGuest/homepage/homepage.php">Liên hệ</a></li>
-                <li><a href=""><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                <li><a href="#"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                 ';
-
                 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0){
                 echo '
-                
                 <li class="dropdown">
-                    <a style="color: #F98607;" href="ctm.php" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <a style="color: #F98607;" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
                     <form class="dropdown-content" action="" method="POST">
                         <a href="../ShowForGuest/homepage/ctm.php">'.$customer.'</a>
                         <input type="text" name="logout" id="logout" value="logout" style="display: none;">
-                        <button type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> 
+                        <a><button class="out" type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> </a>
+                    </form>
+                </li>
+                <li>
+                    <form class="res-dropdown-content" action="" method="POST">
+                        <a href="../ShowForGuest/homepage/ctm.php">'.$customer.'</a>
+                        <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                        <a><button class="log_out" type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> </a>
                     </form>
                 </li>
                 ';
                 }
                 else
                 echo '
-                    <li class="dropdown">
-                        <a class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
-                        <form class="dropdown-content" action="" method="POST">
-                            <a href="../ShowForGuest/homepage/ctm.php">Khách hàng</a>
-                            <a href="../AdminSystem/login_form.php">Chủ quán</a>
-                        </form>
-                    </li>
-                </ul>
+                <li class="dropdown">
+                    <a class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <form class="dropdown-content" action="" method="POST">
+                        <a href="../ShowForGuest/homepage/ctm.php">Khách hàng</a>
+                        <a href="../AdminSystem/login_form.php">Chủ quán</a>
+                    </form>
+                </li>
+                <li>
+                    <form class="res-dropdown-content" action="" method="POST">
+                        <a href="../ShowForGuest/homepage/ctm.php">Khách hàng</a>
+                        <a href="../AdminSystem/login_form.php">Chủ quán</a>
+                    </form>
+                </li>                    
                 ';
+
             echo'
             </ul>
             ';
@@ -412,6 +425,7 @@ function tinhtien()
                 echo("<meta http-equiv='refresh' content='0'>");
             }
         ?>   
+
     </header>
     <div class="cart">
         <div class="blank"></div>

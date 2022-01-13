@@ -126,44 +126,59 @@
     <link rel="shortcut icon" href="../../masterial/image/iconHomePage/pieceOfPizzaLogo.svg">
     <title>PizzaHust</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 </head>
 
 <body>
-    <header>
+    <header>        
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn"><i class="fas fa-bars"></i></label>            
+        <img src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" class="top-logo" style="float: left;" alt="">
         <?php
             echo'
             <ul class="top-bar">
-                <img src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" style="float: left;" alt="">
                 <li><a href="#launcher">Trang chủ</a></li>
                 <li><a href="#menu">Thực đơn</a></li>
                 <li><a href="#contact">Liên hệ</a></li>
                 <li><a href="../../cart/cart.php"><span>GIỎ HÀNG</span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                 ';
-
                 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0){
                 echo '
-                
                 <li class="dropdown">
                     <a style="color: #F98607;" class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
                     <form class="dropdown-content" action="" method="POST">
                         <a href="ctm.php">'.$customer.'</a>
                         <input type="text" name="logout" id="logout" value="logout" style="display: none;">
-                        <button type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> 
+                        <a><button class="out" type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> </a>
+                    </form>
+                </li>
+                <li>
+                    <form class="res-dropdown-content" action="" method="POST">
+                        <a href="ctm.php">'.$customer.'</a>
+                        <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                        <a><button class="log_out" type="submit"><span>Logout <i class="fas fa-sign-out-alt"></i></span></button> </a>
                     </form>
                 </li>
                 ';
                 }
                 else
                 echo '
-                    <li class="dropdown">
-                        <a class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
-                        <form class="dropdown-content" action="" method="POST">
-                            <a href="ctm.php">Khách hàng</a>
-                            <a href="../../AdminSystem/login_form.php">Chủ quán</a>
-                        </form>
-                    </li>
-                </ul>
+                <li class="dropdown">
+                    <a class="dropbtn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <form class="dropdown-content" action="" method="POST">
+                        <a href="ctm.php">Khách hàng</a>
+                        <a href="../../AdminSystem/login_form.php">Chủ quán</a>
+                    </form>
+                </li>
+                <li>
+                    <form class="res-dropdown-content" action="" method="POST">
+                        <a href="ctm.php">Khách hàng</a>
+                        <a href="../../AdminSystem/login_form.php">Chủ quán</a>
+                    </form>
+                </li>                    
                 ';
+
             echo'
             </ul>
             ';
@@ -172,6 +187,7 @@
                 echo("<meta http-equiv='refresh' content='0'>");
             }
         ?>   
+
     </header>
 
     <div class="slider" id="launcher">
@@ -206,7 +222,7 @@
                 <label for="radio4" class="manual-btn"></label>
             </div>
             <!--manual navigation end-->
-        </div>  
+    </div>  
         <?php popup()?>
     <!-- nhận voucher cho khách hàng có tài khoản -->
     <br>
@@ -276,9 +292,6 @@
                 }
         ?>
     </div>
-        
-    <br>
-    <span class="quote">Chúc quý khách ngon miệng! - PizzaHust</span>
         <?php 
             $dem = 0;
             foreach($product as $item){
@@ -287,7 +300,8 @@
             }
             if ($dem > 0) 
             echo'<span><img class="click-me" src="../../masterial/image/iconHomePage/click.svg" alt=""></span>';
-        ?>    
+        ?>  
+        <span class="quote">Chúc quý khách ngon miệng! - PizzaHust</span>  
     <br><br><br><br><br>
     
     <div>
@@ -373,8 +387,8 @@
                                         <hr>
                                     </div>
                                     <div class="final">
-                                        <span>SL:</span>
-                                        <input type="number" id="quantity" value = "1"name="quantity" min="1" max="5">
+                                        <label for="quantity">Số lượng: </label>
+                                        <input type="number" id="quantity" value = "1"name="quantity" min="1" max="10">
                                         <input type="submit" class="add-card-bt" name="addcart" value="Thêm vào giỏ">
                                     </div>                          
                                 </div>
@@ -416,8 +430,8 @@
                                         <hr>
                                     </div>
                                     <div class="final">
-                                        <span>SL:</span>
-                                        <input type="number" id="quantity" name="quantity" min="1" max="10">
+                                        <label for="quantity">Số lượng: </label>
+                                        <input type="number" id="quantity" value = "1"name="quantity" min="1" max="10">
                                         <input type="submit" class="add-card-bt" name="addcart1" value="Thêm vào giỏ">
                                     </div>                          
                                 </div>
@@ -436,11 +450,13 @@
     <br><br><br><br><br><br><br>
     <div id="contact" class="foot-page">
             <img class="bgr" src="../../masterial/image/bgrhomepage/endHomepage.jpg" alt="">
-            <div class="contact"></div>
-            <img class="logo" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
-            <p><i class="fa fa-phone" aria-hidden="true"></i><span> CONTACT: 0123 456 789</span>
-            <br><br>
-            <i class="fa fa-envelope" aria-hidden="true"></i><span> EMAIL: ABC@GMAIL.COM</span></p>
+            <div class="contact">
+                <img class="logo" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
+                <p><i class="fa fa-phone" aria-hidden="true"></i><span> CONTACT: 0123 456 789</span>
+                <br><br>
+                <i class="fa fa-envelope" aria-hidden="true"></i><span> EMAIL: ABC@GMAIL.COM</span></p>                
+            </div>
+
     </div>
 
     <!-- notice popup -->

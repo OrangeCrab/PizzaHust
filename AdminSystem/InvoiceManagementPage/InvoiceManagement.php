@@ -55,9 +55,9 @@
     <div class="work_screen">
         <div class="left_bar">
             <a href="../DashBoard/DashBoard.php" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
-            <a href="../ProductManagementPage/ProductManagementPage.php" target="_self"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
+            <a href="../ProductManagementPage/ProductManagementPage.php" target="_self"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Sản Phẩm</span></a>
             <a href="#" class="active"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
-            <a href="../Coupon/coupon.php" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến mãi</span></a>
+            <a href="../Coupon/coupon.php" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến Mãi</span></a>
         </div>
 
         <div class="main_center_panel">

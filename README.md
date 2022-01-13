@@ -9,11 +9,11 @@
       và các voucher đã nhận (voucher chỉ áp dụng đối với khách hàng đăng nhập)
     - Trang đăng nhập, đăng ký cho khách hàng, quên mật khẩu (yêu cầu lấy lại mật khẩu sẽ được gửi về gmail đã đăng ký)
     - Trang đăng nhập cho cửa hàng 
-    * Trong giao diện dành cho cửa hàng gồm có:
-    - Mục Tổng quan - nơi tổng quan các thông tin của trang web (đơn hàng mới, thống kê doanh thu)
-    - Mục Món ăn - nơi quản lý thông tin các sản phẩm của trang web (cửa hàng có thể thêm, sửa, xóa thông tin các món ăn)
-    - Mục Đơn hàng - nơi thống kê toàn bộ đơn hàng (chủ cửa hàng có thể bấm vào mã đơn để xác nhận đơn)
-    - Mục Khuyến mãi - nơi quản lý các voucher, có thể thêm, sửa, xóa
+    - Trong giao diện dành cho cửa hàng gồm có:
+        - Mục Tổng quan - nơi tổng quan các thông tin của trang web (đơn hàng mới, thống kê doanh thu)
+        - Mục Món ăn - nơi quản lý thông tin các sản phẩm của trang web (cửa hàng có thể thêm, sửa, xóa thông tin các món ăn)
+        - Mục Đơn hàng - nơi thống kê toàn bộ đơn hàng (chủ cửa hàng có thể bấm vào mã đơn để xác nhận đơn)
+        - Mục Khuyến mãi - nơi quản lý các voucher, có thể thêm, sửa, xóa
 * Website được xây dựng bằng Html, Css, Js, PHP, chạy server trên XAMPP, quản lý cơ sở dữ liệu bằng mySQL
 * Cài đặt:
     - Cài đặt XAMPP ứng với hệ điều hành của máy tính
@@ -26,11 +26,11 @@
       tại Homepage có thể truy cập vào trang đăng nhập thông qua thanh lựa chọn top-bar, hoặc có thể truy cập đường link 
       http://localhost/PizzaHust/ShowForGuest/login/login_user.php (đăng nhập của khách hàng)
       http://localhost/PizzaHust/AdminSystem/login_form.php (đăng nhập của cửa hàng)
-    * Một số chú ý: + Hình ảnh sản phẩm nên sử dụng có tỉ lệ rộng x cao là 3x2
-                  + Hình ảnh quảng cáo tại slide của Homepage nên sử dụng có tỉ lệ rộng x cao là 8x3
+    - Một số chú ý: + Hình ảnh sản phẩm nên sử dụng có tỉ lệ rộng x cao là 3x2
+                    + Hình ảnh quảng cáo tại slide của Homepage nên sử dụng có tỉ lệ rộng x cao là 8x3
                     hiện tại chỉ cố định 5 ảnh lần lượt là head0, head1, head2, head3, head4 trong masterial/image/bgrHomepage, 
                     _chỉ có thể thay thế các ảnh đó_
-                  + **_(độ phân giải cao sẽ giúp hiển thị tốt hơn)_**
+                    + **_(độ phân giải cao sẽ giúp hiển thị tốt hơn)_**
 
 * Nhóm sinh viên thực hiện:
     - Vũ Hồng Sơn - 20194161: Trang Homepage + Trang tài khoản của khách hàng sau khi đăng nhập

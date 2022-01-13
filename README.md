@@ -1,5 +1,4 @@
 # PizzaHust
-* Giới thiệu:
 * Website cho cửa hàng PizzaHust - Nhóm 6 lớp Nhập môn công nghệ phần mềm IT3180 128699
 * <img width="1440" alt="Ảnh chụp Màn hình 2022-01-13 lúc 11 25 58" src="https://user-images.githubusercontent.com/68985886/149265804-9f5211fe-9472-4926-84eb-8d8a61535468.png">
 * Trang web gồm: 
@@ -30,7 +29,7 @@
         + Hình ảnh sản phẩm nên sử dụng có tỉ lệ rộng x cao là 3x2
         + Hình ảnh quảng cáo tại slide của Homepage nên sử dụng có tỉ lệ rộng x cao là 8x3
           hiện tại chỉ cố định 5 ảnh lần lượt là head0, head1, head2, head3, head4 trong masterial/image/bgrHomepage, 
-          _chỉ có thể thay thế các ảnh đó_
+          **_chỉ có thể thay thế các ảnh đó_**
         + **_(độ phân giải cao sẽ giúp hiển thị tốt hơn)_**
 
 * Nhóm sinh viên thực hiện:

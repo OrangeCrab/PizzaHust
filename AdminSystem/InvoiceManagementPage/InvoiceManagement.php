@@ -104,7 +104,7 @@
                         <th onclick="sortTable('OrderList', 4)">Địa chỉ</th>
                         <th onclick="sortTable('OrderList', 5)">Danh sách đặt hàng</th>
                         <th onclick="sortTable('OrderList', 6)">Trạng thái</th>
-                        <th onclick="sortTable('OrderList', 7)">Tổng tiền</th>
+                        <th onclick="sortPayment('OrderList')">Tổng tiền</th>
                     </tr>
 
                     <?php

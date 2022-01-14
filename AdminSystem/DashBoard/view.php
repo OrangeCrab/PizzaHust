@@ -1,5 +1,6 @@
 <?php
 require_once('../../database/dbhelper.php');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 //So don hang
 function number_orders(){
@@ -68,7 +69,7 @@ function get_sales(){
     $sql = "SELECT  order_time, SUM(payment) as sales 
             FROM `order`
             WHERE `status` = N'Đã xác nhận' and
-            `order`.`order_time` > CURRENT_DATE - 7
+            `order`.`order_time` > CURRENT_DATE - 6
             GROUP BY DATE_FORMAT(order_time, '%y-%m-%d')
             ORDER BY order_time ASC";
     $data = executeResult($sql);
@@ -76,7 +77,7 @@ function get_sales(){
     $res[1]='';
 
     if($data == NULL){
-       $dateBegin = date('Y-m-d',strtotime ( '-7 day' ,  strtotime ( date("Y-m-d"))));
+       $dateBegin = date('Y-m-d',strtotime ( '-6 day' ,  strtotime ( date("Y-m-d"))));
        $dateEnd = date("Y-m-d");
        while($dateBegin <= $dateEnd){
         $res[0] = $res[0] . '"'. date('d-m', strtotime($dateBegin)).'",';
@@ -85,25 +86,29 @@ function get_sales(){
        }
        return $res;
     }else{
+        $date = date('Y-m-d', strtotime('-6 day' ,  strtotime ( date("Y-m-d"))));
+        foreach( $data as $item){
+            $tg = date('Y-m-d', strtotime($item['order_time']));
+            while ( $date < $tg){
+                $res[0] = $res[0] . '"'. date('d-m', strtotime($date)).'",';
+                $res[1] = $res[1] . '"0",';
+                $date = date('Y-m-d',strtotime ( '+1 day' , strtotime ( $date ))) ;
+            }
+            $res[0] = $res[0] . '"'. date('d-m', strtotime($item['order_time'])).'",';
+            $res[1] = $res[1] . '"'. $item['sales'].'",';
+            $date = date('Y-m-d',strtotime ( '+1 day' , strtotime ( $date ))) ;
 
-    $date = date('Y-m-d', strtotime($data[0]['order_time']));
-
-    foreach( $data as $item){
-        $tg = date('Y-m-d', strtotime($item['order_time']));
-        while ( $date < $tg){
+        }
+        $dateEnd = date("Y-m-d");
+        while($date <= $dateEnd){
             $res[0] = $res[0] . '"'. date('d-m', strtotime($date)).'",';
             $res[1] = $res[1] . '"0",';
             $date = date('Y-m-d',strtotime ( '+1 day' , strtotime ( $date ))) ;
         }
-        $res[0] = $res[0] . '"'. date('d-m', strtotime($item['order_time'])).'",';
-        $res[1] = $res[1] . '"'. $item['sales'].'",';
-        $date = date('Y-m-d',strtotime ( '+1 day' , strtotime ( $date ))) ;
-
-    }
-    
-	$res[1] = trim($res[1],",");
-	$res[0] = trim($res[0],",");
-    return $res;
+        
+        $res[1] = trim($res[1],",");
+        $res[0] = trim($res[0],",");
+        return $res;
     }
     
 }

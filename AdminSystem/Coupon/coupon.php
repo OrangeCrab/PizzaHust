@@ -233,12 +233,13 @@
         </div>
         <div class="product_popup" id="Product_popup">
             <div class="testbox" id="testbox">
+                <div class="banner">
+                    <h1>Mã khuyến mãi</h1>
+                </div>
                 <form class="form_cp"  method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_cp" id="id_cp" />
 
-                    <div class="banner">
-                    <h1>Mã khuyến mãi</h1>
-                    </div>
+                  
                     <div class="item">
                     <p>Tên Mã</p>
                     <input type="text" name="name_cp" id="name_cp" required/>

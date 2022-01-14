@@ -62,9 +62,11 @@
                         ?>
                     </select>
                 </div>
-                <div class="timkiem">
-                    <div class="search_logo"></div>  
-                    <input type="text" placeholder="Tìm kiếm" id="search_tf" name = "search_tf" onkeyup="filterByName()"/>
+                <div class="timkiem">  
+                    <div class="search_core">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" placeholder="Tìm kiếm" class="form-control" id="search_tf" name = "search_tf" onkeyup="filterByName()"/>
+                    </div>
                 </div>
                 <div class="wrap_btn">
                     <a href="#"><button class="btn btn-success add_button" id="add_button" onclick="addProduct()">Thêm sản phẩm</button></a>

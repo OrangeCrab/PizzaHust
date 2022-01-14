@@ -4,7 +4,7 @@ session_start();
 include("config.php");
 require_once('../database/dbhelper.php');
 $baseUrl = '../';
-$con = mysqli_connect("localhost", "root", "", "dcm3");
+$con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
 
 #Lưu tên khách hàng
 $sql = "select * from user_account";
@@ -75,7 +75,7 @@ if (isset($_POST['thanhtoan'])) {
             }else
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
-                $con = mysqli_connect("localhost", "root", "", "dcm3");
+                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
                 $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
                 $get_topping_price = (int)$res["price_free_size"];
@@ -97,7 +97,7 @@ if (isset($_POST['thanhtoan'])) {
             $get_product_id = (int)$res["id"];
 
            
-            $sql_donhang = mysqli_query($con, "insert into `order_detail`(order_id, price, quatity,size,plinth, topping, product_name) values($get_order_id,$price,$num,'{$_SESSION['giohang'][$i][0]}','{$_SESSION['giohang'][$i][1]}','$fulltopping','{$_SESSION['giohang'][$i][4]}')");
+            $sql_donhang = mysqli_query($con, "insert into `order_detail`(order_id, price, quantity,size,plinth, topping, product_name) values($get_order_id,$price,$num,'{$_SESSION['giohang'][$i][0]}','{$_SESSION['giohang'][$i][1]}','$fulltopping','{$_SESSION['giohang'][$i][4]}')");
         }
         // var_dump("insert into `order`(fullname, phonenumber, address,note,order_time,status, user_id) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận','{$_SESSION['user_id']}')");
     }
@@ -132,7 +132,7 @@ function showgiohang()
             }else
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
                 $fulltopping =$fulltopping.$_SESSION['giohang'][$i][2][$j]." ";
-                $con = mysqli_connect("localhost", "root", "", "dcm3");
+                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
                 $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
                 $get_topping_price = (int)$res["price_free_size"];
@@ -147,9 +147,9 @@ function showgiohang()
                     </div>
                     <div class="info">
                         <p class="field">' . $_SESSION['giohang'][$i][4] . '</p>
-                        <div><span class="field">Size: </span><span class="size">' . $_SESSION['giohang'][$i][0] . '</span><span class="price">' . $_SESSION['giohang'][$i][7] . ' 000đ</span></div>
+                        <div><span class="field">Size: </span><span class="size">' . $_SESSION['giohang'][$i][0] . '</span><span class="price">' .number_format($_SESSION['giohang'][$i][7]). ',000đ</span></div>
                         <div><span class="field">Loại đế: </span><span>' . $_SESSION['giohang'][$i][1] . '</span></div>
-                        <div><span class="field">Topping: </span><span class="topping">'.$fulltopping.'</span><span class="price">'.$full_topping.' 000đ</span></div>
+                        <div><span class="field">Topping: </span><span class="topping">'.$fulltopping.'</span><span class="price">'.$full_topping.',000đ</span></div>
                     </div>
                     <div class="quantity">
                         <div class="">
@@ -161,7 +161,7 @@ function showgiohang()
                             
                             <div><span class="field"><b> Tổng:</b> </span></div>
                             <div class="price">
-                                ' . $total . ' 000đ
+                                ' .number_format($total) . ',000đ
                             </div>
                         </div>
                     </div>
@@ -183,7 +183,7 @@ function showgiohang()
                     </div>
                     <div class="info">
                         <p class="field">' . $_SESSION['giohang'][$i][4] . '</p>
-                        <div><span class="field">Giá: </span><span class="price">' . $_SESSION['giohang'][$i][7] . ' 000đ</span></div>
+                        <div><span class="field">Giá: </span><span class="price">' .number_format($_SESSION['giohang'][$i][7]) . ',000đ</span></div>
                         
                     </div>
                     <div class="quantity">
@@ -196,7 +196,7 @@ function showgiohang()
                             
                             <div><span class="field"><b> Tổng:</b> </span></div>
                             <div class="price">
-                                ' . $total . ' 000đ
+                                ' .number_format($total) . ',000đ
                             </div>
                         </div>
                     </div>
@@ -235,7 +235,7 @@ function tinhtien()
                 $gia_topping = 0;
             }else
             for ($j=0; $j < sizeof($_SESSION['giohang'][$i][2]) ; $j++) { 
-                $con = mysqli_connect("localhost", "root", "", "dcm3");
+                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
                 $get_price = mysqli_query($con, "select price_free_size from `product` where name = '{$_SESSION['giohang'][$i][2][$j]}'");
                 $res = mysqli_fetch_array($get_price);
                 $get_topping_price = (int)$res["price_free_size"];
@@ -245,7 +245,7 @@ function tinhtien()
             if ($_SESSION['giohang'][$i][6] == 1) {
                 $total += $_SESSION['giohang'][$i][3] * ($giatien + $gia_topping);
             } else   $total += $_SESSION['giohang'][$i][3] *  $giatien;
-            $total += $gia_topping;
+            $total += $_SESSION['giohang'][$i][3] * $gia_topping;
             $thanhtoan = $total + 22;
         }
         
@@ -256,24 +256,29 @@ function tinhtien()
             if(isset($_POST['apvoucher'])){
                 $code_voucher = $_POST['apvoucher'];
     
-                $con = mysqli_connect("localhost", "root", "", "dcm3");
+                $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
                 $get_price = mysqli_query($con, "SELECT * from coupon where code_cp = '$code_voucher'");
                 $res = mysqli_fetch_array($get_price);
-                
-                if((int)$res["type_cp"] ==1 ){
-                    $giamgia = (int)$res["max__order_amount"]/1000;
-                    $type = 1;
-                }
-                if((int)$res["type_cp"] ==0 ){
-                    if($thanhtoan * (int)$res["value_cp"] /100 > (int)$res["max__order_amount"]/1000){
-                        $giamgia =(int)$res["max__order_amount"]/1000;
+                if ($res != NULL) {
+                    if((int)$res["type_cp"] ==1 ){
+                        $giamgia = (int)$res["max__order_amount"]/1000;
+                        $type = 1;
                     }
-                    else $giamgia = (int)($thanhtoan * $res["value_cp"] /100);
-                    $phan_tram = (int)$res["value_cp"];
-                    $type = 0;
-                    $toi_da = (int)$res["max__order_amount"]/1000;
+                    if((int)$res["type_cp"] ==0 ){
+                        if($thanhtoan * (int)$res["value_cp"] /100 > (int)$res["max__order_amount"]/1000){
+                            $giamgia =(int)$res["max__order_amount"]/1000;
+                        }
+                        else $giamgia = (int)($thanhtoan * $res["value_cp"] /100);
+                        $phan_tram = (int)$res["value_cp"];
+                        $type = 0;
+                        $toi_da = (int)$res["max__order_amount"]/1000;
+                    }
+                    $query = "update cp_user set used = 1 where user_id = ".$_SESSION['user_id']." and cp_id = ".$res['id_cp'];
+                    execute($query);
+                }else {
+                    $message = "Bạn chưa chọn voucher.";
+                    echo "<script type='text/javascript'>alert('$message');</script>";
                 }
-                
             }
             $thanhtoan -= $giamgia;
             $_SESSION['giam_gia']= $giamgia; 
@@ -281,8 +286,8 @@ function tinhtien()
         // var_dump($thanhtoan);
         echo '
             <div class="pay">
-                <div class="field"><span>Tổng:</span><span class="price">' . $total . ' 000đ</span></div>
-                <div class="field"><span>Phí giao hàng:</span><span class="price">22 000đ</span></div>
+                <div class="field"><span>Tổng:</span><span class="price">' .number_format($total). ',000đ</span></div>
+                <div class="field"><span>Phí giao hàng:</span><span class="price">22,000đ</span></div>
                 ';
                 // if($type ==2){}
                 // echo'
@@ -295,12 +300,12 @@ function tinhtien()
                 }
                 if($type ==1){
                     echo'
-                    <div class="field"><span>Giảm giá :</span><span class="price">-' . $giamgia . ' 000đ</span></div>
+                    <div class="field"><span>Giảm giá :</span><span class="price">-' .number_format($giamgia) . ',000đ</span></div>
                     ';
                 }
                 if($type ==0){
                     echo'
-                    <div class="field"><span>Giảm giá '.$phan_tram.'% (Tối đa '.$toi_da.'k):</span><span class="price"> -' . $giamgia . ' 000đ</span></div>
+                    <div class="field"><span>Giảm giá '.$phan_tram.'% (Tối đa '.$toi_da.'k):</span><span class="price"> -' .number_format($giamgia) . ',000đ</span></div>
                     ';
                 }
                 echo'
@@ -327,9 +332,9 @@ function tinhtien()
 
             
                 <hr>
-                <!-- <div class="buy"><a href="#">Đặt hàng: <span>478 000đ</span></a></div> -->
+                <!-- <div class="buy"><a href="#">Đặt hàng: <span>478,000đ</span></a></div> -->
                 <div >
-                    <div class="field"><span>Thanh toán:</span><span class="price">' . $thanhtoan . ' 000đ</span></div>
+                    <div class="field"><span>Thanh toán:</span><span class="price">' .number_format($thanhtoan) . ',000đ</span></div>
                     <input type="submit" onclick=" return send()" class="buy" value="Đặt hàng" name="thanhtoan">
                 </div>
         

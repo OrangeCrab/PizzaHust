@@ -230,29 +230,34 @@
             <?php
                 foreach($coupon as $item) {
                     if (isset($_SESSION['user_id']) && $_SESSION['user_id'] > 0){
-                        $sql = "select cp_id, user_id from cp_user where cp_id = '$item[id_cp]' and user_id = '$_SESSION[user_id]'";
+                        $sql = "select cp_id, user_id from cp_user where cp_id = '$item[id_cp]' and user_id = '$_SESSION[user_id]' and used = 0";
                         $cpExist = executeResult($sql);
-
-                        echo '
-                        <div class="ticket">
-                            <div class="body-ticket">
-                                <span class="cp-description">'.$item['description'].'</span>
+                        $sql = "select cp_id, user_id from cp_user where cp_id = '$item[id_cp]' and user_id = '$_SESSION[user_id]' and used != 0";
+                        $cpUsed = executeResult($sql);
+                        if ($cpExist != null)
+                            echo'
+                            <div class="ticket">
+                                <div class="body-ticket">
+                                    <span class="cp-description">'.$item['description'].'</span>
+                                </div>
+                                <div class="stubs">
+                                    <input type="submit" name="gotten" id="" value="Đã Nhận">
+                                </div>
                             </div>';
-
-                            if ($cpExist != null)
-                                echo'
-                            <div class="stubs">
-                                <input type="submit" name="gotten" id="" value="Đã Nhận">
+                        else if ($cpUsed == null) {
+                            echo'
+                            <div class="ticket">
+                                <div class="body-ticket">
+                                    <span class="cp-description">'.$item['description'].'</span>
+                                </div>
+                                <div class="stubs"> 
+                                    <form action="" method="POST">
+                                        <input type="text" style="display: none;" name="cp_id" value="'.$item['id_cp'].'">
+                                        <input type="submit" name="addcp" id="get'.$item['id_cp'].'" value="Nhận">
+                                    </form>
+                                </div>
                             </div>';
-                            else echo'
-                            <div class="stubs"> 
-                                <form action="" method="POST">
-                                    <input type="text" style="display: none;" name="cp_id" value="'.$item['id_cp'].'">
-                                    <input type="submit" name="addcp" id="get'.$item['id_cp'].'" value="Nhận">
-                                </form>
-                            </div>';
-                        echo'
-                        </div>';
+                        }
                     }
                     else if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == 0){
                         echo'

@@ -15,6 +15,8 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
      <!-- jQuery library -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -63,21 +65,21 @@
         <div class="main_center_panel">
             <div id="h1">Danh sách đơn hàng</div>
 
-            <div class="wrapSearch">
-                <div class="TimKiem">
-                    <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem">
-                    <select name="searchOption" id="searchOption" onchange="searchTable()">
-                        <option>Mã</option>
-                        <option>Ngày tạo</option>
-                        <option>Khách hàng</option>
-                        <option>Số điện thoại</option>
-                        <option>Địa chỉ</option>
-                        <option>Danh sách đặt hàng</option>
-                        <option>Trạng thái</option>
-                        <option>Tổng tiền</option>
-                    </select>
-                    <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
+            <div class="search">  
+                <div class="search_core">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" placeholder="Tìm kiếm" class="form-control" id="searchInput" name = "search_tf" onkeyup="searchTable()"/>
                 </div>
+                <select name="searchOption" id="searchOption" onchange="searchTable()">
+                    <option>Mã</option>
+                    <option>Thời gian tạo</option>
+                    <option>Khách hàng</option>
+                    <option>Số điện thoại</option>
+                    <option>Địa chỉ</option>
+                    <option>Danh sách đặt hàng</option>
+                    <option>Trạng thái</option>
+                    <option>Tổng tiền</option>
+                </select>
             </div>
 
             <div class="table_wrap">

@@ -155,7 +155,6 @@ header{
         }
             .search_core span{
                 position: absolute;
-                z-index: 2;
                 display: block;
                 width: 2.375rem;
                 height: 2.3rem;
@@ -163,7 +162,7 @@ header{
                 text-align: center;
                 pointer-events: none;
                 color: #aaa;
-                /* max-height: 35px; */
+                max-height: 35px;
             }
             .search_core input{
                 padding-left: 2.375rem;
@@ -413,6 +412,7 @@ header{
                         top: 6%;
                         text-align: center;
                         border: 1px  solid  #000000;
+                        border-bottom: none;
                     }
                         .img_card input{
                             position: absolute;
@@ -428,6 +428,7 @@ header{
                         top: 16%;
                         text-align: center;
                         border: 1px  solid  #000000;
+                        border-top: none;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -435,6 +436,7 @@ header{
                         .img_container img{
                             width: auto;
                             max-height: 90%;
+                            max-width: 90%;
                         }
             .bottom_div{
                 position: absolute;

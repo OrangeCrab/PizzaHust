@@ -1,6 +1,6 @@
 @font-face {
     font-family: Monsterrat;
-    src: url(../masterial/font/Montserrat-Medium.ttf);
+    src: url('../../masterial/font/Montserrat-Medium.ttf');
 }
 
 body{
@@ -30,8 +30,11 @@ body{
     position: absolute;
     width: 345px;
     height: 90px;
-    margin-top: 60px;
-    margin-left: 37.17%;
+    left: 50%;
+    top: 4%;
+    transform: translate(-50%,-50%);
+    /* margin-top: 60px;
+    margin-left: 37.17%; */
 }
 
 .box{
@@ -39,28 +42,34 @@ body{
     width: 400px;
     height: fit-content;
     position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%,-50%);
     background-color: #f2f2f2;
     text-align: center;
-    margin-top: 150px;
-    margin-left: 35.12%;
+    /* margin-top: 150px;
+    margin-left: 35.12%; */
     border-radius: 10px;
     box-shadow: 0px 5px 15px black;
 }
 
 .box h2{
+    font-family: Monsterrat;
     letter-spacing: 2px;
     font-size: 18px;
     font-weight: 900;
+    color: darkorange;
+    margin-top: 20px;
 }
 
 .box input[type = "text"], .box input[type = "password"]{
     display: block;
     background: none;
-    margin: 20px auto;
+    margin: 10px auto 0px;
     text-align: center;
     border: 2px solid #404040;
     padding: 14px 7px;
-    width: 250px;
+    width: 75%;
     outline: none;
     color: #404040;
     border-radius: 24px;
@@ -75,7 +84,7 @@ body{
     text-align: center;
     border: 2px solid #04AA6D;
     padding: 7px 7px;
-    width: 60px;
+    width: fit-content;
     outline: none;
     color: #404040;
     border-radius: 20px;
@@ -91,4 +100,232 @@ body{
     color: #04AA6D;
     font-size: 14px;
 }
+
+.box #password_check{
+    color: red;
+    font-size: small;
+}
+.box #pass-inform{
+    color: red;
+    font-size: small;
+}
+.box #gmail-inform{
+    color: red;
+    font-size: small;
+}
+.box #address-confirm{
+    color: red;
+    font-size: small;
+}
+.box #phonenumber-inform{
+    color: red;
+    font-size: small;
+}
+
+@media (max-width: 1024px) {
+    .logo{
+        position: absolute;
+        width: 345px;
+        height: 90px;
+        left: 50%;
+        top: 8%;
+        transform: translate(-50%,-50%);
+        /* margin-top: 60px;
+        margin-left: 37.17%; */
+    }
+    .box{
+        width: 60%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .box h2{
+        letter-spacing: 2px;
+        font-size: 18px;
+        font-family: Monsterrat;
+        font-weight: 900;
+        margin-top: 20px;
+        color: darkorange;
+    }
+    
+    .box a{
+        color: #04AA6D;
+        font-size: 14px;
+    }
+    .box input[type = "text"], .box input[type = "password"]{
+        font-size: 18px;
+    }
+    .box h2{
+        font-size: 24px;
+    }
+    .box input[type = "submit"]{
+        width: 30px;
+        height: 50px;
+    }
+    .box .label_for_email{
+          font-size: 16px;
+    }
+    .box .label_for_password{
+        font-size: 16px;
+    }
+    .box #password_check{
+        color: red;
+        font-size: 14px;
+    }
+    .box #pass-inform{
+        color: red;
+        font-size: 14px;
+    }
+    .box #gmail-inform{
+        color: red;
+        font-size: 14px;
+    }
+    .box #address-confirm{
+        color: red;
+        font-size: 14px;
+    }
+    .box #phonenumber-inform{
+        color: red;
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .logo{
+        position: absolute;
+        width: 345px;
+        height: 90px;
+        left: 50%;
+        top: 5%;
+        transform: translate(-50%,-50%);
+        /* margin-top: 60px;
+        margin-left: 37.17%; */
+    }
+    .box{
+        width: 60%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+   
+    .box h2{
+        letter-spacing: 2px;
+        font-size: 10px;
+        font-family: Monsterrat;
+        font-weight: 900;
+        margin-top: 20px;
+        color: darkorange;
+    }
+    
+    .box a{
+        color: #04AA6D;
+        font-size: 16px;
+    }
+    .box input[type = "text"], .box input[type = "password"]{
+        font-size: 10px;
+    }
+    .box h2{
+        font-size: 16px;
+    }
+    .box input[type = "submit"]{
+        width: 30px;
+        height: 40px;
+    }
+    .box .label_for_email{
+          font-size: 14px;
+    }
+    .box #password_check{
+        color: red;
+        font-size: 14px;
+    }
+    .box #pass-inform{
+        color: red;
+        font-size: 14px;
+    }
+    .box #gmail-inform{
+        color: red;
+        font-size: 14px;
+    }
+    .box #address-confirm{
+        color: red;
+        font-size: 14px;
+    }
+    .box #phonenumber-inform{
+        color: red;
+        font-size: 14px;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .logo{
+        position: absolute;
+        width: 345px;
+        height: 90px;
+        left: 50%;
+        top: 8%;
+        transform: translate(-50%,-50%);
+        /* margin-top: 60px;
+        margin-left: 37.17%; */
+    }
+    .box{
+        width: 60%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+   
+    .box h2{
+        letter-spacing: 2px;
+        font-size: 20px;
+        font-family: Monsterrat;
+        font-weight: 900;
+        margin-top: 20px;
+        color: darkorange;
+    }
+    
+    .box a{
+        color: #04AA6D;
+        font-size: 20px;
+    }
+    .box input[type = "text"], .box input[type = "password"]{
+        font-size: 16px;
+    }
+    .box h2{
+        font-size: 20px;
+    }
+    .box input[type = "submit"]{
+        width: 30px;
+        height: 40px;
+    }
+    .box .label_for_email{
+          font-size: 16px;
+    }
+    .box #password_check{
+        color: red;
+        font-size: 14px;
+    }
+    .box #pass-inform{
+        color: red;
+        font-size: 14px;
+    }
+    .box #gmail-inform{
+        color: red;
+        font-size: 14px;
+    }
+    .box #address-confirm{
+        color: red;
+        font-size: 14px;
+    }
+    .box #phonenumber-inform{
+        color: red;
+        font-size: 14px;
+    }
+    
+}
+
 

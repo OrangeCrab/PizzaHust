@@ -14,7 +14,7 @@ $gmail_check = false;
         $address = getPost('address-register');
         
         // chay cau lenh sql de lay ra gia tri trong database co gia tri bang gia tri nguoi dung nhap vao
-        $sql = "select username from user_account where username = '$user_name_register'";
+        $sql = "select email from user_account where email = '$email'";
         $userExist = executeResult($sql);
 
 
@@ -22,7 +22,12 @@ $gmail_check = false;
         if(empty($userExist)){           
             $sql = "insert into user_account (username, password,email,phonenumber,address) values ('$user_name_register','$password_register','$email','$phonenumber','$address')";
             execute($sql);
-            $_SESSION['user_id'] = $user_name_register;
+            
+            $sql_id = "select id from user_account where email = '$email'";
+            $userExist_id = executeResult($sql_id);
+            $user_id = array($userExist_id);
+            $_SESSION['user_id'] = $user_id[0][0]['id'];
+            $_SESSION['count_for_login'] = 0;
 
             header("location: ../homepage/homepage.php");
             die();           
@@ -30,7 +35,7 @@ $gmail_check = false;
         else{
             echo '
                 <script type="text/javascript">
-                    alert("This user name did exist"); 
+                    alert("Email này đã đăng ký tài khoản khác !"); 
                 </script>
               
             ';

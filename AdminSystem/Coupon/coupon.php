@@ -105,9 +105,9 @@
         <div class="work_screen">
             <div class="left_bar scroll">
                 <a href="../DashBoard/DashBoard.php" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
-                <a href="../ProductManagementPage/ProductManagementPage.php"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
+                <a href="../ProductManagementPage/ProductManagementPage.php"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Sản Phẩm</span></a>
                 <a href="../InvoiceManagementPage/InvoiceManagement.php"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
-                <a href="#" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến mãi</span></a>
+                <a href="#" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến Mãi</span></a>
             </div>
 
             <div id="main_center_panel">

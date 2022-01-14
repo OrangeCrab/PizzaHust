@@ -55,27 +55,29 @@
     <div class="work_screen">
         <div class="left_bar">
             <a href="../DashBoard/DashBoard.php" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
-            <a href="../ProductManagementPage/ProductManagementPage.php" target="_self"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Món Ăn</span></a>
+            <a href="../ProductManagementPage/ProductManagementPage.php" target="_self"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Sản Phẩm</span></a>
             <a href="#" class="active"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
-            <a href="../Coupon/coupon.php" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến mãi</span></a>
+            <a href="../Coupon/coupon.php" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến Mãi</span></a>
         </div>
 
         <div class="main_center_panel">
             <div id="h1">Danh sách đơn hàng</div>
 
-            <div class="Search TimKiem">
-                <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem">
-                <select name="searchOption" id="searchOption" onchange="searchTable()">
-                    <option>Mã</option>
-                    <option>Ngày tạo</option>
-                    <option>Khách hàng</option>
-                    <option>Số điện thoại</option>
-                    <option>Địa chỉ</option>
-                    <option>Danh sách đặt hàng</option>
-                    <option>Trạng thái</option>
-                    <option>Tổng tiền</option>
-                </select>
-                <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
+            <div class="wrapSearch">
+                <div class="TimKiem">
+                    <img src="../../masterial/image/iconAdminPage/searchLogo.svg" alt="TimKiem">
+                    <select name="searchOption" id="searchOption" onchange="searchTable()">
+                        <option>Mã</option>
+                        <option>Ngày tạo</option>
+                        <option>Khách hàng</option>
+                        <option>Số điện thoại</option>
+                        <option>Địa chỉ</option>
+                        <option>Danh sách đặt hàng</option>
+                        <option>Trạng thái</option>
+                        <option>Tổng tiền</option>
+                    </select>
+                    <input id="searchInput" type="text" placeholder="Tìm kiếm" onkeyup="searchTable()"/>
+                </div>
             </div>
 
             <div class="table_wrap">

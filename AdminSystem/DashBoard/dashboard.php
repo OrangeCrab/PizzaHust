@@ -51,7 +51,7 @@ $data_chart = get_sales();
 
             <div id="main_center_panel">
                     <!-- lamf tiếp vào đây -->
-                <h1>Tổng quan</h1>
+                <div class="h1">Tổng quan</div>
                 <div class="cardBox">
                     <div class="card">                                       
                         <div>   
@@ -65,7 +65,7 @@ $data_chart = get_sales();
 
                     <div class="card"> 
                         <div>
-                            <div class="card-name">Tổng đơn hàng</div> 
+                            <div class="card-name">Tổng đơn hàng </div> 
                             <div class="numbers"><?php echo number_orders(); ?></div> 
                         </div>     
                         <div class="iconbox">

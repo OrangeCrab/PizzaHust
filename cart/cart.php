@@ -5,7 +5,9 @@ include("config.php");
 require_once('../database/dbhelper.php');
 $baseUrl = '../';
 $con = mysqli_connect("localhost", "root", "", "quan_ly_cua_hang_pizza_hust");
-
+if (!isset($_SESSION['selected_cp_id'])) {
+    $_SESSION['selected_cp_id'] = 0;
+}
 #Lưu tên khách hàng
 $sql = "select * from user_account";
 $user_info = executeResult($sql);
@@ -55,6 +57,9 @@ if (isset($_POST['thanhtoan'])) {
     $ghichu = $_POST['ghichu'];
     if($_SESSION['user_id'] != 0){
         $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status, user_id) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận','{$_SESSION['user_id']}')");
+        //var_dump($_SESSION['selected_cp_id']);
+        $query = "update cp_user set used = 1 where user_id = ".$_SESSION['user_id']." and cp_id = ".$_SESSION['selected_cp_id'];
+        execute($query);
     }else{
         $sql_giohang = mysqli_query($con, "insert into `order`(fullname, phonenumber, address,note,order_time,status) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận')");
     }
@@ -273,8 +278,7 @@ function tinhtien()
                         $type = 0;
                         $toi_da = (int)$res["max__order_amount"]/1000;
                     }
-                    $query = "update cp_user set used = 1 where user_id = ".$_SESSION['user_id']." and cp_id = ".$res['id_cp'];
-                    execute($query);
+                    $_SESSION['selected_cp_id'] = $res['id_cp'];
                 }else {
                     $message = "Bạn chưa chọn voucher.";
                     echo "<script type='text/javascript'>alert('$message');</script>";
@@ -315,7 +319,7 @@ function tinhtien()
                     <select name="apvoucher" id="">
                         <option value="'.$code_voucher.'">   '.$code_voucher.'   </option>
                     ';
-                    $sql = "SELECT coupon.* from coupon,cp_user where coupon.id_cp = cp_user.cp_id and cp_user.user_id = '{$_SESSION['user_id']}'";
+                    $sql = "SELECT coupon.* from coupon,cp_user where coupon.id_cp = cp_user.cp_id and cp_user.user_id = '{$_SESSION['user_id']}' and cp_user.used = 0";
                     $voucher = executeResult($sql);
                     foreach($voucher as $item){
                         if($total*1000 >= (int)$item['min_order_value'] && $item['code_cp'] != $code_voucher){

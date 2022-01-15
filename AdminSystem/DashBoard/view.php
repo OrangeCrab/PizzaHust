@@ -46,12 +46,12 @@ function get_overview(){
 
 //lay 5 pizza order nhieu trong tuan
 function get_order_top(){
-    $sql = "SELECT order_detail.product_name ,SUM(quatity) , `image`
+    $sql = "SELECT order_detail.product_name ,SUM(quantity) , `image`
     FROM `order_detail`,`order` , `product`
     WHERE   `order_detail`.order_id=`order`.`id` 
     -- AND ( `order`.`order_time` > CURRENT_DATE -700 ) 
     and `product`.`name` = order_detail.product_name
-    GROUP BY product_name ORDER BY SUM(quatity) DESC  LIMIT 5";
+    GROUP BY product_name ORDER BY SUM(quantity) DESC  LIMIT 5";
     return executeResult($sql);
 }
 

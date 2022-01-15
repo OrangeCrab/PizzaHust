@@ -186,7 +186,7 @@ CREATE TABLE `order_detail` (
 -- Dumping data for table `order_detail`
 --
 
-INSERT INTO `order_detail` (`id`, `order_id`, `product_name`, `price`, `quatity`, `size`, `plinth`, `topping`) VALUES
+INSERT INTO `order_detail` (`id`, `order_id`, `product_name`, `price`, `quantity`, `size`, `plinth`, `topping`) VALUES
 (121, 86, 'Pizza Thập Cẩm', 110000, 2, 'S', 'Mềm xốp', 'Phô mai viền '),
 (122, 86, 'Pizzaminsea', 165000, 2, 'S', 'Mềm xốp', 'Phô mai phủ '),
 (123, 86, 'Pizza Tôm Sốt Bơ Tỏi', 105000, 2, 'S', 'Mềm xốp', 'Phô mai phủ '),

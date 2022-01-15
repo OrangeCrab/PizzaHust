@@ -128,7 +128,7 @@ $data_chart = get_sales();
                                 <?php foreach ($top_product as $top_item){ ?>
                                     <tr>
                                         <td width="60px"><div class="imgBx"><img src="<?php echo '../../masterial/image/thuc_don/'.$top_item['image']; ?>" alt=""></div></td>
-                                        <td><h4><?php echo $top_item['product_name']; ?> <br><span>  <?php echo $top_item['SUM(quatity)']; ?></span> </h4></td>    
+                                        <td><h4><?php echo $top_item['product_name']; ?> <br><span>  <?php echo $top_item['SUM(quantity)']; ?></span> </h4></td>    
                                     </tr>
                                 <?php } ?>
                             </tbody>

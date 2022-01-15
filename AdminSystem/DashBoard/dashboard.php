@@ -15,6 +15,9 @@ $data_chart = get_sales();
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="dashboard.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"> -->
+
         <link rel="stylesheet" href="../InvoiceManagementPage/invoice_management.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
@@ -104,7 +107,7 @@ $data_chart = get_sales();
                             <tbody>
                                 <?php foreach ($order as $item){ ?>
                                     <tr>
-                                        <td><a href="#" onclick="openPopupFromElement(this)"><?php echo $item['id']; ?></a></td>
+                                        <td><?php echo $item['id']; ?></td>
                                         <td><?php echo $item['payment'].''; ?></td>
                                         <td><?php echo $item['phonenumber']; ?></td>
                                         <td><?php echo $item['address']; ?></td> 
@@ -134,12 +137,29 @@ $data_chart = get_sales();
                 </div>
 
                 <div class="chart_div" >
+                    <!-- <div class="head_chart">
+                        <input type="date" name="date_begin" id="date_begin">
+                        <input type="date" name="date_end" id="date_end">
+                    </div> -->
                     <canvas id="myChart" ></canvas>
                 </div>
             
             </div>
         </div>
        
+        <!-- <script>
+            const d = new Date();
+            // d = d.toISOString().slice(0, 10);
+            let date_begin = document.getElementById("date_begin");
+            let date_end = document.getElementById("date_end"); 
+                                    console.log(d.toISOString().slice(0, 10));
+            date_begin.max = d.toISOString().slice(0, 10);
+            date_end.max = d.toISOString().slice(0, 10);
+            date_end.value = d.toISOString().slice(0, 10);
+            d.setDate(d.getDate() - 6);
+            date_begin.value = d.toISOString().slice(0, 10);
+
+        </script> -->
               
         <script>
             // console.log( );
@@ -164,18 +184,7 @@ $data_chart = get_sales();
                         hoverBorderWidth:4,
                         hoverBorderColor:'#000',
                         tension: 0.4
-                    }
-                    // ,{
-                    //     label:'Tuan truoc',
-                    //     data:[10,155,100,160,0,70],
-    
-                    //     backgroundColor: 'red',
-                    //     borderWidth:1,
-                    //     borderColor:'#777',
-                    //     hoverBorderWidth:3,
-                    //     hoverBorderColor:'#000'
-                    // }
-                    ]
+                    }]
                 },
                 options:{
 		            tooltips:{mode: 'index'},

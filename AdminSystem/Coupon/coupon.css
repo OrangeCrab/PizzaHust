@@ -78,31 +78,32 @@ header{
     height: 100%;
 }
 
-    .left_bar a{
-        color: #f2f2f2;
-        display: block;
-        width: 100%;
-        line-height: 50px;
-        text-decoration: none;
-        padding-left: 40px;
-        font-family: Monsterrat;
-        font-size: 16px;
-        box-sizing: border-box;
-        transition: 0.5s;
-        transition-property: background;
-    }
+.left_bar a{
+    color: #f2f2f2;
+    display: block;
+    width: 100%;
+    line-height: 50px;
+    text-decoration: none;
+    padding-left: 40px;
+    font-family: Monsterrat;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+}
 
-    .left_bar a:hover{
-        background:#04AA6D;
-    }
+.left_bar a:hover{
+    background:#04AA6D;
+    text-decoration:none;
+}
 
-    .left_bar a.active{
-        background:#04AA6D;
-    }
+.left_bar a.active{
+    background:#04AA6D;
+}
 
-    .left_bar i{
-        padding: 10px;
-    }
+.left_bar i{
+    padding: 10px;
+}
 
 #main_center_panel{
     /*  display: flex; */
@@ -130,46 +131,48 @@ header{
         line-height: 50px;
     }
     .filter_wrap{
-        position: relative;
-        margin-top: 10px;
-        width: 12%;
-        height: 35px;
-        left: 38%;
+        position: absolute;
+        width: 15%;
+        height: 50px;
+        left: 27%;
+        vertical-align:middle;
     }
         .filter_wrap select{
             position: absolute;
             width: 100%;
-            height: 100%;
+            height: 70%;
             text-align: center;
-            top: 0;
+            top: 15%;
+            font-size: 16px;
         }
     .timkiem {
-        position: fixed;
-        width: 20%;
-        height: 30px;
-        left: 52%;
-        margin-top: 10px;
+        position: absolute;
+        width: 25%;
+        height: 50px;
+        left: 42%;
     }
-        .search_logo{
+        .search_core{
             position: absolute;
-            width: 35px;
-            height: 35px;
-            background-image: url('../../masterial/image/iconAdminPage/searchLogo.svg');
-            background-repeat: no-repeat;
-            background-size: 35px 35px;
-        }
-        .timkiem input {
-            position: absolute;
-            left: 15%;
-            height: 35px;
-            vertical-align: middle;
-            border: none;
-            border: 1px solid #DDD;
-            font-size: 15px;
-            font-weight: lighter;
+            top: 15%;
+            left: 10%;
+            height: 70%;
             width: 80%;
-            font-family: Monsterrat;
         }
+            .search_core span{
+                position: absolute;
+                display: block;
+                width: 2.375rem;
+                height: 2.3rem;
+                line-height: 2.3rem;
+                text-align: center;
+                pointer-events: none;
+                color: #aaa;
+                max-height: 35px;
+            }
+            .search_core input{
+                padding-left: 2.375rem;
+                max-height: 35px;
+            }
     .wrap_btn{
         position: relative;
         /* width: 12%; */
@@ -199,7 +202,7 @@ header{
         }
     #table_panel{
         overflow-y: scroll; 
-        position: relative;
+        position: absolute;
         width: 96%;
         height: 83%;
         /* top: 50px; */
@@ -210,16 +213,17 @@ header{
     }
         
         #table_panel table {
-            position: absolute;
+            position: relative;
+            display: block;
             width: 100%;
             border-collapse: collapse;
             table-layout: fixed;  
+            overflow: auto; 
             font-size: 15px;
             font-family: Monsterrat;
             font-weight: lighter;
-            /* height: 100%; */
-            display: contents;
-            overflow: scroll; 
+            border-radius: 5px;
+            border: none;
         }
             #table_panel table tr {
                 height: 50px;
@@ -227,33 +231,31 @@ header{
             }
             #table_panel table th {
                 position: sticky; 
-                
                 top: 0;
-                padding: 5px;
                 text-align: center;
                 align-items: center;
                 z-index: 0;
                 background: white;
+                border: none;
             }
             #table_panel table td{
-                padding: 5px;
-                border-bottom: 0.5px solid rgb(200, 200, 200);
+                /* padding: 5px; */
+                border-top: 1px solid black;
+                border-right: none;
+                border-left: none;
+                border-bottom: none;
                 text-align: center;
                 align-items: center;
-                vertical-align: inherit;
+                /* vertical-align: inherit; */
 
                 
             }
             #table_panel table th:nth-child(9), td:nth-child(9) {
                 width: 5% !important;
-                align-items: center;
-                justify-content: center;
                 text-align: center;
             }
             #table_panel table th:nth-child(8), td:nth-child(8) {
                 width: 5% !important;
-                text-align: center;
-                align-items: center;
             }
             #table_panel table th:nth-child(7), td:nth-child(7) {
                 width: 28%;
@@ -281,8 +283,6 @@ header{
             #table_panel table th:nth-child(2), td:nth-child(2) {
                 width: 12%;
                 max-width: 150px;
-                background-position: center;
-                background-size: contain;
             }
             #table_panel table th:nth-child(1), td:nth-child(1) {
                 width: 4%;
@@ -316,7 +316,7 @@ header{
 .testbox {
     position: relative;
     width: 720px;
-    height: 80%;
+    /* height: 80%; */
     margin: auto;
     /* top: 8%; */
     background: #f2f2f2;

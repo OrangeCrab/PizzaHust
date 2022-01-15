@@ -62,25 +62,24 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="shortcut icon" href="https://t004.gokisoft.com/uploads/2021/07/1-s-1637-ico-web.jpg">
 
          <!-- <link rel="stylesheet" href="dashboard.css"> -->
-         <link rel="stylesheet" href="coupon.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
        
-        <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-         <!-- jQuery library -->
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-        <!-- Popper JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-        <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="coupon.css">
+
+
     </head>
     <body>
 
@@ -107,7 +106,7 @@
                 <a href="../DashBoard/DashBoard.php" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
                 <a href="../ProductManagementPage/ProductManagementPage.php"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Sản Phẩm</span></a>
                 <a href="../InvoiceManagementPage/InvoiceManagement.php"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
-                <a href="#" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến Mãi</span></a>
+                <a href="#" class="active" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến Mãi</span></a>
             </div>
 
             <div id="main_center_panel">
@@ -115,14 +114,12 @@
 
                 <div class="head">
                     <div id="h1">Danh sách mã khuyến mãi</div>
-                    
+
                     <div class="wrap_btn">
                         <button class="btn btn-success add_button">Thêm khuyến mãi</button>
                     </div> 
 
-                    <!-- <div class="wrap_plinth">
-                        <a href="addcp.php"><button class="btn" style="color:white">Đế Pizza</button></a>
-                    </div> -->
+                   
                 </div>   
 
                 <div id="table_panel">

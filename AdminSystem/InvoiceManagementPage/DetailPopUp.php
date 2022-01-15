@@ -43,7 +43,7 @@
     </tr>
 
     <?php 
-        $sql = "SELECT `product_name`, `size`, `topping`, `plinth`, `price`, `quatity`
+        $sql = "SELECT `product_name`, `size`, `topping`, `plinth`, `price`, `quantity`
         FROM `order_detail`
         WHERE `order_detail`.`order_id` = ".$orderid;
 
@@ -66,11 +66,11 @@
                 }
                 echo'</td>';
                 echo '<td>'.number_format($item['price']).'</td>
-                <td>'.$item['quatity'].'</td>
-                <td>'.number_format($item['price'] * $item['quatity']).'</td>
+                <td>'.$item['quantity'].'</td>
+                <td>'.number_format($item['price'] * $item['quantity']).'</td>
             </tr>';
 
-            $total_money += ($item['price'] * $item['quatity']);
+            $total_money += ($item['price'] * $item['quantity']);
         }
 
         echo '<tr class="sum">

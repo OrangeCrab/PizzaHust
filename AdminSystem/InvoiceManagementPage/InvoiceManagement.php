@@ -123,7 +123,7 @@
                                 <td>'.$item_Order['oAddress'].'</td>';
                                 
                                 // In danh sach dat hang cua khach hang nay
-                                $sql_Detail = "SELECT `product_name`, `quatity`, `size`, `plinth`, `topping`
+                                $sql_Detail = "SELECT `product_name`, `quantity`, `size`, `plinth`, `topping`
                                     FROM `order_detail`
                                     WHERE `order_id` = ".$item_Order['id'];
                                 $data_Detail = executeResult($sql_Detail);
@@ -139,7 +139,7 @@
                                     if ($item_Detail['topping'] != NULL){
                                         echo ', Topping: <b>'.$item_Detail['topping'].'</b>';
                                     }
-                                    echo ', SL: <b>'.$item_Detail['quatity'].'</b></small><br>';
+                                    echo ', SL: <b>'.$item_Detail['quantity'].'</b></small><br>';
                                 }
                                 echo '</td>';
 

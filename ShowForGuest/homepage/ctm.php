@@ -18,7 +18,7 @@
     
     $sql = "select * from coupon, cp_user 
             WHERE coupon.id_cp = cp_user.cp_id
-            AND cp_user.user_id = '$customer[id]'";
+            AND cp_user.user_id = '$customer[id]' and used = 0";
     $user_coupon = executeResult($sql);
 ?>
 

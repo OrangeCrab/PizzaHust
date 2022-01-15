@@ -176,7 +176,7 @@ CREATE TABLE `order_detail` (
   `order_id` int(11) DEFAULT NULL,
   `product_name` varchar(200) DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
-  `quatity` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
   `size` varchar(10) DEFAULT NULL,
   `plinth` varchar(30) DEFAULT NULL,
   `topping` varchar(50) DEFAULT NULL

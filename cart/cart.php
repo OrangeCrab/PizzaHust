@@ -94,15 +94,16 @@ if (isset($_POST['thanhtoan'])) {
                 $total += $_SESSION['giohang'][$i][3] *  $giatien;
                 $price =  $giatien * 1000;
             }
-            $total += $gia_topping;
-            $thanhtoan = ($total + 22 - $_SESSION['giam_gia']) * 1000;
+
             $num = (int)$_SESSION['giohang'][$i][3];
+            $total += $gia_topping*$num;
+            $thanhtoan = ($total + 22 - $_SESSION['giam_gia']) * 1000;
             $get_id = mysqli_query($con, "select id from `product` where name = N'{$_SESSION['giohang'][$i][4]}' ");
             $res = mysqli_fetch_array($get_id);
             $get_product_id = (int)$res["id"];
 
-           
-            $sql_donhang = mysqli_query($con, "insert into `order_detail`(order_id, price, quantity,size,plinth, topping, product_name) values($get_order_id,$price,$num,'{$_SESSION['giohang'][$i][0]}','{$_SESSION['giohang'][$i][1]}','$fulltopping','{$_SESSION['giohang'][$i][4]}')");
+            $price1 = $price + $gia_topping*1000;
+            $sql_donhang = mysqli_query($con, "insert into `order_detail`(order_id, price, quantity,size,plinth, topping, product_name) values($get_order_id,$price1,$num,'{$_SESSION['giohang'][$i][0]}','{$_SESSION['giohang'][$i][1]}','$fulltopping','{$_SESSION['giohang'][$i][4]}')");
         }
         // var_dump("insert into `order`(fullname, phonenumber, address,note,order_time,status, user_id) values('$name','$sdt','$diachi $quanhuyen','$ghichu',CURRENT_TIMESTAMP,N'Chờ xác nhận','{$_SESSION['user_id']}')");
     }
@@ -112,6 +113,7 @@ if (isset($_POST['thanhtoan'])) {
         $sql_giohang = mysqli_query($con, "update `order` set coupon = $coupon where id = $get_order_id");
     }
     unset($_SESSION['giohang']);
+    $_SESSION['giam_gia'] = 0;
     header('location: ../ShowForGuest/homepage/homepage.php');
     // $get_order_id = mysqli_query($con,"SELECT `id` FROM `order` where `fullname` ='$name' and `payment`");
 
@@ -286,6 +288,9 @@ function tinhtien()
             }
             $thanhtoan -= $giamgia;
             $_SESSION['giam_gia']= $giamgia; 
+        }
+        else{
+            $_SESSION['giam_gia'] = 0;
         }
         // var_dump($thanhtoan);
         echo '

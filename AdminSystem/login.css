@@ -45,6 +45,11 @@ body{
     box-shadow: 0px 5px 15px black;
 }
 
+.box #password_check{
+    color: red;
+    font-size: small;
+}
+
 .box h2{
     letter-spacing: 2px;
     font-size: 18px;
@@ -73,7 +78,7 @@ body{
     text-align: center;
     border: 2px solid #04AA6D;
     padding: 7px 7px;
-    width: 60px;
+    width: fit-content;
     outline: none;
     color: #404040;
     border-radius: 20px;

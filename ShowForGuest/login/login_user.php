@@ -9,36 +9,41 @@ require_once ('process_user_login.php');
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Login</title>
+        <title>Login</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="login_user.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    
     </head>
 
-    <body>
+    <body > 
         <img class="background_img" src="../../masterial/image/bgrAdminPage/bgrLogin.jpg" alt="">
         <div class="screen"></div>
         
+        <div class="box_content">
         <a href="../homepage/homepage.php"><img class="logo" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo"></a>
         
-
-
         <form class="box" action="" method="post">
-            <h2>LOGIN</h2>
-            <label for="email" style="font-size: 14px;">Email</label>
+            <h2 style="margin-top: 20px;">ĐĂNG NHẬP</h2>
+            <label for="email" class="label_for_email">Email</label>
             <input type="text" name="email" id ="email" placeholder="Email" required="true" autofocus onblur="email_check()">   
-            <p id="gmail-confirm" style="color: red; font-size:small"></p>
+            <p id="gmail-confirm"></p>
             
-            <label for="password" style="font-size: 14px;">Mật khẩu</label>
+            <label for="password" class="label_for_password" >Mật khẩu</label>
             <input type="password" name="password" id ="password" placeholder="Password" required="true" onblur="password_check()">
-            <p id="password_check" style="color: red; font-size:small"></p>
-            <input type="submit" name="" value="Login" id="submit">
+            <p id="password_check" ></p>
+            <input type="submit" name="" value="Đăng nhập" id="submit" style="width: fit-content;">
             <!-- <a href="../AdminSystem/DashBoard/DashBoard.html" type="submit" class="button btn btn-primary active">LOGIN</a> -->
-            <div class="link container">
-                <a href="../forget/forget.php">Quên mật khẩu</a>
-                <a href="../register/register.php">Đăng ký tài khoản</a>
+            <div class="link">
+                <a href="../forget/forget.php" class="forget">Quên mật khẩu</a>
+                <a href="../register/register.php" class="register">Đăng ký tài khoản</a>
 
             </div>
             
         </form>
+     </div>
         <script>
             function email_check(){
                 var email = document.getElementById('email').value;
@@ -47,9 +52,7 @@ require_once ('process_user_login.php');
                 var check = regex.test(email);
 
                 if(!check){
-                   gmail_inform.textContent = "trường này phải là email !";
-                   gmail_inform.style.color = "red";
-                   gmail_inform.style.fontSize = "small";
+                   gmail_inform.textContent = "Trường này phải là email !";
                    document.getElementById('submit').disabled = true;
                 }
                 else{

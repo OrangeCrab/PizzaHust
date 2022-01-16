@@ -11,47 +11,54 @@ require_once ('process_register.php');
         <meta charset="UTF-8">
         <title>Register</title>
         <link rel="stylesheet" href="../register/register.css"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    
     </head>
 
     <body>
         <img class="background_img" src="../../masterial/image/bgrAdminPage/bgrLogin.jpg" alt="" style="position: fixed;">
         <div class="screen" style="position: fixed;"></div>
-        
+        <div class="box_content">
         <a href="../homepage/homepage.php"><img class="logo" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo" style="margin-top: 60px;"></a>
         
 
 
-        <form class="box" action="" method="post" style="height: fit-content; margin-top: 150px;" >
-            <h2>REGISTER</h2>
-            <label for="username" style="font-size: 14px;">Tên đăng nhập</label>
-            <input type="text" name="username-register" id ="username" placeholder="Username" required = "true" autofocus> 
+        <form class="box" action="" method="post" >
+            <h2 class="h2">ĐĂNG KÝ TÀI KHOẢN</h2>
+            
+            <!-- <label for="username" class="label_for_email" >Tên đăng nhập</label> -->
+            <input type="text" name="username-register" id ="username" placeholder="Tên của bạn" required = "true" autofocus> 
 
-            <label for="password" style="font-size: 14px;">Mật khẩu</label>
-            <input type="password" name="password-register" id ="password" placeholder="Password" required = "true" onblur="password_check()">
-            <p id="password_check" style="color: red; font-size: small;"></p>
+            <!-- <label for="password" class="label_for_email" >Mật khẩu</label> -->
+            <input type="password" name="password-register" id ="password" placeholder="Mật khẩu" required = "true" onblur="password_check()">
+            <p id="password_check" ></p>
 
-            <label for="password-confirm" style="font-size: 14px;">Xác nhận mật khẩu</label>
-            <input type="password" name="password-confirm" id ="password-confirm" placeholder="Confirm_password" required = "true" onblur="mouseover()" >
-            <p id="pass-inform" style="color: red; font-size: small;"></p>
+            <!-- <label for="password-confirm" class="label_for_email" >Xác nhận mật khẩu</label> -->
+            <input type="password" name="password-confirm" id ="password-confirm" placeholder="Xác nhận mật khẩu" required = "true" onblur="mouseover()" >
+            <p id="pass-inform" ></p>
 
-            <label for="gmail" style="font-size: 14px;">Email</label>
-            <input type="text" name="gmail" id ="gmail" placeholder="Gmail" required = "true" onblur="gmail_check()">
-            <p id="gmail-inform" style="color: red; font-size: small;"></p>
+            <!-- <label for="gmail" class="label_for_email">Email</label> -->
+            <input type="text" name="gmail" id ="gmail" placeholder="Email" required = "true" onblur="gmail_check()">
+            <p id="gmail-inform"></p>
 
-            <label for="address" style="font-size: 14px;">Địa chỉ</label>
-            <input type="text" name="address-register" id ="address" placeholder="Address" required = "true">
-            <p id="address-confirm" style="color: red; font-size: small;"></p>
+            <!-- <label for="address" class="label_for_email">Địa chỉ</label> -->
+            <input type="text" name="address-register" id ="address" placeholder="Địa chỉ" required = "true">
+            <p id="address-confirm" ></p>
 
-            <label for="phonenumber" style="font-size: 14px;">Số điện thoại</label>
-            <input type="text" name="phonenumber-register" id ="phonenumber" placeholder="Phone number" required = "true" onblur="phone_check()">
-            <p id="phonenumber-inform" style="color: red; font-size: small;"></p>
+            <!-- <label for="phonenumber" class="label_for_email">Số điện thoại</label> -->
+            <input type="text" name="phonenumber-register" id ="phonenumber" placeholder="Số điện thoại" required = "true" onblur="phone_check()">
+            <p id="phonenumber-inform" ></p>
 
             <!-- <img type = "submit" src="../../masterial/image/iconAdminPage/login.svg" alt=""> -->
-            <input type="submit" id="submit" name="" value="Register" style="width: fit-content;" >
+            <input type="submit" id="submit" name="" value="Đăng ký" style="width: fit-content;" >
             <!-- <a href="../AdminSystem/DashBoard/DashBoard.html" type="submit" class="button btn btn-primary active">LOGIN</a> -->
             
             
         </form>
+        </div>
 
         <script>
             function mouseover(){
@@ -121,7 +128,7 @@ require_once ('process_register.php');
             }
 
         </script>
-        <!-- <script src="register.js"></script> -->
+        <!-- <scripĐăng ký.js"></script> -->
         
     </body>
 

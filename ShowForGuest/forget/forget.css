@@ -5,7 +5,7 @@
 
 body{
     margin: 0;
-    font-family: Monsterrat;
+    font-family: Monsterrat; 
 }
 .background_img{
     margin: 0;
@@ -25,10 +25,13 @@ body{
 
 .logo{
     position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%,-50%);
     width: 345px;
     height: 90px;
-    margin-top: 110px;
-    margin-left: 39%;
+    /* margin-top: 110px;
+    margin-left: 39%; */
 }
 
 .box{
@@ -36,25 +39,37 @@ body{
     width: 450px;
     height: fit-content;
     position: absolute;
-    background-color: #f2f2f2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #f2f2f2; 
     text-align: center;
-    margin-top: 200px;
-    margin-left: 35.12%;
+    /* margin-top: 200px;
+    margin-left: 35.12%; */
     border-radius: 10px;
     box-shadow: 0px 5px 15px black;
 }
 
 .box h2{
+    margin-top: 20px;
+    margin-bottom: 30px;
     letter-spacing: 2px;
     font-size: 18px;
     font-weight: 900;
     font-family: Monsterrat;
+    color: darkorange;
 }
+/* .box h4{
+    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: 900;
+    font-family: Monsterrat;
+} */
 
-.box input[type = "text"], .box input[type = "password"]{
+.box input[type = "text"]{
     display: block;
     background: none;
-    margin: 10px auto;
+    margin: 0px auto;
     text-align: center;
     border: 2px solid #404040;
     padding: 14px 7px;
@@ -75,7 +90,7 @@ body{
     text-align: center;
     border: 2px solid #04AA6D;
     padding: 7px 7px;
-    width: 60px;
+    width: fit-content;
     outline: none;
     color: #404040;
     border-radius: 20px;
@@ -94,4 +109,115 @@ body{
 }
 .h2 {
     margin-top: 15px;
+}
+.box .label_for_email {
+    font-size: 14px;
+}
+.box #gmail-inform {
+    font-size: small;
+    color: red;
+}
+@media (max-width: 1024px) {
+    .box{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        width: 60%;
+    }
+    .box h2{
+        letter-spacing: 2px;
+        font-size: 18px;
+        font-family: Monsterrat;
+        font-weight: 900;
+        margin-top: 20px;
+        color: darkorange;
+    }
+    
+    .box a{
+        color: #04AA6D;
+        font-size: 14px;
+    }
+    .box input[type = "text"]{
+        font-size: 18px;
+    }
+    .box h2{
+        font-size: 24px;
+    }
+    .box input[type = "submit"]{
+        width:fit-content;
+    }
+    .box .label_for_email{
+          font-size: 16px;
+    }
+   
+    .box #gmail-inform {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+   
+    .box h2{
+        letter-spacing: 2px;
+        font-size: 10px;
+        font-family: Monsterrat;
+        font-weight: 900;
+        margin-top: 20px;
+        color: darkorange;
+    }
+    
+    .box a{
+        color: #04AA6D;
+        font-size: 16px;
+    }
+    .box input[type = "text"]{
+        font-size: 10px;
+    }
+    .box h2{
+        font-size: 16px;
+    }
+    .box input[type = "submit"]{
+       width: fit-content;
+    }
+    .box .label_for_email{
+          font-size: 14px;
+    }
+  
+    .box #gmail-inform {
+        font-size: 14px;
+    }
+    
+}
+
+@media (max-width: 850px) {
+   
+    .box h2{
+        letter-spacing: 2px;
+        font-size: 20px;
+        font-family: Monsterrat;
+        font-weight: 900;
+        margin-top: 20px;
+        color: darkorange;
+    }
+    
+    .box a{
+        color: #04AA6D;
+        font-size: 20px;
+    }
+    .box input[type = "text"]{
+        font-size: 16px;
+    }
+    .box h2{
+        font-size: 20px;
+    }
+    .box input[type = "submit"]{
+        width: fit-content;
+    }
+    .box .label_for_email{
+          font-size: 16px;
+    }
+    .box #gmail-inform {
+        font-size: 16px;
+    }
 }

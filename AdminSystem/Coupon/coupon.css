@@ -14,14 +14,15 @@ header{
     margin: 0;
     height: 80px;
     width: 100%;
-} 
+}
+
     .img{
         width: 100%;
         height: 80px;
         margin: 0;
         position: absolute;
     }
-    
+
     .top_bar{
         margin: 0;
         width: 100%;
@@ -62,73 +63,67 @@ header{
         text-decoration: none;
     }
 
-.work_screen{
-    margin-top: 80px;
-    width: 100%;
-    height: calc(100% - 80px);
-    display: inline-flex;
-}
 .left_bar{
+    position: absolute;
     background: #000000;
     opacity: 0.9;
-    margin: 0;
-    position: fixed;
+    top: 80px;
     left: 0;
     width: 18%;
-    height: 100%;
+    height: calc(100% - 80px);
+    overflow: hidden;
 }
 
-.left_bar a{
-    color: #f2f2f2;
-    display: block;
-    width: 100%;
-    line-height: 50px;
-    text-decoration: none;
-    padding-left: 40px;
-    font-family: Monsterrat;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: 0.5s;
-    transition-property: background;
-}
+    .left_bar a{
+        color: #f2f2f2;
+        display: block;
+        width: 100%;
+        line-height: 50px;
+        text-decoration: none;
+        padding-left: 40px;
+        font-family: Monsterrat;
+        font-size: 16px;
+        box-sizing: border-box;
+        transition: 0.5s;
+        transition-property: background;
+    }
 
-.left_bar a:hover{
-    background:#04AA6D;
-    text-decoration:none;
-}
+    .left_bar a:hover{
+        background:#04AA6D;
+    }
 
-.left_bar a.active{
-    background:#04AA6D;
-}
+    .left_bar a.active{
+        background:#04AA6D;
+    }
 
-.left_bar i{
-    padding: 10px;
-}
+    .left_bar i{
+        padding: 10px;
+    }
 
 #main_center_panel{
-    /*  display: flex; */
-    position: fixed;
+    position: absolute;
+    top: 80px;
     width: 82%;
-    height: 100%;
+    height: calc(100% - 80px);
     left: 18%;
     background-color: #f2f2f2;
+    overflow: hidden;
 }
     .head{
-        position: relative;
-        width: 100%;
+        position: absolute;
+        width: 96%;
+        left: 2%;
         height: 50px;
-        text-align:center;
-        display: flex;
-
     }
     #h1 {
-
-        margin-left: 2%;
+        position: absolute;
+        width: 27%;
         height: 50px;
         font-family: Monsterrat;
         font-size: 20px;
         font-weight:bolder;
         line-height: 50px;
+        vertical-align:middle;
     }
     .filter_wrap{
         position: absolute;
@@ -174,51 +169,52 @@ header{
                 max-height: 35px;
             }
     .wrap_btn{
-        position: relative;
-        /* width: 12%; */
-        height: 35px;
-        margin: auto 48px auto auto;
+        position: absolute;
+        width: 19%;
+        height: 50px;
+        left: 67%;
+        display: flex;
+        justify-self: center;
+        align-items: center;
     }
         .wrap_btn button{
-            position: relative;
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            width: 80%;
+            height: 70%;
+            left: 10%;
+            top: 15%;
         }
     .wrap_plinth{
-        position: fixed;
-        width: 10%;
-        height: 35px;
-        left: 88%;
-        margin-top: 10px;
+        position: absolute;
+        width: 14%;
+        height: 50px;
+        left: 86%;
     }
         .wrap_plinth button{
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: rgb(1, 165, 165);
-        }
-        .wrap_plinth button:hover{
-            background-color: rgb(1, 102, 102);
+            width: 80%;
+            height: 70%;
+            left: 10%;
+            top: 15%;
         }
     #table_panel{
-        overflow-y: scroll; 
         position: absolute;
         width: 96%;
-        height: 83%;
-        /* top: 50px; */
+        height: calc(98% - 50px);
+        top: 50px;
         left: 2%;
-        background: white;
+        background: #fff;
         border-radius: 5px;
         box-shadow: 0px 5px 10px #404040;
     }
-        
         #table_panel table {
             position: relative;
             display: block;
+            height: calc(100% - 60px);
             width: 100%;
             border-collapse: collapse;
-            table-layout: fixed;  
-            overflow: auto; 
+            table-layout: fixed;
+            overflow: auto;
             font-size: 15px;
             font-family: Monsterrat;
             font-weight: lighter;
@@ -233,65 +229,88 @@ header{
                 position: sticky; 
                 top: 0;
                 text-align: center;
-                align-items: center;
                 z-index: 0;
                 background: white;
                 border: none;
             }
             #table_panel table td{
-                /* padding: 5px; */
+                text-align: center;
                 border-top: 1px solid rgb(200, 200, 200);
                 border-right: none;
                 border-left: none;
                 border-bottom: none;
-                text-align: center;
+            }
+                #table_panel table th:nth-child(9), td:nth-child(9) {
+                    width: 5% !important;
+                    text-align: center;
+                }
+                #table_panel table th:nth-child(8), td:nth-child(8) {
+                    width: 5% !important;
+                }
+                #table_panel table th:nth-child(7), td:nth-child(7) {
+                    width: 28%;
+                }
+                #table_panel table th:nth-child(6), td:nth-child(6) {
+                    width: 10%;
+                    min-width: 50px;
+                    max-width: 80px;
+                }
+                #table_panel table th:nth-child(5), td:nth-child(5) {
+                    width: 10%;
+                    min-width: 50px;
+                    max-width: 120px;
+                }
+                #table_panel table th:nth-child(4), td:nth-child(4) {
+                    width: 10%;
+                    min-width: 50px;
+                    max-width: 120px;
+                }
+                #table_panel table th:nth-child(3), td:nth-child(3) {
+                    width: 10%;
+                    min-width: 50px;
+                    max-width: 120px;
+                }
+                #table_panel table th:nth-child(2), td:nth-child(2) {
+                    width: 12%;
+                    max-width: 150px;
+                }
+                #table_panel table th:nth-child(1), td:nth-child(1) {
+                    width: 4%;
+                }
+                ul.pagination {
+                    padding-left: 10px;
+                } 
+            .right_panel_body{
+                position: absolute;
+                width: 30%;
+                height: 60%;
+                top: 20%;
+                left: 65%;
+            }
+            .right_panel_body .title_div{
+                position: absolute;
+                width: 100%;
+                height: 20%;
+                display: flex;
+                justify-content: center;
                 align-items: center;
-                /* vertical-align: inherit; */
+            }
 
-                
+            .form_div{
+                position: absolute;
+                width: 100%;
+                height: 80%;
+                top: 20%;
             }
-            #table_panel table th:nth-child(9), td:nth-child(9) {
-                width: 5% !important;
-                text-align: center;
-            }
-            #table_panel table th:nth-child(8), td:nth-child(8) {
-                width: 5% !important;
-            }
-            #table_panel table th:nth-child(7), td:nth-child(7) {
-                width: 28%;
-            }
-            #table_panel table th:nth-child(6), td:nth-child(6) {
-                width: 10%;
-                min-width: 50px;
-                max-width: 80px;
-            }
-            #table_panel table th:nth-child(5), td:nth-child(5) {
-                width: 10%;
-                min-width: 50px;
-                max-width: 120px;
-            }
-            #table_panel table th:nth-child(4), td:nth-child(4) {
-                width: 10%;
-                min-width: 50px;
-                max-width: 120px;
-            }
-            #table_panel table th:nth-child(3), td:nth-child(3) {
-                width: 10%;
-                min-width: 50px;
-                max-width: 120px;
-            }
-            #table_panel table th:nth-child(2), td:nth-child(2) {
-                width: 12%;
-                max-width: 150px;
-            }
-            #table_panel table th:nth-child(1), td:nth-child(1) {
-                width: 4%;
-            } 
-        #table_panel .pagination{
-            position: relative;
-            margin-top: 16px;
-            margin-left: 4px;
-        }
+                .button_add_plinth{
+                    position: absolute;
+                    width: 100%;
+                    height: 15%;
+                    top: 85%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
 /* dang ki */
 .product_popup{
     z-index: 2;

@@ -55,148 +55,126 @@
     }
 
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="shortcut icon" href="https://t004.gokisoft.com/uploads/2021/07/1-s-1637-ico-web.jpg">
-
-         <!-- <link rel="stylesheet" href="dashboard.css"> -->
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
-        <script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
-       
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="coupon.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-
+        <title>Khuyến mãi</title>
     </head>
     <body>
-
-    <header>
-        <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
-        <div class="top_bar">
-            <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
-            <form action="" method="post">
-                <input type="text" name="logout" id="logout" value="logout" style="display: none;">
-                <button type="submit" class="logout_btn">Logout</button>
-            </form>
-            <?php 
+        <header class="scroll">
+            <img class="img" src="../../masterial/image/bgrAdminPage/topBgr.jpg" alt="top">
+            <div class="top_bar">
+                <img class="logo_name" src="../../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="">
+                <form action="form_save.php" method="post">
+                    <input type="text" name="logout" id="logout" value="logout" style="display: none;">
+                    <button type="submit" class="logout_btn">Logout</button>
+                </form>
+                <?php 
                 if (isset($_POST['logout'])){
                     $_SESSION['admin_id'] = 0;
                     header('location: ../login_form.php');
                     die();
                 }
-            ?>
-        </div>
-    </header>
-
-        <div class="work_screen">
-            <div class="left_bar scroll">
-                <a href="../DashBoard/DashBoard.php" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
+               ?>
+            </div>
+        </header>
+        <div class="left_bar scroll">
+             <a href="../DashBoard/DashBoard.php" target="_self"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Tổng Quan</span></a>
                 <a href="../ProductManagementPage/ProductManagementPage.php"><i class="fa fa-cutlery" aria-hidden="true"></i><span>Sản Phẩm</span></a>
                 <a href="../InvoiceManagementPage/InvoiceManagement.php"><i class="fa fa-cube" aria-hidden="true"></i><span>Đơn Hàng</span></a>
                 <a href="#" class="active" ><i class="fa fa-barcode" aria-hidden="true"></i><span>Khuyến Mãi</span></a>
-            </div>
-
-            <div id="main_center_panel">
-                <!-- lamf tiếp vào đây -->
-
-                <div class="head">
-                    <div id="h1">Danh sách mã khuyến mãi</div>
-
-                    <div class="wrap_btn">
-                        <button class="btn btn-success add_button">Thêm khuyến mãi</button>
-                    </div> 
-
-                   
-                </div>   
-
-                <div id="table_panel">
-                    <table class="table table-bordered table-hover" id="main_table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
+        </div>
+        <div id="main_center_panel">
+            <div class="head">
+                <div id="h1">Danh sách mã khuyến mãi</div>
+                <div class="wrap_plinth">
+                    <a href="#"><button class="btn btn-success add_button" >Thêm khuyến mãi</button></a>
+                </div>
+            </div>                 
+            
+            <div id="table_panel">
+                <table class="table table-bordered table-hover" id="main_table">
+                    <thead>
+                        <tr>
+                        <th>ID</th>
                                 <th>Tên Mã</th>
                                 <th>Code</th>
-                                <!-- <th>Loại </th> -->
                                 <th>Giá trị</th>
                                 <th>Ngày bắt đầu</th> 
                                 <th>Ngày kết thúc</th>
                                 <th>Mô tả</th>                         
-                                <!-- <th>Trạng thái</th>   -->
-                                <th style="width: 20px"></th>
-                                <th style="width: 20px"></th>              
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($coupon as $item){ ?>
-                            <tr>
-                                <td><?php echo $item['id_cp']; ?></td>
-                                <td><?php echo $item['name_cp']; ?></td>
-                                <td><?php echo $item['code_cp']; ?></td> 
-                                <!-- <td><?php echo $item['type_cp']; ?></td>  -->
-                                <td><?php echo value_coupon($item['value_cp'],$item['type_cp']); ?></td> 
-                                <td><?php echo date("h:m  d-m-Y", strtotime($item['active_date'])); ?></td> 
-                                <td><?php echo date("h:m  d-m-Y", strtotime($item['expire_date'])); ?></td> 
-                                <td><?php echo $item['description']; ?></td>
-                                <td style="width: 20px">
-                                <!-- <a href="<?php echo "form.php?id=".$item['id_cp'];?>"><button class="btn btn-warning">Sửa</button></a> -->
-                                <button onclick="editCoupon(<?php echo (int)$item['id_cp']; ?>)" class="btn btn-warning add_button">Sửa</button>
-                                <script>
-                                    // hiển thị edit sản phẩm coupon id=?
-                                    function editCoupon(id){
-
-                                        document.getElementById('active_date').min = '';
-                                        console.log("id =", document.getElementById('active_date').min);
-
-                                        $.ajax({ url: 'ajaxcp.php',
-                                                data: {'action': 'edit', 'id': id},
-                                                dataType: "json",
-                                                type: 'post',
-                                                success: function(relust) {
-                                                    // console.log("succsecful edit id = ",relust['id_cp']);
-                                                    document.getElementById('id_cp').value = relust['id_cp'];
-                                                    document.getElementById('name_cp').value = relust['name_cp'];
-                                                    document.getElementById('code_cp').value = relust['code_cp'];
-                                                    document.getElementById('value_cp').value = relust['value_cp'];
-                                                    document.getElementById('active_date').value = (relust['active_date']).replaceAll( ' ', 'T').slice(0, 16);
-                                                    document.getElementById('expire_date').value = relust['expire_date'].replaceAll( ' ', 'T').slice(0, 16);
-                                                    document.getElementById('description').value = relust['description'];
-                                                    document.getElementById('type_cp').value = relust['type_cp'];
-                                                    document.getElementById('max__order_amount').value = relust['max__order_amount'];
-                                                    setvalue_cp();
-                                                }
-                                        });
-                                    }
-                                </script>
-                                </td>
-                                <td style="width: 20px">
+                                <th></th>
+                                <th></th>                             
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($coupon as $item){ ?>
+                        <tr>
+                            <td><?php echo $item['id_cp']; ?></td>
+                            <td><?php echo $item['name_cp']; ?></td>
+                            <td><?php echo $item['code_cp']; ?></td> 
+                            <!-- <td><?php echo $item['type_cp']; ?></td>  -->
+                            <td><?php echo value_coupon($item['value_cp'],$item['type_cp']); ?></td> 
+                            <td><?php echo date("h:m  d-m-Y", strtotime($item['active_date'])); ?></td> 
+                            <td><?php echo date("h:m  d-m-Y", strtotime($item['expire_date'])); ?></td> 
+                            <td><?php echo $item['description']; ?></td>
+                            <td style="width: 20px">
+                            <!-- <a href="<?php echo "form.php?id=".$item['id_cp'];?>"><button class="btn btn-warning">Sửa</button></a> -->
+                            <button onclick="editCoupon(<?php echo (int)$item['id_cp']; ?>)" class="btn btn-warning add_button">Sửa</button>
+                            <script>
+                                // hiển thị edit sản phẩm coupon id=?
+                                function editCoupon(id){
+                                    document.getElementById('active_date').min = '';
+                                    console.log("id =", document.getElementById('active_date').min);
+                                    $.ajax({ url: 'ajaxcp.php',
+                                        data: {'action': 'edit', 'id': id},
+                                        dataType: "json",
+                                        type: 'post',
+                                        success: function(relust) {
+                                            // console.log("succsecful edit id = ",relust['id_cp']);
+                                                document.getElementById('id_cp').value = relust['id_cp'];
+                                                document.getElementById('name_cp').value = relust['name_cp'];
+                                                document.getElementById('code_cp').value = relust['code_cp'];
+                                                document.getElementById('value_cp').value = relust['value_cp'];
+                                                document.getElementById('active_date').value = (relust['active_date']).replaceAll( ' ', 'T').slice(0, 16);
+                                                document.getElementById('expire_date').value = relust['expire_date'].replaceAll( ' ', 'T').slice(0, 16);
+                                                document.getElementById('description').value = relust['description'];
+                                                document.getElementById('type_cp').value = relust['type_cp'];
+                                                document.getElementById('max__order_amount').value = relust['max__order_amount'];
+                                                document.getElementById('min_order_value').value = relust['min_order_value'];
+                                                setvalue_cp();
+                                            }
+                                    });
+                                }
+                            </script>
+                            </td>
+                            <td style="width: 20px">
                                 <button onclick="deleteCoupon(<?php echo (int)$item['id_cp']; ?>)" class="btn btn-danger">Xoá</button>
-                                </td>
-                                
-                            </tr>
-
-                        <?php } ?> 
-                        </tbody>   
-                    </table>
-                    <?php 
+                            </td>
+                        </tr>
+                    <?php } ?> 
+ 
+                    </tbody>   
+                
+                </table>
+                <?php 
                     if($numberPages > 1){
                         echo '<ul class="pagination">';
                         if($page > 1){
                             echo '<li class="page-item"><a class="page-link" href="?page='.($page-1).'">Previous</a></li>';
                         }      
-
                         $showPages = [1, $page-1, $page, $page+1, $numberPages];
                         $isFirst = $isLast = false;
                         for($i = 1; $i <= $numberPages; $i++){
@@ -216,20 +194,20 @@
                                 echo '<li class="page-item active"><a class="page-link" href="?page='.$i.'">'.$i.'</a></li>';
                             }else{
                                 echo '<li class="page-item"><a class="page-link" href="?page='.$i.'">'.$i.'</a></li>';
-                           }
                         }
-
+                        }
                         if($page < $numberPages){
                             echo '<li class="page-item"><a class="page-link" href="?page='.($page+1).'">Next</a></li>';
                         }
                         echo '</ul>';
                     }
-                    ?>
-                </div>
+                ?>
+                
             </div>
         </div>
+        
         <div class="product_popup" id="Product_popup">
-            <div class="testbox" id="testbox">
+        <div class="testbox" id="testbox">
                 <div class="banner">
                     <h1>Mã khuyến mãi</h1>
                 </div>
@@ -290,14 +268,13 @@
                             let type_cp = document.getElementById("type_cp");
                             let value_cp = document.getElementById("value_cp");
                             if(type_cp.value == "0"){
-                                    console.log("Loai cp: ",type_cp.value );
-                                    
+                                    // console.log("Loai cp: ",type_cp.value );
                                     value_cp.max = 100;
 
                                 }else if(type_cp.value == "1"){
                                     value_cp.max = null;
                                 }
-                                console.log(" dèuale min cp: ",value_cp.min," - ", value_cp.max);
+                                // console.log(" dèuale min cp: ",value_cp.min," - ", value_cp.max);
 
                             function setvalue_cp(){
 
@@ -310,8 +287,7 @@
                                 }else if(type_cp.value == "1"){
                                     value_cp.max = null;
                                 }
-                                console.log(" dèuale min cp: ",value_cp.min," - ", value_cp.max);
-
+                                // console.log(" dèuale min cp: ",value_cp.min," - ", value_cp.max);
                             }
                         </script>
                         </div>
@@ -346,6 +322,7 @@
                                     document.getElementById('expire_date').value = '';
                                     document.getElementById('description').value = '';
                                     document.getElementById('type_cp').value = '0';
+                                    document.getElementById('min_order_value').value = '';
                                     document.getElementById('max__order_amount').value = '';
                                     }
                             </script>
@@ -355,5 +332,5 @@
             </div>
         </div>
         <script src="coupon.js"></script>
-    </body>
-</html>
+    
+</body></html>

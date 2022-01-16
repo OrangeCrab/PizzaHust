@@ -15,26 +15,35 @@ require_once ('process_login.php');
         <img class="background_img" src="../masterial/image/bgrAdminPage/bgrLogin.jpg" alt="">
         <div class="screen"></div>
         
-        <a href="../homepage/homepageDraft.php"><img class="logo" src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo"></a>
+        <a href="../ShowForGuest/homepage/homepage.php"><img class="logo" src="../masterial/image/iconHomePage/PizzaHustLogo.svg" alt="logo"></a>
         
-
-
         <form class="box" action="" method="post">
-            <h2>LOGIN</h2>
-            <input type="text" name="username" id ="username" placeholder="Username">       
-            <input type="password" name="password" id ="password" placeholder="Password">
-            <!-- <img type = "submit" src="../../masterial/image/iconAdminPage/login.svg" alt=""> -->
-            <input type="submit" name="" value="Login">
-            <!-- <a href="../AdminSystem/DashBoard/DashBoard.html" type="submit" class="button btn btn-primary active">LOGIN</a> -->
-            <a href="#">Quên mật khẩu</a>
-            
+            <h2>ĐĂNG NHẬP</h2>
+            <input type="text" name="username" id ="username" placeholder="Username"  required="true" autofocus>  
+
+            <input type="password" name="password" id ="password" placeholder="Password" onblur="password_check()">
+            <p id="password_check"></p>
+            <input type="submit" id="submit" name="" value="Đăng nhập">
         </form>
-      
+        <script>
+            function password_check(){
+                var password = document.getElementById("password").value;
+                var password_inform = document.getElementById("password_check");
+                var submit = document.getElementById("submit");
+                var size = password.length;
+               if(size < 6){
+                    password_inform.textContent = "Mật khẩu phải có ít nhất 6 ký tự !";
+                    submit.disabled = true;
+                }
+                else{
+                    submit.disabled = false;
+                    password_inform.textContent = "";
+                }
+                
+            }
+        </script>
+
 
     </body>
 
 </html>
-
-
-
-
